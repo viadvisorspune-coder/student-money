@@ -54,10 +54,25 @@ and still never enter a total: no selector reads `Plan.amount` (§2.4). There is
 for exactly this — adding a ₹6,000 plan leaves free-to-spend and the projection
 unmoved.
 
-To clear everything and return to the demo month, run `studentMoney.reset()` in the
-browser console. The brief requires the student be able to clear what the app holds
-(§2.9), but the approved design has no control for it yet — that is a screen change
-needing the client's sign-off, so for now it is console-only.
+To clear everything and return to the demo month, open Profile → **What is stored on
+this phone** → Clear everything. `studentMoney.reset()` in the browser console does the
+same thing without the confirmation, which is handy when testing.
+
+## Screens added beyond the handoff
+
+Two screens exist here that are not in `prototype-v2.html`, because a shipped app needs
+them and the prototype never had to. Both are built from existing design-system
+components and keep the product's voice. **Both need the client's sign-off.**
+
+- **Crash screen** (`src/components/ErrorBoundary.tsx`). Anything that throws during a
+  render used to leave a blank white page. This states what happened, says the
+  student's data is untouched, and offers to start again — with clearing as a second
+  option only if the stored data is what is broken.
+- **"What is stored on this phone"** (`src/sheets/DataSheet.tsx`, reached from a new row
+  on Profile). CLAUDE.md §2.9 requires Profile to explain what is read *and how to edit
+  or clear it*. The approved design covers the explaining and has no control for the
+  clearing. The sheet lists what is held and asks a second time before removing it. The
+  approved rows above it are untouched — this is an addition, not a change.
 
 ## Deploying
 

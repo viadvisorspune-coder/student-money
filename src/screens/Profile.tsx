@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AvatarStack, BarList, IconButton, InsightCard, LinkRow, SectionHeader } from '../ui'
 import { F } from '../lib/format'
 import { TODAY } from '../lib/calendar'
+import { DataSheet } from '../sheets/DataSheet'
 import { useApp } from '../state/AppContext'
 
 /**
@@ -12,6 +14,7 @@ import { useApp } from '../state/AppContext'
 export function Profile() {
   const app = useApp()
   const navigate = useNavigate()
+  const [dataOpen, setDataOpen] = useState(false)
 
   const unlabelled = app.txns.filter((t) => !t.income && !t.bucket)
   const total = app.spent || 1
@@ -135,6 +138,16 @@ export function Profile() {
         caption={'Payment remarks and amounts · edit or clear any of it'}
         onClick={() => navigate('/profile/transactions')}
       />
+      {/* The brief requires a way to clear what is held (§2.9); the approved design
+          has no control for it, so this row is an addition and needs sign-off. */}
+      <LinkRow
+        tone="surface"
+        title="What is stored on this phone"
+        caption={`${app.txns.length} payments \u00b7 ${app.buckets.length} categories \u00b7 ${app.plans.length} plans`}
+        onClick={() => setDataOpen(true)}
+      />
+
+      <DataSheet open={dataOpen} onClose={() => setDataOpen(false)} />
     </div>
   )
 }
