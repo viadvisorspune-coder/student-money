@@ -23,7 +23,8 @@ export function Home() {
     <div className="home">
       <header className="home-head">
         <div className="home-greet">
-          <p className="hi">Hi Parisha,</p>
+          {/* The greeting is this screen's title, so it carries the h1. */}
+          <h1 className="hi">Hi Parisha,</h1>
           <p className="hi-sub">Here&rsquo;s where your money stands.</p>
         </div>
         <p className="hi-date">{DISPLAY_DATE}</p>

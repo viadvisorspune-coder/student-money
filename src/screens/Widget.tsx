@@ -14,6 +14,8 @@ export function Widget() {
 
   return (
     <div className="homescreen">
+      {/* Simulates a phone home screen; the title is for assistive technology. */}
+      <h1 className="sm-sr">Home-screen widget</h1>
       <p className="hs-date">{DISPLAY_DATE}</p>
 
       <div className="hs-grid">

@@ -170,11 +170,15 @@ export function patternsOf(txns: Txn[], bmap: BucketMap, spentBy: Record<string,
     })
   }
 
-  list.push({
-    kind: 'You vs yourself',
-    text: `Social outings come to ${F(socialTotal)} across ${social.length} occasions this month.`,
-    detail: `${spontaneous.length} of them were decided on the day.`,
-  })
+  // Only worth stating once there is something to state. With no outings this would
+  // read "₹0 across 0 occasions", which is a sentence about nothing.
+  if (social.length > 0) {
+    list.push({
+      kind: 'You vs yourself',
+      text: `Social outings come to ${F(socialTotal)} across ${social.length} occasions this month.`,
+      detail: `${spontaneous.length} of them were decided on the day.`,
+    })
+  }
 
   // Both sides need enough observations before a split is worth stating. With the
   // demo month this suppresses the pattern: one weekend outing is not a weekend

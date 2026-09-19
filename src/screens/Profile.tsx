@@ -36,7 +36,7 @@ export function Profile() {
           <AvatarStack size="lg" people={[{ initials: 'PA', tone: 'butter', name: 'Parisha' }]} />
           <div>
             <p className="sm-eyebrow">Your profile</p>
-            <p className="prof-name">Parisha</p>
+            <h1 className="prof-name">Parisha</h1>
           </div>
         </div>
         <p className="bal">{F(app.balance, { decimals: 2 })}</p>

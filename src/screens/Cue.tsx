@@ -26,6 +26,9 @@ export function Cue() {
 
   return (
     <div className="lockwrap">
+      {/* This screen simulates a lock screen, so its title is for assistive
+          technology only — there is nowhere on a lock screen to show one. */}
+      <h1 className="sm-sr">Notification cue before a spending moment</h1>
       <div className="lock">
         <p className="lock-date">{DISPLAY_DATE}</p>
         <p className="lock-time">6:40</p>

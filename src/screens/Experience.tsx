@@ -113,13 +113,17 @@ export function Experience() {
           <span className="l">spent</span>
         </div>
 
-        {!selBar ? (
+        {!selBar && prevTotal > 0 ? (
           <span className="sm-chip soft" style={{ marginTop: 8 }}>
             <Icon name={diff <= 0 ? 'arrow-down-right' : 'arrow-up-right'} size={16} />
             {(diff <= 0 ? Math.abs(diff) + '% less than ' : diff + '% more than ') +
               prevLabel +
               (mode === 'month' ? ' (so far)' : '')}
           </span>
+        ) : !selBar ? (
+          // Nothing in the earlier period, so there is no comparison to make. Saying
+          // "0% less than last week" would be stating a difference that does not exist.
+          <span className="sm-chip soft" style={{ marginTop: 8 }}>{`Nothing to compare with ${prevLabel} yet`}</span>
         ) : (
           <button type="button" className="sm-chip soft clear" onClick={() => setSel(null)}>
             {'Show whole ' + (mode === 'week' ? 'week' : 'month')}

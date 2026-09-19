@@ -137,7 +137,7 @@ body {
 .effects li.warn{color:#8a2f1b} .effects li.warn b{color:#8a2f1b}
 .row-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .prof-top{display:flex;align-items:center;gap:12px}
-.prof-name{font-size:24px;line-height:28px;font-weight:600;margin-top:2px!important}
+.prof-name{font-size:24px;line-height:28px;font-weight:600;margin:2px 0 0!important}
 .bal{font-size:52px;line-height:56px;font-weight:300;letter-spacing:-.03em;margin-top:32px!important;font-variant-numeric:tabular-nums}
 .bal-c{font-size:15px;color:var(--ink-muted);margin-top:4px!important}
 .list{padding-top:12px;padding-bottom:12px}

@@ -168,6 +168,14 @@ export function Transactions() {
               </div>
             )
           })
+        ) : app.txns.length === 0 ? (
+          // Nothing recorded at all. Offering to clear filters would be nonsense here.
+          <div className="empty">
+            <p>No payments yet. Anything you add by hand will show up here.</p>
+            <Button variant="soft" icon="plus" onClick={() => app.setAdd(true)}>
+              Add your first payment
+            </Button>
+          </div>
         ) : (
           <div className="empty">
             <p>No transactions match these filters.</p>
