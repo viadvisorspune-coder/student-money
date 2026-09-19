@@ -33,6 +33,22 @@ VITE_HASH_ROUTER=true npm run build -- --base ./
 The app is identical either way; only the URL shape changes (`/estimate` against
 `#/estimate`). `src/main.tsx` picks the router from that variable.
 
+## Deploying
+
+`vercel.json` is set up for Vercel: unknown paths rewrite to `index.html` so client-side
+routes survive a refresh and a shared deep link, hashed assets and fonts are cached for a
+year, and every response carries `X-Robots-Tag: noindex, nofollow` so search engines do not
+index the deployment. Vercel detects Vite on its own — no build settings to fill in.
+
+**Before deploying anywhere public, two things need clearing with the client:**
+
+- A Vercel production URL is open to anyone who has or guesses the link. The handoff asks
+  that the prototype not go to a public URL. Use Vercel's password protection, or keep it
+  to preview deployments, unless the client has said otherwise. The `X-Robots-Tag` header
+  keeps it out of search results; it does not make the deployment private.
+- Deploying serves the General Sans font files to every visitor, which is distribution.
+  The licence scope for that is still open (see below).
+
 At phone width the app fills the viewport. From 760px up it renders inside a centred device
 frame with a simulated status bar, so the design can be reviewed on a desktop exactly as it
 was signed off.
