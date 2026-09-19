@@ -1,4 +1,12 @@
-import { DAYS_IN_MONTH, OPENING, TODAY, isWeekend } from '../lib/calendar'
+import { DAYS_IN_MONTH, TODAY, isWeekend, weekdayIndex } from '../lib/calendar'
+import {
+  CUE_LOOKBACK_OCCURRENCES,
+  MIN_PATTERN_SAMPLE,
+  OPENING_BALANCE,
+  PROJECTION_ROUNDING,
+  SMALL_OUTING_MAX,
+  SPLIT_TOP_N,
+} from '../data/assumptions'
 import { F } from '../lib/format'
 import type { Bucket, Outlet, ResolvedBucket, Txn } from '../data/types'
 import type { Tone } from '../ui/types'
@@ -65,7 +73,7 @@ export function spentByBucket(txns: Txn[]): Record<string, number> {
 }
 
 export function balanceOf(income: number, spent: number): number {
-  return OPENING + income - spent
+  return OPENING_BALANCE + income - spent
 }
 
 /**
@@ -74,7 +82,7 @@ export function balanceOf(income: number, spent: number): number {
  */
 export function project(spent: number, extra = 0): number {
   const rate = (spent + extra) / TODAY
-  return Math.round((spent + extra + rate * (DAYS_IN_MONTH - TODAY)) / 10) * 10
+  return Math.round((spent + extra + rate * (DAYS_IN_MONTH - TODAY)) / PROJECTION_ROUNDING) * PROJECTION_ROUNDING
 }
 
 export interface Split {
@@ -106,8 +114,8 @@ export function splitsOf(
   if (by.__none) list.push({ id: '__none', label: 'Unlabelled', amount: by.__none, tone: 'soft' })
   list.sort((a, b) => b.amount - a.amount)
 
-  const top = list.slice(0, 3)
-  const rest = list.slice(3)
+  const top = list.slice(0, SPLIT_TOP_N)
+  const rest = list.slice(SPLIT_TOP_N)
   if (rest.length) {
     top.push({
       id: '__other',
@@ -147,7 +155,7 @@ export function patternsOf(txns: Txn[], bmap: BucketMap, spentBy: Record<string,
 
   const eat = bmap.eat
   const eatSpent = spentBy.eat || 0
-  const small = out.filter((t) => -t.amount <= 400 && t.social)
+  const small = out.filter((t) => -t.amount <= SMALL_OUTING_MAX && t.social)
   const smallTotal = -small.reduce((a, t) => a + t.amount, 0)
   const spontaneous = social.filter((t) => !t.planned)
 
@@ -168,12 +176,17 @@ export function patternsOf(txns: Txn[], bmap: BucketMap, spentBy: Record<string,
     detail: `${spontaneous.length} of them were decided on the day.`,
   })
 
-  if (weekend.length && weekday.length) {
+  // Both sides need enough observations before a split is worth stating. With the
+  // demo month this suppresses the pattern: one weekend outing is not a weekend
+  // average. Set MIN_PATTERN_SAMPLE to 1 for the prototype's behaviour.
+  if (weekend.length >= MIN_PATTERN_SAMPLE && weekday.length >= MIN_PATTERN_SAMPLE) {
     list.push({
       kind: 'This changes when…',
       tone: 'butter',
       text: `A weekday outing averages ${F(avg(weekday))}. On weekends it averages ${F(avg(weekend))}.`,
-      detail: `Based on ${social.length} outings this month.`,
+      // The basis is stated per side, not as one total, so the reader can see how
+      // thin or thick each average is (design/CLAUDE.md §7).
+      detail: `Based on ${weekday.length} weekday and ${weekend.length} weekend outings this month.`,
     })
   }
 
@@ -181,10 +194,38 @@ export function patternsOf(txns: Txn[], bmap: BucketMap, spentBy: Record<string,
     list.push({
       kind: 'Adds up',
       tone: 'sky',
-      text: `${small.length} small outings of ${F(400)} or less came to ${F(smallTotal)} together.`,
+      text: `${small.length} small outings of ${F(SMALL_OUTING_MAX)} or less came to ${F(smallTotal)} together.`,
       detail: 'Each one looked small on its own.',
     })
   }
 
   return list
+}
+
+/**
+ * What the student spent, on average, on the last N occurrences of a given weekday.
+ *
+ * This is what a notification cue quotes back before a known spending moment. It is
+ * their own history and nothing else (design/CLAUDE.md §2.2), and the cue states it
+ * without drawing a conclusion from it (§2.3).
+ *
+ * Days with no spending still count as occurrences, so a quiet Friday pulls the
+ * average down rather than being dropped from the sample.
+ */
+export function weekdayAverage(
+  txns: Txn[],
+  weekday: number,
+  lookback: number = CUE_LOOKBACK_OCCURRENCES,
+): { average: number; occurrences: number } {
+  const days: number[] = []
+  for (let d = TODAY - 1; d >= 1 && days.length < lookback; d--) {
+    if (weekdayIndex(d) === weekday) days.push(d)
+  }
+  if (!days.length) return { average: 0, occurrences: 0 }
+
+  const total = -txns
+    .filter((t) => !t.income && days.indexOf(t.day) > -1)
+    .reduce((a, t) => a + t.amount, 0)
+
+  return { average: Math.round(total / days.length), occurrences: days.length }
 }

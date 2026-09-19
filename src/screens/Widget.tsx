@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { Button, Icon } from '../ui'
 import { F } from '../lib/format'
+import { DAYS_IN_MONTH, TODAY } from '../lib/calendar'
+import { DISPLAY_DATE } from '../data/assumptions'
 import { useApp } from '../state/AppContext'
 
 const APPS = ['Messages', 'Camera', 'Maps', 'UPI', 'Photos', 'Notes', 'Music', 'Files']
@@ -12,7 +14,7 @@ export function Widget() {
 
   return (
     <div className="homescreen">
-      <p className="hs-date">Friday, 18 September</p>
+      <p className="hs-date">{DISPLAY_DATE}</p>
 
       <div className="hs-grid">
         {APPS.map((n) => (
@@ -38,7 +40,7 @@ export function Widget() {
           </span>
         </span>
         <span className="w-value">{F(app.free)}</span>
-        <span className="w-label">{'free to spend · 13 days left'}</span>
+        <span className="w-label">{`free to spend · ${DAYS_IN_MONTH - TODAY} days left`}</span>
         <span className="w-bars">
           {app.splits().slice(0, 4).map((x) => (
             <span key={x.id} className={'w-bar t-' + x.tone} style={{ flexGrow: x.pct }} />

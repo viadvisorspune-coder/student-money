@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppBar, BottomSheet, Button, FilterChips, HighlightCard, Icon, IconButton, TransactionRow } from '../ui'
 import { F } from '../lib/format'
 import { dayLabel, t12 } from '../lib/calendar'
+import { FREQUENT_VENDOR_MIN_COUNT } from '../data/assumptions'
 import { useApp } from '../state/AppContext'
 import type { Txn } from '../data/types'
 
@@ -37,7 +38,7 @@ export function Transactions() {
   app.txns.forEach((t) => {
     if (!t.income) counts[t.vendor] = (counts[t.vendor] || 0) + 1
   })
-  const freq = Object.keys(counts).filter((v) => counts[v] >= 3)[0]
+  const freq = Object.keys(counts).filter((v) => counts[v] >= FREQUENT_VENDOR_MIN_COUNT)[0]
 
   const bucketOptions = app.buckets
     .map((bk) => ({ value: bk.id, label: bk.name }))

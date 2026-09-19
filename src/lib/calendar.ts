@@ -9,13 +9,17 @@ export const YEAR = 2026
 export const MONTH = 8 // September, zero-indexed
 export const TODAY = 17
 export const DAYS_IN_MONTH = 30
-export const OPENING = 15000
 
 const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const
 
 /** Weekday name for a day of the demo month. */
 export function wd(d: number): string {
   return WD[new Date(YEAR, MONTH, d).getDay()]
+}
+
+/** Day-of-week index (0 = Sunday) for a day of the demo month. */
+export function weekdayIndex(d: number): number {
+  return new Date(YEAR, MONTH, d).getDay()
 }
 
 export function isWeekend(d: number): boolean {

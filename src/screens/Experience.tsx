@@ -3,11 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { AppBar, BarChart, BucketBreakdown, Icon, SegmentedToggle, TransactionRow } from '../ui'
 import { F } from '../lib/format'
 import { TODAY, dayLabel, wd } from '../lib/calendar'
+import { PREVIOUS_MONTH_SPEND } from '../data/assumptions'
 import { useApp } from '../state/AppContext'
 import type { Tone } from '../ui/types'
-
-/** August's total, held here because the demo data only covers September. */
-const PREVIOUS_MONTH_TOTAL = 7650
 
 interface Bar {
   id: string
@@ -57,7 +55,7 @@ export function Experience() {
       for (let i = w[0]; i <= w[1]; i++) days.push(i)
       return { id: 'w' + w[0], label: w[2] + ' Sep', value: v, display: F(v), days }
     })
-    prevTotal = PREVIOUS_MONTH_TOTAL
+    prevTotal = PREVIOUS_MONTH_SPEND
     prevLabel = 'August'
     range = 'September so far'
   }

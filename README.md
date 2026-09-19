@@ -15,6 +15,8 @@ npm run dev        # http://localhost:5173
 npm run build      # typecheck + production build into dist/
 npm run preview    # serve the production build
 npm run typecheck  # tsc only
+
+npm run verify:figures   # re-derive every figure in docs/ALGORITHMS.md and assert it
 ```
 
 Requires Node 20+. No backend, no environment variables, no network calls — everything on
@@ -59,11 +61,13 @@ screen has nothing to show without a decision.
 
 ```
 design/                    the handoff, unchanged — CLAUDE.md is the contract
+docs/ALGORITHMS.md         every figure, how it is worked out, and what was assumed
+scripts/verify-figures.mjs independent recomputation of every figure in that document
 public/fonts/              General Sans .otf files
 src/
   lib/                     formatINR, cx, the demo-month date helpers
   ui/                      the design system, ported to typed React
-  data/                    types, seed data, glossary definitions
+  data/                    types, seed data, assumptions, glossary definitions
   state/                   AppContext (the store) and selectors (every derived figure)
   screens/                 one file per screen
   sheets/                  the overlays
@@ -155,10 +159,24 @@ Carried over from `design/CLAUDE.md` §9, still undecided:
   picks which one is right.
 - General Sans licence scope for production distribution.
 
+Every assumed input now sits in `src/data/assumptions.ts` — opening balance, the August
+comparison total, the thresholds behind each pattern and prompt, and the rounding rules —
+with the basis for each one stated beside it. `docs/ALGORITHMS.md` §1.2 tabulates them.
+Nothing else in the app holds a rupee figure except `src/data/seed.ts`.
+
 Found while porting:
 
 - `--positive` and `--on-canvas` are used in the prototype but defined nowhere. Resolved as
   described above; they should be added to `tokens.json` or removed from the prototype.
+- **The displayed date does not agree with `TODAY`.** Home and the Cue print
+  "Friday, 18 September" while every computed figure uses day 17 — and 17 September 2026
+  is a Thursday. Left exactly as the prototype has it, held as `DISPLAY_DATE`. Resolving
+  it one way changes the projection by ₹990; see `docs/ALGORITHMS.md` §8.3.
+- **The weekday/weekend pattern rested on a single observation.** The prototype shows it
+  whenever each side has one outing; in the demo month the weekend average comes from one
+  Uber ride, captioned "Based on 12 outings this month". A `MIN_PATTERN_SAMPLE` of 3 per
+  side now suppresses it, and the caption states both counts. Set the constant to 1 to
+  restore the prototype's behaviour. See `docs/ALGORITHMS.md` §6.3.
 - `components.css` sets `.sm-txn-amt.out` to `--money-out` on line 151 and then overrides it
   back to `--ink` on line 292, so outgoing amounts render dark and only incoming amounts are
   green. The prototype is the specification, so that is what is built — but it does not match

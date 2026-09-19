@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, FilterChips, SectionHeader } from '../ui'
+import { F } from '../lib/format'
+import { DISPLAY_DATE } from '../data/assumptions'
+import { weekdayAverage } from '../state/selectors'
 import { useApp } from '../state/AppContext'
+
+/** The cue in this mock fires on a Friday evening. */
+const FRIDAY = 5
 
 /**
  * Phase 2 — the notification cue shown before a known spending moment.
@@ -15,10 +21,13 @@ export function Cue() {
   const navigate = useNavigate()
   const [rules, setRules] = useState<string[]>(['evenings', 'weekends'])
 
+  // Both figures are Parisha's own, read from her transactions — not literals.
+  const { average, occurrences } = weekdayAverage(app.txns, FRIDAY)
+
   return (
     <div className="lockwrap">
       <div className="lock">
-        <p className="lock-date">Friday, 18 September</p>
+        <p className="lock-date">{DISPLAY_DATE}</p>
         <p className="lock-time">6:40</p>
 
         <div className="notif">
@@ -26,9 +35,9 @@ export function Cue() {
             <span className="notif-app">Student Money</span>
             <span className="notif-time">now</span>
           </div>
-          <p className="notif-title">{'₹7,943 free · going out tonight?'}</p>
+          <p className="notif-title">{`${F(app.free)} free · going out tonight?`}</p>
           <p className="notif-body">
-            {'Last three Fridays you spent ₹860 on average. Check before you go.'}
+            {`Last ${occurrences} Fridays you spent ${F(average)} on average. Check before you go.`}
           </p>
           <div className="notif-actions">
             <button

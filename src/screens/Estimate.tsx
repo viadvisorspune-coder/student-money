@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppBar, Button, SelectField } from '../ui'
 import { F } from '../lib/format'
+import { QUICK_AMOUNTS } from '../data/assumptions'
 import { useApp } from '../state/AppContext'
-
-const QUICK = [200, 500, 1000, 2000]
 
 /**
  * Estimated spend. Amount, quick amounts, and "For?".
@@ -53,7 +52,7 @@ export function Estimate() {
           </label>
 
           <div className="quick-amts" role="group" aria-label="Common amounts">
-            {QUICK.map((v) => (
+            {QUICK_AMOUNTS.map((v) => (
               <button
                 key={v}
                 type="button"

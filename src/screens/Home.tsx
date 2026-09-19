@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CueRow, Icon } from '../ui'
 import { F } from '../lib/format'
+import { DISPLAY_DATE } from '../data/assumptions'
 import { InfoTip } from '../components/InfoTip'
 import { useApp } from '../state/AppContext'
 
@@ -25,7 +26,7 @@ export function Home() {
           <p className="hi">Hi Parisha,</p>
           <p className="hi-sub">Here&rsquo;s where your money stands.</p>
         </div>
-        <p className="hi-date">Friday, 18 September</p>
+        <p className="hi-date">{DISPLAY_DATE}</p>
       </header>
 
       <button
