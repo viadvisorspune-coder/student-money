@@ -16,7 +16,13 @@ import { useApp } from '../state/AppContext'
 export function Result() {
   const app = useApp()
   const navigate = useNavigate()
-  const d = app.decision
+
+  // Snapshot the check on arrival. The screen shows the decision the student made when
+  // they got here, so clearing it on the way out cannot pull the screen out from under
+  // them — without this, "Noted" clears the decision, this component re-renders with
+  // nothing to show, and its own guard redirects to /estimate before the navigation
+  // home lands.
+  const [d] = useState(app.decision)
   const [sel, setSel] = useState<string | null>(d?.bucket ?? null)
 
   // Reached without a decision (a refresh, or a deep link): send the student back.
