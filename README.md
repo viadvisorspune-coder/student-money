@@ -33,6 +33,32 @@ VITE_HASH_ROUTER=true npm run build -- --base ./
 The app is identical either way; only the URL shape changes (`/estimate` against
 `#/estimate`). `src/main.tsx` picks the router from that variable.
 
+## Remembering what the student enters
+
+Everything they change — a payment added by hand, a relabelled transaction, a renamed
+category, a plan — is written to the browser's own storage and read back on the next
+load. `src/state/persistence.ts` is the only file that touches storage, so replacing it
+with a backend later means changing `load` and `save` and nothing else.
+
+Two consequences worth knowing:
+
+- The data stays on the device. It never reaches a server, which is what keeps the
+  onboarding promise ("Nothing leaves your phone") true. It also means it does not
+  follow the student to another phone, and clearing browser data wipes it.
+- Every read and write is wrapped in try/catch, because storage throws rather than
+  returning empty in a private window or with site data blocked. A failure is never
+  fatal — the app falls back to the demo data and carries on.
+
+**Saving a plan is not the same as counting it.** Plans persist like everything else,
+and still never enter a total: no selector reads `Plan.amount` (§2.4). There is a test
+for exactly this — adding a ₹6,000 plan leaves free-to-spend and the projection
+unmoved.
+
+To clear everything and return to the demo month, run `studentMoney.reset()` in the
+browser console. The brief requires the student be able to clear what the app holds
+(§2.9), but the approved design has no control for it yet — that is a screen change
+needing the client's sign-off, so for now it is console-only.
+
 ## Deploying
 
 `vercel.json` is set up for Vercel: unknown paths rewrite to `index.html` so client-side

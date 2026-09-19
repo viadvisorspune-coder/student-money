@@ -1,5 +1,14 @@
-import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from 'react'
-import { BUCKETS, PLANS, TXNS } from '../data/seed'
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react'
+import { SEED, clear as clearStored, load, save } from './persistence'
 import type { Bucket, Decision, Plan, PlanSection, Skip, Txn } from '../data/types'
 import type { TermKey } from '../data/terms'
 import {
@@ -89,15 +98,21 @@ interface AppState {
   removePlan: (id: string) => void
   addPlan: (p: Plan) => void
   recordSkip: (s: Skip) => void
+  /** Clear everything the app has stored and return to the demo data. */
+  reset: () => void
 }
 
 const Ctx = createContext<AppState | null>(null)
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [buckets, setBuckets] = useState<Bucket[]>(BUCKETS)
-  const [txns, setTxns] = useState<Txn[]>(TXNS)
-  const [plans, setPlansState] = useState<Plan[]>(PLANS)
-  const [skipped, setSkipped] = useState<Skip[]>([])
+  // Read once, synchronously, so the first paint already shows the student's own
+  // figures rather than the demo data flashing up and then being replaced.
+  const [restored] = useState(load)
+
+  const [buckets, setBuckets] = useState<Bucket[]>(restored.buckets)
+  const [txns, setTxns] = useState<Txn[]>(restored.txns)
+  const [plans, setPlansState] = useState<Plan[]>(restored.plans)
+  const [skipped, setSkipped] = useState<Skip[]>(restored.skipped)
 
   const [decision, setDecision] = useState<Decision | null>(null)
   const [nestSel, setNestSel] = useState<Record<string, string | null>>({})
@@ -108,6 +123,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [labelPrompt, setLabelPrompt] = useState<LabelPrompt | null>(null)
   const [step, setStep] = useState(0)
   const [toast, setToast] = useState<Toast | null>(null)
+
+  // Anything the student changes is written back. Plans are saved here like the rest
+  // — saving a plan's amount is not the same as counting it, and no selector reads it
+  // (design/CLAUDE.md §2.4).
+  useEffect(() => {
+    save({ buckets, txns, plans, skipped })
+  }, [buckets, txns, plans, skipped])
 
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -244,6 +266,29 @@ export function AppProvider({ children }: { children: ReactNode }) {
   /** A skip is a note to the student, nothing more. No total moves (§2.5). */
   const recordSkip = useCallback((s: Skip) => setSkipped((xs) => xs.concat([s])), [])
 
+  /**
+   * Forget everything and go back to the demo month. The brief requires the student be
+   * able to clear what the app holds (§2.9); this is the mechanism. It has no control
+   * in the approved design yet, so for now it is reachable from the console as
+   * `window.studentMoney.reset()` — see README.
+   */
+  const reset = useCallback(() => {
+    clearStored()
+    setBuckets(SEED.buckets)
+    setTxns(SEED.txns)
+    setPlansState(SEED.plans)
+    setSkipped(SEED.skipped)
+    setDecision(null)
+    setNestSel({})
+    say('Everything cleared. Back to the demo month.')
+  }, [say])
+
+  // Until the design has a control for it, clearing is reachable from the browser
+  // console as `studentMoney.reset()`.
+  useEffect(() => {
+    ;(window as unknown as { studentMoney?: { reset: () => void } }).studentMoney = { reset }
+  }, [reset])
+
   const value: AppState = {
     buckets,
     bmap,
@@ -291,6 +336,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     removePlan,
     addPlan,
     recordSkip,
+    reset,
   }
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
