@@ -19,8 +19,19 @@ npm run typecheck  # tsc only
 npm run verify:figures   # re-derive every figure in docs/ALGORITHMS.md and assert it
 ```
 
-Requires Node 20+. No backend, no environment variables, no network calls — everything on
-screen comes from `src/data/seed.ts`.
+Requires Node 20+. No backend, no network calls — everything on screen comes from
+`src/data/seed.ts`.
+
+One build-time option: the app uses client-side routing, so a host that serves the built
+files must rewrite unknown paths to `index.html`. Where that is not possible — an object
+store, or a preview served from a subdirectory — build with hash routing instead:
+
+```bash
+VITE_HASH_ROUTER=true npm run build -- --base ./
+```
+
+The app is identical either way; only the URL shape changes (`/estimate` against
+`#/estimate`). `src/main.tsx` picks the router from that variable.
 
 At phone width the app fills the viewport. From 760px up it renders inside a centred device
 frame with a simulated status bar, so the design can be reviewed on a desktop exactly as it
