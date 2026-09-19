@@ -1,0 +1,12 @@
+<!-- @dsCard group="Money" height=300 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>AmountSummary — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.AmountSummary,{eyebrow:'Free to spend',value:'₹5,150',caption:'of ₹14,000 this month',segments:[{label:'Spent',value:6850,tone:'coral'},{label:'Set aside',value:2000,tone:'sunflower'},{label:'Available',value:5150,tone:'sky'}],parts:[{label:'Total money',value:'₹14,000'},{label:'Spent',value:'₹6,850',tone:'coral'},{label:'Set aside',value:'₹2,000',tone:'sunflower'},{label:'Available',value:'₹5,150',tone:'sky'}]})));
+</script>
+</body>
+</html>

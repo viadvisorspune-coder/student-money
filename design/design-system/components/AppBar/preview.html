@@ -1,0 +1,12 @@
+<!-- @dsCard group="Layout" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>AppBar — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.AppBar,{eyebrow:'September 2026',title:'Transaction history',onBack:function(){},trailing:h(SM.IconButton,{icon:'filter',label:'Filter by bucket'})})));
+</script>
+</body>
+</html>

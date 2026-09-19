@@ -1,0 +1,12 @@
+<!-- @dsCard group="Display" height=96 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>AvatarStack — preview</title></head>
+<body style="background:var(--surface)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-row'},h(SM.AvatarStack,{people:[{initials:'AK',tone:'sunflower'},{initials:'RM',tone:'soft'},{initials:'SJ',tone:'sky'}],extra:7,size:'lg'}),h(SM.AvatarStack,{people:[{initials:'AK',tone:'butter'},{initials:'NP',tone:'sky'}],extra:4,extraTone:'coral'})));
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=96 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>FilterChips — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-row'},h(SM.FilterChips,{options:[{value:'in',label:'Incoming',count:3},{value:'out',label:'Outgoing',count:23}],defaultValue:['out']})));
+</script>
+</body>
+</html>

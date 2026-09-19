@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TextField — preview</title></head>
+<body style="background:var(--surface)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{style:{padding:16,maxWidth:358}},h(SM.TextField,{label:'Monthly limit',prefix:'₹',value:'3,000',hint:'Resets on the 1st'})));
+</script>
+</body>
+</html>

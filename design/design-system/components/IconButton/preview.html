@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=96 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>IconButton — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-row'},h(SM.IconButton,{icon:'arrow-up-right',variant:'dark',size:'lg',label:'Open'}),h(SM.IconButton,{icon:'check',variant:'dark',label:'Mark paid'}),h(SM.IconButton,{icon:'close',label:'Close'}),h(SM.IconButton,{icon:'edit',label:'Edit'}),h(SM.IconButton,{icon:'share',variant:'outline',label:'Share'})));
+</script>
+</body>
+</html>

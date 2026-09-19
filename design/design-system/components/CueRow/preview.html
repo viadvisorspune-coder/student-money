@@ -1,0 +1,13 @@
+<!-- @dsCard group="Cards" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CueRow — preview</title></head>
+<body style="background:var(--surface)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  function Demo(){ var s = React.useState(null); return h('div',{style:{padding:16,maxWidth:358,display:'flex',flexDirection:'column',gap:8}},h(SM.CueRow,{title:'Vartika’s birthday',when:'25 Sep'}),h(SM.CueRow,{title:'Goa trip',when:'25–28 Sep',note:'Sharing a room with Riya, still deciding'})); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

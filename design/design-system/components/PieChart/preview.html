@@ -1,0 +1,21 @@
+<!-- @dsCard group="Money" height=420 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>PieChart — preview</title></head>
+<body style="background:var(--canvas)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  function Demo(){ var s = React.useState(null);
+    return h('div',{className:'sm-demo'},h('section',{className:'sm-projection'},
+      h('p',{className:'sm-eyebrow'},'This month'),
+      h(SM.PieChart,{total:18000,selected:s[0],onSelect:s[1],centerValue:'56%',centerLabel:'still unspent',
+        items:[{id:'eat',label:'Eating',value:3860,tone:'coral',display:SM.formatINR(3860)},
+               {id:'shop',label:'Shopping',value:2130,tone:'ink',display:SM.formatINR(2130)},
+               {id:'travel',label:'Travel',value:1400,tone:'sky',display:SM.formatINR(1400)},
+               {id:'other',label:'Other',value:2667,tone:'grey',display:SM.formatINR(2667)},
+               {id:'left',label:'Not spent',value:7943,tone:'soft',display:SM.formatINR(7943)}]}))); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

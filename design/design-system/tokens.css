@@ -1,0 +1,46 @@
+/* Student Money — compiled design tokens. Generated from tokens.json. Light theme. */
+:root{
+  --canvas: #f2f2ef; /* The page ground behind every card. Light, slightly warm grey; text on it is ink or ink-muted. */
+  --surface: #ffffff; /* Cards, sheets and rows. Separated from canvas by the ground showing through, and by line where a border is needed. */
+  --surface-frost: #fafaf8; /* Frosted panel a half-step above canvas: chart cards, the nav bar, grouped blocks inside a card. */
+  --surface-soft: #ebebe7; /* Chips, meter and chart tracks, soft icon buttons, input fills. */
+  --line: #e3e3de; /* Hairline borders on surface and frost: card edges, list rules, chart baselines. Interactive borders switch to ink when active. */
+  --ink: #1b1b1b; /* Primary text and icons everywhere (15.9:1 on surface, 14.6:1 on canvas). Also the one dark fill in the design: the primary button, the active nav pill and the arrow button. */
+  --ink-muted: #5e5e5b; /* Secondary text on surface (6.4:1), canvas (5.9:1), surface-soft (5.5:1) and the pastels. Never on ink. */
+  --ink-faint: #9b9b97; /* Decorative de-emphasis inside a sentence, and disabled marks. 2.8:1: never the only carrier of meaning. */
+  --on-ink: #ffffff; /* Text and icons on the ink fill (15.9:1). */
+  --butter: #ffe08f; /* The one card asking for attention now — the Kharcha check, a due payment. Text in ink only (14.2:1). */
+  --butter-soft: #fff3cf; /* Quiet highlight: a tip, a shared note, the second yellow in a chart. Text in ink; ink-muted allowed. */
+  --powder-deep: #7fb8e6; /* The brand blue and the leading chart tone. Text in ink only (9.6:1). */
+  --powder: #bcdcf5; /* Progress and goal cards, the lighter blue in a chart. Text in ink only. */
+  --powder-soft: #e2f0fb; /* Palest blue: the sixth chart tone and very quiet panels. Text in ink only. */
+  --grey-deep: #b0b0a9; /* Fourth chart tone and neutral fills that need to read against surface-soft. Text in ink only. */
+  --grey-soft: #dedcd5; /* Fifth chart tone and the unspent remainder in the donut. */
+  --accent: #1d6fb8; /* The one saturated colour: primary buttons, the plus, the active tab, selected chips. White on it is 5.4:1. */
+  --accent-soft: #63a6e0; /* The accent at chart strength: a leading bar, a selected block, a filled meter. */
+  --money-in: #1f7a4d; /* Money coming in, as text only, always with a + sign and a down-left arrow (5.3:1 on surface). */
+  --money-out: #c0432c; /* Money going out, as text only, always with a − sign and an up-right arrow (5.1:1 on surface). Never a fill, and never used to scold. */
+  --chart-track: #e8e8e3; /* Unfilled part of a meter, bar or ring. Decorative; the printed figure carries the value. */
+  --focus-ring: #1b1b1b; /* 2px solid focus outline with a 2px offset, on every surface in the design (≥12:1 on all of them). */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 32px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+  --font-sans: "General Sans", system-ui, sans-serif;
+}
+
+.text-display{font-size:44px;line-height:46px;font-weight:400;letter-spacing:-0.02em}
+.text-metric{font-size:56px;line-height:56px;font-weight:300;letter-spacing:-0.03em}
+.text-title-lg{font-size:34px;line-height:38px;font-weight:600;letter-spacing:-0.01em}
+.text-title{font-size:24px;line-height:28px;font-weight:600;letter-spacing:normal}
+.text-title-sm{font-size:18px;line-height:22px;font-weight:500;letter-spacing:normal}
+.text-body{font-size:15px;line-height:20px;font-weight:400;letter-spacing:normal}
+.text-label{font-size:14px;line-height:18px;font-weight:500;letter-spacing:normal}
+.text-caption{font-size:12px;line-height:16px;font-weight:400;letter-spacing:normal}

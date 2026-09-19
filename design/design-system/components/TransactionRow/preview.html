@@ -1,0 +1,12 @@
+<!-- @dsCard group="Money" height=210 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TransactionRow — preview</title></head>
+<body style="background:var(--canvas)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-card surface',style:{margin:16,maxWidth:358}},h(SM.TransactionRow,{vendor:'Swiggy',bucket:'Food delivery',time:'9:40 PM',amount:-400,icon:'food',tone:'coral'}),h(SM.TransactionRow,{vendor:'Freelance – logo design',bucket:'Income',time:'11:02 AM',amount:4000,icon:'wallet',tone:'positive'})));
+</script>
+</body>
+</html>

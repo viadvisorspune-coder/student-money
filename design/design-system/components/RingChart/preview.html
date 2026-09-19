@@ -1,0 +1,12 @@
+<!-- @dsCard group="Money" height=420 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>RingChart — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.RingChart,{title:'At a glance',centerValue:'₹5,150',centerLabel:'free to spend',rings:[{label:'Spent',value:6850,max:14000,tone:'coral',display:'₹6,850'},{label:'Set aside',value:2000,max:14000,tone:'sunflower',display:'₹2,000'},{label:'Available',value:5150,max:14000,tone:'sky',display:'₹5,150'}]})));
+</script>
+</body>
+</html>

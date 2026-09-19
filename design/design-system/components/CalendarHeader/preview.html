@@ -1,0 +1,12 @@
+<!-- @dsCard group="Layout" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CalendarHeader — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.CalendarHeader,{month:'October',defaultSelected:16,avatar:h(SM.AvatarStack,{people:[{initials:'AK',tone:'butter'}]}),days:[['Sun',12],['Mon',13],['Tue',14],['Wed',15],['Thu',16],['Fri',17],['Sat',18]].map(function(d){return {weekday:d[0],date:d[1]};})})));
+</script>
+</body>
+</html>

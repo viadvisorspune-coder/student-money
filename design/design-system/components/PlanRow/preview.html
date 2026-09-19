@@ -1,0 +1,12 @@
+<!-- @dsCard group="Cards" height=360 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>PlanRow — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo light'},h(SM.PlanRow,{title:'Pay mess fee',time:'1–5 Oct',active:true}),h(SM.PlanRow,{title:'Move ₹500 to laptop fund',time:'6 Oct'}),h(SM.PlanRow,{title:'Review this month’s spending',time:'30 Oct'})));
+</script>
+</body>
+</html>

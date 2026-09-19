@@ -1,0 +1,12 @@
+<!-- @dsCard group="Layout" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>BottomNav — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{style:{maxWidth:390}},h(SM.BottomNav,{showLabels:true,defaultActive:'home',items:[{id:'home',icon:'home',label:'Home'},{id:'plans',icon:'grid',label:'Plans'},{id:'profile',icon:'user',label:'Profile'}]})));
+</script>
+</body>
+</html>

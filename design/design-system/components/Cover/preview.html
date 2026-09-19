@@ -1,0 +1,44 @@
+<!-- @dsCard height=320 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Cover</title>
+<style>
+  html,body{margin:0;background:var(--canvas)}
+  .cv{position:relative;width:960px;height:320px;overflow:hidden;background:var(--canvas);font-family:var(--font-sans)}
+  .cv svg{position:absolute;left:480px;top:0}
+  .coral{fill:var(--coral)} .sun{fill:var(--sunflower)} .sky{fill:var(--sky)} .butter{fill:var(--butter)} .soft{fill:var(--surface-soft)} .ink{fill:var(--canvas)}
+  .txt{position:absolute;left:40px;bottom:36px;max-width:440px}
+  .name{margin:0;color:var(--on-canvas);font-size:96px;line-height:.95;font-weight:600;letter-spacing:-.02em}
+  .tag{margin:16px 0 0;color:var(--on-canvas-muted);font-size:14px;line-height:18px}
+</style></head>
+<body>
+<div class="cv">
+  <!--
+    blocks: coral 440×140 (radius-xl 32), sunflower 216×104, sky 216×172, butter 440×56 pill — plus surface-soft discs
+    arrangement: cards stacked with a space-1 (4px) gap, the stack bleeding off the top and right edge like the app's card stack
+    pattern: pills and discs from radius-pill — "chips, toggles, pills, avatars and icon buttons are always radius-pill" (README)
+    scales: gap space-1 4px, inset space-5 20px, radius-xl 32, radius-lg 24, radius-pill = half the short side
+  -->
+  <svg width="480" height="320" viewBox="0 0 480 320" aria-hidden="true">
+    <rect class="coral" x="20" y="-32" width="480" height="140" rx="32"/>
+    <rect class="soft" x="44" y="56" width="48" height="36" rx="18"/>
+    <rect class="soft" x="100" y="56" width="48" height="36" rx="18"/>
+    <rect class="soft" x="156" y="56" width="48" height="36" rx="18"/>
+    <rect class="soft" x="212" y="46" width="48" height="56" rx="24" style="fill:var(--surface)"/>
+    <rect class="sun" x="20" y="112" width="236" height="104" rx="32"/>
+    <circle class="ink" cx="208" cy="164" r="28" style="fill:var(--canvas)"/>
+    <rect class="sky" x="260" y="112" width="240" height="172" rx="32"/>
+    <rect class="ink" x="300" y="136" width="140" height="36" rx="18" style="fill:var(--canvas)"/>
+    <rect class="soft" x="372" y="140" width="64" height="28" rx="14" style="fill:var(--surface)"/>
+    <rect class="butter" x="20" y="220" width="236" height="64" rx="32"/>
+    <circle class="soft" cx="64" cy="252" r="20"/>
+    <circle class="sky" cx="92" cy="252" r="20"/>
+    <circle class="coral" cx="120" cy="252" r="20"/>
+  </svg>
+  <div class="txt">
+    <p class="name">Student<br>Money</p>
+    <p class="tag">Money made visible, one card at a time.</p>
+  </div>
+</div>
+</body>
+</html>

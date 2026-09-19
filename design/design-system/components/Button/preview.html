@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=96 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Button — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-row'},h(SM.Button,{icon:'plus'},'Make notes on upcoming expenses'),h(SM.Button,{variant:'soft'},'Cancel'),h(SM.Button,{variant:'danger',icon:'trash'},'Delete bucket')));
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!-- @dsCard group="Actions" height=150 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SelectField — preview</title></head>
+<body style="background:var(--surface)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  function Demo(){ var s = React.useState(null); return h('div',{style:{padding:16,maxWidth:358}},h(SM.SelectField,{label:'For?',placeholder:'Pick one',options:[{value:'eat',label:'Eating'},{value:'travel',label:'Travel'},{value:'shop',label:'Shopping'}],value:'eat'})); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

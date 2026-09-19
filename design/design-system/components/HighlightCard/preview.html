@@ -1,0 +1,12 @@
+<!-- @dsCard group="Cards" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>HighlightCard — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.HighlightCard,{title:'Hostel rent due today',subtitle:'₹6,500 to Sunrise PG',action:h(SM.IconButton,{icon:'check',variant:'dark',size:'lg',label:'Mark as paid'})}),h(SM.HighlightCard,{tone:'butter',title:'Budget shared with 1 friend',action:h(SM.AvatarStack,{people:[{initials:'RM',tone:'sky'}]})})));
+</script>
+</body>
+</html>

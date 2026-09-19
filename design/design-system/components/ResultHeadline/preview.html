@@ -1,0 +1,13 @@
+<!-- @dsCard group="Money" height=220 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>ResultHeadline — preview</title></head>
+<body style="background:var(--canvas)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  function Demo(){ var s = React.useState(null); return h('div',{className:'sm-demo'},h(SM.ResultHeadline,{eyebrow:'If you spend ₹700',before:'₹2,000',after:'₹1,300',caption:'free to spend for the rest of the month',insight:'Eating would be ₹4,460 of ₹5,000 — ₹540 left for the next 13 days.'})); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!-- @dsCard group="Cards" height=260 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>InsightCard — preview</title></head>
+<body style="background:var(--canvas)">
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  function Demo(){ var s = React.useState(null); return h('div',{className:'sm-demo'},h(SM.InsightCard,{kind:'You vs yourself'},'Your social spending was ₹3,240 this month. Your usual range is ₹2,700–₹3,400.'),h(SM.InsightCard,{tone:'butter',kind:'This changes when…',detail:'Based on 14 outings since July.'},'Weekday outings average ₹520. Weekend outings average ₹760.')); }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+</body>
+</html>

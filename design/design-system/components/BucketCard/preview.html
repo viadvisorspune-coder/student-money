@@ -1,0 +1,12 @@
+<!-- @dsCard group="Money" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>BucketCard — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.BucketCard,{name:'Food delivery',caption:'Swiggy, Zomato',icon:'food',color:'coral',value:2550,limit:3000,onEdit:function(){}}),h(SM.BucketCard,{name:'Shopping',caption:'Myntra, Amazon',icon:'bag',color:'ink',value:2980,limit:2500,onEdit:function(){}})));
+</script>
+</body>
+</html>

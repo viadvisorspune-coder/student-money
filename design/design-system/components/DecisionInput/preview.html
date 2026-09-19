@@ -1,0 +1,12 @@
+<!-- @dsCard group="Money" height=220 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DecisionInput — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.DecisionInput,{suggestions:['₹1,200 concert ticket','₹450 Swiggy tonight','₹2,500 new shoes']})));
+</script>
+</body>
+</html>

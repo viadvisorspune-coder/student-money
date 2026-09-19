@@ -1,0 +1,12 @@
+<!-- @dsCard group="Layout" height=460 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>BottomSheet — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{style:{position:'relative',height:460,background:'var(--canvas)'}},h(SM.BottomSheet,{open:true,onClose:function(){},pill:'16 Sep · 9:40 PM',title:'Swiggy',subtitle:'Paid via UPI',footer:h(SM.Button,{full:true},'Save changes')},h(SM.TextField,{label:'Note',placeholder:'What was it for?'}))));
+</script>
+</body>
+</html>

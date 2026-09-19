@@ -1,0 +1,12 @@
+<!-- @dsCard group="Layout" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>SectionHeader — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var SM = window.StudentMoney, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'sm-demo'},h(SM.SectionHeader,{onCanvas:true,title:'Buckets · frequent payments',action:h(SM.Button,{variant:'light',size:'sm',icon:'plus'},'New')})));
+</script>
+</body>
+</html>
