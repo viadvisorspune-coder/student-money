@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, FilterChips, SectionHeader } from '../ui'
 import { F } from '../lib/format'
 import { DISPLAY_DATE } from '../data/assumptions'
+import { CueWidget, InfoWidget } from '../components/Widgets'
 import { weekdayAverage } from '../state/selectors'
 import { useApp } from '../state/AppContext'
 
@@ -23,6 +24,12 @@ export function Cue() {
 
   // Both figures are Parisha's own, read from her transactions — not literals.
   const { average, occurrences } = weekdayAverage(app.txns, FRIDAY)
+
+  // Anything tapped on the lock screen opens the app on Home with a clean form.
+  const open = () => {
+    app.setDecision(null)
+    navigate('/')
+  }
 
   return (
     <div className="lockwrap">
@@ -46,10 +53,7 @@ export function Cue() {
             <button
               type="button"
               className="na primary"
-              onClick={() => {
-                app.setDecision(null)
-                navigate('/')
-              }}
+              onClick={open}
             >
               Check
             </button>
@@ -64,6 +68,14 @@ export function Cue() {
               Not now
             </button>
           </div>
+        </div>
+
+        {/* The same two widgets as on the home screen. On a lock screen they are the
+            whole of the app the student sees, so the cue sits directly under the
+            notification it follows on from. */}
+        <div className="lock-widgets">
+          <CueWidget onOpen={open} />
+          <InfoWidget onOpen={open} />
         </div>
       </div>
 
@@ -87,9 +99,14 @@ export function Cue() {
             <li>A cue only ever reports your own figures. It never says what to do.</li>
           </ul>
         </div>
-        <Button full variant="soft" onClick={() => navigate('/')}>
-          Back to the app
-        </Button>
+        <div className="hs-exits">
+          <Button full variant="soft" onClick={() => navigate('/widget')}>
+            See them on the home screen
+          </Button>
+          <Button full variant="soft" onClick={() => navigate('/')}>
+            Back to the app
+          </Button>
+        </div>
       </div>
     </div>
   )

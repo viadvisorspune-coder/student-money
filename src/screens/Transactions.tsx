@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppBar, BottomSheet, Button, FilterChips, HighlightCard, Icon, IconButton, TransactionRow } from '../ui'
 import { F } from '../lib/format'
 import { dayLabel, t12 } from '../lib/calendar'
+import { SetAside } from '../components/SetAside'
 import { FREQUENT_VENDOR_MIN_COUNT } from '../data/assumptions'
 import { useApp } from '../state/AppContext'
 import type { Txn } from '../data/types'
@@ -191,6 +192,10 @@ export function Transactions() {
           </div>
         )}
       </section>
+
+      {/* Money already promised to something coming up, where the student is looking
+          at what has gone. Shown beside the payments, never mixed into them. */}
+      <SetAside title="Set aside for what is coming" />
 
       <div className="sticky-add">
         <Button full icon="plus" onClick={() => app.setAdd(true)}>

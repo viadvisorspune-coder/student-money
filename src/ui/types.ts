@@ -28,6 +28,7 @@ export type IconName =
   | 'play'
   | 'receipt'
   | 'target'
+  | 'star'
 
 /**
  * Tone classes map to `--tone` in components.css. Keeping these names is what

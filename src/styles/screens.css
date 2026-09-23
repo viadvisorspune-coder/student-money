@@ -422,3 +422,53 @@ body {
 .plan-pick .m{font-size:13px;line-height:18px;color:var(--ink-muted)}
 .plan-pick[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--ink)}
 .plan-pick:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+
+/* --------------------------------------------------- set aside, on any expense view */
+/* The figure a plan carries, shown beside it. Yellow because it is money promised to
+   something and not yet gone — never red or green, which belong to amounts only. */
+.sm-cue .a{order:1;font-size:13px;line-height:18px;font-weight:600;color:var(--ink);background:var(--butter);border-radius:999px;padding:3px 10px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sm-cue .w{order:1}
+.sm-cue .sm-icon{order:2}
+
+/* the month bar's way through to Where it went, labelled rather than a bare arrow */
+.allowance-go{flex:none;display:inline-flex;align-items:center;gap:6px;width:auto;height:auto;border:0;border-radius:999px;background:var(--accent);color:var(--on-ink);font:inherit;font-size:13px;line-height:16px;font-weight:600;padding:9px 12px 9px 14px;cursor:pointer;white-space:nowrap}
+.allowance-track{display:flex}
+/* the piece the spend being weighed would add */
+.allowance-add{display:block;height:100%;border-radius:999px;background:var(--butter);margin-left:-6px}
+.allowance-key{display:flex;flex-wrap:wrap;gap:4px 16px;margin:10px 0 0;font-size:13px;line-height:18px;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+.allowance-key .k{display:inline-flex;align-items:center;gap:6px}
+.allowance-key .k::before{content:"";width:9px;height:9px;border-radius:999px;background:var(--accent-soft)}
+.allowance-key .k-add::before{background:var(--butter)}
+
+/* ------------------------------------------------------------------- the widgets */
+/* Home screen and lock screen. Related to the estimate card, not the same as it:
+   a widget has room for a figure and a tap, never a form. */
+.wg{display:flex;flex-direction:column;align-items:stretch;width:100%;box-sizing:border-box;font:inherit;color:var(--ink);text-align:left;background:var(--surface);border:0;box-shadow:inset 0 0 0 1px var(--line),0 8px 20px rgba(17,17,17,.08);border-radius:22px;padding:16px 18px}
+button.wg{cursor:pointer}
+button.wg:focus-visible,.wg-bar:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+.wg-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;line-height:14px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:var(--ink-muted)}
+.wg-when{font-variant-numeric:tabular-nums;white-space:nowrap}
+.wg-value{margin-top:10px;font-size:32px;line-height:36px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.wg-label{margin-top:2px;font-size:13px;line-height:18px;color:var(--ink-muted)}
+.wg-track{display:block;margin-top:12px;height:10px;border-radius:999px;background:var(--chart-track);overflow:hidden}
+.wg-fill{display:block;height:100%;border-radius:999px;background:var(--accent-soft)}
+.wg-foot{margin-top:8px;font-size:12px;line-height:16px;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+/* the cue: the one that asks, so it carries the yellow */
+.wg-cue{background:var(--butter);box-shadow:0 8px 20px rgba(17,17,17,.08)}
+.wg-cue .wg-head{color:#6b6350}
+.wg-ask{margin-top:8px;font-size:19px;line-height:24px;font-weight:600}
+.wg-bar{display:flex;align-items:center;gap:8px;width:100%;box-sizing:border-box;margin-top:12px;font:inherit;text-align:left;color:var(--ink-muted);background:var(--surface);border:0;box-shadow:inset 0 0 0 1px rgba(17,17,17,.12);border-radius:999px;padding:9px 9px 9px 14px;cursor:pointer}
+.wg-bar .cur{font-size:16px;font-weight:600;color:var(--ink)}
+.wg-bar .ph{flex:1;min-width:0;font-size:15px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wg-bar .go{flex:none;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:var(--ink);color:var(--on-ink)}
+
+/* the pretend phone, so the widgets can be judged where they will sit */
+.hs-face{display:flex;flex-direction:column;gap:16px;background:linear-gradient(180deg,#e7edf3,#f2f2ef);border:1px solid var(--line);border-radius:var(--radius-xl);padding:20px 16px 16px}
+.hs-ico{background:var(--tone,#e0ded8)}
+.hs-dock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;justify-items:center;margin-top:4px;padding:10px 8px;background:rgba(255,255,255,.55);border-radius:26px}
+.hs-exits{display:flex;flex-direction:column;gap:8px;padding:0 8px}
+.lock-widgets{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+
+/* the star through to the widgets: the one yellow control on Home */
+.sm-iconbtn.home-star{background:var(--butter);color:var(--ink)}
+.sm-iconbtn.home-star:hover{background:#ffd76e}

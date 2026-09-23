@@ -482,13 +482,20 @@ export interface CueRowProps {
   title: string
   when?: string
   note?: string | null
+  /**
+   * What the student has set aside for it, already formatted. Added beyond the
+   * handoff's props: a plan is easier to recognise by its figure than its title.
+   * Shown back only — no total, projection or chart reads it (CLAUDE.md §2.4).
+   */
+  amount?: string | null
   onClick?: () => void
 }
 
-export function CueRow({ title, when, note, onClick }: CueRowProps) {
+export function CueRow({ title, when, note, amount, onClick }: CueRowProps) {
   const inner = (
     <>
       <span className="t">{title}</span>
+      {amount ? <span className="a">{amount}</span> : null}
       {when ? <span className="w">{when}</span> : null}
       {note ? <span className="n">{note}</span> : null}
     </>

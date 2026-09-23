@@ -188,7 +188,7 @@ this and the rest of the month goes like the last 17 days."
 
 ## 5. Shares
 
-`splitsOf`. Used by Home's bars, the Result projection card and the widget.
+`splitsOf`. Used by Home's bars and the Result projection card.
 
 ```
 by      = spentBy, plus `extra` added to `extraBucket` when simulating

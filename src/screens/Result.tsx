@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { AppBar, Button, CueRow, SectionHeader } from '../ui'
 import { F } from '../lib/format'
+import { setAside } from '../lib/plan'
 import { AllowanceBar } from '../components/AllowanceBar'
 import { CategoryBars } from '../components/CategoryBars'
 import { useApp } from '../state/AppContext'
@@ -57,10 +58,19 @@ export function Result() {
           <SectionHeader onCanvas title="Coming up" />
           <div className="cues">
             {app.cues.slice(0, 3).map((p) => (
-              <CueRow key={p.id} title={p.title} when={p.when} note={p.notes || null} />
+              <CueRow
+                key={p.id}
+                title={p.title}
+                when={p.when}
+                amount={setAside(p.amount)}
+                note={p.notes || null}
+              />
             ))}
           </div>
-          <p className="fine">Plans are only reminders. Nothing here is counted in any total.</p>
+          <p className="fine">
+            Plans are only reminders, and what you have set aside for them is a note to yourself. Nothing here is
+            counted in any total.
+          </p>
         </>
       ) : null}
 

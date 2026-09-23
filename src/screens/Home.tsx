@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { CueRow, IconButton } from '../ui'
 import { F } from '../lib/format'
+import { setAside } from '../lib/plan'
 import { DISPLAY_DATE } from '../data/assumptions'
 import { AllowanceBarLinked } from '../components/AllowanceBar'
 import { DecideForm } from '../components/DecideForm'
@@ -27,6 +28,15 @@ export function Home() {
         </div>
         <div className="home-corner">
           <p className="hi-date">{DISPLAY_DATE}</p>
+          {/* The widgets as they sit on a phone, without leaving the app. */}
+          <IconButton
+            icon="star"
+            variant="soft"
+            size="sm"
+            className="home-star"
+            label="See the widgets on a phone"
+            onClick={() => navigate('/widget')}
+          />
           {/* Enter this month's figures by hand, for trying the app with real numbers. */}
           <IconButton
             icon="settings"
@@ -67,7 +77,14 @@ export function Home() {
           </div>
           <div className="cues">
             {app.cues.slice(0, 2).map((p) => (
-              <CueRow key={p.id} title={p.title} when={p.when} onClick={() => navigate('/plans')} />
+              <CueRow
+                key={p.id}
+                title={p.title}
+                when={p.when}
+                // Shown back, never counted (CLAUDE.md §2.4).
+                amount={setAside(p.amount)}
+                onClick={() => navigate('/plans')}
+              />
             ))}
           </div>
         </section>

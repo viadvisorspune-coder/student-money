@@ -1,58 +1,100 @@
 import { useNavigate } from 'react-router-dom'
-import { Button, Icon } from '../ui'
-import { F } from '../lib/format'
-import { DAYS_IN_MONTH, TODAY } from '../lib/calendar'
+import { Button } from '../ui'
 import { DISPLAY_DATE } from '../data/assumptions'
+import { CueWidget, InfoWidget } from '../components/Widgets'
 import { useApp } from '../state/AppContext'
+import type { Tone } from '../ui/types'
 
-const APPS = ['Messages', 'Camera', 'Maps', 'UPI', 'Photos', 'Notes', 'Music', 'Files']
+/** Filler apps, so the widgets can be judged where they will actually sit. */
+const APPS: { name: string; tone: Tone }[] = [
+  { name: 'Messages', tone: 'sky' },
+  { name: 'Camera', tone: 'grey' },
+  { name: 'Maps', tone: 'positive' },
+  { name: 'UPI', tone: 'coral' },
+  { name: 'Photos', tone: 'sunflower' },
+  { name: 'Notes', tone: 'butter' },
+  { name: 'Music', tone: 'blush' },
+  { name: 'Files', tone: 'soft' },
+]
 
-/** Phase 2 — the home-screen widget. Rendered without the bottom nav (CLAUDE.md §6). */
+const DOCK: { name: string; tone: Tone }[] = [
+  { name: 'Phone', tone: 'positive' },
+  { name: 'Browser', tone: 'sky' },
+  { name: 'Gallery', tone: 'blush' },
+  { name: 'Settings', tone: 'grey' },
+]
+
+/**
+ * Phase 2 — the widgets, shown on a pretend phone home screen so their placement can
+ * be judged rather than imagined. Rendered without the bottom nav (CLAUDE.md §6).
+ *
+ * Two of them: one that only reports where the month stands, and one that asks about
+ * an upcoming expense. Both are borrowed from the estimate card without being it —
+ * a widget has room for a figure and a tap, not a form. The same pair sits on the
+ * lock screen (see `/cue`).
+ */
 export function Widget() {
   const app = useApp()
   const navigate = useNavigate()
 
+  // Opening from a widget always lands on Home with a clean form: the widget asks
+  // the question, the app is where it gets answered. Nothing is carried across and
+  // nothing is recorded on the way (CLAUDE.md §2.5).
+  const openApp = () => {
+    app.setDecision(null)
+    navigate('/')
+  }
+
   return (
     <div className="homescreen">
       {/* Simulates a phone home screen; the title is for assistive technology. */}
-      <h1 className="sm-sr">Home-screen widget</h1>
-      <p className="hs-date">{DISPLAY_DATE}</p>
+      <h1 className="sm-sr">The widgets on a phone home screen</h1>
 
-      <div className="hs-grid">
-        {APPS.map((n) => (
-          <span key={n} className="hs-app">
-            <span className="hs-ico" />
-            {n}
-          </span>
-        ))}
+      <div className="hs-face">
+        <p className="hs-date">{DISPLAY_DATE}</p>
+
+        {/* The cue sits where a thumb reaches first. */}
+        <CueWidget onOpen={openApp} />
+
+        <div className="hs-grid">
+          {APPS.slice(0, 4).map((a) => (
+            <span key={a.name} className="hs-app">
+              <span className={'hs-ico t-' + a.tone} />
+              {a.name}
+            </span>
+          ))}
+        </div>
+
+        <InfoWidget onOpen={openApp} />
+
+        <div className="hs-grid">
+          {APPS.slice(4).map((a) => (
+            <span key={a.name} className="hs-app">
+              <span className={'hs-ico t-' + a.tone} />
+              {a.name}
+            </span>
+          ))}
+        </div>
+
+        <div className="hs-dock">
+          {DOCK.map((a) => (
+            <span key={a.name} className="hs-app">
+              <span className={'hs-ico t-' + a.tone} />
+              <span className="sm-sr">{a.name}</span>
+            </span>
+          ))}
+        </div>
       </div>
 
-      <button
-        type="button"
-        className="hs-widget"
-        onClick={() => {
-          app.setDecision(null)
-          navigate('/')
-        }}
-      >
-        <span className="w-top">
-          <span className="w-name">Kharcha?</span>
-          <span className="sm-iconbtn sm-sm dark" aria-hidden>
-            <Icon name="arrow-up-right" size={16} />
-          </span>
-        </span>
-        <span className="w-value">{F(app.free)}</span>
-        <span className="w-label">{`free to spend · ${DAYS_IN_MONTH - TODAY} days left`}</span>
-        <span className="w-bars">
-          {app.splits().slice(0, 4).map((x) => (
-            <span key={x.id} className={'w-bar t-' + x.tone} style={{ flexGrow: x.pct }} />
-          ))}
-        </span>
-      </button>
+      <p className="hs-note">
+        The top widget asks; the lower one only reports. Tapping the bar opens Student Money on Home, where the
+        field is waiting &mdash; a widget never takes the amount itself. Both sit on the lock screen too.
+      </p>
 
-      <p className="hs-note">Tap the widget to check a spend without opening the app first.</p>
-
-      <div style={{ padding: '0 8px' }}>
+      <div className="hs-exits">
+        <Button full variant="soft" onClick={() => navigate('/cue')}>
+          See them on the lock screen
+        </Button>
         <Button full variant="soft" onClick={() => navigate('/')}>
           Back to the app
         </Button>

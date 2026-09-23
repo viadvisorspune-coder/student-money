@@ -122,7 +122,7 @@ All eight core screens, all overlays, and all four Phase 2 screens.
 | `/profile/transactions` | Transactions | Filterable list, sticky "Add a payment by hand" |
 | `/profile/experience` | Experience | Week/month toggle, bars, comparison against Parisha's own previous period |
 | `/cue` | Phase 2 — notification cue | Renders without the nav |
-| `/widget` | Phase 2 — home-screen widget | Renders without the nav |
+| `/widget` | Phase 2 — both widgets on a pretend phone home screen | Renders without the nav; reached from the star on Home |
 | `/onboarding` | Phase 2 — onboarding | Renders without the nav |
 | `/empty` | Phase 2 — empty state | Renders without the nav |
 

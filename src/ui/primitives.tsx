@@ -33,6 +33,9 @@ const PATHS: Record<IconName, string> = {
   play: 'M8 5v14l11-7z',
   receipt: 'M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6',
   target: 'M12 12h.01M12 7a5 5 0 1 0 .01 0M12 3a9 9 0 1 0 .01 0',
+  // Added here rather than in the handoff's bundle: the widget preview needs a mark
+  // and the set had none. Drawn to the same 24-grid and stroke weight as the rest.
+  star: 'M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z',
 }
 
 export const iconNames = Object.keys(PATHS) as IconName[]

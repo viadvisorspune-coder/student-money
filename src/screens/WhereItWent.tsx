@@ -3,6 +3,7 @@ import { AppBar, InsightCard, LinkRow, SectionHeader } from '../ui'
 import { F } from '../lib/format'
 import { AllowanceBar } from '../components/AllowanceBar'
 import { CategoryBars } from '../components/CategoryBars'
+import { SetAside } from '../components/SetAside'
 import { useApp } from '../state/AppContext'
 
 /**
@@ -39,6 +40,9 @@ export function WhereItWent() {
         <CategoryBars rows={split} buckets={app.buckets} txns={app.txns} />
         <p className="hint">{`Tap a category to open it. Projected for September: ${F(app.projection())}.`}</p>
       </section>
+
+      {/* What is still to come, beside what has already gone. Listed, never added in. */}
+      <SetAside />
 
       <SectionHeader onCanvas title="Your patterns" />
       <div className="insights">

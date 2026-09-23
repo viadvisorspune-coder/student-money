@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button, PlanItem, SectionHeader, TextField } from '../ui'
 import { useNavigate } from 'react-router-dom'
 import { cx } from '../lib/cx'
-import { F } from '../lib/format'
+import { setAside } from '../lib/plan'
 import { Swipeable } from '../components/Swipeable'
 import { NewPlanSheet } from '../sheets/NewPlanSheet'
 import { useApp } from '../state/AppContext'
@@ -70,7 +70,7 @@ export function Plans() {
                     : [
                         it.when,
                         // Shown back to the student. Never counted anywhere.
-                        it.amount ? F(+String(it.amount).replace(/,/g, '') || 0) + ' in mind' : null,
+                        setAside(it.amount),
                         it.notes,
                       ]
                         .filter(Boolean)

@@ -62,6 +62,9 @@ export function AllowanceBar({ allowance, spent, pending = 0, animate, onOpen }:
   }, [animate, spent, target])
 
   const pct = allowance > 0 ? Math.min(100, (shown / allowance) * 100) : 0
+  // The part of the bar the simulated spend is adding, drawn in yellow behind the
+  // figure so the student can see which piece of it is the spend they are weighing.
+  const addPct = allowance > 0 ? Math.min(100 - pct, ((shown - spent) / allowance) * 100) : 0
   const left = Math.round(allowance - shown)
 
   return (
@@ -72,9 +75,12 @@ export function AllowanceBar({ allowance, spent, pending = 0, animate, onOpen }:
           <p className="allowance-v">{F(Math.round(shown))}</p>
           <p className="allowance-of">{`spent of ${F(allowance)} that came in`}</p>
         </div>
+        {/* Labelled rather than a bare arrow: an arrow on its own does not say where
+            it goes, and this one goes somewhere specific. */}
         {onOpen ? (
-          <button type="button" className="allowance-go" onClick={onOpen} aria-label="See where it went">
-            <Icon name="arrow-up-right" size={20} />
+          <button type="button" className="allowance-go" onClick={onOpen}>
+            <span>Where it went</span>
+            <Icon name="arrow-up-right" size={16} />
           </button>
         ) : null}
       </div>
@@ -84,8 +90,16 @@ export function AllowanceBar({ allowance, spent, pending = 0, animate, onOpen }:
         role="img"
         aria-label={`${F(Math.round(shown))} spent of ${F(allowance)} that came in this month`}
       >
-        <span className="allowance-fill" style={{ width: pct + '%' }} />
+        <span className="allowance-fill" style={{ width: pct - addPct + '%' }} />
+        {addPct > 0 ? <span className="allowance-add" style={{ width: addPct + '%' }} /> : null}
       </div>
+
+      {addPct > 0 ? (
+        <p className="allowance-key">
+          <span className="k k-spent">{`${F(spent)} already spent`}</span>
+          <span className="k k-add">{`${F(Math.round(shown - spent))} this spend`}</span>
+        </p>
+      ) : null}
 
       <p className="allowance-left">{`${F(left)} free to spend`}</p>
     </section>
