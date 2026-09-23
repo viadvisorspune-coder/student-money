@@ -80,10 +80,6 @@ export function Profile() {
 
       {/* Footnotes state the basis of a number, never a verdict (CLAUDE.md §7). */}
       <p className="fine">{`Worked out from your transactions up to today, ${TODAY} September.`}</p>
-      <p className="fine">
-        Patterns compare you with your own history only. The app never compares you with other students and never
-        tells you what to do.
-      </p>
 
       <SectionHeader onCanvas title="What the app uses" />
 
