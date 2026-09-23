@@ -7,11 +7,12 @@ import { AllowanceBarLinked } from '../components/AllowanceBar'
 import { useApp } from '../state/AppContext'
 
 /**
- * Home. The greeting, the decide form, spent-against-allowance, and Coming up.
+ * Home. The greeting, where the month stands, the decide form, and Coming up.
  *
- * The check now happens here rather than on a screen of its own, so deciding is the
- * first thing on the first screen. Nothing on this form is recorded — it only sets up
- * the simulation the Result screen runs (CLAUDE.md §2.5).
+ * The month leads: the student sees what they have spent against what came in before
+ * they are asked about anything. The check sits under it rather than on a screen of
+ * its own. Nothing on the form is recorded — it only sets up the simulation the
+ * Result screen runs (CLAUDE.md §2.5).
  */
 export function Home() {
   const app = useApp()
@@ -81,6 +82,10 @@ export function Home() {
         </div>
       </header>
 
+      <div className="group">
+        <AllowanceBarLinked allowance={app.income} spent={app.spent} />
+      </div>
+
       <h2 className="decide-head">Spending something?</h2>
 
       <section className="sm-card surface decide">
@@ -135,10 +140,6 @@ export function Home() {
       <p className="fine">
         Nothing is recorded here. This only shows what the spend would do to the rest of your month.
       </p>
-
-      <div className="group">
-        <AllowanceBarLinked allowance={app.income} spent={app.spent} />
-      </div>
 
       {app.cues.length ? (
         <section className="group">
