@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AvatarStack, BarList, IconButton, InsightCard, LinkRow, SectionHeader } from '../ui'
+import { AvatarStack, InsightCard, LinkRow, SectionHeader } from '../ui'
 import { F } from '../lib/format'
 import { TODAY } from '../lib/calendar'
 import { DataSheet } from '../sheets/DataSheet'
@@ -17,20 +17,6 @@ export function Profile() {
   const [dataOpen, setDataOpen] = useState(false)
 
   const unlabelled = app.txns.filter((t) => !t.income && !t.bucket)
-  const total = app.spent || 1
-
-  const rows = app.buckets
-    .map((bk) => {
-      const v = app.spentBy[bk.id] || 0
-      return {
-        id: bk.id,
-        label: bk.name,
-        value: v,
-        tone: bk.color,
-        display: `${F(v)} · ${Math.round((v / total) * 100)}%`,
-      }
-    })
-    .sort((a, b) => b.value - a.value)
 
   return (
     <div className="stack">
@@ -58,32 +44,10 @@ export function Profile() {
         onClick={() => navigate('/profile/transactions')}
       />
 
-      <SectionHeader onCanvas title="Your spending analysis" />
-
-      <section className="sm-projection">
-        <div className="head">
-          <p className="sm-eyebrow">Where it went this month</p>
-          <IconButton
-            icon="arrow-up-right"
-            variant="light"
-            size="sm"
-            label="Open Experience"
-            onClick={() => navigate('/profile/experience')}
-          />
-        </div>
-        <BarList
-          onDark
-          items={rows}
-          onSelect={(id) => {
-            if (id) navigate('/profile/experience')
-          }}
-        />
-        <p className="proj-detail">
-          {`${F(app.spent)} spent across ${rows.filter((r) => r.value > 0).length} categories`}
-        </p>
-      </section>
-
-      <SectionHeader onCanvas title="Patterns" />
+      {/* Patterns lead the screen now. The spending-analysis bars were removed: they
+          repeated Where it went, which is one tap away. */}
+      <SectionHeader onCanvas title="Your patterns" />
+      <p className="patterns-lede">What your own month is telling you, in your own figures.</p>
 
       <div className="insights">
         {app.skipped.length ? (

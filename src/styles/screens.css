@@ -327,3 +327,70 @@ body {
 .appbar-note{margin:12px 0 0;font-size:13px;line-height:18px;color:var(--ink-muted)}
 .exits{margin-top:20px}
 .exits .sm-button{height:58px;font-size:16px;box-shadow:0 6px 18px rgba(29,111,184,.25)}
+
+/* ------------------------------------------- decide form, allowance, catbars */
+/* Added for the revised Home. Not in the prototype — see README. */
+
+.decide-head{margin:20px 4px 10px;font-size:20px;line-height:26px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.decide{padding:20px}
+.decide .big-amt{display:flex;align-items:baseline;gap:8px;border-bottom:1.5px solid var(--ink);padding-bottom:12px;margin-bottom:20px}
+.decide .cur{font-size:34px;font-weight:300;color:var(--ink-muted)}
+.decide input.amt{flex:1;min-width:0;font:inherit;font-size:44px;line-height:48px;font-weight:300;letter-spacing:-.03em;border:0;background:none;color:var(--ink);padding:0;font-variant-numeric:tabular-nums}
+.decide input.amt::placeholder{color:var(--ink-faint)}
+.decide input.amt:focus-visible{outline:2px solid var(--focus-ring);outline-offset:4px;border-radius:6px}
+.decide .quick-amts{margin-bottom:20px}
+.decide .sm-field{margin-bottom:20px}
+
+/* type-or-pick */
+.sm-combo{position:relative}
+.sm-combo .box{display:flex;align-items:center}
+.sm-combo input{flex:1;min-width:0}
+.sm-combo-toggle{border:0;background:none;padding:0 4px;display:inline-flex;align-items:center;color:var(--ink-muted);cursor:pointer}
+.sm-combo-list{position:absolute;z-index:30;left:0;right:0;top:100%;margin:4px 0 0;padding:6px;list-style:none;max-height:260px;overflow-y:auto;background:var(--surface);border-radius:var(--radius-lg);box-shadow:0 12px 32px rgba(27,27,27,.16),inset 0 0 0 1px var(--line)}
+.sm-combo-opt{display:flex;align-items:baseline;gap:8px;width:100%;text-align:left;font:inherit;font-size:15px;border:0;background:none;padding:10px 12px;border-radius:var(--radius-md);cursor:pointer;color:var(--ink)}
+.sm-combo-opt.on{background:var(--surface-soft)}
+.sm-combo-opt .n{flex:1;min-width:0}
+.sm-combo-opt .g{font-size:12px;color:var(--ink-muted);white-space:nowrap}
+.sm-combo-free{padding:12px;font-size:13px;line-height:18px;color:var(--ink-muted)}
+
+/* spent against the month's allowance */
+.allowance{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);border-radius:var(--radius-xl);padding:20px}
+.allowance-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.allowance-v{margin:6px 0 0;font-size:40px;line-height:44px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.allowance-of{margin:2px 0 0;font-size:14px;line-height:19px;color:var(--ink-muted)}
+.allowance-go{flex:none;width:40px;height:40px;border-radius:999px;border:0;background:var(--accent);color:var(--on-ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.allowance-go:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.allowance-track{margin-top:16px;height:14px;border-radius:999px;background:var(--chart-track);overflow:hidden}
+.allowance-fill{display:block;height:100%;border-radius:999px;background:var(--accent-soft)}
+.allowance-left{margin:10px 0 0;font-size:14px;line-height:19px;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+
+/* category shares that open to their sections */
+.catbars{display:flex;flex-direction:column}
+.catbar+.catbar{border-top:1px solid var(--line)}
+.catbar-row{font:inherit;color:inherit;display:flex;align-items:center;gap:12px;width:100%;border:0;background:none;padding:12px 0;cursor:pointer;font-size:15px;line-height:20px;text-align:left;border-radius:6px}
+.catbar-row:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.catbar-row .n{width:104px;flex:none;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink-muted)}
+.catbar-row .caret{flex:none;transition:transform .18s ease-out}
+.catbar.open .catbar-row .caret{transform:rotate(180deg)}
+.catbar.open .catbar-row .n,.catbar.open .catbar-row .p{color:var(--ink);font-weight:600}
+.catbar-row .bar{flex:1;height:10px;border-radius:999px;background:var(--chart-track);overflow:hidden}
+.catbar-row .fill{display:block;height:100%;border-radius:999px;background:var(--tone)}
+.catbar-row .p{width:40px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-muted)}
+.catbar-body{padding:2px 0 14px}
+.catbar-total{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line);font-size:14px;line-height:19px;color:var(--ink-muted);font-variant-numeric:tabular-nums}
+.catbar-total .k{flex:1;min-width:0}
+.catbar-total .v{font-weight:600;color:var(--ink)}
+.catbar-pending{flex-basis:100%;font-size:13px;color:var(--ink-muted)}
+.catbar-sections{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.catbar-sections li{display:flex;align-items:center;gap:10px;font-size:14px;line-height:18px}
+.catbar-sections .n{width:104px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink-muted)}
+.catbar-sections .bar{flex:1;height:8px;border-radius:999px;background:var(--chart-track);overflow:hidden;opacity:.85}
+.catbar-sections .fill{display:block;height:100%;border-radius:999px;background:var(--tone)}
+.catbar-sections .a{width:64px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+
+@media (prefers-reduced-motion: reduce){.catbar-row .caret{transition:none}}
+
+.home-corner{display:flex;align-items:center;gap:10px}
+.patterns-lede{margin:-2px 8px 10px;font-size:14px;line-height:20px;color:var(--ink-muted)}
+.insights .sm-insight .t{font-size:17px;line-height:23px}
+.setup-preview{margin:4px 0 20px;font-size:15px;line-height:20px;color:var(--ink);font-variant-numeric:tabular-nums}

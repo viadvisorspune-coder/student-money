@@ -32,7 +32,7 @@ export function Widget() {
         className="hs-widget"
         onClick={() => {
           app.setDecision(null)
-          navigate('/estimate')
+          navigate('/')
         }}
       >
         <span className="w-top">

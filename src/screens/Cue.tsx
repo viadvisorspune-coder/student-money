@@ -48,7 +48,7 @@ export function Cue() {
               className="na primary"
               onClick={() => {
                 app.setDecision(null)
-                navigate('/estimate')
+                navigate('/')
               }}
             >
               Check

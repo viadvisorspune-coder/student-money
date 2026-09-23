@@ -2,13 +2,13 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { Shell } from './components/Shell'
 import { Cue } from './screens/Cue'
 import { EmptyHome } from './screens/EmptyHome'
-import { Estimate } from './screens/Estimate'
 import { Experience } from './screens/Experience'
 import { Home } from './screens/Home'
 import { Onboarding } from './screens/Onboarding'
 import { Plans } from './screens/Plans'
 import { Profile } from './screens/Profile'
 import { Result } from './screens/Result'
+import { Setup } from './screens/Setup'
 import { Transactions } from './screens/Transactions'
 import { Widget } from './screens/Widget'
 import { WhereItWent } from './screens/WhereItWent'
@@ -21,11 +21,13 @@ export function App() {
   return (
     <Routes>
       <Route element={<Shell />}>
-        {/* Core flow */}
+        {/* Core flow. The check lives on Home now, so there is no separate estimate
+            screen; /estimate stays only so an old link still lands somewhere sensible. */}
         <Route path="/" element={<Home />} />
-        <Route path="/estimate" element={<Estimate />} />
+        <Route path="/estimate" element={<Navigate to="/" replace />} />
         <Route path="/result" element={<Result />} />
         <Route path="/spend" element={<WhereItWent />} />
+        <Route path="/setup" element={<Setup />} />
 
         {/* Nav destinations */}
         <Route path="/plans" element={<Plans />} />

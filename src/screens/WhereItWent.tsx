@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import { AmountSummary, AppBar, Button, CategoryCard, LinkRow, SectionHeader } from '../ui'
+import { AppBar, Button, CategoryCard, LinkRow, SectionHeader } from '../ui'
 import { F } from '../lib/format'
+import { AllowanceBar } from '../components/AllowanceBar'
+import { CategoryBars } from '../components/CategoryBars'
 import { outletOf } from '../state/selectors'
 import { useApp } from '../state/AppContext'
 import type { NestItem } from '../ui/types'
@@ -14,27 +16,19 @@ export function WhereItWent() {
   const app = useApp()
   const navigate = useNavigate()
 
-  const segments = [
-    { label: 'Money in', value: app.income, tone: 'coral' as const },
-    { label: 'Spent', value: app.spent, tone: 'sunflower' as const },
-  ]
+  const split = app.splits()
 
   return (
     <div className="stack">
       <AppBar eyebrow="September" title="Where it went" onBack={() => navigate(-1)} />
 
-      <AmountSummary
-        eyebrow="Free to spend"
-        value={F(app.free)}
-        caption={`of ${F(app.income)} that came in this month`}
-        segments={segments}
-        parts={[
-          { label: 'Money in', value: F(app.income), tone: 'coral' },
-          { label: 'Spent', value: F(app.spent), tone: 'sunflower' },
-          { label: 'Free to spend', value: F(app.free) },
-          { label: 'Projected', value: F(app.projection()) },
-        ]}
-      />
+      <AllowanceBar allowance={app.income} spent={app.spent} />
+
+      <SectionHeader onCanvas title="By category" />
+      <section className="sm-card surface">
+        <CategoryBars rows={split} buckets={app.buckets} txns={app.txns} />
+        <p className="hint">{`Tap a category to see the sections inside it. Projected for September: ${F(app.projection())}.`}</p>
+      </section>
 
       <SectionHeader
         onCanvas

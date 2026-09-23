@@ -23,12 +23,25 @@ const KEY = 'student-money'
 /** Bump when the shape below changes; a mismatch falls back to the demo data. */
 const VERSION = 1
 
+/**
+ * Hand-entered figures that stand in for the derived ones, so the app can be tried
+ * with a real student's numbers without entering their whole month. Null means "use
+ * the transactions", which is the normal case.
+ */
+export interface Overrides {
+  allowance: number | null
+  spent: number | null
+}
+
+export const NO_OVERRIDES: Overrides = { allowance: null, spent: null }
+
 export interface PersistedState {
   version: number
   buckets: Bucket[]
   txns: Txn[]
   plans: Plan[]
   skipped: Skip[]
+  overrides: Overrides
 }
 
 export const SEED: Omit<PersistedState, 'version'> = {
@@ -36,6 +49,7 @@ export const SEED: Omit<PersistedState, 'version'> = {
   txns: TXNS,
   plans: PLANS,
   skipped: [],
+  overrides: NO_OVERRIDES,
 }
 
 function isUsable(v: unknown): v is PersistedState {
@@ -58,7 +72,9 @@ export function load(): Omit<PersistedState, 'version'> {
     const parsed: unknown = JSON.parse(raw)
     if (!isUsable(parsed)) return SEED
     const { buckets, txns, plans, skipped } = parsed
-    return { buckets, txns, plans, skipped }
+    // Added after the first release; anything saved before it simply has none.
+    const overrides = parsed.overrides ?? NO_OVERRIDES
+    return { buckets, txns, plans, skipped, overrides }
   } catch {
     // Private window, blocked site data, or a half-written value. Start from the demo.
     return SEED

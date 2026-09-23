@@ -74,6 +74,17 @@ components and keep the product's voice. **Both need the client's sign-off.**
   clearing. The sheet lists what is held and asks a second time before removing it. The
   approved rows above it are untouched — this is an addition, not a change.
 
+## Trying it with real numbers
+
+The cog in the corner of Home opens **This month's figures** (`/setup`): money in, and
+spent so far. Whatever is entered there stands in for the figures derived from the
+transactions, and every screen follows from it — free to spend, the projection, the
+category shares, the balance, the patterns. Category amounts keep their proportions and
+are scaled to the total entered, so the breakdowns stay consistent.
+
+Neither figure is a limit. The allowance is what came in; passing it changes nothing
+about how the app behaves (§2.1). "Go back to the transaction figures" clears both.
+
 ## Deploying
 
 `vercel.json` is set up for Vercel: unknown paths rewrite to `index.html` so client-side
@@ -102,12 +113,12 @@ All eight core screens, all overlays, and all four Phase 2 screens.
 
 | Route | Screen | Notes |
 |---|---|---|
-| `/` | Home | Greeting, "Kharcha with friends?" CTA, month card with share bars, Coming up |
-| `/estimate` | Estimated spend | Amount + quick amounts + "For?". Records nothing |
+| `/` | Home | Greeting, the decide form (amount + quick amounts + a type-or-pick "For?"), spent-against-allowance, Coming up. The check happens here; there is no separate estimate screen |
+| `/setup` | This month's figures | Enter money in and spent so far by hand |
 | `/result` | Here's the picture | Before/after, decrease visual, projection with nested splits, recent payments, cues, single "Noted" exit |
-| `/spend` | Where it went | Money in vs Spent, a card per category with its sections nested inside |
+| `/spend` | Where it went | Spent against the allowance, then category shares that open to their sections |
 | `/plans` | Plans | Scheduled vs TBD, swipe or drag to move, add via overlay |
-| `/profile` | Profile | Balance, history link, spending analysis, Patterns, "What the app uses" |
+| `/profile` | Profile | Balance, history link, Patterns, "What the app uses". The spending-analysis bars were removed as a repeat of Where it went |
 | `/profile/transactions` | Transactions | Filterable list, sticky "Add a payment by hand" |
 | `/profile/experience` | Experience | Week/month toggle, bars, comparison against Parisha's own previous period |
 | `/cue` | Phase 2 — notification cue | Renders without the nav |

@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from 'react'
-import { SEED, clear as clearStored, load, save } from './persistence'
+import { NO_OVERRIDES, SEED, clear as clearStored, load, save, type Overrides } from './persistence'
 import type { Bucket, Decision, Plan, PlanSection, Skip, Txn } from '../data/types'
 import type { TermKey } from '../data/terms'
 import {
@@ -98,6 +98,12 @@ interface AppState {
   removePlan: (id: string) => void
   addPlan: (p: Plan) => void
   recordSkip: (s: Skip) => void
+  /** Hand-entered figures standing in for the derived ones. */
+  overrides: Overrides
+  setOverrides: (o: Overrides) => void
+  /** What the transactions actually say, whatever the overrides are set to. */
+  realIncome: number
+  realSpent: number
   /** Clear everything the app has stored and return to the demo data. */
   reset: () => void
 }
@@ -113,6 +119,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [txns, setTxns] = useState<Txn[]>(restored.txns)
   const [plans, setPlansState] = useState<Plan[]>(restored.plans)
   const [skipped, setSkipped] = useState<Skip[]>(restored.skipped)
+  const [overrides, setOverridesState] = useState<Overrides>(restored.overrides)
 
   const [decision, setDecision] = useState<Decision | null>(null)
   const [nestSel, setNestSel] = useState<Record<string, string | null>>({})
@@ -128,8 +135,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // — saving a plan's amount is not the same as counting it, and no selector reads it
   // (design/CLAUDE.md §2.4).
   useEffect(() => {
-    save({ buckets, txns, plans, skipped })
-  }, [buckets, txns, plans, skipped])
+    save({ buckets, txns, plans, skipped, overrides })
+  }, [buckets, txns, plans, skipped, overrides])
 
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -145,9 +152,30 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const bmap = useMemo(() => bucketMap(buckets), [buckets])
-  const income = useMemo(() => totalIn(txns), [txns])
-  const spent = useMemo(() => totalOut(txns), [txns])
-  const spentBy = useMemo(() => spentByBucket(txns), [txns])
+
+  const realIncome = useMemo(() => totalIn(txns), [txns])
+  const realSpent = useMemo(() => totalOut(txns), [txns])
+
+  // A hand-entered figure stands in for the derived one, and everything downstream
+  // follows from it — that is the point of entering it.
+  const income = overrides.allowance ?? realIncome
+  const spent = overrides.spent ?? realSpent
+
+  /**
+   * When the total spent is overridden, the per-category amounts are scaled to match
+   * it. Without that the categories would still add up to the real month and every
+   * share on every screen would be computed against the wrong total.
+   */
+  const spentBy = useMemo(() => {
+    const real = spentByBucket(txns)
+    if (overrides.spent == null || realSpent <= 0) return real
+    const factor = overrides.spent / realSpent
+    const scaled: Record<string, number> = {}
+    Object.keys(real).forEach((k) => {
+      scaled[k] = Math.round(real[k] * factor)
+    })
+    return scaled
+  }, [txns, overrides.spent, realSpent])
   const free = income - spent
   const balance = balanceOf(income, spent)
   const cues = useMemo(() => plans.filter((p) => !p.done), [plans])
@@ -274,6 +302,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
    */
   const reset = useCallback(() => {
     clearStored()
+    setOverridesState(NO_OVERRIDES)
     setBuckets(SEED.buckets)
     setTxns(SEED.txns)
     setPlansState(SEED.plans)
@@ -336,6 +365,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     removePlan,
     addPlan,
     recordSkip,
+    overrides,
+    setOverrides: setOverridesState,
+    realIncome,
+    realSpent,
     reset,
   }
 

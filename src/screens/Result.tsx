@@ -1,37 +1,36 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { AppBar, Button, CueRow, ProjectionCard, ResultHeadline, SectionHeader } from '../ui'
+import { AppBar, Button, CueRow, ResultHeadline, SectionHeader } from '../ui'
 import { F } from '../lib/format'
 import { DAYS_IN_MONTH, TODAY } from '../lib/calendar'
+import { AllowanceBar } from '../components/AllowanceBar'
+import { CategoryBars } from '../components/CategoryBars'
 import { useApp } from '../state/AppContext'
 
 /**
- * Here's the picture. Before/after free-to-spend, the projection with its splits,
- * recent payments in the selected category, cues, and one exit.
+ * Here's the picture.
  *
- * Nothing on this screen is written anywhere: the flow is a simulation of the rest
- * of the month (CLAUDE.md §2.5). The insight is contextual — what this spend does
- * to this month — and never compares Parisha with anyone (§2.2), nor advises (§2.3).
+ * The allowance bar at the top animates from where the month stands to where it would
+ * stand, counting as it goes, so the student watches the spend land. Below it, what
+ * that does to the rest of the month, then the category shares — each one opening to
+ * the sections inside it.
+ *
+ * Nothing here is written anywhere: the flow is a simulation (CLAUDE.md §2.5). The
+ * insight is contextual, never a comparison with anyone (§2.2) and never advice (§2.3).
  */
 export function Result() {
   const app = useApp()
   const navigate = useNavigate()
 
-  // Snapshot the check on arrival. The screen shows the decision the student made when
-  // they got here, so clearing it on the way out cannot pull the screen out from under
-  // them — without this, "Noted" clears the decision, this component re-renders with
-  // nothing to show, and its own guard redirects to /estimate before the navigation
-  // home lands.
+  // Snapshot the check on arrival, so clearing it on the way out cannot pull the
+  // screen out from under the student.
   const [d] = useState(app.decision)
-  const [sel, setSel] = useState<string | null>(d?.bucket ?? null)
 
-  // Reached without a decision (a refresh, or a deep link): send the student back.
-  if (!d) return <Navigate to="/estimate" replace />
+  if (!d) return <Navigate to="/" replace />
 
   const after = app.free - d.amount
   const bk = d.bucket ? app.bmap[d.bucket] : undefined
-  const bucketSpent = bk ? app.spentBy[bk.id] || 0 : 0
-  const bucketAfter = bucketSpent + d.amount
+  const bucketAfter = (bk ? app.spentBy[bk.id] || 0 : 0) + d.amount
   const daysLeft = DAYS_IN_MONTH - TODAY
 
   const insight = bk
@@ -41,22 +40,18 @@ export function Result() {
     : `This would be ${Math.round((d.amount / (app.free || 1)) * 100)}% of what is free to spend, with ${daysLeft} days to go.`
 
   const split = app.splits(d.amount, d.bucket)
-  const selItem = split.filter((x) => x.id === sel)[0]
-
-  const recent = app.txns
-    .filter((t) => !t.income && (sel ? (sel === '__other' ? true : t.bucket === sel) : true))
-    .slice()
-    .sort((a, b) => b.day - a.day)
-    .slice(0, 4)
 
   return (
     <div className="stack">
       <AppBar
         eyebrow={`If you spend ${F(d.amount)} on ${d.label}`}
         title={'Here’s the picture'}
-        onBack={() => navigate('/estimate')}
+        onBack={() => navigate('/')}
         backLabel="Change the amount"
       />
+
+      {/* The spend landing, rather than a sentence about it landing. */}
+      <AllowanceBar allowance={app.income} spent={app.spent} pending={d.amount} animate />
 
       <ResultHeadline
         before={F(app.free)}
@@ -82,31 +77,16 @@ export function Result() {
         </div>
       </ResultHeadline>
 
-      <ProjectionCard
-        eyebrow="This month"
-        value={F(app.projection(d.amount))}
-        caption={`projected for September if you spend this and the rest of the month goes like the last ${TODAY} days`}
-        selected={sel}
-        onSelect={setSel}
-        onExpand={() => navigate('/spend')}
-        expandLabel="See where it went"
-        splits={split}
-      >
-        {selItem ? (
-          <div className="proj-recent">
-            <p className="sm-eyebrow">{'Recent in ' + selItem.label}</p>
-            {recent.map((t) => (
-              <p key={t.id} className="r">
-                <span>{t.vendor}</span>
-                <span>{F(t.amount)}</span>
-              </p>
-            ))}
-            <button type="button" className="viewall" onClick={() => navigate('/profile/transactions')}>
-              View all
-            </button>
-          </div>
-        ) : null}
-      </ProjectionCard>
+      <SectionHeader onCanvas title="Where it would stand" />
+      <section className="sm-card surface">
+        <CategoryBars
+          rows={split}
+          buckets={app.buckets}
+          txns={app.txns}
+          pending={{ bucket: d.bucket, amount: d.amount }}
+        />
+        <p className="hint">Tap a category to see the sections inside it.</p>
+      </section>
 
       {app.cues.length ? (
         <>

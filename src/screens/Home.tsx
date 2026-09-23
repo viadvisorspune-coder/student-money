@@ -1,23 +1,64 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CueRow, Icon } from '../ui'
+import { Button, Combobox, CueRow, IconButton, type ComboOption } from '../ui'
 import { F } from '../lib/format'
-import { DISPLAY_DATE } from '../data/assumptions'
-import { InfoTip } from '../components/InfoTip'
+import { DISPLAY_DATE, QUICK_AMOUNTS } from '../data/assumptions'
+import { AllowanceBarLinked } from '../components/AllowanceBar'
 import { useApp } from '../state/AppContext'
 
 /**
- * Home. Greeting, the "Kharcha with friends?" check CTA, the month card, Coming up.
- * Two hues and one primary action (CLAUDE.md §3): butter on the CTA, accent on the plus.
+ * Home. The greeting, the decide form, spent-against-allowance, and Coming up.
+ *
+ * The check now happens here rather than on a screen of its own, so deciding is the
+ * first thing on the first screen. Nothing on this form is recorded — it only sets up
+ * the simulation the Result screen runs (CLAUDE.md §2.5).
  */
 export function Home() {
   const app = useApp()
   const navigate = useNavigate()
-  const [sel, setSel] = useState<string | null>(null)
+  const [amountText, setAmountText] = useState('')
+  const [forText, setForText] = useState('')
+  const [forOption, setForOption] = useState<ComboOption | undefined>()
 
-  const split = app.splits()
-  const top = Math.max(...split.map((x) => x.pct).concat([1]))
-  const selected = sel ? split.filter((y) => y.id === sel)[0] : undefined
+  const amount = +String(amountText).replace(/[^\d]/g, '')
+
+  /**
+   * Every section across every category, so "For?" offers what the spend actually is —
+   * cabs, tapri, delivery — rather than only the broad category above it.
+   */
+  const options = useMemo<ComboOption[]>(
+    () =>
+      app.buckets.flatMap((b) =>
+        b.outlets.map((o) => ({ value: `${b.id}:${o.id}`, label: o.name, group: b.name })),
+      ),
+    [app.buckets],
+  )
+
+  /**
+   * A picked section carries its category with it. Typed text is matched against the
+   * section and category names, and if it matches nothing that is fine — the check
+   * still runs, just against the month as a whole rather than one category.
+   */
+  function resolveBucket(): string | null {
+    if (forOption) return forOption.value.split(':')[0]
+    const typed = forText.trim().toLowerCase()
+    if (!typed) return null
+    const bySection = options.filter((o) => o.label.toLowerCase() === typed)[0]
+    if (bySection) return bySection.value.split(':')[0]
+    const byCategory = app.buckets.filter((b) => b.name.toLowerCase() === typed)[0]
+    return byCategory ? byCategory.id : null
+  }
+
+  function check(e: React.FormEvent) {
+    e.preventDefault()
+    if (!amount) return
+    app.setDecision({
+      amount,
+      label: forText.trim() || 'this',
+      bucket: resolveBucket(),
+    })
+    navigate('/result')
+  }
 
   return (
     <div className="home">
@@ -27,74 +68,77 @@ export function Home() {
           <h1 className="hi">Hi Parisha,</h1>
           <p className="hi-sub">Here&rsquo;s where your money stands.</p>
         </div>
-        <p className="hi-date">{DISPLAY_DATE}</p>
+        <div className="home-corner">
+          <p className="hi-date">{DISPLAY_DATE}</p>
+          {/* Enter this month's figures by hand, for trying the app with real numbers. */}
+          <IconButton
+            icon="settings"
+            variant="soft"
+            size="sm"
+            label="Enter this month's figures"
+            onClick={() => navigate('/setup')}
+          />
+        </div>
       </header>
 
-      <button
-        type="button"
-        className="cta2"
-        onClick={() => {
-          app.setDecision(null)
-          navigate('/estimate')
-        }}
-      >
-        <span className="cta2-txt">
-          <span className="t">Kharcha with friends?</span>
-          <span className="s">Check before you spend</span>
-        </span>
-        <span className="cta2-btn" aria-hidden>
-          <Icon name="plus" size={24} />
-        </span>
-      </button>
+      <h2 className="decide-head">Want to decide whether to spend?</h2>
 
-      <section className="group">
-        <div className="sec-head">
-          <h2>This month</h2>
-          <InfoTip term="free" onOpen={app.setInfo} />
-        </div>
+      <section className="sm-card surface decide">
+        <form onSubmit={check}>
+          <label className="big-amt" htmlFor="home-amt">
+            <span className="sm-sr">Amount</span>
+            <span className="cur">{'₹'}</span>
+            <input
+              id="home-amt"
+              className="amt"
+              inputMode="numeric"
+              placeholder="___"
+              value={amountText}
+              autoComplete="off"
+              onChange={(e) => setAmountText(e.target.value.replace(/[^\d]/g, ''))}
+            />
+          </label>
 
-        <div className="money">
-          <p className="money-hero">{F(app.free)}</p>
-          <p className="money-label">free to spend</p>
-          <p className="money-sub">{`of ${F(app.income)} this month · ${F(app.spent)} spent so far`}</p>
-
-          <div className="money-bars">
-            {split.slice(0, 4).map((x) => (
+          <div className="quick-amts" role="group" aria-label="Common amounts">
+            {QUICK_AMOUNTS.map((v) => (
               <button
-                key={x.id}
+                key={v}
                 type="button"
-                className="mb"
-                aria-pressed={sel === x.id}
-                onClick={() => setSel(sel === x.id ? null : x.id)}
+                className="sm-chip soft"
+                aria-pressed={String(v) === amountText}
+                onClick={() => setAmountText(String(v))}
               >
-                <span className="n">{x.label}</span>
-                <span className="bar">
-                  <span className={'fill t-' + x.tone} style={{ width: Math.max(4, (x.pct / top) * 100) + '%' }} />
-                </span>
-                <span className="p">{x.pct + '%'}</span>
+                {F(v)}
               </button>
             ))}
           </div>
 
-          {selected ? (
-            <p className="money-note">
-              {`${selected.label} · ${F(selected.amount)} so far, ${selected.pct}% of the month`}
-            </p>
-          ) : null}
-
-          <button
-            type="button"
-            className="money-link"
-            onClick={() => {
-              app.setDecision(null)
-              navigate('/spend')
+          <Combobox
+            id="home-for"
+            label="For?"
+            options={options}
+            value={forText}
+            onChange={(text, option) => {
+              setForText(text)
+              setForOption(option)
             }}
-          >
-            See where it went
-            <Icon name="arrow-up-right" size={16} />
-          </button>
-        </div>
+            placeholder="Cabs, tapri, delivery…"
+            hint="Pick one or write it yourself. Not sure is fine — it only decides which category the check is against."
+          />
+
+          <Button type="submit" full disabled={!amount}>
+            Check
+          </Button>
+        </form>
       </section>
+
+      <p className="fine">
+        Nothing is recorded here. This only shows what the spend would do to the rest of your month.
+      </p>
+
+      <div className="group">
+        <AllowanceBarLinked allowance={app.income} spent={app.spent} />
+      </div>
 
       {app.cues.length ? (
         <section className="group">

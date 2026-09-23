@@ -32,7 +32,7 @@ export function EmptyHome() {
         className="sm-card sunflower cta"
         onClick={() => {
           app.setDecision(null)
-          navigate('/estimate')
+          navigate('/')
         }}
       >
         <span className="t">Kharcha with friends?</span>

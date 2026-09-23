@@ -33,6 +33,8 @@ export type {
 } from './layout'
 
 export { TextField, SelectField, DecisionInput } from './fields'
+export { Combobox } from './Combobox'
+export type { ComboboxProps, ComboOption } from './Combobox'
 export type { TextFieldProps, SelectFieldProps, DecisionInputProps } from './fields'
 
 export {
