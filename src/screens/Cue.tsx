@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, FilterChips, SectionHeader } from '../ui'
 import { F } from '../lib/format'
+import { APP_NAME } from '../data/brand'
 import { DISPLAY_DATE } from '../data/assumptions'
 import { CueWidget, InfoWidget } from '../components/Widgets'
 import { weekdayAverage } from '../state/selectors'
@@ -42,10 +43,9 @@ export function Cue() {
 
         <div className="notif">
           <div className="notif-head">
-            <span className="notif-app">Student Money</span>
+            <span className="notif-app">{APP_NAME}</span>
             <span className="notif-time">now</span>
           </div>
-          <p className="notif-title">{`${F(app.free)} free · going out tonight?`}</p>
           <p className="notif-body">
             {`Last ${occurrences} Fridays you spent ${F(average)} on average. Check before you go.`}
           </p>

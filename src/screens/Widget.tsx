@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../ui'
+import { APP_NAME } from '../data/brand'
 import { DISPLAY_DATE } from '../data/assumptions'
 import { CueWidget, InfoWidget } from '../components/Widgets'
 import { useApp } from '../state/AppContext'
@@ -87,7 +88,7 @@ export function Widget() {
       </div>
 
       <p className="hs-note">
-        The top widget asks; the lower one only reports. Tapping the bar opens Student Money on Home, where the
+        The top widget asks; the lower one only reports. Tapping the bar opens {APP_NAME} on Home, where the
         field is waiting &mdash; a widget never takes the amount itself. Both sit on the lock screen too.
       </p>
 

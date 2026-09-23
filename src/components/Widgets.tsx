@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { Icon } from '../ui'
 import { F } from '../lib/format'
 import { DAYS_IN_MONTH, TODAY } from '../lib/calendar'
+import { APP_NAME } from '../data/brand'
 import { useApp } from '../state/AppContext'
 
 /**
@@ -28,7 +29,7 @@ export function InfoWidget({ onOpen }: { onOpen?: () => void }) {
   return (
     <button type="button" className="wg wg-info" onClick={open}>
       <span className="wg-head">
-        <span className="wg-app">Student Money</span>
+        <span className="wg-app">{APP_NAME}</span>
         <span className="wg-when">{`${daysLeft} days left`}</span>
       </span>
 
@@ -56,7 +57,7 @@ export function CueWidget({ onOpen }: { onOpen?: () => void }) {
   return (
     <div className="wg wg-cue">
       <span className="wg-head">
-        <span className="wg-app">Student Money</span>
+        <span className="wg-app">{APP_NAME}</span>
         <span className="wg-when">{F(app.free)} free</span>
       </span>
 

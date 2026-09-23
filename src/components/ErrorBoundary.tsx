@@ -1,4 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react'
+import { APP_NAME } from '../data/brand'
 
 interface Props {
   children: ReactNode
@@ -30,7 +31,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, info: ErrorInfo) {
     // Nothing leaves the device, so this is the only record there is.
-    console.error('Student Money crashed:', error, info.componentStack)
+    console.error(`${APP_NAME} crashed:`, error, info.componentStack)
   }
 
   private reload = () => {

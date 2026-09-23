@@ -1,6 +1,8 @@
-# Student Money — front end
+# Margin — front end
 
-React front end for Student Money, built from the approved design handoff in `design/`.
+React front end for Margin (the repository keeps its original `student-money` name), built
+from the approved design handoff in `design/`. The name the app shows anywhere — widget,
+notification, browser tab — comes from `APP_NAME` in `src/data/brand.ts`.
 
 **Confidential.** This repository contains the client's unreleased product design. Keep it
 private; do not publish the prototype or any build of this app to a public URL.
