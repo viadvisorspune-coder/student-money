@@ -81,7 +81,7 @@ export function Home() {
         </div>
       </header>
 
-      <h2 className="decide-head">Want to decide whether to spend?</h2>
+      <h2 className="decide-head">Spending something?</h2>
 
       <section className="sm-card surface decide">
         <form onSubmit={check}>
