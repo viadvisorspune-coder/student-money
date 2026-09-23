@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button, PlanItem, SectionHeader, TextField } from '../ui'
+import { useNavigate } from 'react-router-dom'
 import { cx } from '../lib/cx'
 import { F } from '../lib/format'
 import { Swipeable } from '../components/Swipeable'
@@ -16,6 +17,7 @@ import type { PlanSection } from '../data/types'
  */
 export function Plans() {
   const app = useApp()
+  const navigate = useNavigate()
   const [open, setOpen] = useState<string | null>(null)
   const [isNew, setIsNew] = useState(false)
   const [drag, setDrag] = useState<string | null>(null)
@@ -176,9 +178,14 @@ export function Plans() {
       <section className="sm-card surface plans">
         {renderSection('scheduled', 'Scheduled')}
         {renderSection('tbd', 'TBD')}
-        <div style={{ marginTop: 16 }}>
+        <div className="plan-actions">
           <Button full icon="plus" onClick={() => setIsNew(true)}>
             Make notes on upcoming expenses
+          </Button>
+          {/* Estimating from a plan copies its figure into the form and nothing else;
+              the plan stays a cue and enters no total (CLAUDE.md §2.4). */}
+          <Button full variant="soft" icon="chart" onClick={() => navigate('/plans/estimate')}>
+            Write an estimate
           </Button>
         </div>
       </section>

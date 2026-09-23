@@ -12,6 +12,7 @@ import { Setup } from './screens/Setup'
 import { Transactions } from './screens/Transactions'
 import { Widget } from './screens/Widget'
 import { WhereItWent } from './screens/WhereItWent'
+import { WriteEstimate } from './screens/WriteEstimate'
 
 /**
  * Routes follow the screen keys in CLAUDE.md §6. The three nav destinations are
@@ -31,6 +32,7 @@ export function App() {
 
         {/* Nav destinations */}
         <Route path="/plans" element={<Plans />} />
+        <Route path="/plans/estimate" element={<WriteEstimate />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/transactions" element={<Transactions />} />
         <Route path="/profile/experience" element={<Experience />} />
