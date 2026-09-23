@@ -394,3 +394,5 @@ body {
 .patterns-lede{margin:-2px 8px 10px;font-size:14px;line-height:20px;color:var(--ink-muted)}
 .insights .sm-insight .t{font-size:17px;line-height:23px}
 .setup-preview{margin:4px 0 20px;font-size:15px;line-height:20px;color:var(--ink);font-variant-numeric:tabular-nums}
+.catbar-all{display:block;width:100%;margin-top:4px;padding:12px;border:0;background:none;font:inherit;font-size:14px;font-weight:500;color:var(--accent);cursor:pointer;border-top:1px solid var(--line)}
+.catbar-all:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}

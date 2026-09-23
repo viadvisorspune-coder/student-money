@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { cx } from '../lib/cx'
 import { F } from '../lib/format'
-import { Icon } from '../ui'
+import { Icon, NestedBreakdown } from '../ui'
 import { outletOf } from '../state/selectors'
 import type { Bucket, Txn } from '../data/types'
-import type { Tone } from '../ui/types'
+import type { NestItem, Tone } from '../ui/types'
 
 export interface CategoryRow {
   id: string
@@ -25,19 +25,22 @@ interface Props {
 /**
  * Category shares, each one opening to the sections inside it.
  *
- * Closed, this is the share list: Eating 38%, Shopping 21%. Tapping a row expands it to
- * the sections underneath — Delivery apps, Cafés, Tapri & canteen — so the detail is
- * there when it is wanted and out of the way when it is not.
+ * Closed, this is the share list: Eating 38%, Shopping 21%. Tapping a row opens the
+ * nested breakdown for that category alone — the boxes within boxes — and closes
+ * whichever was open, so only one is ever on screen. "Show all" opens every one at
+ * once for a whole-month view.
  *
- * Every row carries its name, amount and percentage as text, so the hue is decoration
- * rather than the only thing telling them apart.
+ * Every row and every block carries its name, amount and percentage as text, so the
+ * hue is decoration rather than the only thing telling them apart.
  */
 export function CategoryBars({ rows, buckets, txns, pending }: Props) {
   const [open, setOpen] = useState<string | null>(null)
+  const [showAll, setShowAll] = useState(false)
   const widest = Math.max(...rows.map((r) => r.pct).concat([1]))
+  const expandableRows = rows.filter((r) => !r.id.startsWith('__'))
 
-  /** Section totals for one category, including a simulated spend where it applies. */
-  function sectionsOf(bucketId: string) {
+  /** Section totals for one category, as blocks for the nested breakdown. */
+  function sectionsOf(bucketId: string): NestItem[] {
     const bucket = buckets.filter((b) => b.id === bucketId)[0]
     if (!bucket) return []
 
@@ -49,22 +52,28 @@ export function CategoryBars({ rows, buckets, txns, pending }: Props) {
       sums[key] = (sums[key] || 0) - t.amount
     })
 
-    const list = bucket.outlets
-      .map((o) => ({ id: o.id, label: o.name, amount: sums[o.id] || 0 }))
-      .concat(sums.__none ? [{ id: '__none', label: 'Not in a section yet', amount: sums.__none }] : [])
+    return bucket.outlets
+      .map<NestItem>((o) => ({
+        id: o.id,
+        label: o.name,
+        amount: sums[o.id] || 0,
+        caption: o.vendors.join(', '),
+      }))
+      .concat(
+        sums.__none
+          ? [{ id: '__none', label: 'Not in a section yet', amount: sums.__none, caption: 'Vendors with no section' }]
+          : [],
+      )
       .filter((x) => x.amount > 0)
-      .sort((a, b) => b.amount - a.amount)
-
-    return list
   }
 
   return (
     <div className="catbars">
       {rows.map((r) => {
-        const isOpen = open === r.id
         // "Other" and "Unlabelled" are folds, not categories, so they have nothing inside.
         const expandable = !r.id.startsWith('__')
-        const sections = isOpen && expandable ? sectionsOf(r.id) : []
+        const isOpen = expandable && (showAll || open === r.id)
+        const sections = isOpen ? sectionsOf(r.id) : []
         const pendingHere = pending && pending.bucket === r.id ? pending.amount : 0
 
         return (
@@ -73,7 +82,12 @@ export function CategoryBars({ rows, buckets, txns, pending }: Props) {
               type="button"
               className="catbar-row"
               aria-expanded={expandable ? isOpen : undefined}
-              onClick={() => expandable && setOpen(isOpen ? null : r.id)}
+              onClick={() => {
+                if (!expandable) return
+                // Opening one closes whichever was open, and leaves show-all.
+                setShowAll(false)
+                setOpen(open === r.id && !showAll ? null : r.id)
+              }}
             >
               <span className="n">
                 {r.label}
@@ -98,20 +112,12 @@ export function CategoryBars({ rows, buckets, txns, pending }: Props) {
                   ) : null}
                 </p>
                 {sections.length ? (
-                  <ul className="catbar-sections">
-                    {sections.map((s) => (
-                      <li key={s.id}>
-                        <span className="n">{s.label}</span>
-                        <span className="bar">
-                          <span
-                            className={'fill t-' + (r.tone || 'sky')}
-                            style={{ width: Math.max(4, (s.amount / (sections[0].amount || 1)) * 100) + '%' }}
-                          />
-                        </span>
-                        <span className="a">{F(s.amount)}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <NestedBreakdown
+                    items={sections}
+                    color={r.tone}
+                    height={240}
+                    label={`${r.label} by section`}
+                  />
                 ) : (
                   <p className="muted">Nothing recorded in a section here yet.</p>
                 )}
@@ -120,6 +126,20 @@ export function CategoryBars({ rows, buckets, txns, pending }: Props) {
           </div>
         )
       })}
+
+      {expandableRows.length > 1 ? (
+        <button
+          type="button"
+          className="catbar-all"
+          aria-pressed={showAll}
+          onClick={() => {
+            setShowAll((v) => !v)
+            setOpen(null)
+          }}
+        >
+          {showAll ? 'Show one at a time' : 'Show all'}
+        </button>
+      ) : null}
     </div>
   )
 }

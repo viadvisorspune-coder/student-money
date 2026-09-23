@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { AppBar, Button, CueRow, ResultHeadline, SectionHeader } from '../ui'
+import { AppBar, Button, CueRow, SectionHeader } from '../ui'
 import { F } from '../lib/format'
-import { DAYS_IN_MONTH, TODAY } from '../lib/calendar'
 import { AllowanceBar } from '../components/AllowanceBar'
 import { CategoryBars } from '../components/CategoryBars'
 import { useApp } from '../state/AppContext'
@@ -28,17 +27,6 @@ export function Result() {
 
   if (!d) return <Navigate to="/" replace />
 
-  const after = app.free - d.amount
-  const bk = d.bucket ? app.bmap[d.bucket] : undefined
-  const bucketAfter = (bk ? app.spentBy[bk.id] || 0 : 0) + d.amount
-  const daysLeft = DAYS_IN_MONTH - TODAY
-
-  const insight = bk
-    ? `${bk.name} would come to ${F(bucketAfter)} this month — ${Math.round(
-        (bucketAfter / (app.spent + d.amount || 1)) * 100,
-      )}% of everything you have spent, with ${daysLeft} days to go.`
-    : `This would be ${Math.round((d.amount / (app.free || 1)) * 100)}% of what is free to spend, with ${daysLeft} days to go.`
-
   const split = app.splits(d.amount, d.bucket)
 
   return (
@@ -52,30 +40,6 @@ export function Result() {
 
       {/* The spend landing, rather than a sentence about it landing. */}
       <AllowanceBar allowance={app.income} spent={app.spent} pending={d.amount} animate />
-
-      <ResultHeadline
-        before={F(app.free)}
-        after={F(after)}
-        caption="free to spend for the rest of September"
-        insight={insight}
-      >
-        <div className="drop">
-          <div className="drop-bar" role="img" aria-label={`${F(d.amount)} of ${F(app.free)} free to spend`}>
-            <span className="keep" style={{ flexGrow: Math.max(0, after) }} />
-            <span className="gone" style={{ flexGrow: Math.max(1, d.amount) }} />
-          </div>
-          <div className="drop-key">
-            <span>
-              <i className="k keep" />
-              {`Left after this · ${F(after)}`}
-            </span>
-            <span>
-              <i className="k gone" />
-              {`This spend · ${F(d.amount)}`}
-            </span>
-          </div>
-        </div>
-      </ResultHeadline>
 
       <SectionHeader onCanvas title="Where it would stand" />
       <section className="sm-card surface">
