@@ -32,7 +32,7 @@
 
   .families { display: grid; grid-template-columns: repeat(auto-fit, minmax(70mm, 1fr)); gap: var(--m-rhythm-block) var(--m-rhythm-gutter); margin-bottom: var(--m-rhythm-block); }
   .family .glyphs { margin-top: var(--m-rhythm-snug) !important; font-size: 16.5pt; line-height: 1.05; margin: 2mm 0 3mm; word-break: break-all; }
-  .family.d .glyphs { font-family: var(--m-font-display); font-weight: 600; color: var(--m-blue); }
+  .family.d .glyphs { font-family: var(--m-font-display); font-weight: 400; color: var(--m-blue); }
   .family.t .glyphs { font-family: var(--m-font-text); font-weight: 400; color: var(--m-blue); }
 
   /* Colour */

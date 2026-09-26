@@ -14,7 +14,7 @@
   --m-blue-4: #2E36A1;
   --m-blue-5: #1D2270;
 
-  --m-font-display: 'Nunito Sans', sans-serif;
+  --m-font-display: 'Cal Sans', 'Nunito Sans', sans-serif;
   --m-font-text: 'Nunito Sans', sans-serif;
 
   --m-display-xl-size: 16.5pt;
@@ -102,7 +102,7 @@
   font-family: var(--m-font-display);
   font-size: var(--m-display-xl-size);
   line-height: var(--m-display-xl-leading);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   color: var(--m-blue);
 }
@@ -110,7 +110,7 @@
   font-family: var(--m-font-display);
   font-size: var(--m-display-l-size);
   line-height: var(--m-display-l-leading);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   color: var(--m-blue);
 }
@@ -118,7 +118,7 @@
   font-family: var(--m-font-display);
   font-size: var(--m-closing-size);
   line-height: var(--m-closing-leading);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   color: var(--m-blue);
 }
@@ -126,7 +126,7 @@
   font-family: var(--m-font-display);
   font-size: var(--m-station-size);
   line-height: var(--m-station-leading);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   color: var(--m-blue);
 }
@@ -134,15 +134,15 @@
   font-family: var(--m-font-display);
   font-size: var(--m-stat-size);
   line-height: var(--m-stat-leading);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   color: var(--m-blue);
 }
 .m-heading {
-  font-family: var(--m-font-text);
+  font-family: var(--m-font-display);
   font-size: var(--m-heading-size);
   line-height: var(--m-heading-leading);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0;
   color: var(--m-blue);
 }

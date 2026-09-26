@@ -35,6 +35,9 @@
 
 /* ---------- Text behaviour ---------- */
 
+/* Cal Sans sets its word spaces tight; open them a touch so headers read as words at 13.5pt. */
+.m-display-xl, .m-display-l, .m-closing, .m-station, .m-stat, .m-heading, .m-sheet__tabs { word-spacing: 0.08em; }
+
 .m-body p { margin: 0 0 var(--m-rhythm-para); }
 .m-body p:last-child { margin-bottom: 0; }
 .m-body--right { text-align: right; }
