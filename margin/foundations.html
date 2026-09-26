@@ -41,49 +41,41 @@
     <p class="m-label">Foundations</p>
     <h2 class="m-display-l">Typography</h2>
   </header>
-  <p class="m-body f-lede">Two families and nothing else. Biryani carries every signpost: headlines, days and times, figures. DM Sans carries everything that is read: body, sub-headings, labels, quotes, notes and captions. Five sizes, all measured from the reference page.</p>
+  <p class="m-body f-lede">One typeface, quiet on purpose. The colour fields, routes and objects are loud, so the type is a precise information layer underneath them. Hierarchy comes from weight, size, colour and opacity, never from a second face or from capitals.</p>
 
   <div class="families">
     <div class="family d">
-      <span class="m-label">Headings, Biryani 700 and 800</span>
-      <div class="glyphs">AaBbRrSs<br>0123456789 ₹</div>
-      <p class="m-caption">Google Fonts, SIL Open Font Licence. Carries the rupee sign.</p>
+      <span class="m-label">Nunito Sans 600, for headings and figures</span>
+      <div class="glyphs" style="font-weight:600">Timeline 09:00<br>₹1,500 Sunday</div>
+      <p class="m-caption">Closest free match to Avenir Next. Google Fonts, SIL Open Font Licence. Carries the rupee sign.</p>
     </div>
     <div class="family t">
-      <span class="m-label">Body, DM Sans 400, 500, 700 and italic</span>
-      <div class="glyphs">AaBbRrSs<br><i>0123456789 ₹</i></div>
-      <p class="m-caption">Google Fonts, SIL Open Font Licence.</p>
+      <span class="m-label">Nunito Sans 400, 500 and italic, for everything read</span>
+      <div class="glyphs">Aa Bb Rr Ss<br><i>0123456789 ₹</i></div>
+      <p class="m-caption">Clean, open numerals for times, amounts and codes.</p>
     </div>
   </div>
 
-  <div class="spec"><div class="meta"><span class="m-label">display-xl</span>Biryani 800, 21pt on 27.3pt, capitals, blue. The largest size: chapter and spread headlines.</div>
-    <div><h2 class="m-display-xl">Why do students spend<br>what they didn't plan to?</h2></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">display-l</span>Biryani 800, 17.5pt on 21.7pt, capitals, blue. Section headlines.</div>
-    <div><h2 class="m-display-l">Knowing is not<br>considering</h2></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">stat</span>Biryani 700, 17.5pt on 21.7pt, blue. The figure a paragraph stands on.</div>
-    <div><p class="m-stat"><span class="m-figure-inr">₹1,500</span></p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">closing and station</span>Biryani 700, 17.5pt, capitals, blue. Where a route ends, and the label in a route break.</div>
-    <div style="display:flex;gap:10mm;align-items:center;flex-wrap:wrap"><p class="m-closing" style="margin:0">Into the everyday</p><span class="m-station">Day 03</span><span class="m-station m-vertical">20:15</span></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">heading</span>DM Sans 700, 10.5pt on 13pt, sentence case, blue. Sits 2mm above its figure or paragraph.</div>
-    <div><h3 class="m-heading">How much did P02 spend on day three?</h3></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">body</span>DM Sans 400, 10pt on 13.2pt, blue. A 68mm column; paragraphs 0.55em apart.</div>
+  <div class="spec"><div class="meta"><span class="m-label">display-xl and display-l</span>600, 16.5pt on 1.2, sentence case, blue. Section headings: 22px in the analysis.</div>
+    <div><h2 class="m-display-xl">Why do students spend what they didn't plan to?</h2></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">heading, stat, station, closing</span>600, 13.5pt on 1.25, blue. Primary content: 18px.</div>
+    <div><p class="m-stat" style="margin:0"><span style="color:var(--m-route)">09:00</span> <span style="opacity:.45">Sunday</span></p><p class="m-heading" style="margin:var(--m-rhythm-tight) 0 0">Birthday dinner, ₹1,500</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">quote</span>400 italic, 13.5pt on 1.3, blue.</div>
+    <div><p class="m-quote" style="margin:0">“I knew I had plans, but I didn't think about them.”</p><p class="m-label" style="margin-top:var(--m-rhythm-tight)">P03</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">body</span>400, 10.5pt on 1.35, blue. Supporting information: 14px. A 68mm column.</div>
     <div class="m-body" style="max-width:68mm"><p>P02 ordered dinner at 20:15. The mess food was bad and friends suggested ordering.</p><p>The ₹1,500 birthday dinner on Friday was already in their plans, and did not come up.</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">quote</span>DM Sans italic, 17.5pt on 21.7pt, blue. A quote is an object, not a card.</div>
-    <div><p class="m-quote" style="margin:0">“I knew I had plans, but I didn't think about them.”</p><p class="m-label" style="margin-top:2mm">P03</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">label</span>DM Sans 700, 7.7pt, capitals, spaced 0.06em, red.</div>
-    <div><p class="m-label">03 / Research finding / P02</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">note</span>DM Sans 400, 7.7pt on 11.6pt, red. Researcher asides in the margin.</div>
-    <div><p class="m-note" style="max-width:40mm">Asked on day 4 whether P02 remembered Friday: yes, once prompted.</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">caption</span>DM Sans italic, 7.7pt on 11.6pt, blue.</div>
-    <div><p class="m-caption">V02 prototype, tested with P03, 23 September 2026.</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">folio</span>DM Sans 700, 7.7pt, red. Outer bottom corner.</div>
-    <div><span class="m-folio">12</span></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">label and folio</span>600, 8.5pt, tracking 0.03em, red. Codes and small labels: 11 to 12px.</div>
+    <div><p class="m-label" style="margin:0">03 / Research finding / P02</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">note</span>400, 8.5pt on 1.35, red. Researcher asides.</div>
+    <div><p class="m-note" style="max-width:40mm;margin:0">Asked on day 4 whether P02 remembered Friday: yes, once prompted.</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">caption</span>400, 8.5pt, blue at 60% opacity. Microcopy is muted by opacity, not by a new style.</div>
+    <div><p class="m-caption" style="margin:0">V02 prototype, tested with P03, 23 September 2026. Swipe up</p></div></div>
 
   <ul class="rules m-body">
-    <li><b>Headlines</b>Capitals, flush left, broken by meaning into two or three lines. A headline asks or states; it is never a section number.</li>
+    <li><b>Headlines</b>Sentence case, flush left, broken by meaning into one or two lines. A headline asks or states; it is never a section number.</li>
     <li><b>Body</b>Short blocks. Set flush left, or flush right when the block sits to the left of a route, so the text hugs the line.</li>
     <li><b>Numbers</b>Indian grouping and the rupee sign every time: ₹1,20,000, not 120000 or Rs.</li>
-    <li class="dont"><b>Never</b>A third family, a size outside the five, dots between words, dashes as punctuation, colour for emphasis inside a sentence.</li>
+    <li class="dont"><b>Never</b>A second typeface, a size outside the four, capitals for emphasis, wide letter-spacing, dots between words, dashes as punctuation.</li>
   </ul>
 </section>
 
@@ -121,7 +113,7 @@
       <tr><td>Red</td><td>3.77 : 1</td><td>Labels, notes and folios. Never the only place a fact appears.</td></tr>
       <tr><td>Sky</td><td>2.69 : 1</td><td>Never as text. A fill with ink text.</td></tr>
       <tr><td>Yellow</td><td>1.34 : 1</td><td>Never as text. A fill with ink or blue text.</td></tr>
-      <tr><td>White on blue or red</td><td>9.73 / 3.77 : 1</td><td>On blue, any size. On red, 10pt and above, as in the reference.</td></tr>
+      <tr><td>White on blue or red</td><td>9.73 / 3.77 : 1</td><td>On blue, any size. On red, 10.5pt and above, as in the reference.</td></tr>
     </tbody>
   </table>
 
@@ -208,9 +200,9 @@
         <defs><path id="stamp-arc" d="M50 50 m-29 0 a29 29 0 1 1 58 0 a29 29 0 1 1 -58 0"/></defs>
         <path id="stamp-edge" fill="var(--m-ink)"/>
         <circle cx="50" cy="50" r="40.5" fill="none" stroke="var(--m-paper)" stroke-width="0.8"/>
-        <text font-family="Biryani" font-weight="700" font-size="9" letter-spacing="0.6" fill="var(--m-paper)"><textPath href="#stamp-arc">MARGIN   FIELD STUDY   2026   </textPath></text>
-        <text x="50" y="49" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="12" fill="var(--m-paper)">DAY</text>
-        <text x="50" y="64" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="12" fill="var(--m-mustard)">03</text>
+        <text font-family="Nunito Sans" font-weight="600" font-size="9" letter-spacing="0.6" fill="var(--m-paper)"><textPath href="#stamp-arc">MARGIN   FIELD STUDY   2026   </textPath></text>
+        <text x="50" y="49" text-anchor="middle" font-family="Nunito Sans" font-weight="600" font-size="12" fill="var(--m-paper)">DAY</text>
+        <text x="50" y="64" text-anchor="middle" font-family="Nunito Sans" font-weight="600" font-size="12" fill="var(--m-mustard)">03</text>
       </svg>
       <figcaption class="m-caption">Stamp, study marker</figcaption>
     </figure>
@@ -305,7 +297,7 @@
     var t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     t.setAttribute('x', x); t.setAttribute('y', y);
     for (var k in (opts || {})) {
-      if (k === 'font-size') { var pt = opts[k] * 72 / 25.4, b = [7.7, 10, 10.5, 17.5, 21].reduce(function (a, c) { return Math.abs(c - pt) < Math.abs(a - pt) ? c : a; }); t.style.fontSize = (b * 25.4 / 72) + 'px'; }   /* snaps to the type scale; user units beat the class's pt size */
+      if (k === 'font-size') { var pt = opts[k] * 72 / 25.4, b = [8.5, 10.5, 13.5, 16.5].reduce(function (a, c) { return Math.abs(c - pt) < Math.abs(a - pt) ? c : a; }); t.style.fontSize = (b * 25.4 / 72) + 'px'; }   /* snaps to the type scale; user units beat the class's pt size */
       else if (k === 'color') t.style.color = opts[k];
       else t.setAttribute(k, opts[k]);
     }
@@ -340,9 +332,9 @@
   var gr = M.route(g, [[40, 60], [40, 150], [160, 150], [160, 110], [300, 110], [300, 220], [380, 220]], { radius: 14 });
   gr.style.strokeWidth = 2;
   [[40, 60], [380, 220]].forEach(function (p) { M.node(g, p[0], p[1], 'event', { size: 8.8 }); });
-  text(g, 14, 290, 'OUTER 14', 'm-label', { 'font-size': 7 });
-  text(g, 188, 290, 'INNER 20', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
-  text(g, 232, 290, 'INNER 20', 'm-label', { 'font-size': 7 });
+  text(g, 14, 290, 'Outer 14', 'm-label', { 'font-size': 7 });
+  text(g, 188, 290, 'Inner 20', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
+  text(g, 232, 290, 'Inner 20', 'm-label', { 'font-size': 7 });
   text(g, 406, 290, '6 COLUMNS, 5MM GUTTER', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
 
   /* Spacing scale */
@@ -367,8 +359,8 @@
   M.route(a, [[80, 30], [80, 114]]);                                   // crossing
   M.route(a, [[100, 14], [100, 70], [190, 70], [190, 14], [150, 14]]); // enclosure
   M.node(a, 150, 14);
-  text(a, 108, 26, 'KNOWING IS NOT', 'm-heading', { 'font-size': '4.8', color: 'var(--m-blue)' });
-  text(a, 108, 32, 'CONSIDERING', 'm-heading', { 'font-size': '4.8', color: 'var(--m-blue)' });
+  text(a, 108, 26, 'Knowing is not', 'm-heading', { 'font-size': '4.8', color: 'var(--m-blue)' });
+  text(a, 108, 32, 'Considering', 'm-heading', { 'font-size': '4.8', color: 'var(--m-blue)' });
   text(a, 108, 46, 'Enclosure: the route arrives and', 'm-note', { 'font-size': '2.6' });
   text(a, 108, 50, 'holds a finding. Text sits at', 'm-note', { 'font-size': '2.6' });
   text(a, 108, 54, 'least 6mm inside the line.', 'm-note', { 'font-size': '2.6' });
@@ -432,11 +424,11 @@
   var pts = [[10, 14], [44, 14], [44, 52], [96, 52], [96, 22], [150, 22], [150, 60], [176, 60]];
   M.route(mv, pts, { radius: 8 });
   var stops = [
-    [10, 14, 'event', 'DAY 01', '₹120, CHAI', 0],
-    [44, 34, 'planned', 'DAY 02', '₹280, MESS PASS', 350],
-    [58, 52, 'unexpected', 'DAY 03', '₹90, AUTO, LATE', 650],
-    [96, 36, 'event', 'DAY 04', '₹280, DINNER', 900],
-    [150, 40, 'turning', 'DAY 05', 'KNOWING IS NOT CONSIDERING', 1150]
+    [10, 14, 'event', 'Day 01', '₹120, chai', 0],
+    [44, 34, 'planned', 'Day 02', '₹280, mess pass', 350],
+    [58, 52, 'unexpected', 'Day 03', '₹90, auto, late', 650],
+    [96, 36, 'event', 'Day 04', '₹280, dinner', 900],
+    [150, 40, 'turning', 'Day 05', 'Knowing is not considering', 1150]
   ];
   stops.forEach(function (s) {
     M.node(mv, s[0], s[1], s[2], { at: s[5] });
@@ -446,8 +438,8 @@
   });
   M.route(mv, [[176, 60], [192, 60], [192, 72]], { style: 'dashed', at: 1400 });
   M.node(mv, 192, 72, 'future', { at: 1500 });
-  var f1 = text(mv, 176, 76, 'FRI, ₹1,500', 'm-label m-reveal', { 'font-size': '2.3', 'text-anchor': 'end' });
-  var f2 = text(mv, 176, 71, 'DAY 06', 'm-station m-reveal', { 'font-size': '4.6', 'text-anchor': 'end' });
+  var f1 = text(mv, 176, 76, 'Fri, ₹1,500', 'm-label m-reveal', { 'font-size': '2.3', 'text-anchor': 'end' });
+  var f2 = text(mv, 176, 71, 'Day 06', 'm-station m-reveal', { 'font-size': '4.6', 'text-anchor': 'end' });
   [f1, f2].forEach(function (t) { t.style.setProperty('--at', '1600ms'); });
   M.animate($('motion-demo'));
   $('replay').addEventListener('click', function () { M.replay($('motion-demo')); });

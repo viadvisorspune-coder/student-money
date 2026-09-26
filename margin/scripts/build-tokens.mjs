@@ -52,6 +52,7 @@ for (const [k, v] of Object.entries(t.type)) {
   if (v.style) out(`  font-style: ${v.style};`);
   out(`  letter-spacing: ${v.tracking};`);
   if (v.case === 'upper') out('  text-transform: uppercase;');
+  if (v.opacity) out(`  opacity: ${v.opacity};`);
   out(`  color: var(--m-${v.color});`);
   out('}');
 }

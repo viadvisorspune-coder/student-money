@@ -114,15 +114,15 @@
 <script>
 (function () {
   var M = Margin, S = MarginDoc.svg, s = document.getElementById('chain');
-  var steps = [[10, 'EVIDENCE', 'event'], [52, 'CLAIM', 'event'], [94, 'INSIGHT', 'turning'], [136, 'DECISION', 'planned'], [178, 'OUTCOME', 'event']];
+  var steps = [[10, 'Evidence', 'event'], [52, 'Claim', 'event'], [94, 'Insight', 'turning'], [136, 'Decision', 'planned'], [178, 'Outcome', 'event']];
   M.route(s, [[10, 22], [178, 22]]);
   steps.forEach(function (p) { M.node(s, p[0], 22, p[2], { size: 5 }); S('text', { x: p[0], y: 14, 'text-anchor': 'middle', class: 'm-heading', 'font-size': 3.4, text: p[1] }, s); });
   M.route(s, [[112, 22], [112, 36], [120, 36]], { style: 'dashed', radius: 5 });
   M.node(s, 124, 36, 'future', { size: 4.4 });
   S('text', { x: 130, y: 37.2, class: 'm-note', 'font-size': 2.8, text: 'Uncertainty can branch off at any point' }, s);
-  S('text', { x: 10, y: 34, class: 'm-label m-label--blue', 'font-size': 2.4, text: 'OBSERVED' }, s);
-  S('text', { x: 94, y: 34, 'text-anchor': 'middle', class: 'm-label m-label--blue', 'font-size': 2.4, text: 'MEANT' }, s);
-  S('text', { x: 178, y: 34, 'text-anchor': 'middle', class: 'm-label', 'font-size': 2.4, text: 'CHANGED' }, s);
+  S('text', { x: 10, y: 34, class: 'm-label m-label--blue', 'font-size': 2.4, text: 'Observed' }, s);
+  S('text', { x: 94, y: 34, 'text-anchor': 'middle', class: 'm-label m-label--blue', 'font-size': 2.4, text: 'Meant' }, s);
+  S('text', { x: 178, y: 34, 'text-anchor': 'middle', class: 'm-label', 'font-size': 2.4, text: 'Changed' }, s);
   MarginDoc.fit();
 })();
 </script>

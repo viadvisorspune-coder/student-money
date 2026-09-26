@@ -1,7 +1,7 @@
 /* Margin, chart primitives. Classic script; exposes window.MarginCharts.
    Charts are SVG with a viewBox in millimetres, so every size is a print size.
    Text inside charts uses the system type classes; font sizes are given in mm
-   (2.3mm about 6.5pt, 2.8mm about 8pt, 4.6mm about 13pt).
+   (2.3mm about 6.5pt, 2.8mm about 8pt, 4.6mm about 13.5pt).
 
    Rules this file enforces (see rules.html, Data integrity):
    - one axis per chart, a zero baseline for anything measured by length;
@@ -15,9 +15,9 @@
     paper: 'var(--m-paper)', deep: 'var(--m-paper-deep)', stone: 'var(--m-stone)',
     ramp: ['var(--m-blue-1)', 'var(--m-blue-2)', 'var(--m-blue-3)', 'var(--m-blue-4)', 'var(--m-blue-5)']
   };
-  var SIZE = { label: 2.72, tick: 2.72, value: 3.53, note: 2.72, big: 7.41 };
-  /* Text sizes snap to the five sizes of the type scale (7.7, 10, 10.5, 17.5, 21pt). Sizes are in mm (user units). */
-  var SCALE_PT = [7.7, 10, 10.5, 17.5, 21];
+  var SIZE = { label: 3, tick: 3, value: 3.7, note: 3, big: 5.82 };
+  /* Text sizes snap to the five sizes of the type scale (7.7, 10, 10.5, 17.5, 16.5pt). Sizes are in mm (user units). */
+  var SCALE_PT = [8.5, 10.5, 13.5, 16.5];
   function snapMM(mm) {
     var pt = mm * 72 / 25.4, best = SCALE_PT[0];
     SCALE_PT.forEach(function (s) { if (Math.abs(s - pt) < Math.abs(best - pt)) best = s; });

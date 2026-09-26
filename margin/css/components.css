@@ -6,7 +6,7 @@
    ========================================================= */
 .m-pill {
   display: inline-flex; align-items: center; gap: 1.4mm;
-  font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase;
+  font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em;
   color: var(--m-route); border: 0.29mm solid currentColor; border-radius: 99px;
   padding: 1.3mm 2.8mm; white-space: nowrap; background: none;
 }
@@ -18,7 +18,7 @@
 .m-pill .m-sym   { width: 2.2mm; height: 2.2mm; }
 
 /* Outcome pill: shape carries the meaning, never colour. */
-.m-outcome { display: inline-flex; align-items: center; gap: 1.6mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-blue); }
+.m-outcome { display: inline-flex; align-items: center; gap: 1.6mm; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-blue); }
 .m-outcome::before { content: ""; width: 2.6mm; height: 2.6mm; border-radius: 50%; box-sizing: border-box; border: 0.29mm solid currentColor; }
 .m-outcome--done::before    { background: currentColor; }
 .m-outcome--helped::before  { background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
@@ -28,7 +28,7 @@
    TAGS, square, quiet. Used for codes and themes.
    ========================================================= */
 .m-tag {
-  display: inline-block; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .08em; text-transform: uppercase;
+  display: inline-block; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em;
   color: var(--m-blue); background: var(--m-paper-deep); padding: 1.2mm 1.8mm; white-space: nowrap;
 }
 .m-tag--code  { background: none; border: 0.23mm solid var(--m-blue); padding: 1mm 1.4mm; }
@@ -36,14 +36,14 @@
 .m-tag--version { background: var(--m-blue); color: var(--m-paper); }
 
 /* Frequency: how many of the six participants, filled dots out of total. */
-.m-freq { display: inline-flex; align-items: center; gap: 0.9mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .06em; color: var(--m-blue); }
+.m-freq { display: inline-flex; align-items: center; gap: 0.9mm; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-blue); }
 .m-freq i { width: 2.2mm; height: 2.2mm; border-radius: 50%; border: 0.23mm solid var(--m-blue); box-sizing: border-box; }
 .m-freq i.on { background: var(--m-blue); }
 .m-freq i.half { background: linear-gradient(90deg, var(--m-blue) 50%, transparent 50%); }
-.m-freq b { margin-left: 1.2mm; font-weight: 700; }
+.m-freq b { margin-left: 1.2mm; font-weight: 600; }
 
 /* Confidence: three steps, shown with bars, never colour alone. */
-.m-confidence { display: inline-flex; align-items: flex-end; gap: 0.7mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-blue); }
+.m-confidence { display: inline-flex; align-items: flex-end; gap: 0.7mm; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-blue); }
 .m-confidence i { width: 1.2mm; background: var(--m-paper-deep); }
 .m-confidence i:nth-child(1) { height: 1.6mm; } .m-confidence i:nth-child(2) { height: 2.6mm; } .m-confidence i:nth-child(3) { height: 3.6mm; }
 .m-confidence[data-level="1"] i:nth-child(-n+1), .m-confidence[data-level="2"] i:nth-child(-n+2), .m-confidence[data-level="3"] i:nth-child(-n+3) { background: var(--m-blue); }
@@ -52,8 +52,8 @@
 /* =========================================================
    LABELS & KICKERS
    ========================================================= */
-.m-kicker { font: 700 7.7pt/1.2 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
-.m-kicker b { color: var(--m-blue); font-weight: 700; }
+.m-kicker { font: 600 8.5pt/1.2 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-route); }
+.m-kicker b { color: var(--m-blue); font-weight: 600; }
 .m-label--blue { color: var(--m-blue); }
 .m-label--line { display: flex; align-items: center; gap: 2mm; }
 .m-label--line::after { content: ""; flex: 1; height: 0.2mm; background: currentColor; }
@@ -62,20 +62,20 @@
    NOTES
    ========================================================= */
 /* Margin note: red serif aside beside a hairline, as in the reference gutter. */
-.m-margin-note { font: 400 7.7pt/1.45 var(--m-font-text); color: var(--m-route); border-left: 0.2mm solid var(--m-route); padding-left: 2.4mm; max-width: 40mm; }
+.m-margin-note { font: 400 8.5pt/1.45 var(--m-font-text); color: var(--m-route); border-left: 0.2mm solid var(--m-route); padding-left: 2.4mm; max-width: 40mm; }
 .m-margin-note p { margin: 0 0 0.8em; }
 .m-margin-note--right { border-left: 0; border-right: 0.2mm solid var(--m-route); padding: 0 2.4mm 0 0; text-align: right; }
 
 /* Field note: the researcher's own jotting, italic, dated. */
-.m-field-note { font: italic 400 10pt/1.32 var(--m-font-text); color: var(--m-blue); padding-left: 5mm; position: relative; max-width: 70mm; }
+.m-field-note { font: italic 400 10.5pt/1.32 var(--m-font-text); color: var(--m-blue); padding-left: 5mm; position: relative; max-width: 70mm; }
 .m-field-note::before { content: ""; position: absolute; left: 0; top: 1.4mm; width: 2.4mm; height: 2.4mm; border-radius: 50%; border: 0.29mm solid var(--m-route); box-sizing: border-box; }
-.m-field-note cite { display: block; font: 700 7.7pt/1 var(--m-font-text); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); margin-top: 1.6mm; }
+.m-field-note cite { display: block; font: 600 8.5pt/1 var(--m-font-text); font-style: normal; letter-spacing: 0.03em; color: var(--m-route); margin-top: 1.6mm; }
 
 /* Sticky note: a collected paper square, yellow, taped, turned. Holds a short thought. */
 .m-sticky {
   position: relative; width: 38mm; min-height: 34mm; box-sizing: border-box; padding: 6mm 4mm 4mm;
   background: var(--m-mustard); color: var(--m-ink); transform: rotate(-3deg);
-  font: 400 7.7pt/1.4 var(--m-font-text);
+  font: 400 8.5pt/1.4 var(--m-font-text);
 }
 .m-sticky::before { content: ""; position: absolute; top: -2.6mm; left: 50%; width: 16mm; height: 5mm; margin-left: -8mm; background: rgba(255, 255, 255, .7); transform: rotate(2deg); }
 .m-sticky--paper { background: var(--m-paper-deep); color: var(--m-blue); transform: rotate(2.5deg); }
@@ -86,7 +86,7 @@
 .m-sticker {
   display: inline-grid; place-items: center; text-align: center; box-sizing: border-box;
   width: 22mm; height: 22mm; border-radius: 50%; padding: 2mm;
-  font: 700 7.7pt/1.15 var(--m-font-text); letter-spacing: .08em; text-transform: uppercase;
+  font: 600 8.5pt/1.15 var(--m-font-text); letter-spacing: 0.03em;
   background: var(--m-route); color: var(--m-paper); transform: rotate(-8deg);
 }
 .m-sticker--blue    { background: var(--m-blue); }
@@ -127,21 +127,21 @@
 /* =========================================================
    HEADERS, FOOTERS, FOLIOS, the page furniture.
    ========================================================= */
-.m-runhead { display: flex; justify-content: space-between; align-items: baseline; gap: 6mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .12em; text-transform: uppercase; color: var(--m-route); }
-.m-runhead b { color: var(--m-blue); font-weight: 700; }
+.m-runhead { display: flex; justify-content: space-between; align-items: baseline; gap: 6mm; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-route); }
+.m-runhead b { color: var(--m-blue); font-weight: 600; }
 .m-runhead--rule { padding-bottom: 2mm; border-bottom: 0.2mm solid var(--m-route); }
 
-.m-footer { display: flex; justify-content: space-between; align-items: center; gap: 6mm; font: 400 7.7pt/1.2 var(--m-font-text); color: var(--m-blue); }
-.m-footer .m-folio { font-size: 7.7pt; }
+.m-footer { display: flex; justify-content: space-between; align-items: center; gap: 6mm; font: 400 8.5pt/1.2 var(--m-font-text); color: var(--m-blue); }
+.m-footer .m-folio { font-size: 8.5pt; }
 
 /* Folio variants */
 .m-folio--node { display: inline-flex; align-items: center; gap: 1.6mm; }
 .m-folio--node::before { content: ""; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--m-route); }
-.m-folio--of::after { content: " / " attr(data-of); color: var(--m-blue); font-weight: 700; }
-.m-folio--big { font: 700 21pt/1 var(--m-font-display); color: var(--m-route); letter-spacing: 0; }
+.m-folio--of::after { content: " / " attr(data-of); color: var(--m-blue); font-weight: 600; }
+.m-folio--big { font: 600 16.5pt/1 var(--m-font-display); color: var(--m-route); letter-spacing: 0; }
 
 /* Thumb index: chapter tab on the outer page edge (reference: red book edge). */
-.m-thumb { display: inline-grid; place-items: center; width: 7mm; padding: 4mm 0; background: var(--m-route); color: var(--m-paper); font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; }
+.m-thumb { display: inline-grid; place-items: center; width: 7mm; padding: 4mm 0; background: var(--m-route); color: var(--m-paper); font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; }
 .m-thumb span { writing-mode: vertical-rl; transform: rotate(180deg); }
 
 /* Chapter header block */
@@ -178,27 +178,27 @@
 .m-pullquote { position: relative; padding-left: 12mm; }
 .m-pullquote::before { content: ""; position: absolute; left: 0; top: 2.6mm; width: 9mm; height: var(--m-route-weight); background: var(--m-route); }
 .m-pullquote::after { content: ""; position: absolute; left: 7.6mm; top: calc(2.6mm + var(--m-route-weight) / 2 - var(--m-route-node) / 2); width: var(--m-route-node); height: var(--m-route-node); border-radius: 50%; background: var(--m-route); }
-.m-pullquote cite { display: block; margin-top: var(--m-rhythm-tight); font: 700 7.7pt/1 var(--m-font-text); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
+.m-pullquote cite { display: block; margin-top: var(--m-rhythm-tight); font: 600 8.5pt/1 var(--m-font-text); font-style: normal; letter-spacing: 0.03em; color: var(--m-route); }
 /* Big quote glyph for a quote that stands alone on a page. */
 .m-bigquote { position: relative; padding-top: 8mm; }
-.m-bigquote::before { content: "\201C"; position: absolute; top: 0; left: -0.6mm; font: 700 21pt/1 var(--m-font-display); color: var(--m-route); }
+.m-bigquote::before { content: "\201C"; position: absolute; top: 0; left: -0.6mm; font: 600 16.5pt/1 var(--m-font-display); color: var(--m-route); }
 
 /* =========================================================
    CAPTIONS, FOOTNOTES, SOURCES
    ========================================================= */
-.m-figcap { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--m-rhythm-snug); font: italic 400 7.7pt/1.5 var(--m-font-text); color: var(--m-blue); margin-top: var(--m-rhythm-tight); }
-.m-figcap b { font: 700 7.7pt/1.6 var(--m-font-text); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
-.m-fnref { font: 700 0.62em/0 var(--m-font-text); color: var(--m-route); vertical-align: super; margin-left: 0.3mm; }
-.m-footnotes { border-top: 0.2mm solid var(--m-route); padding-top: 2mm; margin: 0; list-style: none; counter-reset: fn; font: 400 7.7pt/1.45 var(--m-font-text); color: var(--m-blue); }
+.m-figcap { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--m-rhythm-snug); font: italic 400 8.5pt/1.5 var(--m-font-text); color: var(--m-blue); margin-top: var(--m-rhythm-tight); }
+.m-figcap b { font: 600 8.5pt/1.6 var(--m-font-text); font-style: normal; letter-spacing: 0.03em; color: var(--m-route); }
+.m-fnref { font: 600 0.62em/0 var(--m-font-text); color: var(--m-route); vertical-align: super; margin-left: 0.3mm; }
+.m-footnotes { border-top: 0.2mm solid var(--m-route); padding-top: 2mm; margin: 0; list-style: none; counter-reset: fn; font: 400 8.5pt/1.45 var(--m-font-text); color: var(--m-blue); }
 .m-footnotes li { counter-increment: fn; display: grid; grid-template-columns: 4mm 1fr; }
-.m-footnotes li::before { content: counter(fn); font: 700 7.7pt/1.45 var(--m-font-text); color: var(--m-route); }
-.m-source { font: 400 7.7pt/1.4 var(--m-font-text); color: var(--m-blue); }
-.m-source::before { content: "Source, "; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
+.m-footnotes li::before { content: counter(fn); font: 600 8.5pt/1.45 var(--m-font-text); color: var(--m-route); }
+.m-source { font: 400 8.5pt/1.4 var(--m-font-text); color: var(--m-blue); }
+.m-source::before { content: "Source, "; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-route); }
 
 /* =========================================================
    LEGENDS
    ========================================================= */
-.m-legend { display: flex; flex-wrap: wrap; gap: 2mm 5mm; align-items: center; margin: 0; padding: 0; list-style: none; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .08em; text-transform: uppercase; color: var(--m-blue); }
+.m-legend { display: flex; flex-wrap: wrap; gap: 2mm 5mm; align-items: center; margin: 0; padding: 0; list-style: none; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-blue); }
 .m-legend li { display: inline-flex; align-items: center; gap: 1.6mm; }
 .m-legend svg { width: 6mm; height: 3mm; overflow: visible; }
 .m-key { display: inline-block; width: 3mm; height: 3mm; }
@@ -206,13 +206,13 @@
 /* =========================================================
    TABLES, hairlines, no fills, numbers right-aligned.
    ========================================================= */
-.m-table { width: 100%; border-collapse: collapse; font: 400 7.7pt/1.4 var(--m-font-text); color: var(--m-blue); }
-.m-table th { font: 700 7.7pt/1.2 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); text-align: left; padding: 0 3mm 2mm 0; border-bottom: 0.29mm solid var(--m-route); vertical-align: bottom; }
+.m-table { width: 100%; border-collapse: collapse; font: 400 8.5pt/1.4 var(--m-font-text); color: var(--m-blue); }
+.m-table th { font: 600 8.5pt/1.2 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-route); text-align: left; padding: 0 3mm 2mm 0; border-bottom: 0.29mm solid var(--m-route); vertical-align: bottom; }
 .m-table td { padding: 2mm 3mm 2mm 0; border-bottom: 0.2mm solid var(--m-paper-deep); vertical-align: top; }
-.m-table .num { text-align: right; font-variant-numeric: tabular-nums lining-nums; font-family: var(--m-font-text); font-weight: 700; font-size: 7.7pt; }
+.m-table .num { text-align: right; font-variant-numeric: tabular-nums lining-nums; font-family: var(--m-font-text); font-weight: 600; font-size: 8.5pt; }
 .m-table tr.is-key td { background: linear-gradient(transparent 0 0); }
 .m-table tr.is-key td:first-child { box-shadow: inset 1mm 0 0 var(--m-mustard); padding-left: 2.4mm; }
-.m-table caption { caption-side: bottom; text-align: left; font: italic 400 7.7pt/1.5 var(--m-font-text); color: var(--m-blue); padding-top: var(--m-rhythm-tight); }
+.m-table caption { caption-side: bottom; text-align: left; font: italic 400 8.5pt/1.5 var(--m-font-text); color: var(--m-blue); padding-top: var(--m-rhythm-tight); }
 
 /* =========================================================
    NAVIGATION, contents as a route, chapter stops.
@@ -222,11 +222,11 @@
 .m-contents li { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 4mm; align-items: baseline; padding: 1.6mm 0; }
 .m-contents li::before { content: ""; position: absolute; left: -7mm; top: 50%; width: var(--m-route-node); height: var(--m-route-node); margin-top: calc(var(--m-route-node) / -2); border-radius: 50%; background: var(--m-route); }
 .m-contents li.is-future::before { background: var(--m-paper); box-sizing: border-box; border: 0.29mm solid var(--m-route); }
-.m-contents a, .m-contents span.t { font: 700 10pt/1.1 var(--m-font-text); text-transform: uppercase; color: var(--m-blue); text-decoration: none; }
-.m-contents small { font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; color: var(--m-route); margin-right: 2mm; }
-.m-contents .pg { font: 700 7.7pt/1 var(--m-font-text); color: var(--m-route); }
+.m-contents a, .m-contents span.t { font: 600 10.5pt/1.1 var(--m-font-text); color: var(--m-blue); text-decoration: none; }
+.m-contents small { font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-route); margin-right: 2mm; }
+.m-contents .pg { font: 600 8.5pt/1 var(--m-font-text); color: var(--m-route); }
 
-.m-crumb { display: flex; flex-wrap: wrap; gap: 1.6mm; align-items: center; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-blue); }
+.m-crumb { display: flex; flex-wrap: wrap; gap: 1.6mm; align-items: center; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-blue); }
 .m-crumb span + span::before { content: ""; display: inline-block; width: 3.4mm; height: 2.2mm; margin-right: 1.6mm; background: var(--m-arrow) center / contain no-repeat; }
 
 /* Arrow: a drawn route arrow, the design consequence. Used instead of an arrow character so no other font is needed. */
@@ -269,12 +269,12 @@
   background-size: cover, 90px 90px;
 }
 .m-img--ph.m-img--duotone { background-color: #2E36A1; }
-.m-img__tag { position: absolute; left: 2mm; bottom: 2mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .12em; text-transform: uppercase; color: var(--m-paper); opacity: .85; }
+.m-img__tag { position: absolute; left: 2mm; bottom: 2mm; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-paper); opacity: .85; }
 
 /* Artifact print: a photo treated as a collected object, paper border, turned, taped. */
 .m-print { position: relative; display: inline-block; background: var(--m-paper); padding: 2.4mm 2.4mm 7mm; box-shadow: 0 0 0 0.25mm var(--m-paper-deep); transform: rotate(-2.5deg); }
 .m-print .m-img { width: 100%; }
-.m-print figcaption { position: absolute; left: 2.4mm; right: 2.4mm; bottom: 1.8mm; font: italic 400 7.7pt/1 var(--m-font-text); color: var(--m-blue); }
+.m-print figcaption { position: absolute; left: 2.4mm; right: 2.4mm; bottom: 1.8mm; font: italic 400 8.5pt/1 var(--m-font-text); color: var(--m-blue); }
 
 /* Device frame for prototype screens. */
 .m-device { display: inline-block; background: var(--m-ink); border-radius: 5mm; padding: 2.6mm; box-sizing: border-box; }
@@ -289,9 +289,9 @@
    PARTICIPANT, codes and context, never names or faces.
    ========================================================= */
 .m-participant { display: grid; grid-template-columns: auto 1fr; gap: var(--m-rhythm-tight) var(--m-rhythm-gutter); align-items: start; }
-.m-participant .code { grid-row: span 3; font: 700 21pt/1 var(--m-font-display); color: var(--m-blue); }
-.m-participant dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.8mm 2.4mm; font: 400 7.7pt/1.35 var(--m-font-text); color: var(--m-blue); }
-.m-participant dt { font: 700 7.7pt/1.6 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
+.m-participant .code { grid-row: span 3; font: 600 16.5pt/1 var(--m-font-display); color: var(--m-blue); }
+.m-participant dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.8mm 2.4mm; font: 400 8.5pt/1.35 var(--m-font-text); color: var(--m-blue); }
+.m-participant dt { font: 600 8.5pt/1.6 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-route); }
 .m-participant dd { margin: 0; }
 
 /* =========================================================
@@ -302,8 +302,8 @@
 .m-figure > .m-heading { margin: 0 0 var(--m-rhythm-block); }
 .m-chart text { font-variant-numeric: lining-nums tabular-nums; }
 .m-chart-data { margin-top: var(--m-rhythm-snug); }
-.m-chart-data summary { cursor: pointer; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); list-style: none; display: inline-flex; gap: 1.4mm; align-items: center; }
-.m-chart-data summary::before { content: "+"; font-size: 7.7pt; }
+.m-chart-data summary { cursor: pointer; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; color: var(--m-route); list-style: none; display: inline-flex; gap: 1.4mm; align-items: center; }
+.m-chart-data summary::before { content: "+"; font-size: 8.5pt; }
 .m-chart-data[open] summary::before { content: "−"; }
 .m-chart-data summary:focus-visible { outline: 0.6mm solid var(--m-blue); outline-offset: 0.6mm; }
 .m-chart-data .m-table { margin-top: 3mm; }
@@ -311,15 +311,15 @@
 
 /* Hero figure: when the story is one number, the number is the chart. */
 .m-hero-stat { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--m-rhythm-gutter); align-items: center; }
-.m-hero-stat .n { font: 700 21pt/0.9 var(--m-font-display); color: var(--m-blue); letter-spacing: -0.01em; }
+.m-hero-stat .n { font: 600 16.5pt/0.9 var(--m-font-display); color: var(--m-blue); letter-spacing: -0.01em; }
 .m-hero-stat .n small { font-size: 0.4em; letter-spacing: 0; color: var(--m-blue); }
 
 /* Affinity cluster: quotes grouped under a theme, as slips. */
 .m-cluster { display: grid; gap: var(--m-rhythm-snug); align-content: start; }
 .m-cluster h4 { margin: 0 0 1mm; }
-.m-slip { background: var(--m-paper-deep); padding: 2mm 2.6mm; font: italic 400 7.7pt/1.5 var(--m-font-text); color: var(--m-blue); }
+.m-slip { background: var(--m-paper-deep); padding: 2mm 2.6mm; font: italic 400 8.5pt/1.5 var(--m-font-text); color: var(--m-blue); }
 .m-slip:nth-child(odd) { transform: rotate(-0.8deg); } .m-slip:nth-child(even) { transform: rotate(0.9deg); }
-.m-slip cite { display: block; font: 700 7.7pt/1 var(--m-font-text); font-style: normal; letter-spacing: .1em; color: var(--m-route); margin-top: 1.2mm; }
+.m-slip cite { display: block; font: 600 8.5pt/1 var(--m-font-text); font-style: normal; letter-spacing: 0.03em; color: var(--m-route); margin-top: 1.2mm; }
 .m-slip--key { background: var(--m-mustard); color: var(--m-ink); }
 .m-slip--key cite { color: var(--m-ink); }
 
@@ -340,14 +340,14 @@
   padding: 2.2mm 4.4mm; border-radius: var(--m-frost-radius);
   background: var(--m-frost-fill); border: 0.2mm solid var(--m-frost-edge);
   -webkit-backdrop-filter: blur(var(--m-frost-blur)); backdrop-filter: blur(var(--m-frost-blur));
-  color: var(--m-paper); font: 400 10pt/1.2 var(--m-font-text);
+  color: var(--m-paper); font: 400 10.5pt/1.2 var(--m-font-text);
 }
 /* On yellow or a light photograph the frost darkens instead, and the text turns ink. */
 .m-field--yellow .m-frost, .m-frost--on-light { background: rgba(48, 45, 64, 0.1); border-color: rgba(48, 45, 64, 0.08); color: var(--m-ink); }
 .m-frost--strong { background: var(--m-frost-fill-strong); }
-.m-frost--label { padding: 1.3mm 2.8mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .06em; text-transform: uppercase; }
-.m-frost--circle { justify-content: center; width: 9mm; height: 9mm; padding: 0; font: 700 10pt/1 var(--m-font-display); }
-.m-frost--circle.m-frost--lg { width: 16mm; height: 16mm; font-size: 17.5pt; }
+.m-frost--label { padding: 1.3mm 2.8mm; font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; }
+.m-frost--circle { justify-content: center; width: 9mm; height: 9mm; padding: 0; font: 600 10.5pt/1 var(--m-font-display); }
+.m-frost--circle.m-frost--lg { width: 16mm; height: 16mm; font-size: 13.5pt; }
 .m-frost .m-dot { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: currentColor; }
 
 /* A row of frosted pills that runs off both edges, as the reference's carousel. */
@@ -355,7 +355,7 @@
 .m-frost-row > :first-child { margin-left: -6mm; }
 
 /* Chips: small, square-ish, one word. Grey by default; one selected chip in sky or red. */
-.m-chip { display: inline-flex; align-items: center; padding: 1.2mm 2.2mm; border-radius: var(--m-chip-radius); background: var(--m-paper-deep); color: rgba(48, 45, 64, 0.6); font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .05em; text-transform: uppercase; }
+.m-chip { display: inline-flex; align-items: center; padding: 1.2mm 2.2mm; border-radius: var(--m-chip-radius); background: var(--m-paper-deep); color: rgba(48, 45, 64, 0.6); font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; }
 .m-chip--sky  { background: var(--m-sky); color: var(--m-ink); }
 .m-chip--red  { background: var(--m-route); color: var(--m-paper); }
 .m-chip--blue { background: var(--m-blue); color: var(--m-paper); }
@@ -364,11 +364,11 @@
 /* Sheet: a white card over a colour field, with a grab handle and a two-tab header. */
 .m-sheet { position: relative; background: var(--m-paper); color: var(--m-ink); border-radius: var(--m-sheet-radius); padding: 7mm var(--m-rhythm-gutter) var(--m-rhythm-gutter); }
 .m-sheet::before { content: ""; position: absolute; top: 2.4mm; left: 50%; width: 7mm; height: 0.8mm; margin-left: -3.5mm; border-radius: 1mm; background: var(--m-paper-deep); }
-.m-sheet__tabs { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--m-rhythm-block); font: 700 10.5pt/1.2 var(--m-font-text); }
+.m-sheet__tabs { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--m-rhythm-block); font: 600 16.5pt/1.2 var(--m-font-text); }
 .m-sheet__tabs span + span { color: rgba(48, 45, 64, 0.35); }
 
 /* Round action button with a count badge. */
 .m-fab { position: relative; display: inline-grid; place-items: center; width: 11mm; height: 11mm; border-radius: 50%; background: var(--m-blue); color: var(--m-paper); }
 .m-fab::before { content: ""; width: 4.2mm; height: 3.6mm; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M2 1h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H6l-3 2.4V9H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z' fill='none' stroke='%23FFFFFF' stroke-width='1.1' stroke-linejoin='round'/%3E%3Cpath d='M4.6 5.6c.8.8 4 .8 4.8 0' fill='none' stroke='%23FFFFFF' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; }
-.m-fab__badge { position: absolute; top: -0.6mm; right: -0.6mm; min-width: 3.6mm; height: 3.6mm; border-radius: 99px; background: var(--m-route); color: var(--m-paper); font: 700 7.7pt/3.6mm var(--m-font-text); text-align: center; border: 0.3mm solid var(--m-paper); }
+.m-fab__badge { position: absolute; top: -0.6mm; right: -0.6mm; min-width: 3.6mm; height: 3.6mm; border-radius: 99px; background: var(--m-route); color: var(--m-paper); font: 600 8.5pt/3.6mm var(--m-font-text); text-align: center; border: 0.3mm solid var(--m-paper); }
 @media print { .m-frost { -webkit-backdrop-filter: none; backdrop-filter: none; } }

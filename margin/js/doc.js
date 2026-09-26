@@ -1,7 +1,7 @@
 /* Margin documentation helpers. Not part of the system. */
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
-  var SCALE_PT = [7.7, 10, 10.5, 17.5, 21];
+  var SCALE_PT = [8.5, 10.5, 13.5, 16.5];
   /* SVG text sizes (mm) snap to the type scale. */
   function snap(mm) { var pt = mm * 72 / 25.4, b = SCALE_PT[0]; SCALE_PT.forEach(function (s) { if (Math.abs(s - pt) < Math.abs(b - pt)) b = s; }); return +(b * 25.4 / 72).toFixed(3); }
   function svgEl(name, attrs, parent) {

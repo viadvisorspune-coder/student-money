@@ -14,33 +14,33 @@
   --m-blue-4: #2E36A1;
   --m-blue-5: #1D2270;
 
-  --m-font-display: 'Biryani', sans-serif;
-  --m-font-text: 'DM Sans', 'Biryani', sans-serif;
+  --m-font-display: 'Nunito Sans', sans-serif;
+  --m-font-text: 'Nunito Sans', sans-serif;
 
-  --m-display-xl-size: 21pt;
-  --m-display-xl-leading: 1.3;
-  --m-display-l-size: 17.5pt;
-  --m-display-l-leading: 1.24;
-  --m-closing-size: 17.5pt;
-  --m-closing-leading: 1.24;
-  --m-station-size: 17.5pt;
-  --m-station-leading: 1.24;
-  --m-stat-size: 17.5pt;
-  --m-stat-leading: 1.24;
-  --m-heading-size: 10.5pt;
-  --m-heading-leading: 1.24;
-  --m-label-size: 7.7pt;
-  --m-label-leading: 1.3;
-  --m-folio-size: 7.7pt;
+  --m-display-xl-size: 16.5pt;
+  --m-display-xl-leading: 1.2;
+  --m-display-l-size: 16.5pt;
+  --m-display-l-leading: 1.2;
+  --m-closing-size: 13.5pt;
+  --m-closing-leading: 1.25;
+  --m-station-size: 13.5pt;
+  --m-station-leading: 1.25;
+  --m-stat-size: 13.5pt;
+  --m-stat-leading: 1.25;
+  --m-heading-size: 13.5pt;
+  --m-heading-leading: 1.25;
+  --m-quote-size: 13.5pt;
+  --m-quote-leading: 1.3;
+  --m-body-size: 10.5pt;
+  --m-body-leading: 1.35;
+  --m-label-size: 8.5pt;
+  --m-label-leading: 1.25;
+  --m-folio-size: 8.5pt;
   --m-folio-leading: 1;
-  --m-body-size: 10pt;
-  --m-body-leading: 1.32;
-  --m-quote-size: 17.5pt;
-  --m-quote-leading: 1.24;
-  --m-note-size: 7.7pt;
-  --m-note-leading: 1.5;
-  --m-caption-size: 7.7pt;
-  --m-caption-leading: 1.5;
+  --m-note-size: 8.5pt;
+  --m-note-leading: 1.35;
+  --m-caption-size: 8.5pt;
+  --m-caption-leading: 1.35;
 
   --m-page-width: 210mm;
   --m-page-height: 297mm;
@@ -102,43 +102,39 @@
   font-family: var(--m-font-display);
   font-size: var(--m-display-xl-size);
   line-height: var(--m-display-xl-leading);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0;
-  text-transform: uppercase;
   color: var(--m-blue);
 }
 .m-display-l {
   font-family: var(--m-font-display);
   font-size: var(--m-display-l-size);
   line-height: var(--m-display-l-leading);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0;
-  text-transform: uppercase;
   color: var(--m-blue);
 }
 .m-closing {
   font-family: var(--m-font-display);
   font-size: var(--m-closing-size);
   line-height: var(--m-closing-leading);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
-  text-transform: uppercase;
   color: var(--m-blue);
 }
 .m-station {
   font-family: var(--m-font-display);
   font-size: var(--m-station-size);
   line-height: var(--m-station-leading);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
-  text-transform: uppercase;
   color: var(--m-blue);
 }
 .m-stat {
   font-family: var(--m-font-display);
   font-size: var(--m-stat-size);
   line-height: var(--m-stat-leading);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
   color: var(--m-blue);
 }
@@ -146,32 +142,7 @@
   font-family: var(--m-font-text);
   font-size: var(--m-heading-size);
   line-height: var(--m-heading-leading);
-  font-weight: 700;
-  letter-spacing: 0;
-  color: var(--m-blue);
-}
-.m-label {
-  font-family: var(--m-font-text);
-  font-size: var(--m-label-size);
-  line-height: var(--m-label-leading);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--m-route);
-}
-.m-folio {
-  font-family: var(--m-font-text);
-  font-size: var(--m-folio-size);
-  line-height: var(--m-folio-leading);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--m-route);
-}
-.m-body {
-  font-family: var(--m-font-text);
-  font-size: var(--m-body-size);
-  line-height: var(--m-body-leading);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 0;
   color: var(--m-blue);
 }
@@ -183,6 +154,30 @@
   font-style: italic;
   letter-spacing: 0;
   color: var(--m-blue);
+}
+.m-body {
+  font-family: var(--m-font-text);
+  font-size: var(--m-body-size);
+  line-height: var(--m-body-leading);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--m-blue);
+}
+.m-label {
+  font-family: var(--m-font-text);
+  font-size: var(--m-label-size);
+  line-height: var(--m-label-leading);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--m-route);
+}
+.m-folio {
+  font-family: var(--m-font-text);
+  font-size: var(--m-folio-size);
+  line-height: var(--m-folio-leading);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--m-route);
 }
 .m-note {
   font-family: var(--m-font-text);
@@ -197,7 +192,7 @@
   font-size: var(--m-caption-size);
   line-height: var(--m-caption-leading);
   font-weight: 400;
-  font-style: italic;
   letter-spacing: 0;
+  opacity: 0.6;
   color: var(--m-blue);
 }

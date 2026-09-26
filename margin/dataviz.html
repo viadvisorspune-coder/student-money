@@ -310,7 +310,7 @@
       T(s, x(p[0]), up ? 8 : 54, p[0] + ' SEP', 'm-label m-label--blue', { anchor: 'middle', size: 2.1 });
     });
     el('line', { x1: x(25), x2: x(25), y1: 24, y2: 36, stroke: C.ink, 'stroke-width': 0.2 }, s);
-    T(s, x(25) + 1, 24.5, 'TODAY', 'm-label m-label--blue', { size: 1.9 });
+    T(s, x(25) + 1, 24.5, 'Today', 'm-label m-label--blue', { size: 1.9 });
     MC.table(after('c-study'), ['Date', 'Stage', 'Detail'], stops.map(function (p) { return [p[0] + ' September', p[1], p[2]]; }));
   })();
 
@@ -319,7 +319,7 @@
     var W = 180, H = 96, s = MC.svg(host('c-lanes'), W, H, 'Every diary spend by participant, day and hour');
     var x = function (day, hour) { return 16 + (day - 1) * 27 + (hour - 7) / 17 * 25; };
     for (var d = 1; d <= 6; d++) {
-      T(s, x(d, 7), 5, 'DAY 0' + d, 'm-station', { size: 3 });
+      T(s, x(d, 7), 5, 'Day 0' + d, 'm-station', { size: 3 });
       el('line', { x1: x(d, 7) - 1, x2: x(d, 7) - 1, y1: 8, y2: 84, stroke: C.deep, 'stroke-width': 0.2 }, s);
     }
     P.forEach(function (p, i) {
@@ -356,8 +356,8 @@
     var W = 180, H = 84, s = MC.svg(host('c-severity'), W, H, 'Usability issues by severity and frequency');
     var x = MC.lin(0.5, 6.5, 22, 112), y = MC.lin(0.5, 4.5, 72, 8);
     el('rect', { x: x(2.5), y: y(4.5), width: x(6.5) - x(2.5), height: y(2.5) - y(4.5), fill: C.mustard, opacity: 0.5 }, s);
-    T(s, x(6.5) - 1, y(4.5) + 3.4, 'FIX FIRST', 'm-label', { anchor: 'end', size: 2.2 });
-    MC.axisX(s, x, 72, [1, 2, 3, 4, 5, 6], null, { title: 'PARTICIPANTS WHO HIT IT, OF 6' });
+    T(s, x(6.5) - 1, y(4.5) + 3.4, 'Fix first', 'm-label', { anchor: 'end', size: 2.2 });
+    MC.axisX(s, x, 72, [1, 2, 3, 4, 5, 6], null, { title: 'Participants who hit it, of 6' });
     MC.axisY(s, y, 22, [1, 2, 3, 4], function (v) { return ['Cosmetic', 'Minor', 'Major', 'Blocks'][v - 1]; });
     ISSUES.forEach(function (it) {
       var red = it[0] === 3;
@@ -450,8 +450,8 @@
     });
     el('line', { x1: 14, x2: 164, y1: 56, y2: 56, stroke: C.ink, 'stroke-width': 0.2 }, s);
     [0, 1, 2, 3].forEach(function (i) { MC.mark(s, i === 3 ? 'dot' : 'ring', x(i), 56, 1.4, { fill: C.blue }); });
-    T(s, 14, 63, 'LOW', 'm-label m-label--blue', { size: 2.2 }); T(s, 164, 63, 'HIGH', 'm-label m-label--blue', { anchor: 'end', size: 2.2 });
-    T(s, 89, 63, 'STUDENT AGENCY', 'm-label', { anchor: 'middle', size: 2.2 });
+    T(s, 14, 63, 'Low', 'm-label m-label--blue', { size: 2.2 }); T(s, 164, 63, 'High', 'm-label m-label--blue', { anchor: 'end', size: 2.2 });
+    T(s, 89, 63, 'Student agency', 'm-label', { anchor: 'middle', size: 2.2 });
     MC.table(after('c-evo'), ['Version', 'Stance', 'Example copy'], V.map(function (v) { return [v[0], v[1], v[2]]; }));
   })();
 
@@ -478,7 +478,7 @@
     var W = 180, H = 84, s = MC.svg(host('c-likert'), W, H, 'Agreement with post-test statements by version');
     var mid = 110, u = 8; // mm per participant
     el('line', { x1: mid, x2: mid, y1: 6, y2: 76, stroke: C.ink, 'stroke-width': 0.2 }, s);
-    T(s, mid - 3 * u, 4, 'DISAGREE', 'm-label', { anchor: 'middle', size: 2.2 }); T(s, mid + 3 * u, 4, 'AGREE', 'm-label m-label--blue', { anchor: 'middle', size: 2.2 });
+    T(s, mid - 3 * u, 4, 'Disagree', 'm-label', { anchor: 'middle', size: 2.2 }); T(s, mid + 3 * u, 4, 'Agree', 'm-label m-label--blue', { anchor: 'middle', size: 2.2 });
     var rows = [], row = 0;
     LIKERT.forEach(function (st, si) {
       T(s, 0, 12 + si * 36, st[0], 'm-heading', { size: 2.8 });
@@ -501,7 +501,7 @@
   (function () {
     var W = 180, H = 50, s = MC.svg(host('c-strip'), W, H, 'Time on task by version');
     var x = MC.lin(0, 180, 22, 172);
-    MC.axisX(s, x, 40, [0, 30, 60, 90, 120, 150, 180], function (t) { return Math.floor(t / 60) + ':' + ('0' + t % 60).slice(-2); }, { title: 'MINUTES : SECONDS' });
+    MC.axisX(s, x, 40, [0, 30, 60, 90, 120, 150, 180], function (t) { return Math.floor(t / 60) + ':' + ('0' + t % 60).slice(-2); }, { title: 'Minutes : seconds' });
     VERS.forEach(function (v, i) {
       var y = 8 + i * 11, vals = TIME[v].slice().sort(function (a, b) { return a - b; }), n = vals.length;
       var med = n % 2 ? vals[(n - 1) / 2] : (vals[n / 2 - 1] + vals[n / 2]) / 2;

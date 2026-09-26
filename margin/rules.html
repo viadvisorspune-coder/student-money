@@ -17,8 +17,8 @@
   .dd .m-kicker { display: block; margin-bottom: 1.4mm; }
   .numbered { counter-reset: r; list-style: none; margin: 0; padding: 0; display: grid; gap: 4mm; }
   .numbered li { counter-increment: r; display: grid; grid-template-columns: 10mm 1fr; gap: 3mm; }
-  .numbered li::before { content: counter(r, decimal-leading-zero); font: 700 10.5pt/1.2 var(--m-font-text); color: var(--m-blue); }
-  .numbered b { font-family: var(--m-font-text); font-weight: 700; font-size: 7.7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--m-route); display: block; margin-bottom: 0.6mm; }
+  .numbered li::before { content: counter(r, decimal-leading-zero); font: 600 10.5pt/1.2 var(--m-font-text); color: var(--m-blue); }
+  .numbered b { font-family: var(--m-font-text); font-weight: 600; font-size: 8.5pt; letter-spacing: 0.03em; color: var(--m-route); display: block; margin-bottom: 0.6mm; }
 </style>
 </head>
 <body class="m-paper">
@@ -81,7 +81,7 @@
     <div><span class="m-kicker">Do</span><p class="m-body">Separate items in a label with a comma or a slash: P03, Day 4, Interview.</p></div>
     <div class="no"><span class="m-kicker">Don't</span><p class="m-body">Middle dots between words, or long dashes as punctuation. Rewrite the sentence instead.</p></div>
     <div><span class="m-kicker">Do</span><p class="m-body">Keep display type for signposts: headlines, days, figures.</p></div>
-    <div class="no"><span class="m-kicker">Don't</span><p class="m-body">Set a paragraph in capitals, or a headline in italic.</p></div>
+    <div class="no"><span class="m-kicker">Don't</span><p class="m-body">Set anything in capitals for emphasis, or a headline in italic.</p></div>
   </div>
 </section>
 
@@ -91,7 +91,7 @@
   <ol class="numbered m-body">
     <li><div><b>Contrast</b>Running text is blue (9.73 : 1 on white) or ink. Red (3.77 : 1) is for labels, notes and folios only, and never the only place a fact appears. Yellow (1.34 : 1) and sky (2.69 : 1) are never text; they are fills with ink or blue text.</div></li>
     <li><div><b>Never colour alone</b>Node shape, line style, outcome shape and direct labels carry meaning; colour repeats it. Every chart reads in greyscale.</div></li>
-    <li><div><b>Five sizes</b>21, 17.5, 10.5, 10 and 7.7pt, and nothing else. Body is 10pt. Nothing is smaller than 7.7pt, chart labels included.</div></li>
+    <li><div><b>Four sizes</b>16.5, 13.5, 10.5 and 8.5pt, and nothing else. Body is 10.5pt. Nothing is smaller than 8.5pt, chart labels included. Muted text uses opacity, never a smaller size.</div></li>
     <li><div><b>Every chart has its numbers</b>In print, the values are labelled or tabled on the page. On screen, each chart has a data table and each mark a tooltip.</div></li>
     <li><div><b>Images</b>Every image has alt text describing what it shows and why it is there. Placeholders say their format.</div></li>
     <li><div><b>Reading order</b>The route shows the reading order. Where it cannot, the text order in the file follows the route, not the page position.</div></li>
