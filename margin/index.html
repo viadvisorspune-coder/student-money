@@ -15,7 +15,7 @@
   .chapters li:last-child a { border-bottom: 0.3mm solid var(--m-paper-deep); }
   .chapters a:hover .m-closing, .chapters a:focus-visible .m-closing { color: var(--m-route); }
   .chapters a:focus-visible { outline: 0.6mm solid var(--m-blue); outline-offset: 1mm; }
-  .chapters .m-station { font-size: 24pt; }
+  .chapters .m-station { font-size: 21pt; }
   .chapters p { margin: 0; }
 </style>
 </head>
@@ -24,9 +24,9 @@
 
 <div class="fit"><div id="cover" style="position:relative;width:200mm;height:120mm">
   <svg id="cover-route" viewBox="0 0 200 120" style="position:absolute;inset:0;width:200mm;height:120mm" aria-hidden="true"></svg>
-  <h1 class="m-display-xl" style="position:absolute;left:62mm;top:4mm;margin:0;font-size:78pt">Margin</h1>
-  <p class="m-label" style="position:absolute;left:63mm;top:34mm;margin:0">Design system &nbsp;/&nbsp; Kharcha research report &nbsp;/&nbsp; v0.1</p>
-  <div class="m-body" style="position:absolute;left:63mm;top:44mm;width:84mm"><p style="margin:0">Editorial, archival and a little playful. A system for a user-research report about how students spend, built on one idea: the research itself becomes the graphic language. A day is a line, a spend is a node, a plan is a ghost, a finding is a place the line arrives at.</p></div>
+  <h1 class="m-display-xl" style="position:absolute;left:62mm;top:11mm;margin:0">Margin</h1>
+  <p class="m-label" style="position:absolute;left:62mm;top:21.5mm;margin:0">Design system &nbsp;/&nbsp; Margin research report &nbsp;/&nbsp; v0.1</p>
+  <div class="m-body" style="position:absolute;left:62mm;top:30mm;width:68mm"><p style="margin:0">Editorial, archival and a little playful. A system for a user-research report about how students spend, built on one idea: the research itself becomes the graphic language. A day is a line, a spend is a node, a plan is a ghost, a finding is a place the line arrives at.</p></div>
   <img src="icons/rickshaw.svg" alt="" style="position:absolute;left:158mm;top:40mm;width:34mm;transform:rotate(8deg)">
   <span class="m-station m-vertical" style="position:absolute;left:14.4mm;top:47mm">2026</span>
   <p class="m-closing" style="position:absolute;left:92mm;top:98mm;margin:0">Six chapters</p>
@@ -48,7 +48,7 @@
     <tbody>
       <tr><td>tokens/tokens.json</td><td>Source of truth: colour, type, page, spacing, route geometry, motion. Edit, then run <b>npm run margin:tokens</b>.</td></tr>
       <tr><td>css/tokens.css</td><td>Generated from tokens.json. Never edit by hand.</td></tr>
-      <tr><td>css/fonts.css + fonts/</td><td>Montserrat and Merriweather, self-hosted, SIL Open Font Licence.</td></tr>
+      <tr><td>css/fonts.css + fonts/</td><td>Biryani for headings and DM Sans for body, self-hosted, SIL Open Font Licence.</td></tr>
       <tr><td>css/margin.css</td><td>Foundations: page, text behaviour, the route, station breaks, motion.</td></tr>
       <tr><td>css/components.css</td><td>Every component on pages 02–04, and chart frames.</td></tr>
       <tr><td>js/route.js</td><td>Draws the route with rounded turns and the node symbols. Margin.route, Margin.node.</td></tr>
@@ -63,8 +63,8 @@
 <section class="f" id="open">
   <header class="f-head"><div class="m-break"><span class="m-station">Open</span></div><p class="m-label">Margin</p><h2 class="m-display-l">To decide</h2></header>
   <ul class="rules m-body">
-    <li><b>Typefaces</b>Montserrat and Merriweather are the closest free matches to the reference. If the reference's own faces are known and licensed, swap them in tokens.json.</li>
-    <li><b>Mustard contrast</b>The reference's mustard is 1.89 : 1 on paper. Kept exact and limited to large headlines; a darker text mustard is available if the report must meet WCAG for all text.</li>
+    <li><b>Oversized type</b>The type scale now tops out at 21pt, as in the second reference. The big-number and chapter-opener spreads lost their oversized figures; they can return as a named exception if wanted.</li>
+    <li><b>Mustard contrast</b>The reference mustard is 1.89 : 1 on paper, below WCAG even for large text. It is kept exact and used only for headlines; a darker text mustard is needed if every element must pass.</li>
     <li><b>Page size</b>A4 portrait spreads assumed. The reference book is smaller; the grid scales from tokens.</li>
     <li><b>Real data</b>Every figure here is sample data, and must be replaced from the study archive.</li>
   </ul>

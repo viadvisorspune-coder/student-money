@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Margin — Data visualisation</title>
+<title>Margin Data visualisation</title>
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/margin.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/doc.css">
 <style>
-  .chart { margin-top: 12mm; }
+  .chart { margin-top: calc(var(--m-rhythm-block) * 2); }
   .chart .fit { margin-top: 2mm; }
-  .use { display: grid; grid-template-columns: repeat(auto-fit, minmax(50mm, 1fr)); gap: 3mm 8mm; margin-top: 4mm; }
+  .use { display: grid; grid-template-columns: repeat(auto-fit, minmax(50mm, 1fr)); gap: var(--m-rhythm-snug) var(--m-rhythm-gutter); margin-top: var(--m-rhythm-block); }
   .use p { margin: 0; }
   .sample { display: inline-block; margin-top: 4mm; }
 </style>
@@ -38,26 +38,26 @@
   <p class="m-body f-lede">Counts and measures from testing. Show the people, not the percentage: six marks per row, their shape telling the outcome.</p>
 
   <figure class="m-figure chart" id="c-hero">
-    <span class="m-kicker">Hero figure · when the story is one number</span>
+    <span class="m-kicker">Hero figure, when the story is one number</span>
     <div class="m-hero-stat"><span class="n">5<small> of 6</small></span>
       <div><p class="m-heading" style="margin:0 0 1.6mm">noticed the upcoming plan in V03</p><p class="m-body" style="margin:0;max-width:80mm">Up from 2 of 6 in V02, after the cue moved inside the result screen.</p>
       <span class="m-freq" style="margin-top:2.4mm" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></div>
   </figure>
 
   <figure class="m-figure chart" id="c-units">
-    <span class="m-kicker">Unit chart · task outcomes by version</span>
+    <span class="m-kicker">Unit chart, task outcomes by version</span>
     <h3 class="m-heading">One mark per participant, shape is the outcome</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.1</b><span>Task outcomes across three test rounds, n = 6 each. Filled: completed. Half: completed with help. Ring: not completed.</span></p>
   </figure>
 
   <figure class="m-figure chart" id="c-line">
-    <span class="m-kicker">Annotated line · one participant, six days</span>
+    <span class="m-kicker">Annotated line, one participant, six days</span>
     <h3 class="m-heading">P02, spent per day</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.2</b><span>Daily total from P02's diary. Mark shape follows the largest spend of the day.</span></p>
   </figure>
-  <div class="use m-body"><p><b class="m-kicker">Use</b><br>Unit charts whenever n ≤ 12. A line only for one person or one measure over time.</p><p><b class="m-kicker">Never</b><br>Percentages of six. Pie charts. A number on every point.</p></div>
+  <div class="use m-body"><p><b class="m-kicker">Use</b><br>Unit charts whenever n is 12 or fewer. A line only for one person or one measure over time.</p><p><b class="m-kicker">Never</b><br>Percentages of six. Pie charts. A number on every point.</p></div>
 </section>
 
 <!-- 03.2 QUALITATIVE -->
@@ -66,7 +66,7 @@
   <p class="m-body f-lede">What people said and felt. The chart shows structure (which themes, how often, how feelings moved), and the quotes stay on the page as evidence.</p>
 
   <figure class="m-figure chart" id="c-affinity">
-    <span class="m-kicker">Affinity clusters · quotes grouped by theme</span>
+    <span class="m-kicker">Affinity clusters, quotes grouped by theme</span>
     <h3 class="m-heading">What participants said about plans</h3>
     <div class="demo-grid" style="grid-template-columns:repeat(auto-fit,minmax(48mm,1fr));gap:8mm">
       <div class="m-cluster"><h4 class="m-heading">Future-blind <span class="m-freq" style="vertical-align:1px"><b>5 / 6</b></span></h4>
@@ -84,7 +84,7 @@
   </figure>
 
   <figure class="m-figure chart" id="c-feel">
-    <span class="m-kicker">Feeling curve · one decision, as reported</span>
+    <span class="m-kicker">Feeling curve, one decision, as reported</span>
     <h3 class="m-heading">P03, the evening of day 4</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.4</b><span>Self-reported comfort at each moment, from the day-4 interview. A reported feeling, not a measurement: drawn as a dashed line for that reason.</span></p>
@@ -97,13 +97,13 @@
   <header class="f-head"><div class="m-break"><span class="m-station">03.3</span></div><p class="m-label">Data</p><h2 class="m-display-l">Timelines</h2></header>
   <p class="m-body f-lede">Time is the route. The study plan is a route with dated stations; the diary week is a set of parallel lanes, one per participant, where every spend is a node at the hour it happened.</p>
   <figure class="m-figure chart" id="c-study">
-    <span class="m-kicker">Route timeline · the study</span>
+    <span class="m-kicker">Route timeline, the study</span>
     <h3 class="m-heading">September 2026</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.5</b><span>Study plan. Hollow node: not yet happened at the time of writing (25 September).</span></p>
   </figure>
   <figure class="m-figure chart" id="c-lanes">
-    <span class="m-kicker">Swimlanes · every spend in the diary week</span>
+    <span class="m-kicker">Swimlanes, every spend in the diary week</span>
     <h3 class="m-heading">When spending happened</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.6</b><span>Diary entries, days 1–6. Position is the day and hour; area is the amount; shape is ordinary, planned or unexpected. Red lane: P02, whose week chapter 3 follows.</span></p>
@@ -115,13 +115,13 @@
   <header class="f-head"><div class="m-break"><span class="m-station">03.4</span></div><p class="m-label">Data</p><h2 class="m-display-l">Matrices</h2></header>
   <p class="m-body f-lede">Two questions at once. Who showed which pattern; which usability issues to fix first.</p>
   <figure class="m-figure chart" id="c-coding">
-    <span class="m-kicker">Coding matrix · participant × theme</span>
+    <span class="m-kicker">Coding matrix, participant × theme</span>
     <h3 class="m-heading">Patterns seen in the diary</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.7</b><span>A filled dot means the theme appeared at least once in that participant's diary or interview.</span></p>
   </figure>
   <figure class="m-figure chart" id="c-severity">
-    <span class="m-kicker">Severity × frequency · V02 usability issues</span>
+    <span class="m-kicker">Severity × frequency, V02 usability issues</span>
     <h3 class="m-heading">What to fix first</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.8</b><span>Seven issues from the V02 test. Frequency: participants who hit it. Severity: 1 cosmetic to 4 blocks the task.</span></p>
@@ -133,7 +133,7 @@
   <header class="f-head"><div class="m-break"><span class="m-station">03.5</span></div><p class="m-label">Data</p><h2 class="m-display-l">Maps</h2></header>
   <p class="m-body f-lede">A map is only drawn when place explains the spending. It is schematic: paper streets, places as stations, and one evening's route in red.</p>
   <figure class="m-figure chart" id="c-map">
-    <span class="m-kicker">Schematic map · where spending happened</span>
+    <span class="m-kicker">Schematic map, where spending happened</span>
     <h3 class="m-heading">Around campus</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.9</b><span>Circle area: number of diary spends at each place, all participants. Red route: P02, day 3. Not to scale.</span></p>
@@ -145,7 +145,7 @@
   <header class="f-head"><div class="m-break"><span class="m-station">03.6</span></div><p class="m-label">Data</p><h2 class="m-display-l">Networks</h2></header>
   <p class="m-body f-lede">Which patterns travel together. Nodes are themes, sized by how many participants showed them; a line joins two themes seen in the same person, thicker when more people showed both.</p>
   <figure class="m-figure chart" id="c-net">
-    <span class="m-kicker">Co-occurrence · themes</span>
+    <span class="m-kicker">Co-occurrence, themes</span>
     <h3 class="m-heading">Patterns that appear together</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.10</b><span>From the coding matrix (Fig 3.7). Only pairs shared by three or more participants are drawn. Red: social pull with future-blind, 4 of 6.</span></p>
@@ -157,13 +157,13 @@
   <header class="f-head"><div class="m-break"><span class="m-station">03.7</span></div><p class="m-label">Data</p><h2 class="m-display-l">Flows</h2></header>
   <p class="m-body f-lede">A flow is a route with weight. Line width is the count, so the route itself shows where people went.</p>
   <figure class="m-figure chart" id="c-flow">
-    <span class="m-kicker">Weighted route · decision moments</span>
-    <h3 class="m-heading">Knowing a plan ≠ considering it</h3>
+    <span class="m-kicker">Weighted route, decision moments</span>
+    <h3 class="m-heading">Knowing a plan is not considering it</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.11</b><span>The 24 diary spends made in a week that already held a plan. Width is proportional to the number of spends.</span></p>
   </figure>
   <figure class="m-figure chart" id="c-evo">
-    <span class="m-kicker">Evolution · the prototype</span>
+    <span class="m-kicker">Evolution, the prototype</span>
     <h3 class="m-heading">From advice to context</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.12</b><span>Four versions placed on one judgement: how much of the decision each left to the student. The line relaxes as control is handed over.</span></p>
@@ -175,13 +175,13 @@
   <header class="f-head"><div class="m-break"><span class="m-station">03.8</span></div><p class="m-label">Data</p><h2 class="m-display-l">Comparisons</h2></header>
   <p class="m-body f-lede">Versions against versions, never participants against each other. Slopes for before and after, diverging bars for agreement.</p>
   <figure class="m-figure chart" id="c-slope">
-    <span class="m-kicker">Slope · V02 to V03</span>
+    <span class="m-kicker">Slope, V02 to V03</span>
     <h3 class="m-heading">What changed between two rounds</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.13</b><span>Count of participants, of 6, in each round. The red line is the change the chapter discusses.</span></p>
   </figure>
   <figure class="m-figure chart" id="c-likert">
-    <span class="m-kicker">Diverging bars · post-test statements</span>
+    <span class="m-kicker">Diverging bars, post-test statements</span>
     <h3 class="m-heading">Agreement, by version</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.14</b><span>Five-point answers collapsed to three for a sample of six; the data table keeps all five.</span></p>
@@ -193,19 +193,19 @@
   <header class="f-head"><div class="m-break"><span class="m-station">03.9</span></div><p class="m-label">Data</p><h2 class="m-display-l">Distributions</h2></header>
   <p class="m-body f-lede">Show every value. A strip of dots with the median marked says more about six people than a mean and an error bar.</p>
   <figure class="m-figure chart" id="c-strip">
-    <span class="m-kicker">Strip plot · time on task</span>
+    <span class="m-kicker">Strip plot, time on task</span>
     <h3 class="m-heading">Checking a spend before paying</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.15</b><span>Seconds to complete, completers only. Tick: median.</span></p>
   </figure>
   <figure class="m-figure chart" id="c-hist">
-    <span class="m-kicker">Unit histogram · every diary spend</span>
+    <span class="m-kicker">Unit histogram, every diary spend</span>
     <h3 class="m-heading">How big the spends were</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.16</b><span>Each mark is one spend from the diary week, in ₹100 bins.</span></p>
   </figure>
   <figure class="m-figure chart" id="c-sus">
-    <span class="m-kicker">Dot plot · SUS score</span>
+    <span class="m-kicker">Dot plot, SUS score</span>
     <h3 class="m-heading">System Usability Scale, by version</h3>
     <div class="fit"><div class="host"></div></div>
     <p class="m-figcap"><b>Fig 3.17</b><span>One dot per participant. Dashed line: 68, the commonly cited average for SUS.</span></p>
@@ -246,13 +246,13 @@
       VERS.forEach(function (v, j) {
         var o = OUT[t][v], k = 0;
         [['dot', o[0], 'completed'], ['half', o[1], 'with help'], ['ring', o[2], 'not completed']].forEach(function (g) {
-          for (var n = 0; n < g[1]; n++, k++) MC.mark(s, g[0], x0 + 1.6 + j * colW + k * 4.4, y, 1.6, { fill: C.blue, title: t + ' · ' + v + ' · ' + g[2] });
+          for (var n = 0; n < g[1]; n++, k++) MC.mark(s, g[0], x0 + 1.6 + j * colW + k * 4.4, y, 1.6, { fill: C.blue, title: t + ', ' + v + ', ' + g[2] });
         });
       });
     });
     MC.note(s, x0 + 2 * colW + 24, 42, x0 + 2 * colW + 30, 50, '5 of 6, from 2', { size: 2.3 });
-    var rows = []; TASKS.forEach(function (t) { VERS.forEach(function (v) { rows.push([t + ' · ' + v].concat(OUT[t][v])); }); });
-    MC.table(after('c-units'), ['Task · version', 'Completed', 'With help', 'Not completed'], rows);
+    var rows = []; TASKS.forEach(function (t) { VERS.forEach(function (v) { rows.push([t + ', ' + v].concat(OUT[t][v])); }); });
+    MC.table(after('c-units'), ['Task, version', 'Completed', 'With help', 'Not completed'], rows);
   })();
 
   /* ===================== 3.1 Annotated line ===================== */
@@ -269,15 +269,15 @@
       MC.mark(s, SHAPE[big[4]], x(d), y(sum[i]), 1.6, { fill: d === 5 ? C.red : C.blue, title: 'Day ' + d + ': ' + MC.inr(sum[i]) });
     });
     T(s, x(5) + 3, y(sum[4]) + 1, MC.inr(sum[4]), 'm-stat', { size: 4.2 });
-    MC.note(s, x(5), y(sum[4]) + 2.4, x(5) - 14, 26, 'Planned: birthday dinner,|₹1,500, in their plans|since day 1', { anchor: 'end' });
-    MC.note(s, x(3), y(sum[2]) - 2.4, x(3) + 8, 36, 'Mess was bad; friends|suggested ordering');
+    MC.note(s, x(5), y(sum[4]) + 2.4, x(5) - 16, 12, 'Planned: birthday dinner,|₹1,500, in their plans|since day 1', { anchor: 'end' });
+    MC.note(s, x(3), y(sum[2]) - 2.4, x(3) - 6, 34, 'Mess was bad; friends|suggested ordering', { anchor: 'end' });
     MC.table(after('c-line'), ['Day', 'Total', 'Spends'], days.map(function (d, i) { return ['Day ' + d, MC.inr(sum[i]), tot[i].map(function (e) { return MC.inr(e[3]) + ' ' + e[6]; }).join('; ')]; }));
   })();
 
   /* ===================== 3.2 Feeling curve ===================== */
   (function () {
-    var W = 180, H = 76, s = MC.svg(host('c-feel'), W, H, 'P03 reported comfort across one evening');
-    var pts = [['Mess is bad', 0], ['Friends order', 1], ['Opens Kharcha', -1], ['Sees the number', -2], ['Orders anyway', 1], ['Later that night', -1], ['Friday', 0]];
+    var W = 180, H = 80, s = MC.svg(host('c-feel'), W, H, 'P03 reported comfort across one evening');
+    var pts = [['Mess is bad', 0], ['Friends order', 1], ['Opens Margin', -1], ['Sees the number', -2], ['Orders anyway', 1], ['Later that night', -1], ['Friday', 0]];
     var x = MC.lin(0, pts.length - 1, 26, 172), y = MC.lin(-2, 2, 58, 10);
     el('line', { x1: 22, x2: 176, y1: y(0), y2: y(0), stroke: C.deep, 'stroke-width': 0.4 }, s);
     T(s, 20, y(2), 'At ease', 'm-label m-label--blue', { anchor: 'end', baseline: 'central', size: 2.2 });
@@ -287,7 +287,7 @@
     el('path', { d: d, fill: 'none', stroke: C.blue, 'stroke-width': 0.7, 'stroke-dasharray': '2 1.4', 'stroke-linejoin': 'round' }, s);
     pts.forEach(function (p, i) {
       MC.mark(s, i === 3 ? 'diamond' : 'dot', x(i), y(p[1]), i === 3 ? 1.8 : 1.4, { fill: i === 3 ? C.red : C.blue, title: p[0] });
-      T(s, x(i), 66, p[0], 'm-label m-label--blue', { anchor: 'middle', size: 2.1 });
+      T(s, x(i), i % 2 ? 72 : 66, p[0], 'm-label m-label--blue', { anchor: 'middle', size: 2.1 });
     });
     MC.note(s, x(3), y(-2) - 2.4, x(3) + 8, y(-2) - 4, '“The number made me feel|bad, so I stopped looking.”');
     MC.note(s, x(4), y(1) - 2, x(4) - 6, 12, '“It was fine, everyone|was eating.”', { anchor: 'end' });
@@ -328,12 +328,12 @@
       el('line', { x1: 14, x2: 178, y1: y, y2: y, stroke: p === 'P02' ? C.red : C.ink, 'stroke-width': p === 'P02' ? 0.9 : 0.2 }, s);
       EV.filter(function (e) { return e[0] === p; }).forEach(function (e) {
         var r = Math.max(0.9, Math.sqrt(e[3]) / 8);
-        MC.mark(s, SHAPE[e[4]], x(e[1], e[2]), y, r, { fill: p === 'P02' ? C.red : C.blue, title: p + ' · Day ' + e[1] + ' · ' + MC.inr(e[3]) + ' · ' + e[6] + ' (' + KIND[e[4]] + ')' });
+        MC.mark(s, SHAPE[e[4]], x(e[1], e[2]), y, r, { fill: p === 'P02' ? C.red : C.blue, title: p + ', Day ' + e[1] + ', ' + MC.inr(e[3]) + ', ' + e[6] + ' (' + KIND[e[4]] + ')' });
       });
     });
     var lg = el('g', { transform: 'translate(120 90)' }, s);
     [['dot', 'Ordinary'], ['square', 'Planned'], ['diamond', 'Unexpected']].forEach(function (g, i) { MC.mark(lg, g[0], i * 20, 0, 1.2, { fill: C.blue }); T(lg, i * 20 + 2.4, 0.8, g[1], 'm-label m-label--blue', { size: 2 }); });
-    MC.table(after('c-lanes'), ['Participant · day · hour', 'Amount', 'Kind', 'For'], EV.map(function (e) { return [e[0] + ' · Day ' + e[1] + ' · ' + Math.floor(e[2]) + ':' + ('0' + Math.round((e[2] % 1) * 60)).slice(-2), MC.inr(e[3]), KIND[e[4]], e[6]]; }));
+    MC.table(after('c-lanes'), ['Participant, day, hour', 'Amount', 'Kind', 'For'], EV.map(function (e) { return [e[0] + ', Day ' + e[1] + ', ' + Math.floor(e[2]) + ':' + ('0' + Math.round((e[2] % 1) * 60)).slice(-2), MC.inr(e[3]), KIND[e[4]], e[6]]; }));
   })();
 
   /* ===================== 3.4 Coding matrix ===================== */
@@ -344,11 +344,11 @@
     THEMES.forEach(function (t, j) { T(s, cx(j), 12, t, 'm-label m-label--blue', { anchor: 'middle', size: 2.1 }); });
     P.forEach(function (p, i) {
       T(s, 0, cy(i), p, 'm-label m-label--blue', { baseline: 'central', size: 2.6 });
-      THEMES.forEach(function (t, j) { MC.mark(s, CODING[i][j] ? 'dot' : 'ring', cx(j), cy(i), 1.9, { fill: C.blue, title: p + ' · ' + t + ': ' + (CODING[i][j] ? 'seen' : 'not seen') }); });
+      THEMES.forEach(function (t, j) { MC.mark(s, CODING[i][j] ? 'dot' : 'ring', cx(j), cy(i), 1.9, { fill: C.blue, title: p + ', ' + t + ': ' + (CODING[i][j] ? 'seen' : 'not seen') }); });
     });
     el('line', { x1: 20, x2: 176, y1: 76, y2: 76, stroke: C.ink, 'stroke-width': 0.25 }, s);
     THEMES.forEach(function (t, j) { var n = CODING.reduce(function (a, r) { return a + r[j]; }, 0); T(s, cx(j), 83, n + ' / 6', 'm-stat', { anchor: 'middle', size: 3.6 }); });
-    MC.table(after('c-coding'), ['Participant'].concat(THEMES), P.map(function (p, i) { return [p].concat(CODING[i].map(function (v) { return v ? '●' : '—'; })); }));
+    MC.table(after('c-coding'), ['Participant'].concat(THEMES), P.map(function (p, i) { return [p].concat(CODING[i].map(function (v) { return v ? 'Seen' : 'Not seen'; })); }));
   })();
 
   /* ===================== 3.4 Severity × frequency ===================== */
@@ -361,7 +361,7 @@
     MC.axisY(s, y, 22, [1, 2, 3, 4], function (v) { return ['Cosmetic', 'Minor', 'Major', 'Blocks'][v - 1]; });
     ISSUES.forEach(function (it) {
       var red = it[0] === 3;
-      MC.mark(s, 'dot', x(it[2]), y(it[3]), 2.6, { fill: red ? C.red : C.blue, title: it[1] + ' · ' + it[2] + ' of 6 · severity ' + it[3] });
+      MC.mark(s, 'dot', x(it[2]), y(it[3]), 2.6, { fill: red ? C.red : C.blue, title: it[1] + ', ' + it[2] + ' of 6, severity ' + it[3] });
       T(s, x(it[2]), y(it[3]) + 0.1, String(it[0]), 'm-label', { anchor: 'middle', baseline: 'central', size: 2.4, color: 'var(--m-paper)' });
     });
     ISSUES.forEach(function (it, i) {
@@ -373,7 +373,7 @@
 
   /* ===================== 3.5 Schematic map ===================== */
   (function () {
-    var W = 180, H = 104, s = MC.svg(host('c-map'), W, H, 'Schematic campus map of spending places');
+    var W = 180, H = 108, s = MC.svg(host('c-map'), W, H, 'Schematic campus map of spending places');
     var PL = { Hostel: [30, 60], Mess: [30, 24], Canteen: [80, 24], Tapri: [80, 60], Gate: [120, 60], Market: [150, 30], Mall: [160, 88], Delivery: [30, 92] };
     [['Hostel', 'Mess'], ['Mess', 'Canteen'], ['Hostel', 'Tapri'], ['Canteen', 'Tapri'], ['Tapri', 'Gate'], ['Gate', 'Market'], ['Gate', 'Mall'], ['Hostel', 'Delivery']].forEach(function (r) {
       var a = PL[r[0]], b = PL[r[1]];
@@ -385,11 +385,14 @@
       var n = EV.filter(function (e) { return e[5] === k; }).length, p = PL[k];
       if (n) el('circle', { cx: p[0], cy: p[1], r: Math.sqrt(n) * 2.4, fill: C.blue, opacity: 0.85 }, s).appendChild(el('title', { text: k + ': ' + n + ' spends' }));
       else el('circle', { cx: p[0], cy: p[1], r: 1.8, fill: C.paper, stroke: C.blue, 'stroke-width': 0.5 }, s);
-      T(s, p[0] + (n ? Math.sqrt(n) * 2.4 : 2) + 1.6, p[1] - 0.6, k, 'm-heading', { size: 2.8 });
-      T(s, p[0] + (n ? Math.sqrt(n) * 2.4 : 2) + 1.6, p[1] + 3, n ? n + ' spends' : 'no spends', 'm-label', { size: 2 });
+      var r = n ? Math.sqrt(n) * 2.4 : 2, side = { Hostel: 'left', Tapri: 'below', Gate: 'below' }[k] || 'right';
+      var lx = side === 'left' ? p[0] - r - 1.6 : side === 'below' ? p[0] : p[0] + r + 1.6, ly = side === 'below' ? p[1] + r + 4 : p[1] - 0.6;
+      var an = side === 'left' ? 'end' : side === 'below' ? 'middle' : 'start';
+      T(s, lx, ly, k, 'm-heading', { size: 2.8, anchor: an });
+      T(s, lx, ly + 3.4, n ? n + ' spends' : 'no spends', 'm-label', { size: 2, anchor: an });
     });
     MC.note(s, 100, 60, 104, 44, 'P02, day 3: auto at 13:40,|running late (₹90)');
-    MC.note(s, 30, 80, 44, 84, 'Dinner order at 20:15 (₹280),|after the mess', { size: 2.3 });
+    MC.note(s, 30, 80, 60, 79, 'Dinner order at 20:15 (₹280),|after the mess', { size: 2.3 });
     var counts = Object.keys(PL).map(function (k) { return [k, EV.filter(function (e) { return e[5] === k; }).length]; });
     MC.table(after('c-map'), ['Place', 'Spends'], counts);
   })();
@@ -430,7 +433,7 @@
     T(s, 100, 45, '19', 'm-stat', { size: 5 }); T(s, 108, 43.4, 'not mentioned', 'm-label', { size: 2.2 });
     T(s, 174, 48.5, '11', 'm-stat', { size: 4 }); T(s, 174, 52.5, '“I’ll adjust later”', 'm-note', { size: 2.3 });
     T(s, 174, 74, '8', 'm-stat', { size: 4 }); T(s, 174, 78, 'no plan came up', 'm-body', { size: 2.3 });
-    MC.table(after('c-flow'), ['Path', 'Spends'], [['Week held a plan', 24], ['→ plan mentioned at the moment', 5], ['→ not mentioned', 19], ['   → said they would adjust later', 11], ['   → no plan came up at all', 8]]);
+    MC.table(after('c-flow'), ['Path', 'Spends'], [['Week held a plan', 24], ['Plan mentioned at the moment', 5], ['Plan not mentioned', 19], ['Not mentioned, said they would adjust later', 11], ['Not mentioned, no plan came up at all', 8]]);
   })();
 
   /* ===================== 3.7 Prototype evolution ===================== */
@@ -488,10 +491,10 @@
         if (agr) el('rect', { x: mid + neu * u / 2 + 0.5, y: y, width: agr * u - 0.5, height: 6, fill: C.blue }, s).appendChild(el('title', { text: v + ': ' + agr + ' agree' }));
         if (dis) T(s, x0 - 1.4, y + 3, String(dis), 'm-label m-label--blue', { anchor: 'end', baseline: 'central', size: 2.4 });
         if (agr) T(s, mid + neu * u / 2 + agr * u + 1.4, y + 3, String(agr), 'm-label m-label--blue', { baseline: 'central', size: 2.4 });
-        rows.push([st[0] + ' · ' + v].concat(a));
+        rows.push([st[0] + ', ' + v].concat(a));
       });
     });
-    MC.table(after('c-likert'), ['Statement · version', 'Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], rows);
+    MC.table(after('c-likert'), ['Statement, version', 'Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], rows);
   })();
 
   /* ===================== 3.9 Strip plot ===================== */
@@ -518,7 +521,7 @@
     MC.axisX(s, x, 52, [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600], MC.inr);
     EV.slice().sort(function (a, b) { return a[4] < b[4] ? -1 : 1; }).forEach(function (e) {
       var b = Math.min(bins - 1, Math.floor(e[3] / 100)); stack[b] = (stack[b] || 0) + 1;
-      MC.mark(s, SHAPE[e[4]], x(b * 100) + bw / 2, 52 - 2.4 - (stack[b] - 1) * 3.6, 1.35, { fill: e[3] >= 1500 ? C.red : C.blue, title: e[0] + ' · ' + MC.inr(e[3]) + ' · ' + e[6] });
+      MC.mark(s, SHAPE[e[4]], x(b * 100) + bw / 2, 52 - 2.4 - (stack[b] - 1) * 3.6, 1.35, { fill: e[3] >= 1500 ? C.red : C.blue, title: e[0] + ', ' + MC.inr(e[3]) + ', ' + e[6] });
     });
     MC.note(s, x(1550), 52 - 2.4 - 5, x(1450), 16, 'Two birthday dinners,|both planned', { anchor: 'end' });
     var lg = el('g', { transform: 'translate(96 6)' }, s);

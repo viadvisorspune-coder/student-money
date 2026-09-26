@@ -1,9 +1,9 @@
-/* Margin — chart primitives. Classic script; exposes window.MarginCharts.
+/* Margin, chart primitives. Classic script; exposes window.MarginCharts.
    Charts are SVG with a viewBox in millimetres, so every size is a print size.
    Text inside charts uses the system type classes; font sizes are given in mm
-   (2.3mm ≈ 6.5pt, 2.8mm ≈ 8pt, 4.6mm ≈ 13pt).
+   (2.3mm about 6.5pt, 2.8mm about 8pt, 4.6mm about 13pt).
 
-   Rules this file enforces (see rules.html → Data integrity):
+   Rules this file enforces (see rules.html, Data integrity):
    - one axis per chart, a zero baseline for anything measured by length;
    - marks are blue, the one mark the chart is about is route red, the insight band is mustard;
    - text never takes a series colour except the route-red annotation;
@@ -15,7 +15,15 @@
     paper: 'var(--m-paper)', deep: 'var(--m-paper-deep)', stone: 'var(--m-stone)',
     ramp: ['var(--m-blue-1)', 'var(--m-blue-2)', 'var(--m-blue-3)', 'var(--m-blue-4)', 'var(--m-blue-5)']
   };
-  var SIZE = { label: 2.3, tick: 2.2, value: 2.8, note: 2.4, big: 7 };
+  var SIZE = { label: 2.72, tick: 2.72, value: 3.53, note: 2.72, big: 7.41 };
+  /* Text sizes snap to the five sizes of the type scale (7.7, 10, 10.5, 17.5, 21pt). Sizes are in mm (user units). */
+  var SCALE_PT = [7.7, 10, 10.5, 17.5, 21];
+  function snapMM(mm) {
+    var pt = mm * 72 / 25.4, best = SCALE_PT[0];
+    SCALE_PT.forEach(function (s) { if (Math.abs(s - pt) < Math.abs(best - pt)) best = s; });
+    return +(best * 25.4 / 72).toFixed(3);
+  }
+
 
   function el(name, attrs, parent) {
     var n = document.createElementNS(NS, name);
@@ -24,7 +32,7 @@
       if (v == null) continue;
       if (k === 'text') n.textContent = v;
       else if (k === 'title') { var t = document.createElementNS(NS, 'title'); t.textContent = v; n.appendChild(t); }
-      else if (k === 'size') n.style.fontSize = v + 'px';
+      else if (k === 'size') n.style.fontSize = snapMM(+v) + 'px';
       else if (k === 'color') n.style.color = v;
       else n.setAttribute(k, v);
     }
@@ -122,5 +130,5 @@
     return (n < 0 ? '−' : '') + '₹' + rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + last3;
   }
 
-  window.MarginCharts = { C: C, SIZE: SIZE, el: el, svg: svg, lin: lin, band: band, text: text, axisX: axisX, axisY: axisY, mark: mark, note: note, table: table, inr: inr };
+  window.MarginCharts = { snapMM: snapMM, C: C, SIZE: SIZE, el: el, svg: svg, lin: lin, band: band, text: text, axisX: axisX, axisY: axisY, mark: mark, note: note, table: table, inr: inr };
 })();

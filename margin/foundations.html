@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Margin — Foundations</title>
+<title>Margin Foundations</title>
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/margin.css">
@@ -19,10 +19,10 @@
 <!-- ============ HERO ============ -->
 <div class="fit"><div id="hero" style="position:relative;width:200mm;height:132mm">
   <svg id="hero-route" viewBox="0 0 200 132" style="position:absolute;inset:0;width:200mm;height:132mm" aria-hidden="true"></svg>
-  <h1 class="m-display-xl" style="position:absolute;left:62mm;top:6mm;margin:0;font-size:78pt">Margin</h1>
-  <p class="m-label" style="position:absolute;left:63mm;top:36mm;margin:0">Design system &nbsp;/&nbsp; Kharcha research report &nbsp;/&nbsp; v0.1</p>
+  <h1 class="m-display-xl" style="position:absolute;left:62mm;top:13mm;margin:0">Margin</h1>
+  <p class="m-label" style="position:absolute;left:62mm;top:23.5mm;margin:0">Design system &nbsp;/&nbsp; Margin research report &nbsp;/&nbsp; v0.1</p>
   <div class="m-station m-vertical" style="position:absolute;left:14.4mm;top:49mm">01</div>
-  <div class="m-body" style="position:absolute;left:63mm;top:46mm;width:74mm">
+  <div class="m-body" style="position:absolute;left:62mm;top:32mm;width:68mm">
     <p>A visual language for following money through everyday life. The research is not decorated: a spending day becomes a line, a spend becomes a node, a plan that has not happened yet becomes a ghost node, and a finding becomes a place the line arrives at.</p>
     <p>This part sets the foundations: type, colour, grid, spacing, shape, icons, imagery and motion.</p>
   </div>
@@ -41,51 +41,49 @@
     <p class="m-label">Foundations</p>
     <h2 class="m-display-l">Typography</h2>
   </header>
-  <p class="m-body f-lede">Two families, as in the reference. A geometric bold sans carries everything that is a signpost: headlines, days and times, figures, labels and folios. A light, low-contrast serif carries everything that is read. There is no third family and no monospace.</p>
+  <p class="m-body f-lede">Two families and nothing else. Biryani carries every signpost: headlines, days and times, figures. DM Sans carries everything that is read: body, sub-headings, labels, quotes, notes and captions. Five sizes, all measured from the reference page.</p>
 
   <div class="families">
     <div class="family d">
-      <span class="m-label">Display — Montserrat 600 / 700</span>
+      <span class="m-label">Headings, Biryani 700 and 800</span>
       <div class="glyphs">AaBbRrSs<br>0123456789 ₹</div>
-      <p class="m-caption">Closest free match to the reference's geometric caps. SIL Open Font Licence.</p>
+      <p class="m-caption">Google Fonts, SIL Open Font Licence. Carries the rupee sign.</p>
     </div>
     <div class="family t">
-      <span class="m-label">Text — Merriweather 300 / 400, italic</span>
+      <span class="m-label">Body, DM Sans 400, 500, 700 and italic</span>
       <div class="glyphs">AaBbRrSs<br><i>0123456789 ₹</i></div>
-      <p class="m-caption">Closest free match to the reference's light body serif. SIL Open Font Licence.</p>
+      <p class="m-caption">Google Fonts, SIL Open Font Licence.</p>
     </div>
   </div>
 
-  <div class="spec"><div class="meta"><span class="m-label">display-xl</span>Montserrat 700 · 54pt / 0.9 · caps · mustard. Chapter opener, one per chapter.</div>
-    <div><h2 class="m-display-xl">Why students<br>spend what<br>they didn't<br>plan to?</h2></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">display-l</span>Montserrat 700 · 34pt / 0.92 · caps · mustard. Spread headline.</div>
-    <div><h2 class="m-display-l">Knowing ≠<br>considering</h2></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">closing</span>Montserrat 700 · 20pt · caps · blue. Where a route ends.</div>
-    <div><p class="m-closing">Into the<br>everyday</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">station</span>Montserrat 700 · 20pt · blue. Sits in a break in the route; vertical reads bottom to top.</div>
-    <div style="display:flex;gap:10mm;align-items:center"><span class="m-station">Day 03</span><span class="m-station m-vertical">20:15</span></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">stat</span>Montserrat 700 · 24pt · sentence case · blue. One figure that anchors a paragraph.</div>
+  <div class="spec"><div class="meta"><span class="m-label">display-xl</span>Biryani 800, 21pt on 27.3pt, capitals, mustard. The largest size: chapter and spread headlines.</div>
+    <div><h2 class="m-display-xl">Why do students spend<br>what they didn't plan to?</h2></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">display-l</span>Biryani 800, 17.5pt on 21.7pt, capitals, mustard. Section headlines.</div>
+    <div><h2 class="m-display-l">Knowing is not<br>considering</h2></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">stat</span>Biryani 700, 17.5pt on 21.7pt, blue. The figure a paragraph stands on.</div>
     <div><p class="m-stat"><span class="m-figure-inr">₹1,500</span></p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">heading</span>Montserrat 700 · 11pt · caps · blue.</div>
-    <div><h3 class="m-heading">What we saw on day four</h3></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">label</span>Montserrat 700 · 6.5pt · caps · +0.1em · red.</div>
-    <div><p class="m-label">03 / Research finding · P02</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">body</span>Merriweather 300 · 8.5pt / 1.5 · blue. Blocks of three to seven lines that hug the route.</div>
-    <div class="m-body" style="max-width:80mm"><p>P02 ordered dinner at 20:15. The mess food was bad and friends suggested ordering. The ₹1,500 birthday dinner on Friday was already in their plans, and did not come up.</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">quote</span>Merriweather 300 italic · 13pt / 1.35 · blue. A quote is an object, not a card.</div>
-    <div><p class="m-quote">“I knew I had plans,<br>but I didn't think<br>about them.”</p><p class="m-label" style="margin-top:2mm">— P03</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">note</span>Merriweather 400 · 6.5pt / 1.45 · red. Researcher asides in the margin.</div>
+  <div class="spec"><div class="meta"><span class="m-label">closing and station</span>Biryani 700, 17.5pt, capitals, blue. Where a route ends, and the label in a route break.</div>
+    <div style="display:flex;gap:10mm;align-items:center;flex-wrap:wrap"><p class="m-closing" style="margin:0">Into the everyday</p><span class="m-station">Day 03</span><span class="m-station m-vertical">20:15</span></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">heading</span>DM Sans 700, 10.5pt on 13pt, sentence case, blue. Sits 2mm above its figure or paragraph.</div>
+    <div><h3 class="m-heading">How much did P02 spend on day three?</h3></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">body</span>DM Sans 400, 10pt on 13.2pt, blue. A 68mm column; paragraphs 0.55em apart.</div>
+    <div class="m-body" style="max-width:68mm"><p>P02 ordered dinner at 20:15. The mess food was bad and friends suggested ordering.</p><p>The ₹1,500 birthday dinner on Friday was already in their plans, and did not come up.</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">quote</span>DM Sans italic, 17.5pt on 21.7pt, blue. A quote is an object, not a card.</div>
+    <div><p class="m-quote" style="margin:0">“I knew I had plans, but I didn't think about them.”</p><p class="m-label" style="margin-top:2mm">P03</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">label</span>DM Sans 700, 7.7pt, capitals, spaced 0.06em, red.</div>
+    <div><p class="m-label">03 / Research finding / P02</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">note</span>DM Sans 400, 7.7pt on 11.6pt, red. Researcher asides in the margin.</div>
     <div><p class="m-note" style="max-width:40mm">Asked on day 4 whether P02 remembered Friday: yes, once prompted.</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">caption</span>Merriweather 400 italic · 6.5pt · blue.</div>
+  <div class="spec"><div class="meta"><span class="m-label">caption</span>DM Sans italic, 7.7pt on 11.6pt, blue.</div>
     <div><p class="m-caption">V02 prototype, tested with P03, 23 September 2026.</p></div></div>
-  <div class="spec"><div class="meta"><span class="m-label">folio</span>Montserrat 600 · 7pt · red. Outer bottom corner.</div>
+  <div class="spec"><div class="meta"><span class="m-label">folio</span>DM Sans 700, 7.7pt, red. Outer bottom corner.</div>
     <div><span class="m-folio">12</span></div></div>
 
   <ul class="rules m-body">
-    <li><b>Headlines</b>Caps, flush left, broken by meaning into two to four lines. A headline asks or states; it is never a section number.</li>
+    <li><b>Headlines</b>Capitals, flush left, broken by meaning into two or three lines. A headline asks or states; it is never a section number.</li>
     <li><b>Body</b>Short blocks. Set flush left, or flush right when the block sits to the left of a route, so the text hugs the line.</li>
     <li><b>Numbers</b>Indian grouping and the rupee sign every time: ₹1,20,000, not 120000 or Rs.</li>
-    <li class="dont"><b>Never</b>Italic display, underlined headlines, a third family, colour used for emphasis inside a sentence.</li>
+    <li class="dont"><b>Never</b>A third family, a size outside the five, dots between words, dashes as punctuation, colour for emphasis inside a sentence.</li>
   </ul>
 </section>
 
@@ -119,7 +117,7 @@
       <tr><td>Ink</td><td>12.47 : 1</td><td>Any size. Kept for artifacts by choice, not by contrast.</td></tr>
       <tr><td>Blue</td><td>5.26 : 1</td><td>Any size, including 6.5pt captions.</td></tr>
       <tr><td>Route red</td><td>3.56 : 1</td><td>Labels, notes and folios. Never the only place a fact appears.</td></tr>
-      <tr><td>Mustard</td><td>1.89 : 1</td><td>Display headlines only, 34pt and above, and always repeated in the running text or contents.</td></tr>
+      <tr><td>Mustard</td><td>1.89 : 1</td><td>Display headlines only (17.5pt and 21pt), and always repeated in the running text or contents.</td></tr>
     </tbody>
   </table>
 
@@ -197,20 +195,20 @@
   </header>
   <p class="m-body f-lede">Not interface icons, but objects: the things a spend was for. They are flat ink silhouettes with a worn print texture and at most one spot colour, placed beside a stop and turned slightly, like the reference's bottle, house and car.</p>
   <div class="icons">
-    <figure><img src="icons/chai.svg" alt="Cutting chai glass" style="transform:rotate(-8deg)"><figcaption class="m-caption">Chai — food & drink</figcaption></figure>
-    <figure><img src="icons/rickshaw.svg" alt="Auto-rickshaw" style="transform:rotate(6deg)"><figcaption class="m-caption">Auto — travel</figcaption></figure>
-    <figure><img src="icons/thali.svg" alt="Thali" style="transform:rotate(-14deg)"><figcaption class="m-caption">Thali — meals</figcaption></figure>
-    <figure><img src="icons/phone.svg" alt="Phone with a route on screen" style="transform:rotate(12deg)"><figcaption class="m-caption">Phone — the prototype</figcaption></figure>
+    <figure><img src="icons/chai.svg" alt="Cutting chai glass" style="transform:rotate(-8deg)"><figcaption class="m-caption">Chai, food and drink</figcaption></figure>
+    <figure><img src="icons/rickshaw.svg" alt="Auto-rickshaw" style="transform:rotate(6deg)"><figcaption class="m-caption">Auto, travel</figcaption></figure>
+    <figure><img src="icons/thali.svg" alt="Thali" style="transform:rotate(-14deg)"><figcaption class="m-caption">Thali, meals</figcaption></figure>
+    <figure><img src="icons/phone.svg" alt="Phone with a route on screen" style="transform:rotate(12deg)"><figcaption class="m-caption">Phone, the prototype</figcaption></figure>
     <figure>
       <svg viewBox="0 0 100 100" style="width:30mm;height:30mm;transform:rotate(-10deg)" role="img" aria-label="Field study stamp">
-        <defs><path id="stamp-arc" d="M50 50 m-31 0 a31 31 0 1 1 62 0 a31 31 0 1 1 -62 0"/></defs>
+        <defs><path id="stamp-arc" d="M50 50 m-29 0 a29 29 0 1 1 58 0 a29 29 0 1 1 -58 0"/></defs>
         <path id="stamp-edge" fill="var(--m-ink)"/>
-        <circle cx="50" cy="50" r="38" fill="none" stroke="var(--m-paper)" stroke-width="1.2"/>
-        <text font-family="Montserrat" font-weight="700" font-size="7.4" letter-spacing="1.6" fill="var(--m-paper)"><textPath href="#stamp-arc">KHARCHA · FIELD STUDY · 2026 ·</textPath></text>
-        <text x="50" y="49" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="15" fill="var(--m-paper)">DAY</text>
-        <text x="50" y="64" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="15" fill="var(--m-mustard)">03</text>
+        <circle cx="50" cy="50" r="40.5" fill="none" stroke="var(--m-paper)" stroke-width="1.2"/>
+        <text font-family="Biryani" font-weight="700" font-size="9" letter-spacing="0.6" fill="var(--m-paper)"><textPath href="#stamp-arc">MARGIN   FIELD STUDY   2026   </textPath></text>
+        <text x="50" y="49" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="12" fill="var(--m-paper)">DAY</text>
+        <text x="50" y="64" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="12" fill="var(--m-mustard)">03</text>
       </svg>
-      <figcaption class="m-caption">Stamp — study marker</figcaption>
+      <figcaption class="m-caption">Stamp, study marker</figcaption>
     </figure>
   </div>
   <ul class="rules m-body">
@@ -244,7 +242,7 @@
     <p class="m-caption" style="position:absolute;left:40mm;top:110mm;margin:0">Screen placeholder. Tested with P03, 23 September 2026.</p>
     <div style="position:absolute;left:112mm;top:10mm;width:70mm">
       <p class="m-quote" style="margin:0">“This felt like the app was telling me what to do.”</p>
-      <p class="m-label" style="margin:2mm 0 0">— P03, day 2</p>
+      <p class="m-label" style="margin:2mm 0 0">P03, day 2</p>
     </div>
     <div style="position:absolute;left:112mm;top:66mm;width:72mm">
       <p class="m-label" style="margin:0 0 1.5mm">Test finding 04</p>
@@ -289,7 +287,7 @@
 <div class="fit" style="margin-top:24mm"><div style="position:relative;width:200mm;height:40mm">
   <svg id="close-svg" viewBox="0 0 200 40" style="position:absolute;inset:0;width:200mm;height:40mm" aria-hidden="true"></svg>
   <p class="m-closing" style="position:absolute;left:112mm;top:20mm;margin:0">Next: into<br>the grammar</p>
-  <p class="m-note" style="position:absolute;left:6mm;top:22mm;width:60mm;margin:0">02 — Information grammar: evidence, claims, participants, quotes, observations, insights, decisions, outcomes, uncertainty.</p>
+  <p class="m-note" style="position:absolute;left:6mm;top:22mm;width:60mm;margin:0">02 Information grammar: evidence, claims, participants, quotes, observations, insights, decisions, outcomes, uncertainty.</p>
 </div></div>
 
 </main>
@@ -303,7 +301,7 @@
     var t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     t.setAttribute('x', x); t.setAttribute('y', y);
     for (var k in (opts || {})) {
-      if (k === 'font-size') t.style.fontSize = opts[k] + 'px';   /* user units; must beat the class's pt size */
+      if (k === 'font-size') { var pt = opts[k] * 72 / 25.4, b = [7.7, 10, 10.5, 17.5, 21].reduce(function (a, c) { return Math.abs(c - pt) < Math.abs(a - pt) ? c : a; }); t.style.fontSize = (b * 25.4 / 72) + 'px'; }   /* snaps to the type scale; user units beat the class's pt size */
       else if (k === 'color') t.style.color = opts[k];
       else t.setAttribute(k, opts[k]);
     }
@@ -341,7 +339,7 @@
   text(g, 14, 290, 'OUTER 14', 'm-label', { 'font-size': 7 });
   text(g, 188, 290, 'INNER 20', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
   text(g, 232, 290, 'INNER 20', 'm-label', { 'font-size': 7 });
-  text(g, 406, 290, '6 COLUMNS · 5MM GUTTER', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
+  text(g, 406, 290, '6 COLUMNS, 5MM GUTTER', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
 
   /* Spacing scale */
   var scale = [['space-1', 2], ['space-2', 4], ['space-3', 6], ['space-4', 8], ['space-6', 12], ['space-8', 16], ['space-12', 24], ['space-16', 32]];
@@ -365,7 +363,7 @@
   M.route(a, [[80, 30], [80, 114]]);                                   // crossing
   M.route(a, [[100, 14], [100, 70], [190, 70], [190, 14], [150, 14]]); // enclosure
   M.node(a, 150, 14);
-  text(a, 108, 26, 'KNOWING \u2260', 'm-heading', { 'font-size': '4.8', color: 'var(--m-mustard)' });
+  text(a, 108, 26, 'KNOWING IS NOT', 'm-heading', { 'font-size': '4.8', color: 'var(--m-mustard)' });
   text(a, 108, 32, 'CONSIDERING', 'm-heading', { 'font-size': '4.8', color: 'var(--m-mustard)' });
   text(a, 108, 46, 'Enclosure: the route arrives and', 'm-note', { 'font-size': '2.6' });
   text(a, 108, 50, 'holds a finding. Text sits at', 'm-note', { 'font-size': '2.6' });
@@ -388,8 +386,8 @@
     ['solid', 'Solid line', 'Evidence: the established path.'],
     ['dashed', 'Dashed line', 'Hypothesis, or a story interrupted.'],
     ['dotted', 'Dotted line', 'The system relinquishing control.'],
-    ['arrow', 'Arrow →', 'A design consequence.'],
-    ['loop', 'Loop ↻', 'An iteration.']
+    ['arrow', 'Arrow', 'A design consequence.'],
+    ['loop', 'Loop', 'An iteration.']
   ];
   var grammar = $('grammar');
   sym.forEach(function (s) {
@@ -430,11 +428,11 @@
   var pts = [[10, 14], [44, 14], [44, 52], [96, 52], [96, 22], [150, 22], [150, 60], [176, 60]];
   M.route(mv, pts, { radius: 8 });
   var stops = [
-    [10, 14, 'event', 'DAY 01', '₹120 · CHAI', 0],
-    [44, 34, 'planned', 'DAY 02', '₹280 · MESS PASS', 350],
-    [58, 52, 'unexpected', 'DAY 03', '₹90 · AUTO, LATE', 650],
-    [96, 36, 'event', 'DAY 04', '₹280 · DINNER', 900],
-    [150, 40, 'turning', 'DAY 05', 'KNOWING ≠ CONSIDERING', 1150]
+    [10, 14, 'event', 'DAY 01', '₹120, CHAI', 0],
+    [44, 34, 'planned', 'DAY 02', '₹280, MESS PASS', 350],
+    [58, 52, 'unexpected', 'DAY 03', '₹90, AUTO, LATE', 650],
+    [96, 36, 'event', 'DAY 04', '₹280, DINNER', 900],
+    [150, 40, 'turning', 'DAY 05', 'KNOWING IS NOT CONSIDERING', 1150]
   ];
   stops.forEach(function (s) {
     M.node(mv, s[0], s[1], s[2], { at: s[5] });
@@ -444,7 +442,7 @@
   });
   M.route(mv, [[176, 60], [192, 60], [192, 72]], { style: 'dashed', at: 1400 });
   M.node(mv, 192, 72, 'future', { at: 1500 });
-  var f1 = text(mv, 176, 76, 'FRI · ₹1,500', 'm-label m-reveal', { 'font-size': '2.3', 'text-anchor': 'end' });
+  var f1 = text(mv, 176, 76, 'FRI, ₹1,500', 'm-label m-reveal', { 'font-size': '2.3', 'text-anchor': 'end' });
   var f2 = text(mv, 176, 71, 'DAY 06', 'm-station m-reveal', { 'font-size': '4.6', 'text-anchor': 'end' });
   [f1, f2].forEach(function (t) { t.style.setProperty('--at', '1600ms'); });
   M.animate($('motion-demo'));

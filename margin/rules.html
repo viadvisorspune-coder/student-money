@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Margin — Rules</title>
+<title>Margin Rules</title>
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/margin.css">
@@ -17,8 +17,8 @@
   .dd .m-kicker { display: block; margin-bottom: 1.4mm; }
   .numbered { counter-reset: r; list-style: none; margin: 0; padding: 0; display: grid; gap: 4mm; }
   .numbered li { counter-increment: r; display: grid; grid-template-columns: 10mm 1fr; gap: 3mm; }
-  .numbered li::before { content: counter(r, decimal-leading-zero); font: 700 11pt/1.2 var(--m-font-display); color: var(--m-blue); }
-  .numbered b { font-family: var(--m-font-display); font-weight: 700; font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--m-route); display: block; margin-bottom: 0.6mm; }
+  .numbered li::before { content: counter(r, decimal-leading-zero); font: 700 10.5pt/1.2 var(--m-font-text); color: var(--m-blue); }
+  .numbered b { font-family: var(--m-font-text); font-weight: 700; font-size: 7.7pt; letter-spacing: .08em; text-transform: uppercase; color: var(--m-route); display: block; margin-bottom: 0.6mm; }
 </style>
 </head>
 <body class="m-paper">
@@ -43,14 +43,14 @@
     <tbody>
       <tr><td>A sequence of events or days</td><td>The route with stations (Timeline spread, 05.02)</td><td>A table of dates</td></tr>
       <tr><td>One finding the chapter turns on</td><td>Mustard insight loop, once per spread</td><td>A card, a coloured box, bold text</td></tr>
-      <tr><td>What a participant said</td><td>Quote object, cited code · day · method</td><td>A speech bubble, a quote card</td></tr>
+      <tr><td>What a participant said</td><td>Quote object, cited code, day, method</td><td>A speech bubble, a quote card</td></tr>
       <tr><td>What was observed at the time</td><td>Field note, timestamped</td><td>Body text</td></tr>
       <tr><td>A count out of six</td><td>Unit marks or <span class="m-freq" style="vertical-align:1px"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span> with the number</td><td>A percentage, a pie</td></tr>
       <tr><td>One number that is the story</td><td>Big number layout, with its base</td><td>A chart with one bar</td></tr>
       <tr><td>Change between versions</td><td>Slope chart, or before/after unit rows</td><td>Two separate charts on different pages</td></tr>
       <tr><td>Agreement with statements</td><td>Diverging bars, counts labelled</td><td>Stacked 100% bars</td></tr>
       <tr><td>Themes across participants</td><td>Coding matrix</td><td>A word cloud</td></tr>
-      <tr><td>Where the design changed direction</td><td>Turning point: ✦ node, burst sticker, solid pill</td><td>Numbering it like every other finding</td></tr>
+      <tr><td>Where the design changed direction</td><td>Turning point: star node, burst sticker, solid pill</td><td>Numbering it like every other finding</td></tr>
       <tr><td>Something the study cannot say</td><td>Dashed loop, low confidence, ghost node</td><td>Leaving it out</td></tr>
       <tr><td>A prototype screen</td><td>Device frame, version tag, date, hairline to the detail</td><td>A cropped screenshot floating on the page</td></tr>
       <tr><td>A researcher's aside</td><td>Margin note in the gutter</td><td>A footnote or a parenthesis</td></tr>
@@ -78,6 +78,8 @@
     <div class="no"><span class="m-kicker">Don't</span><p class="m-body">Compare participants with each other, or with an average student.</p></div>
     <div><span class="m-kicker">Do</span><p class="m-body">Use hand-drawn marks sparingly: one ring or stroke on the word that matters.</p></div>
     <div class="no"><span class="m-kicker">Don't</span><p class="m-body">Scrapbook the page. Tape, stickers and stamps: at most two per spread.</p></div>
+    <div><span class="m-kicker">Do</span><p class="m-body">Separate items in a label with a comma or a slash: P03, Day 4, Interview.</p></div>
+    <div class="no"><span class="m-kicker">Don't</span><p class="m-body">Middle dots between words, or long dashes as punctuation. Rewrite the sentence instead.</p></div>
     <div><span class="m-kicker">Do</span><p class="m-body">Keep display type for signposts: headlines, days, figures.</p></div>
     <div class="no"><span class="m-kicker">Don't</span><p class="m-body">Set a paragraph in capitals, or a headline in italic.</p></div>
   </div>
@@ -87,9 +89,9 @@
 <section class="f" id="access">
   <header class="f-head"><div class="m-break"><span class="m-station">06.3</span></div><p class="m-label">Rules</p><h2 class="m-display-l">Accessibility</h2></header>
   <ol class="numbered m-body">
-    <li><div><b>Contrast</b>Running text is blue (5.26 : 1 on paper) or ink. Route red (3.56 : 1) is for labels, notes and folios only, and never the only place a fact appears. Mustard (1.89 : 1) is for display headlines of 34pt and above, and every headline is repeated in the contents.</div></li>
+    <li><div><b>Contrast</b>Running text is blue (5.26 : 1 on paper) or ink. Route red (3.56 : 1) is for labels, notes and folios only, and never the only place a fact appears. Mustard (1.89 : 1) is for display headlines at 17.5pt and 21pt, and every headline is repeated in the contents.</div></li>
     <li><div><b>Never colour alone</b>Node shape, line style, outcome shape and direct labels carry meaning; colour repeats it. Every chart reads in greyscale.</div></li>
-    <li><div><b>Minimum sizes</b>Body 8.5pt. Nothing smaller than 6pt in print. Chart labels at least 6pt at final size.</div></li>
+    <li><div><b>Five sizes</b>21, 17.5, 10.5, 10 and 7.7pt, and nothing else. Body is 10pt. Nothing is smaller than 7.7pt, chart labels included.</div></li>
     <li><div><b>Every chart has its numbers</b>In print, the values are labelled or tabled on the page. On screen, each chart has a data table and each mark a tooltip.</div></li>
     <li><div><b>Images</b>Every image has alt text describing what it shows and why it is there. Placeholders say their format.</div></li>
     <li><div><b>Reading order</b>The route shows the reading order. Where it cannot, the text order in the file follows the route, not the page position.</div></li>
@@ -121,12 +123,12 @@
   <table class="m-table">
     <thead><tr><th>What</th><th>Format</th><th>Example</th></tr></thead>
     <tbody>
-      <tr><td>Participant quote</td><td>Code · day · method</td><td><span class="m-kicker">P03 · Day 4 · Exit interview</span></td></tr>
-      <tr><td>Observation</td><td>Observation · code · session · time</td><td><span class="m-kicker">Observation · P05 · Test round 2 · 14:22</span></td></tr>
-      <tr><td>Evidence item</td><td>Evidence n · method · code · day · time</td><td><span class="m-kicker">Evidence 12 · Diary · P02 · Day 3 · 20:15</span></td></tr>
+      <tr><td>Participant quote</td><td>Code, day, method</td><td><span class="m-kicker">P03, Day 4, Exit interview</span></td></tr>
+      <tr><td>Observation</td><td>Observation, code, session, time</td><td><span class="m-kicker">Observation, P05, Test round 2, 14:22</span></td></tr>
+      <tr><td>Evidence item</td><td>Evidence n, method, code, day, time</td><td><span class="m-kicker">Evidence 12, Diary, P02, Day 3, 20:15</span></td></tr>
       <tr><td>Figure</td><td>Fig chapter.n, then one sentence on what and how</td><td><span class="m-kicker">Fig 3.2</span> Daily total from P02's diary.</td></tr>
-      <tr><td>Source line</td><td>Study, dates, n, note</td><td>Kharcha diary study, 8–13 September 2026, n = 6.</td></tr>
-      <tr><td>Prototype screen</td><td>Version · screen · tested with · date</td><td><span class="m-tag m-tag--version">V02</span> Result screen · P01–P06 · 23 Sep 2026</td></tr>
+      <tr><td>Source line</td><td>Study, dates, n, note</td><td>Margin diary study, 8–13 September 2026, n = 6.</td></tr>
+      <tr><td>Prototype screen</td><td>Version, screen, tested with, date</td><td><span class="m-tag m-tag--version">V02</span> Result screen, P01–P06, 23 Sep 2026</td></tr>
       <tr><td>External work</td><td>Author (year), in a footnote; full reference at the back</td><td>Thaler (1999), mental accounting.</td></tr>
       <tr><td>Photograph</td><td>Who took it, when, with consent</td><td>Photographed by P02 for the diary, day 3.</td></tr>
     </tbody>

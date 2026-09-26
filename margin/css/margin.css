@@ -1,5 +1,5 @@
-/* Margin — foundation styles. Requires tokens.css (generated).
-   Fonts: Montserrat 600/700 and Merriweather 300/400 (+ italic), loaded by the page. */
+/* Margin, foundation styles. Requires tokens.css (generated).
+   Fonts: Biryani 700/800 for headings and DM Sans 400/500/700 and italic for body, from css/fonts.css. */
 
 /* ---------- Page ---------- */
 
@@ -35,7 +35,7 @@
 
 /* ---------- Text behaviour ---------- */
 
-.m-body p { margin: 0 0 0.9em; }
+.m-body p { margin: 0 0 var(--m-rhythm-para); }
 .m-body p:last-child { margin-bottom: 0; }
 .m-body--right { text-align: right; }
 
@@ -73,7 +73,7 @@ svg text { fill: currentColor; }
 
 /* ---------- Station break (HTML) ---------- */
 /* The route stops at a node, leaves a gap, carries a label, and resumes:
-   ──●  2004  ●──   Use where the route runs horizontally through HTML layout. */
+   as around 2004 in the reference. Use where the route runs horizontally through HTML layout. */
 .m-break {
   display: flex;
   align-items: center;

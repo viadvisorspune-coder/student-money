@@ -1,4 +1,4 @@
-/* Margin — SAMPLE study data. Illustrative only: every figure in the documentation pages is drawn
+/* Margin, SAMPLE study data. Illustrative only: every figure in the documentation pages is drawn
    from this one file, so charts and layouts stay consistent with each other. Replace with the real
    study data before any page is used in the report. Participants are codes; there are no names. */
 (function () {
@@ -27,7 +27,7 @@
   // Diary events: [participant, day, hour, amount, kind, place, what]. kind: o ordinary, p planned, u unexpected
   var EV = [
     ['P01',1,9.5,40,'o','Tapri','chai'],['P01',1,19,180,'o','Canteen','dinner'],['P01',2,13,120,'o','Canteen','lunch'],['P01',3,18,450,'p','Mall','shoes, planned'],['P01',4,21,250,'u','Delivery','order'],['P01',5,10,60,'o','Gate','auto'],['P01',6,20,300,'p','Mall','movie'],
-    ['P02',1,10,60,'o','Gate','auto'],['P02',1,17,120,'o','Tapri','chai + snack'],['P02',2,13,120,'o','Canteen','lunch'],['P02',3,13.7,90,'u','Gate','auto, running late'],['P02',3,20.25,280,'u','Delivery','dinner order — mess was bad'],['P02',4,16,60,'o','Tapri','chai'],['P02',5,19.5,1500,'p','Mall','birthday dinner'],['P02',5,11,140,'o','Canteen','brunch'],['P02',6,18,210,'o','Market','groceries'],
+    ['P02',1,10,60,'o','Gate','auto'],['P02',1,17,120,'o','Tapri','chai + snack'],['P02',2,13,120,'o','Canteen','lunch'],['P02',3,13.7,90,'u','Gate','auto, running late'],['P02',3,20.25,280,'u','Delivery','dinner order, mess was bad'],['P02',4,16,60,'o','Tapri','chai'],['P02',5,19.5,1500,'p','Mall','birthday dinner'],['P02',5,11,140,'o','Canteen','brunch'],['P02',6,18,210,'o','Market','groceries'],
     ['P03',1,8.5,30,'o','Tapri','chai'],['P03',1,20.5,320,'u','Delivery','order'],['P03',2,12,100,'o','Canteen','lunch'],['P03',3,17,650,'p','Market','stationery'],['P03',4,20.3,280,'u','Delivery','order'],['P03',5,9,50,'o','Tapri','chai'],['P03',6,19,800,'p','Mall','gift'],
     ['P04',1,13,110,'o','Canteen','lunch'],['P04',2,21,170,'u','Delivery','late snack'],['P04',2,10,20,'o','Tapri','chai'],['P04',3,19,380,'o','Market','groceries'],['P04',4,22,130,'u','Delivery','order'],['P04',5,12.5,150,'o','Canteen','lunch'],['P04',6,18.5,1000,'p','Mall','concert'],['P04',6,9,30,'o','Tapri','chai'],
     ['P05',1,14,90,'o','Gate','auto'],['P05',2,18,220,'o','Market','groceries'],['P05',3,20,500,'p','Mall','dinner out'],['P05',3,8,40,'o','Tapri','chai'],['P05',4,13,160,'o','Canteen','lunch'],['P05',5,19,1200,'p','Mall','phone repair'],['P05',6,16,65,'u','Gate','auto'],

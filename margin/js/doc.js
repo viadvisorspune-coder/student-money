@@ -1,11 +1,14 @@
 /* Margin documentation helpers. Not part of the system. */
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
+  var SCALE_PT = [7.7, 10, 10.5, 17.5, 21];
+  /* SVG text sizes (mm) snap to the type scale. */
+  function snap(mm) { var pt = mm * 72 / 25.4, b = SCALE_PT[0]; SCALE_PT.forEach(function (s) { if (Math.abs(s - pt) < Math.abs(b - pt)) b = s; }); return +(b * 25.4 / 72).toFixed(3); }
   function svgEl(name, attrs, parent) {
     var n = document.createElementNS(NS, name);
     for (var k in (attrs || {})) {
       if (k === 'text') n.textContent = attrs[k];
-      else if (k === 'font-size') n.style.fontSize = attrs[k] + 'px';
+      else if (k === 'font-size') n.style.fontSize = snap(+attrs[k]) + 'px';
       else if (k === 'color') n.style.color = attrs[k];
       else n.setAttribute(k, attrs[k]);
     }

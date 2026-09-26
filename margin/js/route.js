@@ -1,4 +1,4 @@
-/* Margin — route helper.
+/* Margin, route helper.
    Draws the travelling line from orthogonal waypoints, with every turn rounded,
    and places node symbols on it. Classic script (works from file://); exposes window.Margin.
 
