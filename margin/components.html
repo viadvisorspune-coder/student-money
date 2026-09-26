@@ -31,12 +31,46 @@
   <div class="demo-grid">
     <div><span class="m-label">Outline, default</span><div class="demo-row"><span class="m-pill">Day 03</span><span class="m-pill">Food</span><span class="m-pill">Unplanned</span></div><p class="code">.m-pill</p></div>
     <div><span class="m-label">Solid, the one that matters</span><div class="demo-row"><span class="m-pill m-pill--solid">Turning point</span><span class="m-pill m-pill--blue m-pill--solid">V02</span></div><p class="code">.m-pill--solid, .m-pill--blue</p></div>
-    <div><span class="m-label">Insight</span><div class="demo-row"><span class="m-pill m-pill--insight">Knowing is not considering</span></div><p class="code">.m-pill--insight, ink on mustard, 1 per spread</p></div>
+    <div><span class="m-label">Insight</span><div class="demo-row"><span class="m-pill m-pill--insight">Knowing is not considering</span></div><p class="code">.m-pill--insight, ink on yellow, 1 per spread</p></div>
     <div><span class="m-label">Ghost, future or hypothesis</span><div class="demo-row"><span class="m-pill m-pill--ghost">Friday, planned</span><span class="m-pill m-pill--blue m-pill--ghost">Hypothesis</span></div><p class="code">.m-pill--ghost</p></div>
     <div><span class="m-label">Blue, evidence, participant</span><div class="demo-row"><span class="m-pill m-pill--blue">Diary</span><span class="m-pill m-pill--blue">Interview</span><span class="m-pill m-pill--blue">Usability test</span></div><p class="code">.m-pill--blue</p></div>
     <div><span class="m-label">Task outcome, shape, not colour</span><div class="demo-row"><span class="m-outcome m-outcome--done">Completed</span><span class="m-outcome m-outcome--helped">With help</span><span class="m-outcome m-outcome--stopped">Not completed</span></div><p class="code">.m-outcome--done / --helped / --stopped</p></div>
   </div>
+  <h3 class="m-heading sub">Frosted pills, labels and circles</h3>
+  <p class="m-body" style="max-width:68mm;margin:0 0 var(--m-rhythm-block)">For colour fields and photographs only. The frost lets the field show through; on yellow and light photos it darkens and the text turns ink.</p>
+  <div class="demo-grid" style="grid-template-columns:repeat(auto-fit,minmax(58mm,1fr))">
+    <div class="m-field">
+      <p class="m-label" style="margin:0 0 var(--m-rhythm-snug)">On blue</p>
+      <div style="display:grid;gap:2.4mm;justify-items:start">
+        <span class="m-frost">Check before you spend</span>
+        <div class="m-frost-row"><span class="m-frost">Food</span><span class="m-frost">Travel</span><span class="m-frost">Birthday</span><span class="m-frost">Groceries</span></div>
+        <div style="display:flex;gap:2mm;align-items:center"><span class="m-frost m-frost--circle">6</span><span class="m-frost m-frost--circle m-frost--lg">P03</span><span class="m-frost m-frost--label"><i class="m-dot"></i>Day 04</span></div>
+      </div>
+    </div>
+    <div class="m-field m-field--red">
+      <p class="m-label" style="margin:0 0 var(--m-rhythm-snug)">On red</p>
+      <div style="display:grid;gap:2.4mm;justify-items:start">
+        <span class="m-frost">Ordered at 20:15</span>
+        <div class="m-frost-row"><span class="m-frost">Unplanned</span><span class="m-frost">With friends</span><span class="m-frost">Late</span><span class="m-frost">Split four ways</span></div>
+        <div style="display:flex;gap:2mm;align-items:center"><span class="m-frost m-frost--circle">3</span><span class="m-frost m-frost--label">Turning point</span></div>
+      </div>
+    </div>
+    <div class="m-field m-field--yellow">
+      <p class="m-label" style="margin:0 0 var(--m-rhythm-snug);color:var(--m-ink)">On yellow</p>
+      <div style="display:grid;gap:2.4mm;justify-items:start">
+        <span class="m-frost">Friday, planned</span>
+        <div class="m-frost-row"><span class="m-frost">Insight 02</span><span class="m-frost">5 of 6</span><span class="m-frost">High confidence</span><span class="m-frost">Interview</span></div>
+        <div style="display:flex;gap:2mm;align-items:center"><span class="m-frost m-frost--circle">5</span><span class="m-frost m-frost--label">Aha</span></div>
+      </div>
+    </div>
+    <div class="m-img m-img--ph m-img--4x3" style="border-radius:var(--m-sheet-radius);display:grid;align-content:end;justify-items:start;gap:2mm;padding:var(--m-rhythm-gutter)">
+      <span class="m-frost m-frost--label">Photo, day 3</span>
+      <span class="m-frost">The mess at 20:10</span>
+    </div>
+  </div>
+  <p class="code">.m-frost, --label, --circle, --lg, --strong, --on-light, .m-frost-row, inside .m-field, --red, --yellow or on a photograph</p>
 </section>
+
 
 <!-- ============ TAGS & LABELS ============ -->
 <section class="f" id="tags">
@@ -85,14 +119,14 @@
     <svg viewBox="0 0 100 100" style="width:26mm;height:26mm;transform:rotate(-10deg)" role="img" aria-label="Field study stamp, day 3">
       <defs><path id="stamp-arc" d="M50 50 m-29 0 a29 29 0 1 1 58 0 a29 29 0 1 1 -58 0"/></defs>
       <path class="stamp-edge" fill="var(--m-ink)"/>
-      <circle cx="50" cy="50" r="40.5" fill="none" stroke="var(--m-paper)" stroke-width="1.2"/>
+      <circle cx="50" cy="50" r="40.5" fill="none" stroke="var(--m-paper)" stroke-width="0.8"/>
       <text font-family="Biryani" font-weight="700" font-size="9" letter-spacing="0.6" style="color:var(--m-paper)"><textPath href="#stamp-arc">MARGIN   FIELD STUDY   2026   </textPath></text>
       <text x="50" y="49" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="14.2" style="color:var(--m-paper)">DAY</text>
       <text x="50" y="64" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="14.2" style="color:var(--m-mustard)">03</text>
     </svg>
     <svg viewBox="0 0 100 100" style="width:26mm;height:26mm;transform:rotate(8deg)" role="img" aria-label="Round stamp: tested, version 2">
-      <circle cx="50" cy="50" r="44" fill="none" stroke="var(--m-route)" stroke-width="2.4"/>
-      <circle cx="50" cy="50" r="40.5" fill="none" stroke="var(--m-route)" stroke-width="1"/>
+      <circle cx="50" cy="50" r="44" fill="none" stroke="var(--m-route)" stroke-width="1.6"/>
+      <circle cx="50" cy="50" r="40.5" fill="none" stroke="var(--m-route)" stroke-width="0.7"/>
       <text x="50" y="45" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="10.5" style="color:var(--m-route)">TESTED</text>
       <text x="50" y="62" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="14.2" style="color:var(--m-route)">V02</text>
     </svg>
@@ -184,10 +218,10 @@
       <p class="m-source" style="margin-top:4mm">Margin diary study, September 2026.</p><p class="code">.m-fnref, .m-footnotes, .m-source</p></div>
     <div><span class="m-label">Legend</span>
       <ul class="m-legend">
-        <li><svg viewBox="0 0 12 6"><path class="m-route" d="M1 3 H11" style="stroke-width:1.4"/></svg>Evidence</li>
-        <li><svg viewBox="0 0 12 6"><path class="m-route m-route--dashed" d="M1 3 H11" style="stroke-width:1.4;stroke-dasharray:2.4 1.6"/></svg>Hypothesis</li>
+        <li><svg viewBox="0 0 12 6"><path class="m-route" d="M1 3 H11" style="stroke-width:0.9"/></svg>Evidence</li>
+        <li><svg viewBox="0 0 12 6"><path class="m-route m-route--dashed" d="M1 3 H11" style="stroke-width:0.9;stroke-dasharray:1.8 1.2"/></svg>Hypothesis</li>
         <li><svg viewBox="0 0 12 6"><circle cx="6" cy="3" r="2.4" fill="var(--m-route)"/></svg>Spend</li>
-        <li><svg viewBox="0 0 12 6"><circle cx="6" cy="3" r="2" fill="var(--m-paper)" stroke="var(--m-route)" stroke-width=".9"/></svg>Planned, future</li>
+        <li><svg viewBox="0 0 12 6"><circle cx="6" cy="3" r="2" fill="var(--m-paper)" stroke="var(--m-route)" stroke-width=".6"/></svg>Planned, future</li>
         <li><svg viewBox="0 0 12 6"><rect x="3.4" y=".4" width="5.2" height="5.2" fill="var(--m-route)"/></svg>Planned, spent</li>
         <li><svg viewBox="0 0 12 6"><path d="M6 0 L9 3 L6 6 L3 3Z" fill="var(--m-route)"/></svg>Unexpected</li>
       </ul><p class="code">.m-legend</p></div>
@@ -197,7 +231,7 @@
 <!-- ============ TABLES ============ -->
 <section class="f" id="tables">
   <header class="f-head"><div class="m-break"><span class="m-station">04.9</span></div><p class="m-label">Components</p><h2 class="m-display-l">Tables</h2></header>
-  <p class="m-body f-lede">Hairlines only, no fills, no zebra stripes. Numbers right-aligned in the display face. The one row that matters gets a mustard edge.</p>
+  <p class="m-body f-lede">Hairlines only, no fills, no zebra stripes. Numbers right-aligned in the display face. The one row that matters gets a yellow edge.</p>
   <table class="m-table">
     <thead><tr><th>Task</th><th>Version</th><th class="num">Completed</th><th class="num">Median time</th><th>Note</th></tr></thead>
     <tbody>
@@ -267,6 +301,47 @@
   <p class="code">Nodes (route.js), arrow, loop, bracket, hand ring, leader. Every shape is route red, route weight.</p>
 </section>
 
+<!-- ============ FIELDS, SHEETS, CHIPS ============ -->
+<section class="f" id="fields">
+  <header class="f-head"><div class="m-break"><span class="m-station">04.13</span></div><p class="m-label">Components</p><h2 class="m-display-l">Fields, sheets and chips</h2></header>
+  <p class="m-body f-lede">The app reference's grammar: a colour field, frosted choices floating on it, and a white sheet pulled up from below holding the detail. Use it for prototype pages and for any spread about one moment.</p>
+  <div class="demo-grid" style="grid-template-columns:repeat(auto-fit,minmax(70mm,1fr))">
+    <div class="m-field" style="padding-bottom:0">
+      <p class="m-label" style="margin:0">Margin, P02</p>
+      <p class="m-stat" style="margin:var(--m-rhythm-snug) 0 var(--m-rhythm-block);color:var(--m-paper)">₹8,420 free to spend</p>
+      <div style="display:grid;gap:2.4mm;justify-items:center;margin-bottom:var(--m-rhythm-block)">
+        <span class="m-frost">Check before you spend</span>
+        <div class="m-frost-row" style="justify-content:center"><span class="m-frost">Coming up</span><span class="m-frost">Where it went</span><span class="m-frost">Plans</span></div>
+      </div>
+      <div class="m-sheet" style="border-radius:var(--m-sheet-radius) var(--m-sheet-radius) 0 0">
+        <div class="m-sheet__tabs"><span>Timeline</span><span>Plans</span></div>
+        <p class="m-stat" style="margin:0;font-size:10.5pt;color:var(--m-route)">20:15 <span style="color:rgba(48,45,64,.45)">Wednesday</span></p>
+        <p class="m-heading" style="margin:var(--m-rhythm-tight) 0 var(--m-rhythm-snug);color:var(--m-ink)">Dinner order, ₹280</p>
+        <p class="m-note" style="margin:0 0 var(--m-rhythm-block)">Mess was bad</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--m-rhythm-gutter)"><span class="m-caption" style="color:rgba(48,45,64,.45)">Swipe up</span><span class="m-fab"><span class="m-fab__badge">2</span></span></div>
+      </div>
+    </div>
+    <div style="display:grid;gap:var(--m-rhythm-block);align-content:start">
+      <div><span class="m-label">Chips</span>
+        <div class="m-chips"><span class="m-chip m-chip--red">Day 03</span><span class="m-chip">Day 02</span><span class="m-chip m-chip--sky">Food</span><span class="m-chip">Travel</span><span class="m-chip">Plans</span><span class="m-chip m-chip--blue">V03</span></div>
+        <p class="code">.m-chip, --red, --sky, --blue; group in .m-chips</p></div>
+      <div><span class="m-label">Sheet</span>
+        <div class="m-sheet" style="box-shadow:0 0 0 0.2mm var(--m-paper-deep)"><div class="m-sheet__tabs"><span>Diary</span><span>Timeline</span></div>
+          <div class="m-chips" style="margin-bottom:var(--m-rhythm-snug)"><span class="m-chip m-chip--red">Day 03</span><span class="m-chip">Day 02</span><span class="m-chip m-chip--sky">Unplanned</span></div>
+          <p class="m-heading" style="margin:0;color:var(--m-ink)">46 spends logged</p></div>
+        <p class="code">.m-sheet + .m-sheet__tabs; a grab handle is drawn at the top</p></div>
+      <div><span class="m-label">Action button</span>
+        <div class="demo-row"><span class="m-fab"><span class="m-fab__badge">2</span></span><span class="m-fab" style="background:var(--m-route)"></span></div>
+        <p class="code">.m-fab + .m-fab__badge. Screens only; in print it marks where a prototype's action sits.</p></div>
+    </div>
+  </div>
+  <ul class="rules m-body">
+    <li><b>Frost</b>Only on a colour field or a photograph. Never on white: there is nothing to see through.</li>
+    <li><b>Sheets</b>White, 5mm corners, a grab handle. The only rounded container, and only on a field.</li>
+    <li class="dont"><b>Never</b>Shadows, gradients, or frost over body text.</li>
+  </ul>
+</section>
+
 </main>
 <script src="js/route.js"></script>
 <script src="js/doc.js"></script>
@@ -288,9 +363,9 @@
   }
   ['event', 'future', 'planned', 'unexpected', 'turning'].forEach(function (k) { var s = box(12, 12, k); M.node(s, 6, 6, k, { size: 6 }); });
   var s = box(24, 12, 'arrow'); M.route(s, [[2, 6], [21, 6]]); S('path', { d: 'M17 2 L22 6 L17 10', class: 'm-route' }, s);
-  s = box(14, 14, 'loop'); S('path', { d: 'M12 7 A5 5 0 1 1 9.5 2.67', class: 'm-route' }, s); S('path', { d: 'M6.62 2.86 L9.5 2.67 L8.22 0.08', class: 'm-route', style: 'stroke-width:1.4' }, s);
+  s = box(14, 14, 'loop'); S('path', { d: 'M12 7 A5 5 0 1 1 9.5 2.67', class: 'm-route' }, s); S('path', { d: 'M6.62 2.86 L9.5 2.67 L8.22 0.08', class: 'm-route', style: 'stroke-width:0.9' }, s);
   s = box(10, 22, 'bracket'); M.route(s, [[8, 2], [4, 2], [4, 20], [8, 20]], { radius: 2, hair: false });
-  s = box(26, 12, 'hand ring'); S('path', { d: 'M15 1.6 C 22 1.4 25 4 24.6 6.4 C 24 9.6 17 10.8 12 10.6 C 5 10.4 1.4 8.6 1.4 6 C 1.4 3 6 1.4 13 1.6 C 16 1.7 18 2.4 19 3', fill: 'none', stroke: 'var(--m-route)', 'stroke-width': .6, 'stroke-linecap': 'round' }, s);
+  s = box(26, 12, 'hand ring'); S('path', { d: 'M15 1.6 C 22 1.4 25 4 24.6 6.4 C 24 9.6 17 10.8 12 10.6 C 5 10.4 1.4 8.6 1.4 6 C 1.4 3 6 1.4 13 1.6 C 16 1.7 18 2.4 19 3', fill: 'none', stroke: 'var(--m-route)', 'stroke-width': 0.39, 'stroke-linecap': 'round' }, s);
   s = box(24, 12, 'leader'); M.route(s, [[2, 10], [10, 10], [18, 3]], { hair: true, radius: 0 }); M.node(s, 18, 3, 'event', { size: 1.6 });
   s = box(30, 14, 'branch'); M.route(s, [[2, 11], [28, 11]]); M.route(s, [[8, 11], [8, 3], [28, 3]], { style: 'dotted', radius: 4 }); M.node(s, 28, 3, 'future', { size: 3.4 });
 })();

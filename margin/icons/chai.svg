@@ -2,11 +2,11 @@
 <defs><filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 7 -2.1" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="g"/><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="w"/><feDisplacementMap in="g" in2="w" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
 <title>Cutting chai glass</title>
 <g filter="url(#grain)">
-  <path d="M29 30 L71 30 L65 88 Q64 92 60 92 L40 92 Q36 92 35 88 Z" fill="#2A2A2A"/>
-  <path d="M31.4 44 L68.6 44 L67.3 56 L32.7 56 Z" fill="#CDAD3A"/>
-  <g stroke="#F0EFEB" stroke-width="1.2" opacity=".55"><path d="M40 58 L42 88"/><path d="M50 58 L50 88"/><path d="M60 58 L58 88"/></g>
+  <path d="M29 30 L71 30 L65 88 Q64 92 60 92 L40 92 Q36 92 35 88 Z" fill="#302D40"/>
+  <path d="M31.4 44 L68.6 44 L67.3 56 L32.7 56 Z" fill="#FFDD50"/>
+  <g stroke="#FFFFFF" stroke-width="0.8" opacity=".55"><path d="M40 58 L42 88"/><path d="M50 58 L50 88"/><path d="M60 58 L58 88"/></g>
 </g>
-<g fill="none" stroke="#D8503B" stroke-width="2.6" stroke-linecap="round">
+<g fill="none" stroke="#F33F31" stroke-width="1.7" stroke-linecap="round">
   <path d="M42 24 C38 19 46 15 42 8"/><path d="M56 24 C52 19 60 15 56 8"/>
 </g>
 </svg>

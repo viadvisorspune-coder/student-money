@@ -7,7 +7,7 @@
 .m-pill {
   display: inline-flex; align-items: center; gap: 1.4mm;
   font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase;
-  color: var(--m-route); border: 0.45mm solid currentColor; border-radius: 99px;
+  color: var(--m-route); border: 0.29mm solid currentColor; border-radius: 99px;
   padding: 1.3mm 2.8mm; white-space: nowrap; background: none;
 }
 .m-pill--solid   { background: var(--m-route); border-color: var(--m-route); color: var(--m-paper); }
@@ -19,7 +19,7 @@
 
 /* Outcome pill: shape carries the meaning, never colour. */
 .m-outcome { display: inline-flex; align-items: center; gap: 1.6mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-blue); }
-.m-outcome::before { content: ""; width: 2.6mm; height: 2.6mm; border-radius: 50%; box-sizing: border-box; border: 0.45mm solid currentColor; }
+.m-outcome::before { content: ""; width: 2.6mm; height: 2.6mm; border-radius: 50%; box-sizing: border-box; border: 0.29mm solid currentColor; }
 .m-outcome--done::before    { background: currentColor; }
 .m-outcome--helped::before  { background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
 .m-outcome--stopped::before { background: none; }
@@ -31,13 +31,13 @@
   display: inline-block; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .08em; text-transform: uppercase;
   color: var(--m-blue); background: var(--m-paper-deep); padding: 1.2mm 1.8mm; white-space: nowrap;
 }
-.m-tag--code  { background: none; border: 0.35mm solid var(--m-blue); padding: 1mm 1.4mm; }
+.m-tag--code  { background: none; border: 0.23mm solid var(--m-blue); padding: 1mm 1.4mm; }
 .m-tag--theme::before { content: "# "; color: var(--m-route); }
 .m-tag--version { background: var(--m-blue); color: var(--m-paper); }
 
 /* Frequency: how many of the six participants, filled dots out of total. */
 .m-freq { display: inline-flex; align-items: center; gap: 0.9mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .06em; color: var(--m-blue); }
-.m-freq i { width: 2.2mm; height: 2.2mm; border-radius: 50%; border: 0.35mm solid var(--m-blue); box-sizing: border-box; }
+.m-freq i { width: 2.2mm; height: 2.2mm; border-radius: 50%; border: 0.23mm solid var(--m-blue); box-sizing: border-box; }
 .m-freq i.on { background: var(--m-blue); }
 .m-freq i.half { background: linear-gradient(90deg, var(--m-blue) 50%, transparent 50%); }
 .m-freq b { margin-left: 1.2mm; font-weight: 700; }
@@ -56,28 +56,28 @@
 .m-kicker b { color: var(--m-blue); font-weight: 700; }
 .m-label--blue { color: var(--m-blue); }
 .m-label--line { display: flex; align-items: center; gap: 2mm; }
-.m-label--line::after { content: ""; flex: 1; height: 0.3mm; background: currentColor; }
+.m-label--line::after { content: ""; flex: 1; height: 0.2mm; background: currentColor; }
 
 /* =========================================================
    NOTES
    ========================================================= */
 /* Margin note: red serif aside beside a hairline, as in the reference gutter. */
-.m-margin-note { font: 400 7.7pt/1.45 var(--m-font-text); color: var(--m-route); border-left: 0.3mm solid var(--m-route); padding-left: 2.4mm; max-width: 40mm; }
+.m-margin-note { font: 400 7.7pt/1.45 var(--m-font-text); color: var(--m-route); border-left: 0.2mm solid var(--m-route); padding-left: 2.4mm; max-width: 40mm; }
 .m-margin-note p { margin: 0 0 0.8em; }
-.m-margin-note--right { border-left: 0; border-right: 0.3mm solid var(--m-route); padding: 0 2.4mm 0 0; text-align: right; }
+.m-margin-note--right { border-left: 0; border-right: 0.2mm solid var(--m-route); padding: 0 2.4mm 0 0; text-align: right; }
 
 /* Field note: the researcher's own jotting, italic, dated. */
 .m-field-note { font: italic 400 10pt/1.32 var(--m-font-text); color: var(--m-blue); padding-left: 5mm; position: relative; max-width: 70mm; }
-.m-field-note::before { content: ""; position: absolute; left: 0; top: 1.4mm; width: 2.4mm; height: 2.4mm; border-radius: 50%; border: 0.45mm solid var(--m-route); box-sizing: border-box; }
+.m-field-note::before { content: ""; position: absolute; left: 0; top: 1.4mm; width: 2.4mm; height: 2.4mm; border-radius: 50%; border: 0.29mm solid var(--m-route); box-sizing: border-box; }
 .m-field-note cite { display: block; font: 700 7.7pt/1 var(--m-font-text); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); margin-top: 1.6mm; }
 
-/* Sticky note: a collected paper square, mustard, taped, turned. Holds a short thought. */
+/* Sticky note: a collected paper square, yellow, taped, turned. Holds a short thought. */
 .m-sticky {
   position: relative; width: 38mm; min-height: 34mm; box-sizing: border-box; padding: 6mm 4mm 4mm;
   background: var(--m-mustard); color: var(--m-ink); transform: rotate(-3deg);
   font: 400 7.7pt/1.4 var(--m-font-text);
 }
-.m-sticky::before { content: ""; position: absolute; top: -2.6mm; left: 50%; width: 16mm; height: 5mm; margin-left: -8mm; background: rgba(240, 239, 235, .7); transform: rotate(2deg); }
+.m-sticky::before { content: ""; position: absolute; top: -2.6mm; left: 50%; width: 16mm; height: 5mm; margin-left: -8mm; background: rgba(255, 255, 255, .7); transform: rotate(2deg); }
 .m-sticky--paper { background: var(--m-paper-deep); color: var(--m-blue); transform: rotate(2.5deg); }
 
 /* =========================================================
@@ -92,7 +92,7 @@
 .m-sticker--blue    { background: var(--m-blue); }
 .m-sticker--insight { background: var(--m-mustard); color: var(--m-ink); }
 .m-sticker--ink     { background: var(--m-ink); }
-.m-sticker--outline { background: none; color: var(--m-route); border: 0.6mm solid var(--m-route); }
+.m-sticker--outline { background: none; color: var(--m-route); border: 0.39mm solid var(--m-route); }
 /* Burst: a starred edge for turning points. */
 .m-sticker--burst {
   border-radius: 0; width: 26mm; height: 26mm;
@@ -103,25 +103,25 @@
 .m-sticker b { display: block; font-size: 10.5pt; letter-spacing: 0; }
 
 /* Tape: a translucent strip holding an image or note to the page. */
-.m-tape { position: absolute; width: 18mm; height: 5.5mm; background: rgba(228, 226, 220, .82); box-shadow: inset 0 0 0 0.2mm rgba(42, 42, 42, .06); }
+.m-tape { position: absolute; width: 18mm; height: 5.5mm; background: rgba(237, 241, 244, .82); box-shadow: inset 0 0 0 0.2mm rgba(48, 45, 64, .06); }
 
 /* =========================================================
    UNDERLINES & MARKS on words, one per paragraph at most.
    ========================================================= */
 .m-mark { background: linear-gradient(transparent 52%, var(--m-mustard) 52%, var(--m-mustard) 96%, transparent 96%); padding: 0 0.4mm; color: inherit; }
-.m-u-route { text-decoration: underline; text-decoration-color: var(--m-route); text-decoration-thickness: 0.6mm; text-underline-offset: 0.9mm; }
-.m-u-wave  { text-decoration: underline wavy var(--m-route); text-decoration-thickness: 0.3mm; text-underline-offset: 1mm; }
-.m-u-dash  { text-decoration: underline dashed var(--m-route); text-decoration-thickness: 0.35mm; text-underline-offset: 1mm; }
-.m-strike  { text-decoration: line-through; text-decoration-color: var(--m-route); text-decoration-thickness: 0.5mm; }
+.m-u-route { text-decoration: underline; text-decoration-color: var(--m-route); text-decoration-thickness: 0.39mm; text-underline-offset: 0.9mm; }
+.m-u-wave  { text-decoration: underline wavy var(--m-route); text-decoration-thickness: 0.2mm; text-underline-offset: 1mm; }
+.m-u-dash  { text-decoration: underline dashed var(--m-route); text-decoration-thickness: 0.23mm; text-underline-offset: 1mm; }
+.m-strike  { text-decoration: line-through; text-decoration-color: var(--m-route); text-decoration-thickness: 0.33mm; }
 /* Hand-drawn stroke under a word, and a loose circle around one. */
 .m-u-hand {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5.2 C 20 2.6, 45 6.4, 64 3.8 S 92 3.4, 99 4.6' fill='none' stroke='%23D8503B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% 0.45em no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5.2 C 20 2.6, 45 6.4, 64 3.8 S 92 3.4, 99 4.6' fill='none' stroke='%23F33F31' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% 0.45em no-repeat;
   padding-bottom: 0.2em;
 }
 .m-circle { position: relative; display: inline-block; padding: 0 1mm; }
 .m-circle::after {
   content: ""; position: absolute; inset: -32% -10% -28% -8%; pointer-events: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M58 3.5 C 84 3, 98 10, 97 20 C 96 32, 70 38, 46 37 C 20 36, 3 30, 3 20 C 3 9, 24 3.2, 52 3.6 C 60 3.7, 66 4.6, 70 6' fill='none' stroke='%23D8503B' stroke-width='1.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40' preserveAspectRatio='none'%3E%3Cpath d='M58 3.5 C 84 3, 98 10, 97 20 C 96 32, 70 38, 46 37 C 20 36, 3 30, 3 20 C 3 9, 24 3.2, 52 3.6 C 60 3.7, 66 4.6, 70 6' fill='none' stroke='%23F33F31' stroke-width='1.1' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
 /* =========================================================
@@ -129,7 +129,7 @@
    ========================================================= */
 .m-runhead { display: flex; justify-content: space-between; align-items: baseline; gap: 6mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .12em; text-transform: uppercase; color: var(--m-route); }
 .m-runhead b { color: var(--m-blue); font-weight: 700; }
-.m-runhead--rule { padding-bottom: 2mm; border-bottom: 0.3mm solid var(--m-route); }
+.m-runhead--rule { padding-bottom: 2mm; border-bottom: 0.2mm solid var(--m-route); }
 
 .m-footer { display: flex; justify-content: space-between; align-items: center; gap: 6mm; font: 400 7.7pt/1.2 var(--m-font-text); color: var(--m-blue); }
 .m-footer .m-folio { font-size: 7.7pt; }
@@ -162,8 +162,10 @@
   padding: 0 1mm; background: var(--m-paper);
 }
 .m-loop__label::before, .m-loop__label::after { content: ""; width: var(--m-route-node); height: var(--m-route-node); border-radius: 50%; background: var(--m-route); }
-.m-loop--insight { border-color: var(--m-mustard); }
-.m-loop--insight .m-loop__label::before, .m-loop--insight .m-loop__label::after { background: var(--m-mustard); }
+/* Insight: a yellow card, as the reference's yellow screen. The route arrives at it; text is ink or blue. */
+.m-loop--insight { border-color: var(--m-mustard); background: var(--m-mustard); color: var(--m-ink); }
+.m-loop--insight .m-loop__label { background: var(--m-mustard); }
+.m-loop--insight .m-loop__label::before, .m-loop--insight .m-loop__label::after { background: var(--m-route); }
 .m-loop--open { border-right-color: transparent; border-top-right-radius: 0; border-bottom-right-radius: 0; }
 .m-loop--dashed { border-style: dashed; }
 
@@ -179,7 +181,7 @@
 .m-pullquote cite { display: block; margin-top: var(--m-rhythm-tight); font: 700 7.7pt/1 var(--m-font-text); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
 /* Big quote glyph for a quote that stands alone on a page. */
 .m-bigquote { position: relative; padding-top: 8mm; }
-.m-bigquote::before { content: "\201C"; position: absolute; top: 0; left: -0.6mm; font: 700 21pt/1 var(--m-font-display); color: var(--m-mustard); }
+.m-bigquote::before { content: "\201C"; position: absolute; top: 0; left: -0.6mm; font: 700 21pt/1 var(--m-font-display); color: var(--m-route); }
 
 /* =========================================================
    CAPTIONS, FOOTNOTES, SOURCES
@@ -187,7 +189,7 @@
 .m-figcap { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--m-rhythm-snug); font: italic 400 7.7pt/1.5 var(--m-font-text); color: var(--m-blue); margin-top: var(--m-rhythm-tight); }
 .m-figcap b { font: 700 7.7pt/1.6 var(--m-font-text); font-style: normal; letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
 .m-fnref { font: 700 0.62em/0 var(--m-font-text); color: var(--m-route); vertical-align: super; margin-left: 0.3mm; }
-.m-footnotes { border-top: 0.3mm solid var(--m-route); padding-top: 2mm; margin: 0; list-style: none; counter-reset: fn; font: 400 7.7pt/1.45 var(--m-font-text); color: var(--m-blue); }
+.m-footnotes { border-top: 0.2mm solid var(--m-route); padding-top: 2mm; margin: 0; list-style: none; counter-reset: fn; font: 400 7.7pt/1.45 var(--m-font-text); color: var(--m-blue); }
 .m-footnotes li { counter-increment: fn; display: grid; grid-template-columns: 4mm 1fr; }
 .m-footnotes li::before { content: counter(fn); font: 700 7.7pt/1.45 var(--m-font-text); color: var(--m-route); }
 .m-source { font: 400 7.7pt/1.4 var(--m-font-text); color: var(--m-blue); }
@@ -205,8 +207,8 @@
    TABLES, hairlines, no fills, numbers right-aligned.
    ========================================================= */
 .m-table { width: 100%; border-collapse: collapse; font: 400 7.7pt/1.4 var(--m-font-text); color: var(--m-blue); }
-.m-table th { font: 700 7.7pt/1.2 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); text-align: left; padding: 0 3mm 2mm 0; border-bottom: 0.45mm solid var(--m-route); vertical-align: bottom; }
-.m-table td { padding: 2mm 3mm 2mm 0; border-bottom: 0.3mm solid var(--m-paper-deep); vertical-align: top; }
+.m-table th { font: 700 7.7pt/1.2 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); text-align: left; padding: 0 3mm 2mm 0; border-bottom: 0.29mm solid var(--m-route); vertical-align: bottom; }
+.m-table td { padding: 2mm 3mm 2mm 0; border-bottom: 0.2mm solid var(--m-paper-deep); vertical-align: top; }
 .m-table .num { text-align: right; font-variant-numeric: tabular-nums lining-nums; font-family: var(--m-font-text); font-weight: 700; font-size: 7.7pt; }
 .m-table tr.is-key td { background: linear-gradient(transparent 0 0); }
 .m-table tr.is-key td:first-child { box-shadow: inset 1mm 0 0 var(--m-mustard); padding-left: 2.4mm; }
@@ -219,7 +221,7 @@
 .m-contents::before { content: ""; position: absolute; left: 1.3mm; top: 2mm; bottom: 2mm; width: var(--m-route-weight); background: var(--m-route); border-radius: 1mm; }
 .m-contents li { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 4mm; align-items: baseline; padding: 1.6mm 0; }
 .m-contents li::before { content: ""; position: absolute; left: -7mm; top: 50%; width: var(--m-route-node); height: var(--m-route-node); margin-top: calc(var(--m-route-node) / -2); border-radius: 50%; background: var(--m-route); }
-.m-contents li.is-future::before { background: var(--m-paper); box-sizing: border-box; border: 0.45mm solid var(--m-route); }
+.m-contents li.is-future::before { background: var(--m-paper); box-sizing: border-box; border: 0.29mm solid var(--m-route); }
 .m-contents a, .m-contents span.t { font: 700 10pt/1.1 var(--m-font-text); text-transform: uppercase; color: var(--m-blue); text-decoration: none; }
 .m-contents small { font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; color: var(--m-route); margin-right: 2mm; }
 .m-contents .pg { font: 700 7.7pt/1 var(--m-font-text); color: var(--m-route); }
@@ -228,7 +230,7 @@
 .m-crumb span + span::before { content: ""; display: inline-block; width: 3.4mm; height: 2.2mm; margin-right: 1.6mm; background: var(--m-arrow) center / contain no-repeat; }
 
 /* Arrow: a drawn route arrow, the design consequence. Used instead of an arrow character so no other font is needed. */
-:root { --m-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M1.5 7 H21 M15.5 2 L21.5 7 L15.5 12' fill='none' stroke='%23D8503B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+:root { --m-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M1.5 7 H21 M15.5 2 L21.5 7 L15.5 12' fill='none' stroke='%23F33F31' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
 .m-arrow { display: inline-block; width: 1.1em; height: 0.66em; margin-right: 0.35em; vertical-align: 0.05em; background: var(--m-arrow) center / contain no-repeat; }
 
 /* =========================================================
@@ -238,9 +240,9 @@
   radial-gradient(circle, var(--m-route) calc(var(--m-route-node) / 2 - .05mm), transparent calc(var(--m-route-node) / 2)) left center / var(--m-route-node) 100% no-repeat,
   radial-gradient(circle, var(--m-route) calc(var(--m-route-node) / 2 - .05mm), transparent calc(var(--m-route-node) / 2)) right center / var(--m-route-node) 100% no-repeat,
   linear-gradient(var(--m-route), var(--m-route)) center / calc(100% - var(--m-route-node)) var(--m-route-weight) no-repeat; }
-.m-rule--hair { height: 0.3mm; background: var(--m-route); }
-.m-rule--dash { height: var(--m-route-weight); background: repeating-linear-gradient(90deg, var(--m-route) 0 3.6mm, transparent 3.6mm 6.8mm); }
-.m-rule--dots { height: var(--m-route-weight); background: radial-gradient(circle, var(--m-route) 0.85mm, transparent 0.9mm) 0 50% / 3.6mm 100% repeat-x; }
+.m-rule--hair { height: 0.2mm; background: var(--m-route); }
+.m-rule--dash { height: var(--m-route-weight); background: repeating-linear-gradient(90deg, var(--m-route) 0 2.4mm, transparent 2.4mm 4.6mm); }
+.m-rule--dots { height: 1.2mm; background: radial-gradient(circle, var(--m-route) 0.5mm, transparent 0.55mm) 0 50% / 2.6mm 100% repeat-x; }
 
 /* =========================================================
    IMAGES, formats and treatments. Placeholders use .m-img--ph.
@@ -260,13 +262,13 @@
 
 /* Placeholder: grain on ink, labelled with its format. Stands in until the photo exists. */
 .m-img--ph {
-  background-color: #3a3a39;
+  background-color: #4A4858;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .02' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .94  0 0 0 0 .93  0 0 0 0 .91  0 0 0 .55 -.08'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 .94  0 0 0 0 .93  0 0 0 0 .91  0 0 0 .5 -.18'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23g)'/%3E%3C/svg%3E");
   background-size: cover, 90px 90px;
 }
-.m-img--ph.m-img--duotone { background-color: #1a4e76; }
+.m-img--ph.m-img--duotone { background-color: #2E36A1; }
 .m-img__tag { position: absolute; left: 2mm; bottom: 2mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .12em; text-transform: uppercase; color: var(--m-paper); opacity: .85; }
 
 /* Artifact print: a photo treated as a collected object, paper border, turned, taped. */
@@ -281,7 +283,7 @@
 .m-screen-ph i { display: block; height: 2mm; background: var(--m-paper-deep); }
 .m-screen-ph i.b { height: 10mm; }
 .m-screen-ph i.s { width: 60%; }
-.m-screen-ph i.hit { outline: 0.5mm solid var(--m-route); outline-offset: 0.6mm; }
+.m-screen-ph i.hit { outline: 0.33mm solid var(--m-route); outline-offset: 0.6mm; }
 
 /* =========================================================
    PARTICIPANT, codes and context, never names or faces.
@@ -320,3 +322,53 @@
 .m-slip cite { display: block; font: 700 7.7pt/1 var(--m-font-text); font-style: normal; letter-spacing: .1em; color: var(--m-route); margin-top: 1.2mm; }
 .m-slip--key { background: var(--m-mustard); color: var(--m-ink); }
 .m-slip--key cite { color: var(--m-ink); }
+
+/* =========================================================
+   FIELDS, FROST, CHIPS, SHEETS: from the app reference.
+   Saturated colour fields carry white sheets and frosted pills.
+   Frost only ever sits on a field or a photograph, never on white.
+   ========================================================= */
+.m-field { background: var(--m-blue); color: var(--m-paper); padding: var(--m-rhythm-block) var(--m-rhythm-gutter); border-radius: var(--m-sheet-radius); overflow: hidden; position: relative; }
+.m-field--red    { background: var(--m-route); }
+.m-field--yellow { background: var(--m-mustard); color: var(--m-ink); }
+.m-field--flat   { border-radius: 0; }
+.m-field .m-label, .m-field .m-heading, .m-field .m-body, .m-field .m-stat { color: inherit; }
+
+/* Frosted pill: translucent white, blurred, a hairline edge. White text on blue and red. */
+.m-frost {
+  display: inline-flex; align-items: center; gap: 1.6mm; white-space: nowrap;
+  padding: 2.2mm 4.4mm; border-radius: var(--m-frost-radius);
+  background: var(--m-frost-fill); border: 0.2mm solid var(--m-frost-edge);
+  -webkit-backdrop-filter: blur(var(--m-frost-blur)); backdrop-filter: blur(var(--m-frost-blur));
+  color: var(--m-paper); font: 400 10pt/1.2 var(--m-font-text);
+}
+/* On yellow or a light photograph the frost darkens instead, and the text turns ink. */
+.m-field--yellow .m-frost, .m-frost--on-light { background: rgba(48, 45, 64, 0.1); border-color: rgba(48, 45, 64, 0.08); color: var(--m-ink); }
+.m-frost--strong { background: var(--m-frost-fill-strong); }
+.m-frost--label { padding: 1.3mm 2.8mm; font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .06em; text-transform: uppercase; }
+.m-frost--circle { justify-content: center; width: 9mm; height: 9mm; padding: 0; font: 700 10pt/1 var(--m-font-display); }
+.m-frost--circle.m-frost--lg { width: 16mm; height: 16mm; font-size: 17.5pt; }
+.m-frost .m-dot { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: currentColor; }
+
+/* A row of frosted pills that runs off both edges, as the reference's carousel. */
+.m-frost-row { display: flex; gap: 2mm; margin: 0 calc(var(--m-rhythm-gutter) * -1); padding: 0; overflow: hidden; white-space: nowrap; }
+.m-frost-row > :first-child { margin-left: -6mm; }
+
+/* Chips: small, square-ish, one word. Grey by default; one selected chip in sky or red. */
+.m-chip { display: inline-flex; align-items: center; padding: 1.2mm 2.2mm; border-radius: var(--m-chip-radius); background: var(--m-paper-deep); color: rgba(48, 45, 64, 0.6); font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .05em; text-transform: uppercase; }
+.m-chip--sky  { background: var(--m-sky); color: var(--m-ink); }
+.m-chip--red  { background: var(--m-route); color: var(--m-paper); }
+.m-chip--blue { background: var(--m-blue); color: var(--m-paper); }
+.m-chips { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+
+/* Sheet: a white card over a colour field, with a grab handle and a two-tab header. */
+.m-sheet { position: relative; background: var(--m-paper); color: var(--m-ink); border-radius: var(--m-sheet-radius); padding: 7mm var(--m-rhythm-gutter) var(--m-rhythm-gutter); }
+.m-sheet::before { content: ""; position: absolute; top: 2.4mm; left: 50%; width: 7mm; height: 0.8mm; margin-left: -3.5mm; border-radius: 1mm; background: var(--m-paper-deep); }
+.m-sheet__tabs { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--m-rhythm-block); font: 700 10.5pt/1.2 var(--m-font-text); }
+.m-sheet__tabs span + span { color: rgba(48, 45, 64, 0.35); }
+
+/* Round action button with a count badge. */
+.m-fab { position: relative; display: inline-grid; place-items: center; width: 11mm; height: 11mm; border-radius: 50%; background: var(--m-blue); color: var(--m-paper); }
+.m-fab::before { content: ""; width: 4.2mm; height: 3.6mm; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M2 1h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H6l-3 2.4V9H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z' fill='none' stroke='%23FFFFFF' stroke-width='1.1' stroke-linejoin='round'/%3E%3Cpath d='M4.6 5.6c.8.8 4 .8 4.8 0' fill='none' stroke='%23FFFFFF' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+.m-fab__badge { position: absolute; top: -0.6mm; right: -0.6mm; min-width: 3.6mm; height: 3.6mm; border-radius: 99px; background: var(--m-route); color: var(--m-paper); font: 700 7.7pt/3.6mm var(--m-font-text); text-align: center; border: 0.3mm solid var(--m-paper); }
+@media print { .m-frost { -webkit-backdrop-filter: none; backdrop-filter: none; } }

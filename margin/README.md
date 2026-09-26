@@ -2,7 +2,7 @@
 
 The design system for the user-research report on Margin, the student money app. It is editorial, archival and a little playful, and it rests on one idea: the research itself becomes the graphic language. A day is a line, a spend is a node, a plan that hasn't happened yet is a ghost node, and a finding is a place the line arrives at.
 
-The visual reference is a printed timeline spread: warm paper, a thick red route with dot terminals and rounded turns, blue dates and body copy, mustard headlines, and textured black objects.
+The visual references are a printed timeline spread (a red route with dot terminals and rounded turns, blue dates, textured objects), an infographic page (type sizes and spacing) and a set of app screens (the colours, colour fields, white sheets, chips and frosted pills).
 
 Margin is separate from the Student Money app's design system (`design/design-system/`). It shares no tokens with the app and never changes them.
 
@@ -19,8 +19,8 @@ To get single-file copies you can send or preview anywhere, run `npm run margin:
 | `foundations.html` | Typography, colour, grid, spacing, shape (the route and its symbols), iconography, imagery, motion |
 | `grammar.html` | Evidence, claims, participants, quotes, observations, insights, decisions, outcomes, uncertainty |
 | `dataviz.html` | 18 charts for user-testing data, in nine types, each with a data table |
-| `components.html` | Pills, tags, labels, notes, stickers, underlines, headers, footers, folios, callouts, captions, footnotes, legends, tables, navigation, image formats, participants, shapes |
-| `layouts.html` | 14 A4 spreads combining images and text |
+| `components.html` | Pills, frosted pills and circles, chips, sheets, fields, tags, labels, notes, stickers, underlines, headers, footers, folios, callouts, captions, footnotes, legends, tables, navigation, image formats, participants, shapes |
+| `layouts.html` | 15 A4 spreads combining images and text |
 | `rules.html` | When to use what, what not to do, accessibility, data integrity, citation, composition |
 
 ## Files
@@ -39,7 +39,7 @@ To get single-file copies you can send or preview anywhere, run `npm run margin:
 ## Rules that are easy to break
 
 1. The system is consistent; the compositions are not. Keep type, colour, line and symbols fixed, and let the layout move.
-2. Colour means a type of information. Red is something happening, blue is something observed, mustard is what it meant. Participants never get a colour.
+2. Colour means a type of information. Red is something happening, blue is something observed, yellow is what it meant. Participants never get a colour.
 3. Every count shows its base ("5 of 6"). Never use percentages of six.
 4. Never compare participants with each other or with an average student.
 5. No verdicts on spending: no "overspent", "should", "budget" or "saved ₹…".
@@ -48,6 +48,6 @@ To get single-file copies you can send or preview anywhere, run `npm run margin:
 ## To decide with the client
 
 - **Oversized type.** The scale tops out at 21pt, as measured from the second reference. Big-number and chapter-opener spreads can get an oversized exception if wanted.
-- **Mustard contrast.** The reference mustard (`#CDAD3A`) has a contrast ratio of 1.89:1 on paper. It is kept exact and used only for headlines. A darker text mustard is needed if every text element must meet WCAG.
+- **Yellow and sky.** `#FFDD50` and `#45A2FB` are 1.34 and 2.69:1 on white, so they are fills only, with ink or blue text on them. Headlines are blue.
 - **Page size.** A4 portrait spreads are assumed.
 - **Real data.** Replace `js/sample-data.js` and every sample figure written into the pages with data from the study archive.

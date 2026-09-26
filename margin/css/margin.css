@@ -57,19 +57,19 @@
 .m-route {
   fill: none;
   stroke: var(--m-route);
-  stroke-width: 1.8;            /* --m-route-weight in mm */
+  stroke-width: 1;              /* --m-route-weight in mm */
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.m-route--dashed { stroke-dasharray: 3.6 3.2; stroke-linecap: butt; }
-.m-route--dotted { stroke-dasharray: 0 3.6; }
-.m-route--hair   { stroke-width: 0.3; }
+.m-route--dashed { stroke-dasharray: 2.4 2.2; stroke-linecap: butt; }
+.m-route--dotted { stroke-dasharray: 0 2.6; }
+.m-route--hair   { stroke-width: 0.2; }
 
 /* Text inside SVG takes its colour from the type class, like HTML text. */
 svg text { fill: currentColor; }
 
 .m-node          { fill: var(--m-route); stroke: none; }
-.m-node--future  { fill: var(--m-paper); stroke: var(--m-route); stroke-width: 1.2; }
+.m-node--future  { fill: var(--m-paper); stroke: var(--m-route); stroke-width: 0.7; }
 
 /* ---------- Station break (HTML) ---------- */
 /* The route stops at a node, leaves a gap, carries a label, and resumes:
@@ -144,8 +144,8 @@ svg text { fill: currentColor; }
     transition: opacity var(--m-motion-fade) ease-out;
     transition-delay: var(--at, 0ms);
   }
-  .m-animate .m-route--dashed { stroke-dasharray: 3.6 3.2; }
-  .m-animate .m-route--dotted { stroke-dasharray: 0 3.6; }
+  .m-animate .m-route--dashed { stroke-dasharray: 2.4 2.2; }
+  .m-animate .m-route--dotted { stroke-dasharray: 0 2.6; }
   .m-animate.is-drawn .m-route--dashed, .m-animate.is-drawn .m-route--dotted { opacity: 1; }
 }
 

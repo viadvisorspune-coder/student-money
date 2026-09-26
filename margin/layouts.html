@@ -20,7 +20,7 @@
   /* Spread preview: two A4 pages at true size, scaled to the column. */
   .sp { position: relative; width: 420mm; height: 297mm; background: var(--m-paper); overflow: hidden; box-shadow: 0 0 0 0.3mm var(--m-paper-deep); }
   .sp::after { content: ""; position: absolute; top: 0; bottom: 0; left: 204mm; width: 12mm; pointer-events: none;
-    background: linear-gradient(90deg, rgba(42,42,42,0) 0%, rgba(42,42,42,.07) 50%, rgba(42,42,42,0) 100%); }
+    background: linear-gradient(90deg, rgba(48,45,64,0) 0%, rgba(48,45,64,.07) 50%, rgba(48,45,64,0) 100%); }
   .sp > svg.sp-svg { position: absolute; inset: 0; width: 420mm; height: 297mm; z-index: 0; overflow: visible; }
   .sp .a { position: absolute; z-index: 1; margin: 0; }
   .sp .m-body p { margin: 0 0 var(--m-rhythm-para); }
@@ -31,8 +31,8 @@
   .grid-toggle { margin: 0 0 8mm; }
   .show-grid .sp::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: .5;
     background:
-      linear-gradient(90deg, transparent 14mm, rgba(216,80,59,.12) 14mm 39.2mm, transparent 39.2mm 44.2mm, rgba(216,80,59,.12) 44.2mm 69.4mm, transparent 69.4mm 74.4mm, rgba(216,80,59,.12) 74.4mm 99.6mm, transparent 99.6mm 104.6mm, rgba(216,80,59,.12) 104.6mm 129.8mm, transparent 129.8mm 134.8mm, rgba(216,80,59,.12) 134.8mm 160mm, transparent 160mm 165mm, rgba(216,80,59,.12) 165mm 190.2mm, transparent 190.2mm),
-      linear-gradient(90deg, transparent 230mm, rgba(216,80,59,.12) 230mm 255.2mm, transparent 255.2mm 260.2mm, rgba(216,80,59,.12) 260.2mm 285.4mm, transparent 285.4mm 290.4mm, rgba(216,80,59,.12) 290.4mm 315.6mm, transparent 315.6mm 320.6mm, rgba(216,80,59,.12) 320.6mm 345.8mm, transparent 345.8mm 350.8mm, rgba(216,80,59,.12) 350.8mm 376mm, transparent 376mm 381mm, rgba(216,80,59,.12) 381mm 406mm, transparent 406mm);
+      linear-gradient(90deg, transparent 14mm, rgba(243,63,49,.12) 14mm 39.2mm, transparent 39.2mm 44.2mm, rgba(243,63,49,.12) 44.2mm 69.4mm, transparent 69.4mm 74.4mm, rgba(243,63,49,.12) 74.4mm 99.6mm, transparent 99.6mm 104.6mm, rgba(243,63,49,.12) 104.6mm 129.8mm, transparent 129.8mm 134.8mm, rgba(243,63,49,.12) 134.8mm 160mm, transparent 160mm 165mm, rgba(243,63,49,.12) 165mm 190.2mm, transparent 190.2mm),
+      linear-gradient(90deg, transparent 230mm, rgba(243,63,49,.12) 230mm 255.2mm, transparent 255.2mm 260.2mm, rgba(243,63,49,.12) 260.2mm 285.4mm, transparent 285.4mm 290.4mm, rgba(243,63,49,.12) 290.4mm 315.6mm, transparent 315.6mm 320.6mm, rgba(243,63,49,.12) 320.6mm 345.8mm, transparent 345.8mm 350.8mm, rgba(243,63,49,.12) 350.8mm 376mm, transparent 376mm 381mm, rgba(243,63,49,.12) 381mm 406mm, transparent 406mm);
   }
 </style>
 </head>
@@ -48,7 +48,7 @@
   <p class="m-label">Margin</p>
   <h1 class="m-display-l" style="margin:0">Page patterns</h1>
 </header>
-<p class="m-body f-lede" style="max-width:160mm">Fourteen spreads, each a different way of combining images and text. They share the system and nothing else: <b>the system is consistent; the compositions are not.</b> Every spread is shown at true A4 size, scaled to fit. Grey blocks are image placeholders marked with their format. Content is sample.</p>
+<p class="m-body f-lede" style="max-width:160mm">Fifteen spreads, each a different way of combining images and text. They share the system and nothing else: <b>the system is consistent; the compositions are not.</b> Every spread is shown at true A4 size, scaled to fit. Grey blocks are image placeholders marked with their format. Content is sample.</p>
 <button class="replay grid-toggle" type="button" id="grid-toggle" aria-pressed="false">Show the grid</button>
 
 <!-- ======================= L01 CHAPTER OPENER ======================= -->
@@ -58,6 +58,7 @@
   <div class="fit"><div class="sp" id="sp01">
     <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
     <figure class="m-img m-img--ph m-img--duotone" style="left:0;top:0;width:210mm;height:297mm"><span class="m-img__tag" style="left:14mm;bottom:16mm">Photo, full bleed, duotone</span></figure>
+    <div class="a" style="left:14mm;top:226mm;width:196mm;display:grid;gap:2.4mm;justify-items:start;overflow:hidden"><span class="m-frost">Why do students spend what they didn't plan to?</span><div class="m-frost-row" style="margin:0"><span class="m-frost">Six students</span><span class="m-frost">Six days</span><span class="m-frost">46 spends</span><span class="m-frost">Three test rounds</span></div></div>
     <p class="a m-kicker" style="left:14mm;top:16mm;color:var(--m-paper)">Chapter 01</p>
     <h2 class="a m-display-xl" style="left:252mm;top:34mm;width:150mm;font-size:21pt">Why do students spend what they didn't plan to?</h2>
     <span class="a m-station m-vertical" style="left:231.6mm;top:106mm">01</span>
@@ -106,7 +107,7 @@
   <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>A single sentence from a participant that carries a finding.</p><p><span class="m-kicker">Images + text</span>An enormous quote alone on the left page; a taped portrait artifact and a field note on the right.</p><p><span class="m-kicker">Rule</span>The route leads into the citation, never into the quote itself.</p></div>
   <div class="fit"><div class="sp" id="sp03">
     <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
-    <span class="a" style="left:28mm;top:62mm;font: 800 21pt/1 var(--m-font-display);color:var(--m-mustard)">“</span>
+    <span class="a" style="left:28mm;top:62mm;font: 800 21pt/1 var(--m-font-display);color:var(--m-blue)">“</span>
     <p class="a m-quote" style="left:30mm;top:70mm;width:120mm;font-size:21pt;line-height:1.25">I knew I had plans, but I didn't think about them.</p>
     <p class="a m-kicker" style="left:30mm;top:100.6mm">P03, Day 4, <b>Exit interview</b></p>
     <span class="a m-folio fol-v">20</span>
@@ -182,7 +183,7 @@
     <p class="a m-kicker" style="left:14mm;top:16mm">Case study 2 of 6</p>
     <p class="a" style="left:14mm;top:22mm;font: 700 21pt/1 var(--m-font-display);color:var(--m-blue)">P02</p>
     <div class="a m-participant" style="left:14mm;top:34mm;width:80mm;display:block"><dl><dt>Year</dt><dd>Third year, B.Com</dd><dt>Lives</dt><dd>Hostel, mess plan</dd><dt>Money in</dt><dd>Monthly transfer from home</dd><dt>Days logged</dt><dd>6 of 6</dd></dl></div>
-    <svg class="a" viewBox="0 0 100 100" style="left:150mm;top:14mm;width:30mm;height:30mm;transform:rotate(-10deg)" aria-hidden="true"><path class="stamp-edge" fill="var(--m-ink)"/><circle cx="50" cy="50" r="38" fill="none" stroke="var(--m-paper)" stroke-width="1.2"/><text x="50" y="47" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="10.5" style="color:var(--m-paper)">6 DAYS</text><text x="50" y="62" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="10.5" style="color:var(--m-mustard)">₹2,580</text></svg>
+    <svg class="a" viewBox="0 0 100 100" style="left:150mm;top:14mm;width:30mm;height:30mm;transform:rotate(-10deg)" aria-hidden="true"><path class="stamp-edge" fill="var(--m-ink)"/><circle cx="50" cy="50" r="38" fill="none" stroke="var(--m-paper)" stroke-width="0.8"/><text x="50" y="47" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="10.5" style="color:var(--m-paper)">6 DAYS</text><text x="50" y="62" text-anchor="middle" font-family="Biryani" font-weight="800" font-size="10.5" style="color:var(--m-mustard)">₹2,580</text></svg>
     <div id="week07"></div>
     <blockquote class="a m-bigquote" style="left:14mm;top:118mm;width:70mm;margin:0"><p class="m-quote" style="margin:0">Friends suggested it, so it didn't feel like my decision.</p><p class="m-kicker" style="margin-top:2mm">P02, Day 3</p></blockquote>
     <p class="a m-quote m-body--right" style="left:14mm;top:206mm;width:70mm;font-size:10.5pt">“The dinner was always happening. It was never a question.”</p>
@@ -302,6 +303,8 @@
   <div class="fit"><div class="sp" id="sp12">
     <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true" style="z-index:2"></svg>
     <figure class="m-img m-img--ph" style="left:210mm;top:0;width:210mm;height:297mm"><span class="m-img__tag" style="left:14mm;top:16mm;bottom:auto">Photo, full bleed</span></figure>
+    <div class="a" style="left:236mm;top:40mm;display:flex;gap:2.4mm;align-items:center;z-index:2"><span class="m-frost m-frost--circle m-frost--lg">3</span><span class="m-frost m-frost--label">Took an auto when late</span></div>
+    <span class="a m-frost" style="left:236mm;top:62mm;z-index:2">13:40, the gate</span>
     <p class="a m-kicker" style="left:14mm;top:16mm">Interlude</p>
     <div class="a m-body" style="left:14mm;top:196mm;width:78mm"><p>The gate at 13:40 on a Wednesday. Autos wait here for students running late; the fare is decided before the journey, and rarely argued.</p></div>
     <span class="a m-folio fol-v">48</span>
@@ -335,6 +338,37 @@
     <h3 class="a m-display-l" style="left:230mm;top:16mm;font-size:21pt">How to read this report</h3>
     <div class="a" id="key13" style="left:230mm;top:44mm;width:176mm"></div>
     <span class="a m-folio fol-r">03</span>
+  </div></div>
+</section>
+
+<!-- ======================= L15 FIELD SPREAD ======================= -->
+<section class="f" id="l15">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.15</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Field spread</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>One moment in the prototype, told in the app's own language.</p><p><span class="m-kicker">Images + text</span>A full-bleed blue field with frosted choices and a white sheet rising from the foot; a yellow insight card and text on white opposite.</p><p><span class="m-kicker">Rule</span>Frost only on the field. One field colour per spread.</p></div>
+  <div class="fit"><div class="sp" id="sp15">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <div class="a m-field m-field--flat" style="left:0;top:0;width:210mm;height:297mm;box-sizing:border-box;padding:16mm 14mm 0 20mm;z-index:0">
+      <p class="m-label" style="margin:0">06 / When the idea met reality</p>
+      <h2 class="m-display-xl" style="margin:var(--m-rhythm-snug) 0 0;color:var(--m-paper)">The moment<br>of the check</h2>
+      <img src="icons/phone.svg" alt="" style="position:absolute;left:128mm;top:52mm;width:46mm;transform:rotate(12deg)">
+      <div style="position:absolute;left:0;right:0;top:112mm;display:grid;gap:3mm;justify-items:center">
+        <span class="m-frost">Check before you spend</span>
+        <div class="m-frost-row" style="margin:0;justify-content:center"><span class="m-frost">Coming up</span><span class="m-frost">Where it went</span><span class="m-frost">Plans</span><span class="m-frost">Patterns</span></div>
+      </div>
+      <div class="m-sheet" style="position:absolute;left:20mm;right:14mm;top:152mm;bottom:0;border-radius:var(--m-sheet-radius) var(--m-sheet-radius) 0 0;padding:9mm 7mm 0">
+        <div class="m-sheet__tabs"><span>Result</span><span>Plans</span></div>
+        <p class="m-stat" style="margin:0">₹8,420 <span class="m-heading" style="color:rgba(48,45,64,.45)">free to spend</span></p>
+        <p class="m-body" style="margin:var(--m-rhythm-snug) 0 var(--m-rhythm-block);color:var(--m-ink)">After this ₹280 order, until the 30th.</p>
+        <div class="m-chips" style="margin-bottom:var(--m-rhythm-snug)"><span class="m-chip m-chip--red">Friday</span><span class="m-chip">Birthday dinner</span><span class="m-chip m-chip--sky">Planned</span></div>
+        <p class="m-note" style="margin:0">V03 moved the plan into this sheet. 5 of 6 saw it.</p>
+        <span class="m-fab" style="position:absolute;right:7mm;bottom:12mm"><span class="m-fab__badge">1</span></span>
+      </div>
+    </div>
+    <p class="a m-kicker" style="left:230mm;top:16mm">Test round 3, 24 September</p>
+    <h3 class="a m-display-l" style="left:230mm;top:24mm;width:150mm">Context, not advice</h3>
+    <div class="a m-body" style="left:230mm;top:42mm;width:68mm"><p>In V03 the plan appears inside the result, next to the figure it changes. Nothing on the screen tells the student what to do.</p><p>Five of six participants noticed the Friday dinner without being prompted, up from two of six in V02.</p></div>
+    <div class="a m-loop m-loop--insight" style="left:230mm;top:104mm;width:150mm;box-sizing:border-box"><div class="m-loop__label"><span class="m-heading">Insight 03</span></div><p class="m-closing" style="margin:0 0 var(--m-rhythm-snug)">Seen at the moment,<br>a plan is weighed</p><span class="m-freq" style="color:var(--m-ink)"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><b>5 / 6</b></span></div>
+    <span class="a m-folio fol-r">59</span>
   </div></div>
 </section>
 
@@ -411,12 +445,12 @@
     var x = function (day, hour) { return 30 + (day - 1) * 60 + (hour - 7) / 17 * 54; };
     for (var d = 1; d <= 6; d++) {
       T(s, x(d, 7), 6, 'DAY 0' + d, 'm-station', { size: 5.4 });
-      el('line', { x1: x(d, 7) - 2, x2: x(d, 7) - 2, y1: 11, y2: 162, stroke: C.deep, 'stroke-width': 0.4 }, s);
+      el('line', { x1: x(d, 7) - 2, x2: x(d, 7) - 2, y1: 11, y2: 162, stroke: C.deep, 'stroke-width': 0.26 }, s);
     }
     D.P.forEach(function (p, i) {
       var y = 24 + i * 24;
       T(s, 0, y, p, 'm-station', { baseline: 'central', size: 4.4 });
-      el('line', { x1: 24, x2: 390, y1: y, y2: y, stroke: p === 'P02' ? C.red : C.ink, 'stroke-width': p === 'P02' ? 1.8 : 0.25 }, s);
+      el('line', { x1: 24, x2: 390, y1: y, y2: y, stroke: p === 'P02' ? C.red : C.ink, 'stroke-width': p === 'P02' ? 1.1 : 0.2 }, s);
       D.EV.filter(function (e) { return e[0] === p; }).forEach(function (e) {
         MC.mark(s, D.SHAPE[e[4]], x(e[1], e[2]), y, Math.max(1.6, Math.sqrt(e[3]) / 4), { fill: p === 'P02' ? C.red : C.blue, title: p + ', Day ' + e[1] + ', ' + MC.inr(e[3]) + ', ' + e[6] });
       });
@@ -444,7 +478,7 @@
   /* L08 process: route beneath the devices changes character */
   R('sp08', [[55, 238], [149, 238]]); R('sp08', [[149, 238], [271, 238]], { style: 'dashed' }); R('sp08', [[271, 238], [365, 238]], { style: 'dotted' });
   [55, 149, 271].forEach(function (x) { N('sp08', x, 238); }); N('sp08', 365, 238, 'turning', { size: 5.4 });
-  el('line', { x1: 24, x2: 396, y1: 262, y2: 262, stroke: C.ink, 'stroke-width': 0.3 }, sv('sp08'));
+  el('line', { x1: 24, x2: 396, y1: 262, y2: 262, stroke: C.ink, 'stroke-width': 0.2 }, sv('sp08'));
   [55, 149, 271, 365].forEach(function (x, i) { MC.mark(sv('sp08'), i === 3 ? 'dot' : 'ring', x, 262, 1.8, { fill: C.blue }); });
 
   /* L09 testing: hairlines from quotes to the element */
@@ -479,7 +513,7 @@
       if (['solid', 'dashed', 'dotted'].indexOf(r[0]) > -1) M.route(s, [[x + 2, y], [x + 16, y]], { style: r[0] }); else M.node(s, x + 9, y, r[0], { size: 5 });
       T(s, x + 22, y + 1.2, r[1], 'm-heading', { size: 3 });
     });
-    [['var(--m-route)', 'Red', 'Something happening'], ['var(--m-blue)', 'Blue', 'Observed: people, time, data'], ['var(--m-mustard)', 'Mustard', 'What it meant']].forEach(function (c, i) {
+    [['var(--m-route)', 'Red', 'Something happening'], ['var(--m-blue)', 'Blue', 'Observed: people, time, data'], ['var(--m-mustard)', 'Yellow', 'What it meant']].forEach(function (c, i) {
       var y = 72 + i * 11; el('rect', { x: 2, y: y - 3.6, width: 14, height: 6, fill: c[0] }, s);
       T(s, 22, y + 1.2, c[1], 'm-heading', { size: 3 }); T(s, 52, y + 1.2, c[2], 'm-body', { size: 3 });
     });

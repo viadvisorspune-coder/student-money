@@ -19,12 +19,12 @@
   .rules { margin: var(--m-rhythm-block) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(58mm, 1fr)); gap: var(--m-rhythm-block) var(--m-rhythm-gutter); }
   .rules li { position: relative; padding-left: 6mm; }
   .rules li::before { content: ""; position: absolute; left: 0; top: 1.1mm; width: 2.8mm; height: 2.8mm; border-radius: 50%; background: var(--m-route); }
-  .rules li.dont::before { background: none; border: 0.5mm solid var(--m-route); width: 1.8mm; height: 1.8mm; }
+  .rules li.dont::before { background: none; border: 0.33mm solid var(--m-route); width: 1.8mm; height: 1.8mm; }
   .rules b { font-family: var(--m-font-text); font-weight: 700; font-size: 7.7pt; letter-spacing: .1em; text-transform: uppercase; display: block; margin-bottom: var(--m-rhythm-snug); color: var(--m-route); }
 
   /* Type specimen rows */
-  .spec { display: grid; grid-template-columns: 38mm 1fr; gap: var(--m-rhythm-snug) var(--m-rhythm-gutter); padding: var(--m-rhythm-block) 0; border-top: 0.3mm solid var(--m-paper-deep); align-items: baseline; }
-  .spec:last-child { border-bottom: 0.3mm solid var(--m-paper-deep); }
+  .spec { display: grid; grid-template-columns: 38mm 1fr; gap: var(--m-rhythm-snug) var(--m-rhythm-gutter); padding: var(--m-rhythm-block) 0; border-top: 0.2mm solid var(--m-paper-deep); align-items: baseline; }
+  .spec:last-child { border-bottom: 0.2mm solid var(--m-paper-deep); }
   .spec .meta { font-family: var(--m-font-text); font-size: 7.7pt; line-height: 1.5; color: var(--m-blue); }
   .spec .meta .m-label { display: block; margin-bottom: var(--m-rhythm-snug); }
   .spec > div:not(.m-body) > p, .spec > div > h2, .spec > div > h3 { margin: 0; }
@@ -61,12 +61,12 @@
   .motion-stage { position: relative; }
   .replay {
     font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase;
-    color: var(--m-route); background: none; border: 0.5mm solid var(--m-route); border-radius: 99px;
+    color: var(--m-route); background: none; border: 0.33mm solid var(--m-route); border-radius: 99px;
     padding: 1.6mm 3.6mm; cursor: pointer; margin-top: 4mm;
   }
   .replay:focus-visible { outline: 0.6mm solid var(--m-blue); outline-offset: 0.6mm; }
   .tokens { width: 100%; border-collapse: collapse; margin-top: var(--m-rhythm-block); }
-  .tokens th, .tokens td { text-align: left; padding: 2mm 3mm 2mm 0; border-top: 0.3mm solid var(--m-paper-deep); vertical-align: top; }
+  .tokens th, .tokens td { text-align: left; padding: 2mm 3mm 2mm 0; border-top: 0.2mm solid var(--m-paper-deep); vertical-align: top; }
   .tokens th { font: 700 7.7pt/1.2 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--m-route); }
   .tokens td { font: 400 7.7pt/1.45 var(--m-font-text); color: var(--m-blue); }
 
@@ -74,7 +74,7 @@
 .doc-nav { display: flex; flex-wrap: wrap; gap: var(--m-rhythm-snug); align-items: center; margin-bottom: 14mm; }
 .doc-nav a {
   font: 700 7.7pt/1 var(--m-font-text); letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
-  color: var(--m-route); border: 0.45mm solid var(--m-route); border-radius: 99px; padding: 1.4mm 3mm;
+  color: var(--m-route); border: 0.29mm solid var(--m-route); border-radius: 99px; padding: 1.4mm 3mm;
 }
 .doc-nav a[aria-current="page"] { background: var(--m-route); color: var(--m-paper); }
 .doc-nav a:focus-visible { outline: 0.6mm solid var(--m-blue); outline-offset: 0.6mm; }

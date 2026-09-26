@@ -33,6 +33,9 @@ for (const [k, v] of Object.entries(t.space.scale)) out(`  --m-space-${k}: ${v};
 out();
 for (const [k, v] of Object.entries(t.route)) out(`  --m-route-${k}: ${v.value};`);
 out();
+for (const [k, v] of Object.entries(t.frost)) out(`  --m-frost-${k}: ${v.value};`);
+for (const [k, v] of Object.entries(t.shape)) out(`  --m-${k}: ${v.value};`);
+out();
 for (const [k, v] of Object.entries(t.motion)) {
   out(`  --m-motion-${k}: ${v.value};`);
   if (v.easing) out(`  --m-motion-${k}-easing: ${v.easing};`);
@@ -73,7 +76,7 @@ const md = [
   '| Colour | Hex | on paper | on paper-deep |',
   '|---|---|---|---|',
 ];
-for (const k of ['ink', 'blue', 'route', 'mustard']) {
+for (const k of ['ink', 'blue', 'route', 'sky', 'mustard']) {
   const hex = t.color[k].value;
   const a = ratio(hex, t.color.paper.value);
   const b = ratio(hex, t.color['paper-deep'].value);

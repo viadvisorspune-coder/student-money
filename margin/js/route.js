@@ -9,7 +9,7 @@
    Margin.animate(svg)                        draws the route on first view (screen only) */
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
-  var TOKENS = { radius: 8, node: 4.4 };
+  var TOKENS = { radius: 8, node: 3 };
 
   function el(name, attrs) {
     var n = document.createElementNS(NS, name);

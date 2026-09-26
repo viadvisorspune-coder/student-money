@@ -2,11 +2,11 @@
 <defs><filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 7 -2.1" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="g"/><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="w"/><feDisplacementMap in="g" in2="w" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
 <title>Auto-rickshaw</title>
 <g filter="url(#grain)">
-  <path d="M12 66 L12 40 Q12 21 34 19 L58 19 Q70 19 74 30 L79 47 L90 55 L90 66 Z" fill="#2A2A2A"/>
-  <path d="M12 58 L90 58 L90 64 L12 64 Z" fill="#CDAD3A"/>
-  <path d="M21 29 L50 29 L50 57 L21 57 Z" fill="#F0EFEB"/>
-  <path d="M57 29 L67 29 Q69 29 70 31 L74 45 L57 45 Z" fill="#F0EFEB"/>
-  <circle cx="28" cy="72" r="10" fill="#2A2A2A"/><circle cx="81" cy="73" r="8" fill="#2A2A2A"/>
-  <circle cx="28" cy="72" r="3.4" fill="#F0EFEB"/><circle cx="81" cy="73" r="2.8" fill="#F0EFEB"/>
+  <path d="M12 66 L12 40 Q12 21 34 19 L58 19 Q70 19 74 30 L79 47 L90 55 L90 66 Z" fill="#302D40"/>
+  <path d="M12 58 L90 58 L90 64 L12 64 Z" fill="#FFDD50"/>
+  <path d="M21 29 L50 29 L50 57 L21 57 Z" fill="#FFFFFF"/>
+  <path d="M57 29 L67 29 Q69 29 70 31 L74 45 L57 45 Z" fill="#FFFFFF"/>
+  <circle cx="28" cy="72" r="10" fill="#302D40"/><circle cx="81" cy="73" r="8" fill="#302D40"/>
+  <circle cx="28" cy="72" r="3.4" fill="#FFFFFF"/><circle cx="81" cy="73" r="2.8" fill="#FFFFFF"/>
 </g>
 </svg>
