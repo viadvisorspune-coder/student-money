@@ -13,7 +13,7 @@
 <main class="doc">
 <nav class="doc-nav" aria-label="Margin chapters">
   <a class="home" href="index.html">Margin</a>
-  <a href="foundations.html" aria-current="page">01 Foundations</a><a href="grammar.html">02 Grammar</a><a href="dataviz.html">03 Data</a><a href="components.html">04 Components</a><a href="layouts.html">05 Layouts</a><a href="rules.html">06 Rules</a>
+  <a href="foundations.html" aria-current="page">01 Foundations</a><a href="grammar.html">02 Grammar</a><a href="dataviz.html">03 Data</a><a href="components.html">04 Components</a><a href="layouts.html">05 Layouts</a><a href="rules.html">06 Rules</a><a href="screens.html">Screens</a>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -64,6 +64,8 @@
     <div><p class="m-quote" style="margin:0">“I knew I had plans, but I didn't think about them.”</p><p class="m-label" style="margin-top:var(--m-rhythm-tight)">P03</p></div></div>
   <div class="spec"><div class="meta"><span class="m-label">body</span>Nunito Sans 400, 10.5pt on 1.35, blue. A 68mm column.</div>
     <div class="m-body" style="max-width:68mm"><p>P02 ordered dinner at 20:15. The mess food was bad and friends suggested ordering.</p><p>The ₹1,500 birthday dinner on Friday was already in their plans, and did not come up.</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">body, black</span>Nunito Sans 400, 10.5pt, black at 85%. Emphasis in full black at 600.<span class="code" style="display:block">.m-body--black, .m-emph</span></div>
+    <div class="m-body m-body--black" style="max-width:68mm"><p>Four of six participants ordered food on a night the mess was poor. <span class="m-emph">None of them mentioned the plans they already had.</span></p></div></div>
   <div class="spec"><div class="meta"><span class="m-label">label and folio</span>Nunito Sans 600, 8.5pt, tracking 0.03em, red.</div>
     <div><p class="m-label" style="margin:0">03 / Research finding / P02</p></div></div>
   <div class="spec"><div class="meta"><span class="m-label">note</span>Nunito Sans 400, 8.5pt on 1.35, red. Researcher asides.</div>
@@ -109,7 +111,9 @@
     <thead><tr><th>Text colour</th><th>On white</th><th>Permitted as text</th></tr></thead>
     <tbody>
       <tr><td>Ink</td><td>13.33 : 1</td><td>Any size. The text colour on yellow and sky fields.</td></tr>
-      <tr><td>Blue</td><td>9.73 : 1</td><td>Any size.</td></tr>
+      <tr><td>Blue</td><td>9.73 : 1</td><td>Any size. The default body colour.</td></tr>
+      <tr><td>Black at 85%</td><td>15.1 : 1</td><td>Any size. The alternative body colour.</td></tr>
+      <tr><td>Black</td><td>21 : 1</td><td>Emphasis inside body text only.</td></tr>
       <tr><td>Red</td><td>3.77 : 1</td><td>Labels, notes and folios. Never the only place a fact appears.</td></tr>
       <tr><td>Sky</td><td>2.69 : 1</td><td>Never as text. A fill with ink text.</td></tr>
       <tr><td>Yellow</td><td>1.34 : 1</td><td>Never as text. A fill with ink or blue text.</td></tr>

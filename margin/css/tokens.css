@@ -13,6 +13,8 @@
   --m-blue-3: #7A80C9;
   --m-blue-4: #2E36A1;
   --m-blue-5: #1D2270;
+  --m-black-85: rgba(0, 0, 0, 0.85);
+  --m-black: #000000;
 
   --m-font-display: 'Cal Sans', 'Nunito Sans', sans-serif;
   --m-font-text: 'Nunito Sans', sans-serif;

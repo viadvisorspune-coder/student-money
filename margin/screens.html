@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin Prototype screens</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/margin.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/doc.css">
+<style>
+  .screens { display: grid; grid-template-columns: repeat(auto-fill, minmax(58mm, 1fr)); gap: var(--m-rhythm-section) var(--m-rhythm-gutter); }
+  .screen { margin: 0; display: grid; gap: var(--m-rhythm-snug); align-content: start; }
+  .screen .m-device { width: 100%; max-width: 62mm; }
+  .screen .m-device > div { aspect-ratio: auto; }
+  .screen img { display: block; width: 100%; height: auto; }
+  .screen .top { display: flex; gap: 1.6mm; align-items: center; flex-wrap: wrap; }
+  .screen h3 { margin: 0; }
+  .screen p { margin: 0; }
+  .screen .route { font: 400 8.5pt/1.3 var(--m-font-text); color: var(--m-blue); opacity: .6; }
+  .toggle { justify-self: start; font: 600 8.5pt/1 var(--m-font-text); color: var(--m-route); background: none; border: 0.2mm solid var(--m-route); border-radius: 99px; padding: 1.4mm 3mm; cursor: pointer; }
+  .toggle:focus-visible { outline: 0.6mm solid var(--m-blue); outline-offset: 0.6mm; }
+  .group { margin-top: var(--m-rhythm-section); }
+  .group > .m-display-l { margin: 0 0 var(--m-rhythm-snug); }
+  .group > .m-body { max-width: var(--m-rhythm-measure); margin: 0 0 var(--m-rhythm-block); }
+  @media print { .toggle { display: none; } .screen { break-inside: avoid; } }
+</style>
+</head>
+<body class="m-paper">
+<main class="doc">
+<nav class="doc-nav" aria-label="Margin chapters">
+  <a class="home" href="index.html">Margin</a>
+  <a href="foundations.html">01 Foundations</a><a href="grammar.html">02 Grammar</a><a href="dataviz.html">03 Data</a><a href="components.html">04 Components</a><a href="layouts.html">05 Layouts</a><a href="rules.html">06 Rules</a><a href="screens.html" aria-current="page">Screens</a>
+</nav>
+
+<header class="f-head" style="margin-bottom:6mm">
+  <div class="m-break"><span class="m-station">S</span></div>
+  <p class="m-label">Margin</p>
+  <h1 class="m-display-l" style="margin:0">Prototype screens</h1>
+</header>
+<p class="m-body f-lede">Every screen and sheet in the current Margin prototype, captured at phone size (390 by 844, twice resolution) from the built app on 26 September 2026, with the sample month for Parisha. Each has a code to cite in the report: S for screens, O for overlays. Screens that scroll have a full-length capture too.</p>
+<div class="m-chips"><span class="m-chip m-chip--blue">14 screens</span><span class="m-chip m-chip--red">7 sheets</span><span class="m-chip">Files in margin/screens</span></div>
+
+<div id="groups"></div>
+
+</main>
+<script src="js/doc.js"></script>
+<script>
+(function () {
+  var G = [
+    ['Core flow', 'The reason the app exists: see the month, check a spend before making it, see where money went.', [
+      ['S01', 'Home', 'home', '/', 'Greeting, this month\'s spending against what came in, and the check: an estimate with quick amounts and “For?”.'],
+      ['S02', 'Home, estimate written', 'home-check-filled', '/', 'The check with ₹1,200 entered and the “For?” list open.'],
+      ['S03', 'Result, here\'s the picture', 'result', '/result', 'What the month would look like after the spend, and where it would stand by category. Nothing is recorded.'],
+      ['S04', 'Where it went', 'spend', '/spend', 'This month by category, with a prompt for payments that need a label.'],
+      ['S05', 'This month\'s figures', 'setup', '/setup', 'Money in and spent so far, entered by hand to try the app with real numbers.']
+    ]],
+    ['Plans', 'Plans are cues, never money: they show up before a decision and are never counted in a total.', [
+      ['S06', 'What\'s planned', 'plans', '/plans', 'Scheduled and to-be-decided plans, each a note to self.'],
+      ['S07', 'Write an estimate', 'plans-estimate', '/plans/estimate', 'Start the check from a plan, or write a fresh amount.']
+    ]],
+    ['Profile', 'The student\'s own history, and what the app holds.', [
+      ['S08', 'Your profile', 'profile', '/profile', 'Money in the account, patterns against the student\'s own past, and what the app uses.'],
+      ['S09', 'What it was for', 'transactions', '/profile/transactions', 'Every payment, read from the remark, with filters and labelling prompts.'],
+      ['S10', 'How your money moved', 'experience', '/profile/experience', 'Past spending by week or month, compared only with the student\'s own previous period.']
+    ]],
+    ['Phase 2', 'Screens outside the app shell, shown without the bottom navigation.', [
+      ['S11', 'Lock-screen cue', 'cue', '/cue', 'A notification before a known spending moment, with the settings for when it may interrupt.'],
+      ['S12', 'Home-screen widget', 'widget', '/widget', 'Two widgets: one asks for an estimate, one reports free to spend.'],
+      ['S13', 'Onboarding, welcome', 'onboarding', '/onboarding', 'What the app does and does not do, before any data.'],
+      ['S14', 'Empty home', 'empty', '/empty', 'Home before the first payment: what to set up first.']
+    ]],
+    ['Sheets', 'Overlays that rise over a screen. Each is captured over the screen it opens from.', [
+      ['O01', 'Filter, show categories', 'sheet-filter', 'from S09', 'Pick one or more categories to filter the list.'],
+      ['O02', 'Add a payment by hand', 'sheet-add-payment', 'from S09', 'For cash, or anything the app did not catch.'],
+      ['O03', 'Label a payment', 'sheet-label-payment', 'from S09', '“What was this for?” for a payment the app could not read.'],
+      ['O04', 'Payment detail', 'sheet-transaction', 'from S09', 'One payment: its remark, category and section, all editable.'],
+      ['O05', 'Noticed a pattern', 'sheet-label-prompt', 'from S09', 'File a frequent vendor under a category once, for all future payments.'],
+      ['O06', 'New plan', 'sheet-new-plan', 'from S06', '“What\'s coming up?”: a reminder that is never counted in any total.'],
+      ['O07', 'What the app holds', 'sheet-data', 'from S08', 'Everything stored on the phone, and the control to clear it.']
+    ]]
+  ];
+  var FULL = { home: 1, result: 1, spend: 1, plans: 1, 'plans-estimate': 1, profile: 1, transactions: 1, experience: 1, cue: 1, widget: 1, empty: 1 };
+  var host = document.getElementById('groups');
+  G.forEach(function (g) {
+    var sec = document.createElement('section'); sec.className = 'group';
+    sec.innerHTML = '<h2 class="m-display-l">' + g[0] + '</h2><p class="m-body">' + g[1] + '</p><div class="screens"></div>';
+    var grid = sec.querySelector('.screens');
+    g[2].forEach(function (s) {
+      var EMB = window.MARGIN_SCREENS || {}, src = function (x) { return EMB[x] || x; };
+      var file = src('screens/' + s[0] + '-' + s[2] + '.jpg'), full = FULL[s[2]] ? src('screens/' + s[0] + '-' + s[2] + '-full.jpg') : '';
+      var f = document.createElement('figure'); f.className = 'screen'; f.id = s[0];
+      f.innerHTML = '<div class="m-device"><div><img src="' + file + '"' + (full ? ' data-full="' + full + '"' : '') + ' alt="' + s[0] + ', ' + s[1] + '"></div></div>' +
+        '<div class="top"><span class="m-chip ' + (s[0][0] === 'O' ? 'm-chip--red' : 'm-chip--blue') + '">' + s[0] + '</span><span class="route">' + s[3] + '</span></div>' +
+        '<h3 class="m-heading">' + s[1] + '</h3><p class="m-body">' + s[4] + '</p>' +
+        (full ? '<button class="toggle" type="button" aria-pressed="false">Show full scroll</button>' : '');
+      grid.appendChild(f);
+    });
+    host.appendChild(sec);
+  });
+  host.addEventListener('click', function (e) {
+    var b = e.target.closest('.toggle'); if (!b) return;
+    var img = b.closest('.screen').querySelector('img'), on = b.getAttribute('aria-pressed') !== 'true';
+    if (!img.dataset.first) img.dataset.first = img.getAttribute('src');
+    img.setAttribute('src', on ? img.dataset.full : img.dataset.first);
+    b.setAttribute('aria-pressed', on); b.textContent = on ? 'Show first screen' : 'Show full scroll';
+  });
+})();
+</script>
+</body>
+</html>

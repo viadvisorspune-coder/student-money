@@ -21,6 +21,12 @@ for (const page of pages) {
   html = html.replace(/<script src="([^":]+)"><\/script>/g, (_, src) => `<script>\n${readFileSync(resolve(root, src), 'utf8')}</script>`);
   html = html.replace(/src="((?:icons|images)\/[^"]+)"/g, (_, src) => `src="${dataUri(resolve(root, src))}"`);
   html = html.replace(/href="([a-z-]+)\.html(#[^"]*)?"/g, (_, p, h = '') => `href="${p}.html${h}"`);
+  if (page === 'screens.html') {
+    // Screenshots are placed by script; embed them as a lookup the page reads first.
+    const dir = join(root, 'screens'), map = {};
+    for (const f of readdirSync(dir).filter((f) => f.endsWith('.jpg'))) map['screens/' + f] = 'data:image/jpeg;base64,' + readFileSync(join(dir, f)).toString('base64');
+    html = html.replace('</head>', `<script>window.MARGIN_SCREENS = ${JSON.stringify(map)};</script>\n</head>`);
+  }
   writeFileSync(join(root, 'dist', page), html);
   console.log(`dist/${page}  ${(Buffer.byteLength(html) / 1024).toFixed(0)} KB`);
 }

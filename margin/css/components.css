@@ -372,3 +372,11 @@
 .m-fab::before { content: ""; width: 4.2mm; height: 3.6mm; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M2 1h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H6l-3 2.4V9H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z' fill='none' stroke='%23FFFFFF' stroke-width='1.1' stroke-linejoin='round'/%3E%3Cpath d='M4.6 5.6c.8.8 4 .8 4.8 0' fill='none' stroke='%23FFFFFF' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat; }
 .m-fab__badge { position: absolute; top: -0.6mm; right: -0.6mm; min-width: 3.6mm; height: 3.6mm; border-radius: 99px; background: var(--m-route); color: var(--m-paper); font: 600 8.5pt/3.6mm var(--m-font-text); text-align: center; border: 0.3mm solid var(--m-paper); }
 @media print { .m-frost { -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+/* =========================================================
+   BODY TEXT COLOUR: blue by default; black at 85% as an alternative;
+   full black for emphasis inside either.
+   ========================================================= */
+.m-body--black { color: var(--m-black-85); }
+.m-emph { color: var(--m-black); font-weight: 600; }
+.m-body--black .m-emph, .m-body .m-emph { color: var(--m-black); }
