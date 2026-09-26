@@ -30,7 +30,29 @@ def ul(items, cls=""):
     return f'<div class="tx {cls}"><ul>' + "".join(f"<li>{t(i)}</li>" for i in items) + "</ul></div>"
 
 
+LBL = {}
+for _k, _names in {
+    "ev": ["Participant statements", "Other statements", "Participant statement", "Other participant statement", "Participant reflection", "Evidence",
+           "Evidence from the research record", "Behavioural context", "Existing financial behaviour", "V1 prototype session", "V2 prototype session",
+           "Six-day self-observation", "During the observation", "Before the observation: at least twice a day"],
+    "fi": ["Insight", "Interpretation", "Key statement", "Key finding", "Working statement", "Critical distinction", "Key tension", "Important distinction",
+           "What this showed", "Key pattern", "Interpretation: a purchase can be", "Interpretation: three problems converge", "Pattern", "Diagnosis",
+           "Important distinction: behaviour change is not always", "Behaviour"],
+    "im": ["Design implication", "Research implication", "Open question", "Behavioural implication", "Design opportunity", "Product opportunity",
+           "Working role of the product", "Desired process"],
+    "re": ["Change", "Principle", "Prompt", "Revised interaction", "Design response"]}.items():
+    for _n in _names:
+        LBL[_n] = _k
+LBLNAME = {"ev": "Evidence", "fi": "Finding", "im": "Implication", "re": "Response", "br": "Break"}
+
+
+def lbl(kind):
+    return f'<span class="lbl lbl--{kind}">{LBLNAME[kind]}</span>'
+
+
 def kk(s, tone=""):
+    if s in LBL:
+        return lbl(LBL[s])
     return f'<span class="kk {tone}">{t(s)}</span>'
 
 
@@ -59,8 +81,8 @@ def col(*parts, gap="4mm", style=""):
     return f'<div style="display:flex;flex-direction:column;gap:{gap};{style}">' + "".join(parts) + "</div>"
 
 
-def ins(s, label="Insight", blue=False, cls="push"):
-    return f'<div class="ins2 {"ins2--b" if blue else ""} {cls}"><span class="lb">{t(label)}</span><p>{t(s)}</p></div>'
+def ins(s, label="Finding", blue=False, cls="push"):
+    return f'<div class="ins2 {"ins2--b" if blue else ""} {cls}">{lbl("fi")}<p>{t(s)}</p></div>'
 
 
 def rq(s, cite=None, cls=""):
@@ -164,7 +186,7 @@ BEHAV = {"P01": "Socially influenced spending", "P02": "Post-purchase value eval
 
 def profile(code):
     cells = "".join(f"<div>{MARK[m]}<span>{t(p)}</span></div>" for m, p in zip(M[code], PATTERNS))
-    return f'<div>{kk("Pattern profile, from page 37")}<div class="prof">{cells}</div></div>'
+    return f'<div class="prof-q"><span class="kk" style="color:var(--m-blue);opacity:0.6">Pattern profile, page 43</span><div class="prof">{cells}</div></div>'
 
 
 def pid(code, title, small=False):
@@ -275,6 +297,23 @@ def venn3(labels, center, w=100, h=86):
             f'<circle cx="50" cy="38" r="3" fill="#F33F31"/>',
             stext(50, 45, center, 3, 600, "#FFFFFF", "middle")]
     return svg(w, h, "".join(out))
+
+
+# ------------------------------------------------------------------ working data (client revision)
+YN = {"Yes": '<span class="yn yn--y">Yes</span>', "No": '<span class="yn yn--n">No</span>', "Conditional": '<span class="yn">Conditional</span>'}
+
+
+def yn_table(rows, head=("Field", "Working value")):
+    return table(list(head), [[t(a), YN.get(b, t(b))] for a, b in rows], "dense", [None, "30mm"], raw=True)
+
+
+def units(have, allp=None):
+    allp = allp or [f"P{i:02d}" for i in range(1, 11)]
+    return "".join(f'<span class="cd-s {"" if p in have else "cd-o"}">{p[1:]}</span>' for p in allp)
+
+
+def work(s="Working inference"):
+    return f'<span class="wtag">{t(s)}</span>'
 
 
 # ------------------------------------------------------------------ pages
@@ -407,15 +446,48 @@ page(S2,
      gr(*[pn(f'<span class="num">{i + 1:02d}</span>' + hx(a) + f'<p class="tx" style="margin:2mm 0 0">{t(b)}</p>', "l" if i != 5 else "b") for i, (a, b) in enumerate(risks)], cols="2", cls="gr-s grow"),
      pn(kk("Primary risk", "kk--w") + '<p class="hx hx--xl hx--w">The information may be useful in theory but unavailable at the exact moment when the decision happens.</p>', "r", "push", "padding:7mm 6mm"))
 
+
+PSET = [('P01', 'Behavioural observation', 'Social context, spontaneous spending', 'Direct contextual evidence'), ('P02', 'Behavioural observation', 'Value, post-purchase evaluation', 'Direct contextual evidence'), ('P03', 'Behavioural observation', 'Future allocation, buffer', 'Direct contextual evidence'), ('P04', 'Behavioural observation', 'Future commitment not salient at decision', 'Direct contextual evidence'), ('P05', 'Behavioural observation', 'Calculation effort, timing', 'Direct contextual evidence'), ('P06', 'Behavioural observation', 'Utility, novelty, perceived value', 'Direct contextual evidence'), ('P07', 'Prototype session', 'Consequence, potential spending, agency', 'Direct prototype evidence'), ('P08', 'Prototype session', 'Existing payment tracking, future planning', 'Direct prototype evidence'), ('P09', '6-day self-observation', 'Repeated small-spend awareness', 'Direct baseline evidence'), ('P10', 'V2 prototype session', 'Decision moment, friction, automation', 'Direct V2 evidence'), ('P11', 'Behavioural pattern inferred from available material', 'Low spontaneous engagement', 'Working inference only')]
+STATUS_TONE = {'Direct contextual evidence': 'tagc', 'Direct prototype evidence': 'tagc tagc--blue', 'Direct baseline evidence': 'tagc tagc--yellow', 'Direct V2 evidence': 'tagc tagc--blue', 'Working inference only': 'wtag'}
+page(S2,
+     head("Participant set", "02 / Testing framework", "Eleven coded records across behavioural observation and prototype testing."),
+     tgrow(table(["ID", "Primary evidence available", "Main behavioural signal", "Evidence status"],
+                 [[f'<span class="cd-s{" cd-o" if c == "P11" else ""}">{c[1:]}</span>', t(a), t(b), f'<span class="{STATUS_TONE[d]}">{t(d)}</span>'] for c, a, b, d in PSET],
+                 "dense", ["12mm", "46mm", None, "46mm"], raw=True)),
+     pn(lbl("fi") + tx("The records do not all represent identical testing conditions; analysis therefore distinguishes contextual behavioural evidence from direct prototype evidence.",
+                       "P11 remains a working inferred record and is not used for any quantitative claim unless its underlying session evidence is recovered."), "l"))
+
+page(S2,
+     head("Sessions and task", "02 / Testing framework"),
+     gr(pn(kk("Overall testing period") + '<p class="hx hx--xl">September 2026</p>'),
+        pn(kk("Baseline observation") + '<p class="hx hx--xl">6 days</p>'),
+        pn(kk("P07, V1 session") + '<p class="hx hx--xl">~26 min</p>'),
+        pn(kk("P10, V2 session") + '<p class="hx hx--xl">~10 min</p>'), cols="4", cls="gr-s"),
+     pn(kk("Other participant sessions") + '<div style="display:flex;align-items:baseline;gap:4mm"><p class="hx hx--xl">15 to 20 min</p>' + work("Working estimate, not measured") + "</div>"
+        + tx("The documented session durations vary by session. For the remaining sessions, the current archive does not preserve reliable duration measurements; the range is a working estimate based on the intended test structure rather than measured data.")),
+     '<div>' + kk("Task, working reconstruction") + qcards(["Imagine that you are about to make a discretionary purchase. You already have some spending behind you and at least one future expense coming up. Work through the situation as you normally would and decide whether you would still make the purchase."], 1, "", True, "Task") + "</div>",
+     gr(qcards(["You are deciding whether to spend on a social activity while already knowing that another expense is coming up later in the week. Use the prototype as you would if this were your own decision."], 1, "", False, "V1 scenario"),
+        qcards(["You are about to spend money on an activity with a friend. You have a limited amount of money available and another expense coming up. Use the prototype to understand what the proposed purchase would leave you with, then decide whether you would still spend it."], 1, "", False, "V2 scenario"), cols="2"),
+     f'<p class="small" style="margin:0">{work("Reconstructed")}&nbsp; These are reconstructed working task formulations, not verbatim records of the original facilitator script.</p>')
+
+page(S2,
+     head("Success criterion, working version", "02 / Testing framework", "The original pre-test numeric success criterion is not preserved. This is a retrospective analytical framework."),
+     gr(pn(kk("A participant demonstrates the target behaviour when they can") + rv(["Identify their current financial position", "Identify the relevant future commitment",
+                                                                                  ("Understand the consequence of the proposed expense", "", None, "key"), "Connect that consequence to the current decision",
+                                                                                  ("Make or maintain the decision without the researcher deciding for them", "", None, "end")]), "", "cfill", "padding:6mm"),
+        col(kk("Working threshold: 4 of 5 components"),
+            pn('<p class="hx hx--xl">0 to 2 / 5</p><p class="tx" style="margin:1mm 0 0">Unsuccessful</p>', "", "", "flex:1"),
+            pn('<p class="hx hx--xl">3 / 5</p><p class="tx" style="margin:1mm 0 0">Partial</p>', "", "", "flex:1"),
+            pn('<p class="hx hx--xl hx--w">4 to 5 / 5</p><p class="tx" style="margin:1mm 0 0">Successful</p>', "b", "", "flex:1"), gap="3mm"), cols="2"),
+     pn(f'{work("Retrospective")}' + '<p class="hx" style="margin-top:3mm">This scoring system is a retrospective analytical framework, not a recorded pre-test success criterion. It is not presented as though it was set before testing.</p>', "d"))
+
 # ============ 11
 page(S3,
      band("03 / Baseline behaviour", "Six days before the prototype", "Participants observed and reflected on their own spending for six days."),
      tx("The purpose was to understand what happened when spending became more visible without relying entirely on the interface to produce awareness."),
      gr(pn(kk("The baseline looked at") + '<ol class="tx" style="margin:0;padding-left:5mm">' + "".join(f"<li style='margin-bottom:1.6mm'>{t(x)}</li>" for x in
             ["What happened?", "What was spent?", "Why was it spent?", "What did the participant intend beforehand?", "Was there a future commitment?", "What did the participant notice afterwards?", "Did anything change?"]) + "</ol>"),
-        pn(kk("Method sequence", "kk--w") + rv(["Spend", "Record", "Reflect", ("Notice patterns", "", None, "key"), ("Next decision", "", None, "end")]), "b"), cols="2"),
-     pn(kk("Six days") + gr(*[f'<div style="text-align:center"><span class="hx">Day {d}</span><div style="margin-top:2mm;height:44mm;border-radius:2mm;background:var(--m-paper)"></div></div>' for d in range(1, 7)], cols="6", cls="gr-s")
-        + '<p class="small" style="margin:2mm 0 0;opacity:0.7">Each day: spend, record, reflect. Day-level records are in Appendix 06.</p>', "", "grow"))
+        pn(kk("Method sequence", "kk--w") + rv(["Spend", "Record", "Reflect", ("Notice patterns", "", None, "key"), ("Next decision", "", None, "end")]), "b"), cols="2"))
 
 # ============ 12
 DOT = '<span style="width:6mm;height:6mm;border-radius:50%;background:var(--m-route)"></span>'
@@ -423,12 +495,13 @@ dots = "".join(f'<div style="text-align:center"><div style="display:flex;gap:1.6
 page(S3,
      head("Small spending became larger when seen together", "03 / Baseline behaviour", "One six-day observation showed a change in attention toward small, repeated purchases."),
      gr(col(tx("The participant had previously purchased snacks from vending machines or nearby stores at least twice a day and regularly used autos."),
-            pn(kk("During the observation") + chk(["snack purchases reduced;", "some spontaneous purchases were avoided;", "some autos were avoided;", "the accumulation of small purchases became more noticeable."]))),
+            yn_table([("Snack purchases reduced", "Yes"), ("Some spontaneous purchases avoided", "Yes"), ("Some autos avoided", "Yes"), ("Accumulation more noticeable", "Yes"),
+                      ("Financial awareness increased", "Yes"), ("Long-term persistence measured", "No"), ("Prototype causal effect measured", "No")], ("During the observation", "Evidence"))),
         col(qcards(["Oh shit, I will be spending more money."], 1, "r", True, "Participant reflection"),
             pn(kk("Before the observation: at least twice a day") + f'<div class="gr gr-6 gr-s">{dots}</div>')),
         cols="2", cls="grow"),
      '<div>' + kk("The meaningful information was not necessarily the amount of one purchase. It was") + eq([("", "Frequency"), ("op", "×"), ("", "Repetition"), ("op", "×"), ("", "Accumulation", "res")]) + "</div>",
-     ins("A small transaction can become psychologically significant when the pattern becomes visible."))
+     ins("A small transaction can become psychologically significant when the pattern becomes visible.", cls=""))
 
 # ============ 13
 page(S3,
@@ -587,7 +660,7 @@ page(S4,
             tx("But an important question remained unresolved."),
             qcards(["How would this help me exactly? I don't get it."], 1, "r", True, "P07"),
             profile("P07")),
-        phone("v1-home.jpg", "V1 home, prototype-v1.html. Sample names replaced."), cols="2", style="grid-template-columns:1fr 60mm"),
+        phone("v1-home.jpg", "V1 home, prototype-v1.html. Sample names replaced."), cols="2", style="grid-template-columns:1fr 50mm"),
      '<div>' + kk("Other statements") + qcards(["So I can understand where I've spent more or less.", "Could I cut down elsewhere?", "If I spend 1000, I see the picture.", "Where do I reflect after I actually spend?"], 4) + "</div>",
      gr(pn(kk("Interpretation") + hx("The interface communicated information.")), pn(kk("", "") + hx("The purpose of the information was less clear.", "hx--w"), "b"), cols="2", cls="gr-s push"))
 
@@ -669,51 +742,120 @@ page(S4,
             pn(kk("Capture") + tx("Manual logging should not become the barrier to useful feedback."), "", "pn--s"), gap="3mm"),
         '<div style="display:flex;align-items:center;justify-content:center">' + venn3(["Timing", "Effort", "Capture"], "Converge", w=100, h=80) + "</div>", cols="2", cls="push"))
 
-# ============ 36
-patterns = [("Timing", "Known information can become irrelevant if it is not active at the decision moment."),
-            ("Cognitive effort", "Financial calculation can be too slow relative to the speed of the decision."),
-            ("Future commitments", "Future expenses become more useful when connected to present spending."),
-            ("Social context", "Spending can be socially initiated rather than financially initiated."),
-            ("Perceived value", "Users may knowingly spend because the experience or utility is worth it."),
-            ("Accumulation", "Repeated small spending becomes more salient when seen together."),
-            ("Agency", "Users are more comfortable with information and prompts than with enforced decisions.")]
-page(S5,
-     band("05 / Cross-participant analysis", "Seven behavioural patterns emerged"),
-     gr(*[pn(f'<span class="num">{i + 1:02d}</span>' + hx(a) + f'<p class="tx" style="margin:2mm 0 0">{t(b)}</p>', "y" if i == 0 else "", "", "") for i, (a, b) in enumerate(patterns)]
-        + [pn(kk("Read with", "kk--w") + '<p class="hx hx--w">Page 37 maps each participant to these patterns.</p>', "b")], cols="2", cls="gr-s fill"))
 
-rows37 = [[c] + list(M[c]) for c in M] + [["P11"] + ["[VERIFY]"] * 7]
+page(S4,
+     head("Session records: P07 and P08", "04 / Participant evidence", "Working values from the documented sessions. P07 understood the financial overview but found its value unclear until the prototype was framed around a possible future expense."),
+     gr(col(pid("P07", "V1, ~26 min", True), yn_table([
+         ("Current financial information understood", "Yes"), ("Monthly spending understood", "Yes"), ("Categories understood", "Yes"), ("Patterns understood", "Yes"),
+         ("Plans understood", "Yes"), ("Potential spending understood after explanation", "Yes"), ("Potential spending valued", "Yes"), ("Manual entry understood", "Yes"),
+         ("Manual entry considered effortful", "Yes"), ("Automatic capture desired", "Yes"), ("Use case initially clear", "No"), ("Need for walkthrough", "Yes"),
+         ("Interface described as congested", "Yes"), ("Progress or amount display completely clear", "No"), ("New Plan interaction worked reliably", "No"),
+         ("Decision consequence considered", "Yes"), ("Independent real-world use demonstrated", "No")])),
+        col(pid("P08", "Prototype session", True), yn_table([
+            ("Existing transaction history", "Yes"), ("Uses payment app as source of truth", "Yes"), ("Manual transaction entry desirable", "No"), ("Upcoming expenses useful", "Yes"),
+            ("Self-set spending limits useful", "Yes"), ("System-enforced restriction desirable", "No"), ("Automatic import desirable", "Yes"), ("Pattern information useful", "Conditional"),
+            ("Future commitment affects spending reasoning", "Yes"), ("Product needs to duplicate transaction ledger", "No"), ("Real repeated use established", "No")]),
+            pn(lbl("fi") + '<p class="hx" style="margin-top:2mm">P08: the useful layer is not “Where did your money go?” It is “Given what is coming, what room do I actually have?”</p>', "y")), cols="2"))
+
+page(S4,
+     head("Session records: P09 and P10", "04 / Participant evidence"),
+     gr(col(pid("P09", "6-day observation", True), yn_table([
+         ("Observation duration", "6 days"), ("Small repeated purchases noticed", "Yes"), ("Snack frequency became salient", "Yes"), ("Some snack spending reduced", "Yes"),
+         ("Some auto usage reduced", "Yes"), ("Accumulation recognised", "Yes"), ("Immediate awareness increased", "Yes"), ("Prototype involved", "No"), ("Long-term effect established", "No")]),
+         pn(lbl("fi") + '<p class="hx" style="margin-top:2mm">P09 provides the clearest baseline evidence that visibility itself can alter attention.</p>', "y"),
+         pn(lbl("im") + tx("Can the same effect be recreated with designed consequence information rather than six days of manual observation?"), "k")),
+        col(pid("P10", "V2, ~10 min", True), yn_table([
+            ("Progress representation understood as intended", "No"), ("Use situation immediately clear", "No"), ("Spending moment identified as relevant", "Yes"),
+            ("Reflection identified as relevant", "Yes"), ("Actual vs estimated distinction clear", "No"), ("Financial consequence relevant", "Yes"), ("Automatic capture preferred", "Yes"),
+            ("Later logging perceived as difficult", "Yes"), ("Existing payment app used for balance", "Yes"), ("New payment app seen as friction", "Yes"),
+            ("Conversational logging attractive", "Yes"), ("Behavioural value of seamless interaction recognised", "Yes"), ("Independent real-world use established", "No")])), cols="2"))
+
+page(S4,
+     '<div class="pid"><span class="cd" style="background:none;box-shadow:inset 0 0 0 0.5mm var(--m-blue);color:var(--m-blue)">P11</span><div><span class="eyebrow m-kicker" style="margin:0 0 1.4mm">04 / Participant evidence</span>'
+     '<h1 class="h1 m-display-xl">Low spontaneous engagement</h1><div class="meta">' + work("Working inferred record") + '<span class="tagc">Confidence: low</span></div></div></div>',
+     pn(lbl("fi") + '<p class="hx" style="margin-top:2mm">P11 is inferred as a participant who can understand the financial consequence once presented but does not naturally seek a separate financial tool during everyday spending.</p>', "d"),
+     pn(kk("Expected behaviour") + rh(["Reads and understands the consequence", "Maintains the decision", "Does not spontaneously open the tool again"], ghost=("Does not spontaneously open the tool again",)), "", "", "padding:6mm 4mm"),
+     gr(pn(lbl("im") + tx("Understanding the intervention does not automatically produce product adoption."), "k"),
+        pn(kk("Basis") + tx("Derived from the recurring friction and adoption concerns present in P07, P08 and P10."), "l"), cols="2"),
+     pn('<p class="hx">P11 is not included in any numerical finding until a source-backed record exists.</p>', "d"))
+
+# ============ 36
+FIND = [('Future plans can be known without becoming active', 'P03, P04, P05, P07, P08, P10', '6 documented records', 'Knowing that an expense exists is different from considering it during a current purchase.', 'Attach relevant future commitments to the present decision.'), ('Calculation can be the friction', 'P05, P07, P08, P10', '4 documented records', 'Financial information may be available but still require too much retrieval, memory or calculation.', 'Compress the calculation into a direct consequence.'), ('Potential spending is more decision-oriented than historical tracking', 'P07, P08, P10', '3 direct prototype records', '“What happens if I spend this?” creates a more immediate decision than “what have I spent?”', 'Make prospective consequence central.'), ('Manual capture competes with the behaviour', 'P07, P08, P10', '3 direct prototype records', 'Users may want financial visibility while resisting the work required to produce it.', 'Automate capture where possible.'), ('Social situations can override financial reasoning', 'P01, P04, P05, P07, P10', '5 documented records', 'Spending decisions can be socially embedded, time-sensitive and emotionally loaded.', 'Keep the intervention quick and non-disruptive.'), ('Financial consciousness can end in “yes”', 'P01, P03, P06, P07', '4 documented records', 'Seeing a financial consequence does not guarantee purchase avoidance.', 'Measure consideration, not merely reduction.'), ('Agency is part of the intervention', 'P03, P06, P07, P08, P10', '5 documented records', 'Participants can accept financial feedback while resisting an externally imposed decision.', 'Inform, contextualise, question, hand over.')]
+page(S5,
+     head("Seven findings", "05 / Cross-participant analysis", "Each finding with the records behind it, what it indicates and what it means for the product."),
+     '<div class="frows">' + "".join(
+         f'<div class="frow"><span class="fn">{i + 1:02d}</span><div><p class="hx">{t(a)}</p><div class="fev">{units([x.strip() for x in ev.split(",")])}<span class="fcnt">{t(n)}</span></div></div>'
+         f'<div><span class="lbl lbl--fi">Finding</span><p class="small" style="margin:1.4mm 0 0">{t(fi)}</p></div><div><span class="lbl lbl--im">Implication</span><p class="small" style="margin:1.4mm 0 0">{t(im)}</p></div></div>'
+         for i, (a, ev, n, fi, im) in enumerate(FIND)) + "</div>")
+
 counts = [sum(1 for c in M if M[c][i] == "●") for i in range(7)]
-rows37.append(['<b style="color:var(--m-route)"><i class="mk mk--full" style="width:2.6mm;height:2.6mm"></i> count</b>'] + [f'<span class="hx">{n}</span>' for n in counts])
+CELL = {"●": '<td class="mc mc--f"><i class="mk mk--full"></i></td>', "○": '<td class="mc mc--h"><i class="mk"></i></td>', "—": '<td class="mc"></td>'}
+mx = '<table class="m-table mxx"><thead><tr><th>Participant</th>' + "".join(f"<th>{t(p)}</th>" for p in PATTERNS) + "</tr></thead><tbody>"
+for c in M:
+    mx += f'<tr><td><span class="cd-s">{c[1:]}</span></td>' + "".join(CELL[m] for m in M[c]) + "</tr>"
+mx += f'<tr class="p11"><td><span class="cd-s cd-o">11</span></td><td colspan="7">{work("Working inference only, not counted")}</td></tr>'
+mx += '<tr class="tot"><td><span class="kk" style="margin:0">Evidence present</span></td>' + "".join(
+    f'<td><div class="tbar"><i style="height:{n * 1.8}mm"></i></div><span class="hx">{n}</span></td>' for n in counts) + "</tr></tbody></table>"
 page(S5,
      head("Participant × behavioural pattern", "05 / Cross-participant analysis"),
-     tgrow(table(["Participant"] + PATTERNS, rows37, "mx tbl-lg", None, raw=True)),
-     '<ul class="m-legend"><li><i class="mk mk--full"></i>Evidence present</li><li><i class="mk"></i>Supporting or partial evidence</li><li><i class="mk mk--none"></i>Not established</li><li><span class="vtag">Verify</span>&nbsp;Source evidence required</li></ul>',
-     pn(kk("Reading the matrix", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0">The count row totals “evidence present” marks per column across P01 to P10. P11 is not counted until its source record is verified.</p>', "b"))
+     tgrow(mx),
+     '<ul class="m-legend"><li><i class="mk mk--full"></i>Evidence present</li><li><i class="mk"></i>Supporting or partial evidence</li><li><i class="mk mk--none"></i>Not established</li></ul>',
+     pn(lbl("fi") + '<p class="hx" style="margin-top:2mm">Agency is the only pattern present in almost every record. Every other pattern appears in a subset: the mechanisms differ, the opportunity recurs.</p>', "y"))
 
-findings = [("Future plans can be known but not active", "P03, P04, P07, P10"), ("Manual capture creates friction", "P05, P07, P08, P10"),
-            ("Potential spending is more decision-oriented than generic history", "P07, P08, P10"), ("Social situations can dominate financial reasoning", "P01, P04, P07, P10"),
-            ("Value can justify a purchase", "P01, P02, P06"), ("Aggregation can increase salience", "P08, P09"), ("Users want autonomy", "P03, P06, P07, P08, P10"),
-            ("The moment of use is unclear", "P07, P10"), ("Automation increases the likelihood of continued use", "P07, P08, P10")]
-ALLP = [f"P{i:02d}" for i in range(1, 11)]
-fr = []
-for f, ev in findings:
-    have = [x.strip() for x in ev.split(",")]
-    dots = "".join(f'<span class="cd-s {"" if p in have else "cd-o"}">{p[1:]}</span>' for p in ALLP)
-    fr.append([f, dots])
+PCOUNT = [("Future commitments", "P03, P04, P05, P07, P08, P10"), ("Social context", "P01, P04, P05, P07, P10"), ("Agency, non-enforcement", "P03, P06, P07, P08, P10"),
+          ("Calculation, retrieval effort", "P05, P07, P08, P10"), ("Timing, decision-moment relevance", "P04, P05, P07, P10"), ("Perceived value", "P01, P02, P06"),
+          ("Accumulation, repeated small spending", "P01, P08, P09"), ("Automation", "P07, P08, P10"), ("Potential spending, consequence", "P07, P08, P10"),
+          ("Existing transaction history", "P07, P08, P10")]
+DSIG = [("Potential spending, consequence valued", "●●●"), ("Manual entry questioned", "●●●"), ("Automation desired", "●●●"), ("Future context useful", "●●●"),
+        ("User wants agency", "●●●"), ("Existing payment infrastructure referenced", "●●●"), ("Moment of use questioned", "●—●"), ("Pattern information needs action", "●●—")]
 page(S5,
-     head("What repeated across the research", "05 / Cross-participant analysis"),
-     tgrow(table(["Finding", "Evidence, P01 to P10"], fr, "dense", [None, "92mm"], raw=True)),
-     pn(kk("Key statement", "kk--k") + '<p class="hx hx--xl hx--k">The strongest recurring need was not more financial information. It was more relevant financial information at the right moment.</p>', "y", "", "padding:8mm 7mm"))
+     head("How often each pattern appears", "05 / Cross-participant analysis", "Records containing supporting evidence, P01 to P10; P11 excluded. Counts show presence of evidence, not prevalence, and no percentages are used. Matrix marks on page 43 follow the original coding."),
+     (table(["Pattern", "Records, P01 to P10", "Count"], [[t(a), units([x.strip() for x in ev.split(",")]), f'<span class="hx">{len(ev.split(","))} / 10</span>'] for a, ev in PCOUNT],
+                 "dense tight", [None, "92mm", "20mm"], raw=True)),
+     gr(col(kk("Direct prototype signals"), table(["Signal", "P07", "P08", "P10", "Count"], [[t(a)] + [MARK[m] for m in ms] + [f'<span class="hx">{ms.count("●")} / 3</span>'] for a, ms in DSIG[:4]], "dense mx", [None, "9mm", "9mm", "9mm", "12mm"], raw=True)),
+        col('<span class="kk">&nbsp;</span>', table(["Signal", "P07", "P08", "P10", "Count"], [[t(a)] + [MARK[m] for m in ms] + [f'<span class="hx">{ms.count("●")} / 3</span>'] for a, ms in DSIG[4:]], "dense mx", [None, "9mm", "9mm", "9mm", "12mm"], raw=True)), cols="2"),
+     ins("The clearest repeated signal across the direct prototype sessions was not demand for another transaction tracker. It was demand for low-effort financial context that could help evaluate a current or upcoming decision.", cls="")
 
-contra = [("P03 actively calculates future spending.", "P05 finds the calculation itself too effortful."),
-          ("P04 knows about a future expense but does not consider it during the immediate decision.", "P03 actively incorporates future needs into present spending."),
-          ("P09 becomes more conscious when repeated spending is visible.", "P08 can treat money saved in one context as permission to spend elsewhere."),
-          ("P06 can see financial consequence and still choose the purchase.", "P04 can see financial consequence and potentially reduce the purchase.")]
+CREATE = [("P01", "Social situation dominates", "Financial context arrives late", "Cue / Timing"), ("P02", "Value evaluated after spending", "—", "Evaluation"),
+          ("P03", "Existing mental budgeting already strong", "Prototype may add limited value", "Evaluation / Experience"),
+          ("P04", "Future plan not active during current decision", "Social and hunger context dominates", "Timing"),
+          ("P05", "Too many retrieval and calculation steps", "Time pressure", "Ability / Timing"), ("P06", "Perceived value overrides financial concern", "—", "Evaluation"),
+          ("P07", "Purpose of information unclear", "Manual interaction effort", "Experience / Evaluation"),
+          ("P08", "Existing transaction history reduces need for tracking", "Future context more useful", "Experience / Evaluation"),
+          ("P09", "Frequency becomes visible only through observation", "—", "Awareness / Evaluation"), ("P10", "Use situation unclear", "Later logging creates friction", "Timing / Experience"),
+          ("P11", "Low spontaneous engagement", "Product not naturally sought", "Motivation / Experience")]
+MAP = [("P01", "Social pull", "○○●"), ("P02", "Post-purchase evaluation", "●○—"), ("P03", "Existing mental allocation", "○●—"), ("P04", "Future plan not salient", "○●●"),
+       ("P05", "Calculation burden", "○●●"), ("P06", "High perceived value", "●○—"), ("P07", "Unclear decision relevance", "○●●"), ("P08", "Duplicate transaction entry", "○●—"),
+       ("P09", "Cumulative visibility", "○●●"), ("P10", "Unclear use moment", "○●●"), ("P11", "Spontaneous engagement", "●○●")]
 page(S5,
-     head("What contradicted each other", "05 / Cross-participant analysis", "Research became more useful when contradictory behaviours were retained instead of averaged away."),
-     *[f'<div>{kk(f"Contradiction {i + 1:02d}")}' + vs(pn(f'<span class="cd-s">{a[1:3]}</span> ' + f'<span class="tx">{t(a)}</span>', "l"), pn(f'<span class="cd-s" style="background:var(--m-paper);color:var(--m-blue)">{b[1:3]}</span> ' + f'<span class="tx" style="color:var(--m-paper)">{t(b)}</span>', "b")) + "</div>" for i, (a, b) in enumerate(contra)],
-     gr(ins("There is no single “financially conscious” user behaviour.", cls=""), pn(tx("The intervention has to support consideration rather than assume the correct outcome."), "l"), cols="73", cls="push"))
+     head("Where each participant breaks", "05 / Cross-participant analysis", "Working CREATE and M / A / P classifications. These are analytical classifications, not participant-reported categories."),
+     table(["", "Primary break", "Secondary break", "Working CREATE diagnosis", "M", "A", "P"],
+           [[f'<span class="cd-s{" cd-o" if c == "P11" else ""}">{c[1:]}</span>', t(a), MARK["—"] if b == "—" else t(b), f'<span class="tagc">{t(d)}</span>'] + [MARK[x] for x in dict((q[0], q[2]) for q in MAP)[c]] for c, a, b, d in CREATE],
+           "dense mxl", ["10mm", None, None, "40mm", "8mm", "8mm", "8mm"], raw=True),
+     '<ul class="m-legend"><li><i class="mk mk--full"></i>Primary relevance</li><li><i class="mk"></i>Secondary relevance</li><li><i class="mk mk--none"></i>Not central</li><li>M motivation, A ability, P prompt</li></ul>',
+     pn(lbl("fi") + '<p class="hx" style="margin-top:2mm">Different participants break at different stages. The common opportunity is the gap between financial information becoming available and it becoming behaviourally relevant.</p>', "y"))
+
+CPAIR = [(("Future planning can be strong", "P03", "actively preserves money for future needs", "Some users already perform consequence reasoning"),
+          ("Future planning can disappear", "P04", "knew about Friday dinner but did not consider it Wednesday", "Knowledge alone is insufficient")),
+         (("Tracking can increase awareness", "P09", "noticed repeated small spends", "Visibility can matter"),
+          ("Tracking can be redundant", "P08", "already has transaction history", "More tracking is not necessarily more value")),
+         (("Financial information can alter spending", "P09", "reduced some spending during observation", "Awareness can affect behaviour"),
+          ("Financial awareness can coexist with spending", "P01, P06", "patterns", "Awareness does not mean restriction")),
+         (("Limits can help", "P08", "uses self-defined limits", "Structure can be useful"),
+          ("Limits can become control", "P08", "rejects enforced limits", "User authorship matters")),
+         (("Historical data can help explain", "P07", "understands monthly spending", "Description has value"),
+          ("Consequence can be more useful", "P07", "highlights potential spend", "Decision relevance is different from explanation"))]
+
+
+def cside(b, who, what, means):
+    return (f'<div class="cs"><p class="hx">{t(b)}</p><div style="margin:1.6mm 0">{codes(who)}<span class="small">{t(what)}</span></div>'
+            f'<p class="small" style="margin:0"><span class="lbl lbl--fi">Finding</span>&nbsp; {t(means)}</p></div>')
+
+
+page(S5,
+     head("What contradicted each other", "05 / Cross-participant analysis", "Contradictory behaviours are kept rather than averaged away."),
+     *[f'<div class="cpair">{cside(*a)}<span class="v">vs</span>{cside(*b)}</div>' for a, b in CPAIR],
+     ins("There is no single “financially conscious” user behaviour. The intervention has to support consideration rather than assume the correct outcome.", cls=""))
 
 page(S5,
      head("The unit of value changed", "05 / Cross-participant analysis"),
@@ -723,18 +865,23 @@ page(S5,
      pn(kk("Key finding", "kk--k") + '<p class="hx hx--xl hx--k">The prototype becomes valuable when it helps the user understand the consequence of a decision, not simply the existence of a transaction.</p>', "y", "push", "padding:9mm 7mm"))
 
 # ============ 41
-brk = [("Use situation unclear", "P07, P10", "Timing / Experience"), ("Potential-spend feature not dominant enough", "P07", "Experience"),
-       ("Amount already spent unclear", "P07", "Ability / Experience"), ("Amount remaining unclear", "P07, P10", "Ability"),
-       ("Actual vs estimated spending unclear", "P10", "Experience"), ("Manual transaction entry requires navigation", "P07, P08, P10", "Ability"),
-       ("Progress bar implies the wrong goal", "P10", "Experience"), ("Prototype feels congested", "P07", "Experience"),
-       ("New Plan interaction failed during session", "P07", "Ability / Prototype issue"), ("Updating transactions was unclear", "P07", "Ability"),
-       ("Categorisation can be ambiguous", "P10", "Ability"), ("Users need a walkthrough", "P07", "Experience")]
-TYPE_TONE = {"Timing": "tagc--red", "Experience": "tagc--sky", "Ability": "tagc--blue", "Prototype issue": "tagc--yellow"}
-brows = [[b, codes(e), "".join(f'<span class="tagc {TYPE_TONE[x.strip()]}" style="margin:0 1mm 1mm 0">{x.strip()}</span>' for x in ty.split("/"))] for b, e, ty in brk]
+ROLL = [(1, "Decision moment or use situation unclear", "2", "Timing", "Blocker", "User cannot reliably identify when the product enters the behaviour"),
+        (2, "Manual capture creates friction", "3", "Ability", "Drag", "Behaviour remains possible but requires extra effort"),
+        (3, "Potential consequence not immediately legible", "3", "Evaluation", "Drag", "User eventually understands it, but only after explanation"),
+        (4, "Future plans separated from current decision", "4+", "Timing / Evaluation", "Drag", "Relevant commitment sits outside the spend check"),
+        (5, "Progress representation implied wrong objective", "1", "Experience", "Blocker", "Representation can invert the intended behaviour"),
+        (6, "Actual vs estimated spending unclear", "1", "Experience", "Drag", "User needs clarification"),
+        (7, "Interface architecture feels congested", "1", "Experience", "Drag", "Main interaction competes with secondary modules"),
+        (8, "Existing transaction history duplicates current tools", "1 to 3", "Experience", "Noise", "Existing tool already performs the function"),
+        (9, "Categorisation is ambiguous", "1", "Ability", "Drag", "Correct classification requires clarification"),
+        (10, "New Plan interaction failed", "1", "Ability", "Blocker", "Prototype task could not proceed normally")]
+SEVT = {"Blocker": "tagc tagc--red", "Drag": "tagc tagc--yellow", "Noise": "tagc"}
 page(S6,
-     band("06 / What broke in the prototype", "The main breaks"),
-     tgrow(table(["Break", "Evidence", "Type"], brows, "dense", [None, "34mm", "44mm"], raw=True)),
-     '<ul class="m-legend push"><li><span class="tagc tagc--red">Timing</span></li><li><span class="tagc tagc--sky">Experience</span></li><li><span class="tagc tagc--blue">Ability</span></li><li><span class="tagc tagc--yellow">Prototype issue</span></li></ul>')
+     band("06 / What broke in the prototype", "Ten breaks, ranked"),
+     tgrow(table(["", "What broke", "Records", "Primary stage", "Severity", "Why"],
+                 [[f'<span class="hx">{r}</span>', f'<span style="color:var(--m-blue);font-weight:600">{t(w)}</span>', f'<span class="hx">{t(n)}</span>', t(st), f'<span class="{SEVT[sv]}">{sv}</span>', t(why)] for r, w, n, st, sv, why in ROLL],
+                 "dense", ["8mm", "48mm", "16mm", "28mm", "18mm", None], raw=True)),
+     pn('<p class="small" style="margin:0">Records is the number of documented records supporting the problem, not the number of participants who failed a task. Severity is a working label from the documented observations: Blocker, the action did not happen or only happened after intervention; Drag, effortful, slow or incorrect; Noise, mentioned without changing behaviour.</p>', "l"))
 
 bdata = [("01", "Use case", "When exactly am I using this app? What is the situation?", ["The interface was organised around features.", "The user was looking for a situation."]),
          ("02", "Manual entry", "You don't need to log every time.", ["The behaviour requires financial information to be available.", "Manual capture can become a separate task."]),
@@ -744,7 +891,7 @@ bdata = [("01", "Use case", "When exactly am I using this app? What is the situa
 page(S6,
      head("Break analysis", "06 / Prototype breaks"),
      *[gr(pn(f'<span class="num">{n}</span>' + hx(a), "b" if n == "01" else "", "", ""), qcards([q], 1, "l"),
-          pn(kk("Diagnosis") + tx(*ds), "y" if n == "05" else ""), cols="3", cls="gr-s", style="grid-template-columns:36mm 1fr 1fr") for n, a, q, ds in bdata])
+          pn(lbl("fi") + tx(*ds), "y" if n == "05" else ""), cols="3", cls="gr-s", style="grid-template-columns:36mm 1fr 1fr") for n, a, q, ds in bdata])
 
 # ============ 43
 page(S7,
@@ -767,8 +914,21 @@ dd = [("P04", "P04 knew a future dinner but did not consider it", "Future inform
       ("P10", "P10 said later logging is harder", "Context decays after spending", "Move capture and relevance closer to the event"),
       ("P10", "P10 preferred seamless interaction", "Opening another app is friction", "Explore automation or embedded interaction")]
 page(S7,
-     head("Design decisions from the evidence", "07 / Iteration"),
-     tgrow(table(["", "Evidence", "Interpretation", "Decision"], [[codes(c), t(e), t(i), f'<span style="color:var(--m-blue);font-weight:600">{t(d)}</span>'] for c, e, i, d in dd], "dense", ["10mm", None, None, "52mm"], raw=True)))
+     head("From evidence to design decision", "07 / Iteration"),
+     '<div class="chain-h"><span class="lbl lbl--ev">Evidence</span><span class="lbl lbl--fi">Finding</span><span class="lbl lbl--re">Response</span></div>',
+     '<div class="chain">' + "".join(f'<div class="ch"><div class="c1">{codes(c)}<span>{t(e)}</span></div><i class="ar"></i><div class="c2">{t(i)}</div><i class="ar"></i><div class="c3">{t(d)}</div></div>' for c, e, i, d in dd) + "</div>")
+
+V2T = [("Understand use situation", "Unclear", "Still questioned initially", "Problem remains important"),
+       ("Understand consequence", "Required explanation", "More explicit discussion", "Direction strengthened"),
+       ("Distinguish actual and estimated", "Unclear", "Still questioned", "Requires clearer representation"),
+       ("Manual capture", "Friction", "Still friction", "Automation remains important"),
+       ("Spending moment", "Not central enough", "Explicitly discussed", "Stronger conceptual framing"),
+       ("Financial consequence", "Useful but buried", "More central", "Stronger design direction"),
+       ("Agency", "Valued", "Preserved", "Continue"), ("Independent repeat use", "Not established", "Not established", "Still open")]
+page(S7,
+     head("V1 to V2: what the documented signals show", "07 / Iteration", "The completed Round 2 measurement dataset is not in the current archive. This compares documented signals, not measured counts."),
+     tgrow(table(["Behaviour", "V1 documented signal", "V2 documented signal", "Working interpretation"], [[f'<b style="color:var(--m-blue);font-weight:600">{t(a)}</b>', t(b), t(c), t(d)] for a, b, c, d in V2T], "dense", ["44mm", None, None, None], raw=True)),
+     pn(lbl("fi") + '<p class="hx" style="margin-top:2mm">V2 sharpened the interaction model, but the current archive does not provide a controlled behavioural dataset sufficient to claim that V2 caused a measurable improvement.</p>', "y"))
 
 # ============ 45
 principles = [("Timely", "Financial information appears before the decision closes."), ("Contextual", "The information relates to the current proposed expense."),
@@ -778,17 +938,59 @@ page(S8,
      band("08 / Final synthesis", "The research question is now sharper.", None,
           '<div class="vs2" style="margin-top:2mm">' + pn(kk("The project began by asking", "kk--w") + '<p class="q" style="margin:0;color:var(--m-paper)">How do we help students track their money?</p>', "", "", "background:rgba(255,255,255,0.14)")
           + '<span class="v" style="background:var(--m-mustard);color:var(--m-ink)">to</span>' + pn(kk("The testing shifted the question to", "kk--k") + '<p class="q" style="margin:0;color:var(--m-ink)">How do we make financial consequences visible while the spending decision is still open?</p>', "y") + "</div>"),
+     '<div class="shifts">' + "".join(f'<div><span class="a">{a}</span><i class="ar"></i><span class="b">{b}</span></div>' for a, b in [("Tracking", "Consideration"), ("Transaction", "Decision"), ("Information", "Consequence")]) + "</div>",
      kk("The current evidence suggests that a useful system should be"),
-     gr(*[pn(f'<span class="num">{i + 1:02d}</span>' + '<p class="hx hx--xl">' + t(a) + "</p>" + f'<p class="tx" style="margin:2mm 0 0">{t(b)}</p>', "b" if i == 5 else "") for i, (a, b) in enumerate(principles)], cols="3", cls="gr-s fill"))
+     gr(*[pn(f'<span class="num">{i + 1:02d}</span>' + '<p class="hx hx--xl">' + t(a) + "</p>" + f'<p class="tx" style="margin:2mm 0 0">{t(b)}</p>', "b" if i == 5 else "") for i, (a, b) in enumerate(principles)], cols="3", cls="gr-s"))
+
+NUMS = [("11", "participant-coded records in the working research archive"), ("10", "records with source-backed behavioural evidence usable for cross-participant synthesis"),
+        ("6", "days of documented baseline self-observation"), ("3", "direct prototype records with clear evidence around automation and transaction friction"),
+        ("3", "direct prototype records with clear evidence around potential spending and consequence"), ("5", "documented records showing social-context influence"),
+        ("6", "documented records showing future-commitment relevance"), ("4", "documented records showing calculation or retrieval friction"),
+        ("5", "documented records supporting agency and non-enforcement"), ("0", "supported causal claims that the prototype itself reduced spending"),
+        ("0", "supported claims that habit formation has been established")]
+page(S8,
+     head("The research in numbers", "08 / Synthesis", "Counts of records, never percentages."),
+     gr(*[pn(f'<p class="nbig{" nzero" if n == "0" else ""}">{n}</p><p class="small" style="margin:2mm 0 0">{t(d)}</p>', "b" if n == "0" else "", "", "") for n, d in NUMS], cols="3", cls="gr-s"))
+
+EVM = [("Visibility can increase awareness", "P09", "Medium", "Supported signal"), ("Future plans can fail to influence current decisions", "P04", "High", "Direct behavioural evidence"),
+       ("Calculation effort can block consideration", "P05", "Medium", "Supporting evidence"), ("Potential spend is useful", "P07", "High", "Direct prototype evidence"),
+       ("Existing transaction tracking reduces differentiation", "P08", "High", "Direct prototype evidence"), ("Automation is desired", "P07, P08, P10", "High", "Repeated direct signal"),
+       ("Social context affects spending", "P01, P04, P05, P07, P10", "High", "Repeated behavioural signal"), ("Agency matters", "P03, P06, P07, P08, P10", "High", "Repeated direct signal"),
+       ("Financial awareness can coexist with purchase", "P01, P06", "Medium", "Behavioural signal"), ("Prototype changes actual spending", "", "Low", "Unproven"),
+       ("Prototype creates sustained habit", "", "Low", "Unproven"), ("Independent repeat use occurs", "", "Low", "Unproven"), ("V2 causes improvement", "", "Low", "Unproven")]
+STR = {"High": "tagc tagc--blue", "Medium": "tagc tagc--sky", "Low": "tagc"}
+page(S8,
+     head("Evidence matrix", "08 / Synthesis", "Every claim, the records behind it and how strong the evidence is."),
+     tgrow(table(["Claim", "Evidence", "Strength", "Current status"],
+                 [[f'<span style="color:var(--m-blue);font-weight:600">{t(a)}</span>', codes(b) if b else MARK["—"], f'<span class="{STR[c]}">{c}</span>', work(d) if d == "Unproven" else t(d)] for a, b, c, d in EVM],
+                 "dense", [None, "44mm", "20mm", "44mm"], raw=True)))
 
 page(S8,
-     head("What we can currently say, and what remains unknown", "08 / Synthesis"),
-     gr(pn(kk("What we can currently say", "kk--w") + chk(["Tracking alone does not guarantee awareness.", "Future commitments can be known without being considered.", "Social context can dominate financial reasoning.",
-                                                          "Calculation effort can prevent financial information from becoming useful.", "Potential spending is more decision-oriented than historical information.",
-                                                          "Automation can remove friction around financial capture.", "Users value agency over enforced restriction.", "Increased awareness does not necessarily mean spending less."]), "b", "cfill", "padding:7mm 6mm"),
-        pn(kk("What remains unknown") + chk(["Whether the prototype changes real-world spending behaviour.", "Whether users independently access it at the spending moment.", "Whether consideration repeats across multiple decisions.",
-                                              "Whether awareness persists after the novelty of the prototype disappears.", "Whether repeated consideration becomes internalised behaviour.",
-                                              "Whether the same mechanism works across different spending situations."], open_=True), "d", "cfill", "padding:7mm 6mm"), cols="2", cls="fill"))
+     head("What the research validated, and what it challenged", "08 / Synthesis"),
+     gr(pn(kk("Validated or strongly supported", "kk--w") + chk(["Financial visibility can create reflection.", "Future commitments matter to spending decisions.",
+                                                             "Future commitments are not always active when spending happens.", "Manual financial capture introduces friction.",
+                                                             "Potential spending is a meaningful decision-support direction.",
+                                                             "Financial information does not need to change the final purchase to enter the reasoning.", "Users want to retain decision ownership."]), "b", "", "padding:7mm 6mm"),
+        pn(kk("Challenged") + '<div class="chal">' + "".join(f'<div><p class="hx"><span class="m-strike">{t(a)}</span></p><span class="small">{t(b)}</span></div>' for a, b in [
+            ("More tracking = more awareness", "Not supported."), ("More features = more usefulness", "Not supported."),
+            ("Historical spending is the main product value", "Not supported across direct prototype sessions."), ("A warning should stop the purchase", "Not supported as the intended interaction."),
+            ("Spending less = successful intervention", "Too narrow."), ("A future expense automatically influences current behaviour", "Not supported."),
+            ("A user will open another app because financial information is useful", "Not established.")]) + "</div>", "", "", "padding:7mm 6mm"), cols="2"))
+
+KNOW = [("Financial information can become more salient through observation", "Whether the product creates the same effect"),
+        ("Future plans can become inactive during current spending", "Whether showing them at decision time changes consideration"),
+        ("Calculation is costly for some participants", "Whether consequence compression measurably reduces effort"),
+        ("Potential spending is perceived as useful", "Whether it changes real spending decisions"),
+        ("Manual logging is frictionful", "Whether automation actually increases repeated use"),
+        ("Users value autonomy", "Which forms of prompts feel useful in real contexts"),
+        ("Social context strongly shapes some spending", "Whether financial context can enter those moments without disrupting them"),
+        ("Considered decisions can still end in spending", "How to measure consideration consistently"),
+        ("Existing payment tools already handle some tracking", "Where Margin creates differentiated value"),
+        ("Awareness is possible", "Whether awareness becomes repeated behaviour")]
+page(S8,
+     head("What we know, and what we still need to test", "08 / Synthesis"),
+     '<div class="know"><div class="kh"><span class="lbl lbl--ev">We know enough to say</span><span class="lbl lbl--im">We still need to test</span></div>' + "".join(
+         f'<div class="kr"><p>{t(a)}</p><i class="ar"></i><p>{t(b)}</p></div>' for a, b in KNOW) + "</div>")
 
 # ============ 47
 page(S9,
@@ -833,12 +1035,22 @@ A2 = [["P01", "1", "[VERIFY]", "Baseline", "Socially influenced spending", "[VER
       ["P09", "1", "[VERIFY]", "Six-day observation", "Repeated small spending", "Daily observation", "Reduced some snack/auto use", "[QUOTE]", "Awareness"],
       ["P10", "1", "[VERIFY]", "V2 prototype", "Decision moment unclear", "Spending scenario", "Questioned situation", "“When exactly am I using this app? What is the situation?”", "Timing"],
       ["P11", "1"] + ["[VERIFY]"] * 7]
+STAGEW = {c: d for c, a, b, d in CREATE}
+TIMEW = {"P07": "~26 min", "P09": "6 days", "P10": "~10 min"}
+TASKW = {"P07": "V1 scenario", "P10": "V2 scenario", "P08": "Prototype"}
+QFILL = {'P01': "“though I didn't want”", 'P03': "“it's good to have, like, buffer money.”", 'P06': '“mujhe kaafi fun product lag raha hai”', 'P09': '“I started noticing how often I was buying small things.”'}
+NR = '<span class="nr">Not recorded</span>'
+for r in A2:
+    r[2] = "September 2026"
+    if r[0] in QFILL: r[7] = QFILL[r[0]]
+    if r[7] == "[QUOTE]": r[7] = "NR"
+A2[-1] = ["P11", "1", "September 2026", "Inferred", "Low spontaneous engagement", "NR", "NR", "NR", "Motivation / Experience"]
 page(SA, ahead("02", "Observation data format"),
      kk("Part 1 of 2: identification, context and what was observed"),
-     tgrow(table(["Participant", "Round", "Date", "Method", "Current behaviour", "Task", "What they did"], [r[:7] for r in A2], "dense")))
+     tgrow(table(["Participant", "Round", "Date", "Method", "Current behaviour", "Task", "What they did"], [[NR if x in ("[VERIFY]", "NR") else t(x) for x in r[:7]] for r in A2], "dense", raw=True)))
 page(SA, ahead("02", "Observation data format, continued"),
      kk("Part 2 of 2: what was said, stage and measures"),
-     tgrow(table(["Participant", "What they said", "Stage", "Outcome", "Time", "Attempts", "Guardrail"], [[r[0], r[7], r[8], "[VERIFY]", "[VERIFY]", "[VERIFY]", "[VERIFY]"] for r in A2], "dense", ["18mm", "62mm", None, None, None, None, None])))
+     tgrow(table(["Participant", "What they said", "Stage", "Outcome", "Time", "Attempts", "Guardrail"], [[t(r[0]), NR if r[7] in ("NR", "[VERIFY]") else t(r[7]), t(STAGEW.get(r[0], r[8])), NR, (TIMEW.get(r[0]) or '<span class="nr">15 to 20 min, est.</span>'), NR, NR] for r in A2], "dense", ["18mm", "62mm", "36mm", None, "24mm", None, None], raw=True)))
 
 SEV = {"Blocker": "tagc--red", "Drag": "tagc--yellow", "Noise": "tagc"}
 roll = [("Use situation unclear", "2+", "Timing / Experience", "A", "Blocker / Drag", "Reframe around decision moment"),
@@ -852,16 +1064,25 @@ roll = [("Use situation unclear", "2+", "Timing / Experience", "A", "Blocker / D
         ("Pattern information not actionable", "1+", "Evaluation", "A", "Noise / Drag", "Attach pattern to action"),
         ("User wants system to decide", "0", "—", "—", "—", "No evidence; maintain agency")]
 rrows = [[a, f'<span class="hx">{t(b)}</span>', t(c), t(d), "".join(f'<span class="tagc {SEV.get(x.strip(), "tagc")}" style="margin:0 1mm 1mm 0">{x.strip()}</span>' for x in e.split("/")) if e != "—" else MARK["—"], t(f)] for a, b, c, d, e, f in roll]
-page(SA, ahead("03", "Findings roll-up"),
-     tgrow(table(["What broke", "Sessions", "CREATE stage", "M / A / P", "Severity", "Design response"], [[t(r[0])] + r[1:] for r in rrows], "dense", [None, "16mm", "30mm", "16mm", "30mm", "38mm"], raw=True)))
+FEAT = [("Monthly spending", "P07 understands it", "Useful contextual information"), ("Categories", "P07 understands them", "Supporting information, not core intervention"),
+        ("Patterns", "P07, P08", "Useful when actionable"), ("Upcoming plans", "P07, P08, P10", "Strong contextual value"),
+        ("Potential spending", "P07, P08, P10", "Strong decision-support direction"), ("Spending limits", "P08", "Useful when user-defined"),
+        ("Automatic transaction capture", "P07, P08, P10", "Strong infrastructure requirement"), ("Manual transaction entry", "P07, P08, P10", "Repeated friction"),
+        ("Money-owed reminders", "Earlier research", "Useful social-financial context"), ("Notifications", "Prototype requirement", "Should be tested rather than assumed effective"),
+        ("Chatbot logging", "P10", "Attractive because it matches an existing conversational behaviour"), ("Payment-app integration", "P08, P10", "Strong opportunity, technically unresolved"),
+        ("Progress bar", "P10", "Problematic metaphor"), ("Historical transaction ledger", "P08", "Low differentiation for users already tracking elsewhere")]
+page(SA, ahead("03", "Feature evidence"),
+     tgrow(table(["Feature or mechanism", "Evidence", "Working conclusion"], [[f'<b style="color:var(--m-blue);font-weight:600">{t(a)}</b>', t(b), t(c)] for a, b, c in FEAT], "dense", ["50mm", "44mm", None], raw=True)))
 
 page(SA, ahead("04", "Change log"),
-     gr(pn(kk("Evidence") + chk(["P04 did not bring a known future commitment into an immediate spending decision.", "P05 described financial calculation as effortful.",
-                                  "P07 identified potential spending as the strongest feature.", "P10 asked when the product would actually be used."])),
-        col(pn(kk("Diagnosis") + tx("The current design provides information but does not consistently place the relevant information inside the spending decision."), "l"),
-            pn(kk("Change", "kk--w") + hx("Move the financial consequence of a proposed expense into the decision surface.", "hx--w"), "b")), cols="2"),
-     gr(pn(kk("Prediction", "kk--k") + tx("Participants will understand more quickly what the proposed expense means for their remaining money and will be more likely to explicitly consider the trade-off."), "y"),
-        pn(kk("Falsifier", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0 0 2mm">Participants still:</p>' + '<div class="tx" style="color:var(--m-paper)"><ul>' + "".join(f"<li>{t(x)}</li>" for x in ["ignore the consequence,", "cannot explain it,", "require substantial calculation,", "or treat it as irrelevant to the decision."]) + "</ul></div>", "r"), cols="2", cls="grow"))
+     pn(lbl("ev") + chk(["P04 demonstrates that a known future commitment can fail to become part of the current decision.", "P05 demonstrates that retrieving financial context can require too much calculation.",
+                         "P07 identifies potential spending as the most useful decision-support interaction.", "P08 demonstrates that transaction history already exists elsewhere and future planning creates more differentiation.",
+                         "P10 asks for a clear situation in which the product is actually used."])),
+     pn(lbl("fi") + '<p class="hx" style="margin-top:2mm">The common problem is not absence of financial information. It is the distance between financial information and the active spending decision.</p>', "y"),
+     pn(lbl("re") + '<p class="hx hx--xl hx--w" style="margin-top:2mm">Move the personally relevant financial consequence into the active spending moment.</p>'
+        + '<p class="tx" style="margin:3mm 0 0">Instead of requiring the user to navigate, retrieve, remember, calculate and compare, the system directly shows current money, the relevant upcoming commitment and the proposed expense, and the projected remainder.</p>', "b"),
+     gr(pn(kk("Prediction") + tx("The participant will understand the financial consequence with fewer retrieval and calculation steps and will be more likely to mention it as part of the decision.")),
+        pn(kk("Falsifier") + tx("The participant does not notice the consequence, cannot explain it, requires the same retrieval process, or treats the consequence as irrelevant."), "d"), cols="2"))
 
 page(SA, ahead("05", "Outcomes"),
      kk("Decision outcome categories"),
@@ -870,18 +1091,18 @@ page(SA, ahead("05", "Outcomes"),
                        ("Declined", "Purchase abandoned"), ("Maintained", "Original decision retained"), ("Conscious maintain", "Original decision retained after explicit financial consideration")]], cols="3", cls="gr-s grow"),
      pn(kk("Important", "kk--k") + '<p class="hx hx--xl hx--k">Maintained does not equal failed.</p><p class="tx" style="margin:2mm 0 0">A maintained decision can still demonstrate consideration.</p>', "y", "push", "padding:8mm 7mm"))
 
-days = [pn(kk("Day 1") + '<div class="tx">' + "".join(f"<p>{t(x)}</p>" for x in ["Time to complete: [VERIFY]", "Attempts: [VERIFY]", "Unaided: [VERIFY]", "What cued the behaviour: [VERIFY]"]) + "</div>", "b")]
-days += [pn(kk(f"Day {d}") + '<div class="tx">' + "".join(f"<p>{t(x)}</p>" for x in ["Did it happen: [VERIFY]", "What brought them to it: [VERIFY]", "How known: [VERIFY]"]) + "</div>") for d in range(2, 6)]
-days += [pn(kk("Day 6", "kk--k") + '<div class="tx">' + "".join(f"<p>{t(x)}</p>" for x in ["Did it happen without prompting: [VERIFY]", "Time taken: [VERIFY]", "Compared with Day 1: Faster / Same / Slower",
+days = [pn(kk("Day 1") + '<div class="tx">' + "".join(f"<p>{t(x)}</p>" for x in ["Time to complete: ______", "Attempts: ______", "Unaided: ______", "What cued the behaviour: ______"]) + "</div>", "b")]
+days += [pn(kk(f"Day {d}") + '<div class="tx">' + "".join(f"<p>{t(x)}</p>" for x in ["Did it happen: ______", "What brought them to it: ______", "How known: ______"]) + "</div>") for d in range(2, 6)]
+days += [pn(kk("Day 6", "kk--k") + '<div class="tx">' + "".join(f"<p>{t(x)}</p>" for x in ["Did it happen without prompting: ______", "Time taken: ______", "Compared with Day 1: Faster / Same / Slower",
                                                                                           "What cued it: Design / Participant's own reminder / Researcher presence / Other"]) + "</div>", "y")]
-page(SA, ahead("06", "Repeat probe"), gr(*days, cols="3", cls="gr-s grow"))
+page(SA, ahead("06", "Repeat probe"), pn('<p class="small" style="margin:0">No repeat-probe data is in the current archive. This is the template for the next round.</p>', "d"), gr(*days, cols="3", cls="gr-s"))
 
-page(SA, ahead("07", "Loop log"),
+page(SA, ahead("07", "Loop log"), pn('<p class="small" style="margin:0">No loop-log data is in the current archive. This is the template for the next round.</p>', "d"),
      gr(pn(kk("Trigger") + '<div class="tx"><p><b>P</b> app prompt</p><p><b>W</b> something in the environment</p><p><b>M</b> participant\'s own thought or feeling</p></div>'),
         pn(kk("Action") + '<div class="tx"><p><b>D</b> did it</p><p><b>H</b> half did it</p><p><b>N</b> did not do it</p></div>'),
         pn(kk("Feeling") + '<div class="tx"><p><b>G</b> good</p><p><b>F</b> flat</p><p><b>B</b> bad</p></div>'), cols="3", cls="gr-s"),
      '<div>' + kk("Entry format") + frost(["MDG bored", "PDF tired", "WHG on the bus"], "fr--k") + "</div>",
-     tgrow(table(["Date", "Time", "Entry exactly as sent", "Trigger", "Action", "Feeling"], [["[VERIFY]", "[VERIFY]", "[VERIFY]", "P / W / M", "D / H / N", "G / F / B"]] * 12, "dense")))
+     tgrow(table(["Date", "Time", "Entry exactly as sent", "Trigger", "Action", "Feeling"], [["", "", "", "P / W / M", "D / H / N", "G / F / B"]] * 12, "dense")))
 
 page(SA, ahead("08", "Final evidence rules"),
      gr(pn('<span class="ev ev--obs">Observed</span><p class="hx" style="margin-top:3mm">Something the participant actually did.</p>'),
@@ -892,9 +1113,9 @@ page(SA, ahead("08", "Final evidence rules"),
 
 ver = [("P01 raw record", "[VERIFY]"), ("P02 raw record", "[VERIFY]"), ("P03 raw record", "[VERIFY]"), ("P04 raw record", "[VERIFY]"), ("P05 raw record", "[VERIFY]"),
        ("P06 raw record", "[VERIFY]"), ("P07 complete transcript", "Available / verify"), ("P08 complete transcript", "Available / verify"), ("P09 six-day record", "Available / verify"),
-       ("P10 complete V2 transcript", "Available / verify"), ("P11 complete record", "[VERIFY]"), ("Round 1 counts", "[VERIFY] from observation sheets"),
-       ("Round 2 counts", "[VERIFY] from observation sheets"), ("Exact dates", "[VERIFY]"), ("Exact task wording", "[VERIFY]"), ("Pass criteria", "[VERIFY]"),
-       ("CREATE classification", "[VERIFY]"), ("M/A/P classification", "[VERIFY]"), ("Severity", "[VERIFY]"), ("Repeat-probe data", "[VERIFY]"), ("Loop-log data", "[VERIFY]")]
+       ("P10 complete V2 transcript", "Available / verify"), ("P11 complete record", "Working inference only"), ("Round 1 counts", "Not in archive"),
+       ("Round 2 counts", "Not in archive"), ("Exact dates", "September 2026, day-level not recorded"), ("Exact task wording", "Reconstructed, page 12"), ("Pass criteria", "Retrospective framework, page 13"),
+       ("CREATE classification", "Working classification, page 45"), ("M/A/P classification", "Working classification, page 45"), ("Severity", "Working classification, page 48"), ("Repeat-probe data", "Not in archive"), ("Loop-log data", "Not in archive")]
 page(SA, ahead("09", "Source verification list"),
      gr(col(kk("Before final export, verify"), tgrow(table(["Item", "Status"], ver, "dense", [None, "44mm"]))),
         pn(kk("Testing kit requirements", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0">The testing kit requires the target action, CREATE stage, task, pass criteria and riskiest assumption to be set before testing; it then requires observable break roll-up, CREATE, M-A-P and severity tagging, one change, a pre-written prediction and falsifier, and a separate repeat-behaviour probe.</p>', "b"), cols="73", cls="grow"))

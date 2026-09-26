@@ -437,3 +437,113 @@ svg.r { position: absolute; overflow: visible; pointer-events: none; }
 .pn--l { box-shadow: none; background: var(--m-paper-deep); }
 .pn--d { border-color: var(--m-stone); }
 .pn .num { font-size: 13.5pt; }
+
+/* ================= v4: evidence hierarchy ================= */
+/* Four labels. Colour answers "what kind of information is this?" */
+.lbl { display: inline-flex; align-items: center; gap: 1.2mm; padding: 1mm 2mm; border-radius: var(--m-chip-radius); font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; white-space: nowrap; margin-bottom: 1.6mm; vertical-align: middle; }
+.lbl::before { content: ""; width: 1.6mm; height: 1.6mm; border-radius: 50%; background: currentColor; }
+.lbl--ev { background: var(--m-paper); color: var(--m-ink); box-shadow: inset 0 0 0 0.25mm var(--m-stone); }
+.lbl--fi { background: var(--m-mustard); color: var(--m-ink); }
+.lbl--im { background: var(--m-blue-1); color: var(--m-blue); }
+.lbl--re { background: var(--m-blue); color: var(--m-paper); }
+.lbl--br { background: var(--m-route); color: var(--m-paper); }
+.pn > .lbl, .ins2 > .lbl { display: inline-flex; }
+.ins2 > .lbl { margin: 0; justify-self: start; }
+.pn--b > .lbl--re { background: var(--m-paper); color: var(--m-blue); }
+.pn--k, .pn:has(> .lbl--im) { background: var(--m-blue-1); color: var(--m-blue); box-shadow: none; }
+.pn:has(> .lbl--im) .tx { color: var(--m-blue); }
+.pn--y:has(> .lbl--fi) { background: var(--m-mustard); }
+.wtag { display: inline-flex; padding: 1mm 2mm; border-radius: var(--m-chip-radius); box-shadow: inset 0 0 0 0.25mm var(--m-blue); color: var(--m-blue); font: 600 8.5pt/1 var(--m-font-text); letter-spacing: 0.03em; white-space: nowrap; background: repeating-linear-gradient(135deg, transparent 0 1.2mm, rgba(46,54,161,0.08) 1.2mm 1.6mm); }
+.nr { font: 400 8.5pt/1.2 var(--m-font-text); color: var(--m-blue); opacity: 0.45; }
+.yn { display: inline-flex; padding: 0.8mm 1.8mm; border-radius: var(--m-chip-radius); font: 600 8.5pt/1 var(--m-font-text); background: var(--m-paper-deep); color: var(--m-ink); }
+.yn--y { background: var(--m-blue); color: var(--m-paper); }
+.yn--n { background: none; box-shadow: inset 0 0 0 0.3mm var(--m-route); color: var(--m-route); }
+
+/* Quotes read as data: distinct from researcher text */
+.qc { border-left: 0.8mm solid var(--m-route); border-radius: 0 var(--m-sheet-radius) var(--m-sheet-radius) 0; }
+.qc cite::before { content: ""; display: inline-block; width: 3mm; height: 0.3mm; background: var(--m-route); vertical-align: middle; margin-right: 1.4mm; }
+.qc--big { border-left: 0.8mm solid var(--m-route); box-shadow: none; background: var(--m-paper-deep); }
+
+/* Quieter pattern profile */
+.prof-q { opacity: 0.75; }
+.prof-q .prof { border-top-color: var(--m-stone); padding-top: 1.6mm; }
+.prof-q .mk { width: 2.4mm; height: 2.4mm; border-width: 0.25mm; }
+.prof-q .prof > div { font-size: 8.5pt; gap: 1mm; }
+
+/* Findings rows */
+.frows { display: flex; flex-direction: column; gap: 3mm; }
+.frow { display: grid; grid-template-columns: 10mm 1.25fr 1fr 1fr; gap: 4mm; align-items: start; padding: 3.4mm 0; border-top: 0.2mm solid var(--m-paper-deep); }
+.frow .fn { font: 400 16.5pt/1 var(--m-font-display); color: var(--m-route); }
+.fev { margin-top: 2mm; display: flex; flex-wrap: wrap; align-items: center; }
+.fev .cd-s { width: 5.6mm; height: 5.6mm; }
+.fcnt { font: 600 8.5pt/1 var(--m-font-text); color: var(--m-route); margin-left: 1.6mm; }
+
+/* Matrix */
+.mxx { table-layout: fixed; }
+.mxx th { text-align: center; font-size: 8.5pt; }
+.mxx th:first-child { text-align: left; width: 24mm; }
+.mxx td { text-align: center; vertical-align: middle; padding: 2.4mm 0; border-bottom: 0.6mm solid var(--m-paper); }
+.mxx td:first-child { text-align: left; }
+.mxx .mc { border-left: 0.6mm solid var(--m-paper); }
+.mxx .mc--f { background: var(--m-blue-1); }
+.mxx .mc--f .mk { width: 4.2mm; height: 4.2mm; }
+.mxx .mc--h { background: var(--m-paper-deep); }
+.mxx tr.p11 td { padding: 2.4mm 0; text-align: left; }
+.mxx tr.tot td { border-top: 0.3mm solid var(--m-route); padding-top: 3mm; vertical-align: bottom; }
+.tbar { height: 30mm; display: flex; align-items: flex-end; justify-content: center; }
+.tbar i { width: 8mm; background: var(--m-blue); border-radius: 1.2mm 1.2mm 0 0; }
+.mxl td { vertical-align: middle; }
+
+/* Contradiction pairs */
+.cpair { display: grid; grid-template-columns: 1fr 10mm 1fr; align-items: stretch; }
+.cpair .v { align-self: center; justify-self: center; width: 10mm; height: 10mm; border-radius: 50%; background: var(--m-route); color: var(--m-paper); display: flex; align-items: center; justify-content: center; font: 600 8.5pt/1 var(--m-font-text); z-index: 1; margin: 0 -3mm; }
+.cs { background: var(--m-paper-deep); border-radius: var(--m-sheet-radius); padding: 4mm 5mm; }
+.cs .cd-s { margin-right: 1.6mm; }
+
+/* Causal chain */
+.chain-h { display: grid; grid-template-columns: 1.15fr 8mm 1fr 8mm 1fr; }
+.chain-h .lbl:nth-child(2) { grid-column: 3; }
+.chain-h .lbl:nth-child(3) { grid-column: 5; }
+.chain { display: flex; flex-direction: column; gap: 2.4mm; }
+.ch { display: grid; grid-template-columns: 1.15fr 8mm 1fr 8mm 1fr; align-items: stretch; }
+.ch > div { border-radius: 2.4mm; padding: 2.6mm 3.4mm; font: 400 8.5pt/1.4 var(--m-font-text); display: flex; align-items: center; }
+.ch .ar { align-self: center; margin: 0 auto; }
+.ch .c1 { background: var(--m-paper-deep); color: var(--m-ink); gap: 2mm; }
+.ch .c2 { background: var(--m-mustard); color: var(--m-ink); }
+.ch .c3 { background: var(--m-blue); color: var(--m-paper); font-weight: 600; }
+
+/* Thesis shifts */
+.shifts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+.shifts > div { background: var(--m-blue); border-radius: var(--m-sheet-radius); padding: 5mm; display: flex; align-items: center; gap: 1mm; flex-wrap: wrap; }
+.shifts .a { font: 400 13.5pt/1.2 var(--m-font-display); color: var(--m-paper); opacity: 0.6; }
+.shifts .b { font: 400 16.5pt/1.2 var(--m-font-display); color: var(--m-mustard); }
+.shifts .ar { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M1.5 7 H21 M15.5 2 L21.5 7 L15.5 12' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+
+/* Numbers */
+.nbig { font: 400 16.5pt/1 var(--m-font-display); color: var(--m-blue); margin: 0; transform-origin: left top; font-size: 44pt; line-height: 1; }
+.pn--b .nbig { color: var(--m-mustard); }
+.pn--b .small { color: var(--m-paper); }
+
+/* Know / test */
+.know { display: flex; flex-direction: column; gap: 2.4mm; }
+.kh { display: grid; grid-template-columns: 1fr 10mm 1fr; }
+.kh .lbl:nth-child(2) { grid-column: 3; }
+.kr { display: grid; grid-template-columns: 1fr 10mm 1fr; align-items: stretch; }
+.kr p { margin: 0; border-radius: 2.4mm; padding: 3mm 4mm; font: 400 10.5pt/1.35 var(--m-font-text); }
+.kr p:first-child { background: var(--m-paper-deep); color: var(--m-ink); }
+.kr p:last-child { background: var(--m-blue-1); color: var(--m-blue); }
+.kr .ar { align-self: center; margin: 0 auto; }
+.chal { display: flex; flex-direction: column; gap: 3mm; }
+.chal .hx { font-size: 10.5pt; line-height: 1.3; margin: 0; }
+.frows { gap: 0; }
+.frow { padding: 2.6mm 0; gap: 3mm; }
+.fev .cd-s { width: 4.6mm; height: 4.6mm; font-size: 7pt; margin: 0 0.5mm 0.5mm 0; }
+.frow .fn { font-size: 13.5pt; }
+.frow .hx { font-size: 10.5pt; line-height: 1.3; }
+.mxx td { padding: 1.8mm 0; }
+.m-table.dense .cd-s { width: 5.2mm; height: 5.2mm; font-size: 7pt; margin: 0 0.5mm 0.5mm 0; }
+.cs { padding: 3mm 4mm; }
+.cs .hx { font-size: 10.5pt; }
+.ins2 { padding: 4mm 5mm; }
+.m-table.tight td { padding-top: 0.8mm; padding-bottom: 0.8mm; }
+.m-table.tight .cd-s { margin-bottom: 0; }
