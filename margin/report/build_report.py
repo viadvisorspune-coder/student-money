@@ -814,7 +814,7 @@ page(S5,
                  "dense tight", [None, "92mm", "20mm"], raw=True)),
      gr(col(kk("Direct prototype signals"), table(["Signal", "P07", "P08", "P10", "Count"], [[t(a)] + [MARK[m] for m in ms] + [f'<span class="hx">{ms.count("●")} / 3</span>'] for a, ms in DSIG[:4]], "dense mx", [None, "9mm", "9mm", "9mm", "12mm"], raw=True)),
         col('<span class="kk">&nbsp;</span>', table(["Signal", "P07", "P08", "P10", "Count"], [[t(a)] + [MARK[m] for m in ms] + [f'<span class="hx">{ms.count("●")} / 3</span>'] for a, ms in DSIG[4:]], "dense mx", [None, "9mm", "9mm", "9mm", "12mm"], raw=True)), cols="2"),
-     ins("The clearest repeated signal across the direct prototype sessions was not demand for another transaction tracker. It was demand for low-effort financial context that could help evaluate a current or upcoming decision.", cls="")
+     ins("The clearest repeated signal across the direct prototype sessions was not demand for another transaction tracker. It was demand for low-effort financial context that could help evaluate a current or upcoming decision.", cls=""))
 
 CREATE = [("P01", "Social situation dominates", "Financial context arrives late", "Cue / Timing"), ("P02", "Value evaluated after spending", "—", "Evaluation"),
           ("P03", "Existing mental budgeting already strong", "Prototype may add limited value", "Evaluation / Experience"),
