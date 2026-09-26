@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin — Information grammar</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/margin.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/doc.css">
+<style>
+  .g-row { display: grid; grid-template-columns: 60mm 1fr; gap: 6mm 12mm; padding: 10mm 0; border-top: 0.3mm solid var(--m-paper-deep); }
+  .g-row:last-of-type { border-bottom: 0.3mm solid var(--m-paper-deep); }
+  .g-row h3 { margin: 0 0 2mm; }
+  .g-row .def { margin: 0 0 3mm; }
+  .g-row ul { margin: 0; padding-left: 4mm; }
+  .g-row li { margin-bottom: 1.2mm; }
+  .g-row li::marker { color: var(--m-route); }
+  @media (max-width: 620px) { .g-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="m-paper">
+<main class="doc">
+<nav class="doc-nav" aria-label="Margin chapters">
+  <a class="home" href="index.html">Margin</a>
+  <a href="foundations.html">01 Foundations</a><a href="grammar.html" aria-current="page">02 Grammar</a><a href="dataviz.html">03 Data</a><a href="components.html">04 Components</a><a href="layouts.html">05 Layouts</a><a href="rules.html">06 Rules</a>
+</nav>
+
+<header class="f-head" style="margin-bottom:6mm">
+  <div class="m-break"><span class="m-station">02</span></div>
+  <p class="m-label">Margin</p>
+  <h1 class="m-display-l" style="margin:0">Information grammar</h1>
+</header>
+<p class="m-body f-lede">Nine kinds of statement a research report makes, and how each looks on the page. A reader should be able to tell, before reading a word, whether they are looking at something observed, something claimed, or something the team is unsure of.</p>
+
+<div class="fit"><div style="width:200mm"><svg id="chain" viewBox="0 0 200 50" style="width:200mm;height:50mm;display:block" role="img" aria-label="Evidence leads to a claim, then an insight, a decision and an outcome; uncertainty can enter at any point"></svg></div></div>
+<p class="m-figcap"><b>The chain</b><span>Every insight in the report can be walked back along this route to the evidence it stands on.</span></p>
+
+<section class="f" style="margin-top:14mm">
+  <div class="g-row" id="evidence">
+    <div><span class="m-kicker">02.1</span><h3 class="m-closing">Evidence</h3><p class="m-body def">Something recorded: a diary entry, a screen recording, a count, a photograph.</p>
+      <ul class="m-body"><li>Always names method, participant and day.</li><li>Always carries its weight: how many of six.</li><li>Blue: it was observed.</li></ul></div>
+    <div><div class="m-callout m-callout--blue"><span class="m-kicker">Evidence 12 · Diary · <b>P02 · Day 3 · 20:15</b></span><p class="m-body" style="margin:0 0 2mm">Food order, ₹280. Remark: “mess was bad”. Split with three friends.</p><span class="m-freq"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><b>4 / 6 ordered on a poor mess night</b></span></div>
+      <p class="code">.m-callout--blue + .m-kicker + .m-freq</p></div>
+  </div>
+
+  <div class="g-row" id="claims">
+    <div><span class="m-kicker">02.2</span><h3 class="m-closing">Claims</h3><p class="m-body def">A sentence the report asserts, built from evidence.</p>
+      <ul class="m-body"><li>Set as a heading, never as a quote.</li><li>Lists the evidence it rests on.</li><li>A solid route when two or more sources agree.</li></ul></div>
+    <div><p class="m-heading" style="margin:0 0 2mm">Ordering food is a social decision, not a budgeting one.</p>
+      <div class="m-break m-break--grow" style="--m-break-arm:8mm"><span class="m-label m-label--blue">Rests on E12 · E14 · E19</span></div>
+      <p class="code">.m-heading + .m-break — the route shows it is supported</p></div>
+  </div>
+
+  <div class="g-row" id="participants">
+    <div><span class="m-kicker">02.3</span><h3 class="m-closing">Participants</h3><p class="m-body def">The people in the study, as codes with only the context that explains their spending.</p>
+      <ul class="m-body"><li>P01–P06. Never a name, a face, or a colour.</li><li>Context: year, living situation, money in.</li><li>Consistent code across every chapter.</li></ul></div>
+    <div><div class="m-participant"><span class="code">P04</span><dl><dt>Year</dt><dd>First year, B.Sc</dd><dt>Lives</dt><dd>Hostel, no mess plan</dd><dt>Money in</dt><dd>Weekly transfer</dd><dt>Days logged</dt><dd>6 of 6</dd></dl></div>
+      <p class="code">.m-participant · .m-tag--code inline</p></div>
+  </div>
+
+  <div class="g-row" id="quotes">
+    <div><span class="m-kicker">02.4</span><h3 class="m-closing">Quotes</h3><p class="m-body def">A participant's own words, verbatim.</p>
+      <ul class="m-body"><li>Italic serif, blue. Never paraphrased inside quote marks.</li><li>Cited as code · day · method.</li><li>Cuts shown with […]; added words in [brackets].</li></ul></div>
+    <div><blockquote class="m-pullquote" style="margin:0"><p class="m-quote" style="margin:0">“I'll just skip something next week […] it always works out.”</p><cite>P01 · Day 5 · Interview</cite></blockquote>
+      <p class="code">.m-pullquote · .m-bigquote · inline “…” in body</p></div>
+  </div>
+
+  <div class="g-row" id="observations">
+    <div><span class="m-kicker">02.5</span><h3 class="m-closing">Observations</h3><p class="m-body def">What a researcher saw, written at the time, before interpretation.</p>
+      <ul class="m-body"><li>Field-note style: italic, with a hollow marker.</li><li>Timestamped.</li><li>Describes; never explains.</li></ul></div>
+    <div><p class="m-field-note" style="margin:0">Scrolled the result screen twice, stopped on the figure, did not scroll to the plans cue. Put the phone face down.<cite>Observation · P05 · Test round 2 · 14:22</cite></p>
+      <p class="code">.m-field-note</p></div>
+  </div>
+
+  <div class="g-row" id="insights">
+    <div><span class="m-kicker">02.6</span><h3 class="m-closing">Insights</h3><p class="m-body def">What the evidence means, stated once, and remembered.</p>
+      <ul class="m-body"><li>Mustard loop: the route arrives and holds it.</li><li>One per spread, and the only mustard on it.</li><li>Always with frequency and confidence.</li></ul></div>
+    <div><div class="m-loop m-loop--insight"><div class="m-loop__label"><span class="m-heading" style="color:var(--m-ink)">Insight 02</span></div><p class="m-closing" style="margin:0 0 3mm">Knowing ≠ considering</p>
+      <div class="demo-row"><span class="m-freq"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><b>5 / 6</b></span><span class="m-confidence" data-level="3"><i></i><i></i><i></i><span>High</span></span></div></div>
+      <p class="code">.m-loop--insight + .m-freq + .m-confidence</p></div>
+  </div>
+
+  <div class="g-row" id="decisions">
+    <div><span class="m-kicker">02.7</span><h3 class="m-closing">Decisions</h3><p class="m-body def">What the team did because of an insight.</p>
+      <ul class="m-body"><li>Introduced with →, the design consequence.</li><li>Names the insight it answers.</li><li>Blue side rule: a response, not a finding.</li></ul></div>
+    <div><div class="m-callout m-callout--blue"><span class="m-kicker">→ Design response · answers Insight 02</span><p class="m-body" style="margin:0">Show upcoming plans inside the result screen, beside the figure they affect. Remove every instruction.</p></div>
+      <p class="code">.m-callout--blue with → in the kicker</p></div>
+  </div>
+
+  <div class="g-row" id="outcomes">
+    <div><span class="m-kicker">02.8</span><h3 class="m-closing">Outcomes</h3><p class="m-body def">What happened when a decision was tested.</p>
+      <ul class="m-body"><li>Before and after, same task, same six people.</li><li>Outcome by shape: completed, with help, not completed.</li><li>A changed direction earns a turning point.</li></ul></div>
+    <div><p class="m-kicker" style="margin:0 0 2mm">Notice an upcoming plan</p>
+      <div style="display:grid;grid-template-columns:12mm 1fr;gap:2mm 3mm;align-items:center">
+        <span class="m-tag m-tag--version">V02</span><span class="m-body" style="letter-spacing:1.2mm;font-size:12pt">●●◐○○○</span>
+        <span class="m-tag m-tag--version">V03</span><span class="m-body" style="letter-spacing:1.2mm;font-size:12pt">●●●●●○</span></div>
+      <p class="m-pill m-pill--solid" style="margin-top:3mm">Turning point 02</p>
+      <p class="code">.m-outcome · unit marks · .m-pill--solid for a turning point</p></div>
+  </div>
+
+  <div class="g-row" id="uncertainty">
+    <div><span class="m-kicker">02.9</span><h3 class="m-closing">Uncertainty</h3><p class="m-body def">What the study cannot say, said plainly.</p>
+      <ul class="m-body"><li>Dashed: the route, the loop, the underline.</li><li>Low confidence shown, not hidden.</li><li>Open questions are ghost nodes: not yet known.</li></ul></div>
+    <div><div class="m-loop m-loop--dashed"><div class="m-loop__label"><span class="m-heading">Open question</span></div><p class="m-body" style="margin:0 0 2mm">Would the plans cue still be read after the novelty wears off? Six days is <span class="m-u-wave">too short to tell</span>.</p><span class="m-confidence" data-level="1"><i></i><i></i><i></i><span>Low</span></span></div>
+      <p class="code">.m-loop--dashed · .m-u-wave · .m-confidence[data-level="1"] · future node</p></div>
+  </div>
+</section>
+
+</main>
+<script src="js/route.js"></script>
+<script src="js/doc.js"></script>
+<script>
+(function () {
+  var M = Margin, S = MarginDoc.svg, s = document.getElementById('chain');
+  var steps = [[10, 'EVIDENCE', 'event'], [52, 'CLAIM', 'event'], [94, 'INSIGHT', 'turning'], [136, 'DECISION', 'planned'], [178, 'OUTCOME', 'event']];
+  M.route(s, [[10, 22], [178, 22]]);
+  steps.forEach(function (p) { M.node(s, p[0], 22, p[2], { size: 5 }); S('text', { x: p[0], y: 14, 'text-anchor': 'middle', class: 'm-heading', 'font-size': 3.4, text: p[1] }, s); });
+  M.route(s, [[112, 22], [112, 36], [120, 36]], { style: 'dashed', radius: 5 });
+  M.node(s, 124, 36, 'future', { size: 4.4 });
+  S('text', { x: 130, y: 37.2, class: 'm-note', 'font-size': 2.8, text: 'Uncertainty can branch off at any point' }, s);
+  S('text', { x: 10, y: 34, class: 'm-label m-label--blue', 'font-size': 2.4, text: 'OBSERVED' }, s);
+  S('text', { x: 94, y: 34, 'text-anchor': 'middle', class: 'm-label m-label--blue', 'font-size': 2.4, text: 'MEANT' }, s);
+  S('text', { x: 178, y: 34, 'text-anchor': 'middle', class: 'm-label', 'font-size': 2.4, text: 'CHANGED' }, s);
+  MarginDoc.fit();
+})();
+</script>
+</body>
+</html>

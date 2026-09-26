@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Phone">
+<defs><filter id="grain" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 7 -2.1" result="m"/><feComposite in="SourceGraphic" in2="m" operator="in" result="g"/><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="w"/><feDisplacementMap in="g" in2="w" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter></defs>
+<title>Phone</title>
+<g filter="url(#grain)">
+  <rect x="29" y="8" width="42" height="84" rx="7" fill="#2A2A2A"/>
+  <rect x="33" y="16" width="34" height="66" rx="2" fill="#F0EFEB"/>
+</g>
+<path d="M39 26 L39 44 Q39 48 43 48 L57 48 Q61 48 61 52 L61 70" fill="none" stroke="#D8503B" stroke-width="2.4" stroke-linecap="round"/>
+<circle cx="39" cy="26" r="3" fill="#D8503B"/><circle cx="61" cy="72" r="3" fill="#D8503B"/>
+</svg>

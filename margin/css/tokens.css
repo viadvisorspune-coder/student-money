@@ -1,0 +1,186 @@
+/* Margin tokens — GENERATED from tokens/tokens.json by scripts/build-tokens.mjs. Do not edit. */
+:root {
+  --m-paper: #F0EFEB;
+  --m-paper-deep: #E4E2DC;
+  --m-route: #D8503B;
+  --m-blue: #1F679B;
+  --m-mustard: #CDAD3A;
+  --m-ink: #2A2A2A;
+  --m-stone: #B8B4AA;
+  --m-blue-1: #DCE6EE;
+  --m-blue-2: #AFC8DB;
+  --m-blue-3: #77A2C2;
+  --m-blue-4: #1F679B;
+  --m-blue-5: #123F60;
+
+  --m-font-display: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --m-font-text: 'Merriweather', Georgia, 'Times New Roman', serif;
+
+  --m-display-xl-size: 54pt;
+  --m-display-xl-leading: 0.9;
+  --m-display-l-size: 34pt;
+  --m-display-l-leading: 0.92;
+  --m-closing-size: 20pt;
+  --m-closing-leading: 0.95;
+  --m-station-size: 20pt;
+  --m-station-leading: 1;
+  --m-stat-size: 24pt;
+  --m-stat-leading: 1;
+  --m-heading-size: 11pt;
+  --m-heading-leading: 1.15;
+  --m-label-size: 6.5pt;
+  --m-label-leading: 1.2;
+  --m-folio-size: 7pt;
+  --m-folio-leading: 1;
+  --m-body-size: 8.5pt;
+  --m-body-leading: 1.5;
+  --m-quote-size: 13pt;
+  --m-quote-leading: 1.35;
+  --m-note-size: 6.5pt;
+  --m-note-leading: 1.45;
+  --m-caption-size: 6.5pt;
+  --m-caption-leading: 1.4;
+
+  --m-page-width: 210mm;
+  --m-page-height: 297mm;
+  --m-page-spread-width: 420mm;
+  --m-page-margin-top: 16mm;
+  --m-page-margin-bottom: 18mm;
+  --m-page-margin-inner: 20mm;
+  --m-page-margin-outer: 14mm;
+  --m-page-columns: 6;
+  --m-page-gutter: 5mm;
+
+  --m-space-unit: 2mm;
+  --m-space-1: 2mm;
+  --m-space-2: 4mm;
+  --m-space-3: 6mm;
+  --m-space-4: 8mm;
+  --m-space-6: 12mm;
+  --m-space-8: 16mm;
+  --m-space-12: 24mm;
+  --m-space-16: 32mm;
+
+  --m-route-weight: 1.8mm;
+  --m-route-node: 4.4mm;
+  --m-route-radius: 8mm;
+  --m-route-break-gap: 3mm;
+  --m-route-dash: 3.6mm 3.2mm;
+  --m-route-dot: 0 3.6mm;
+  --m-route-hairline: 0.3mm;
+  --m-route-text-inset: 6mm;
+
+  --m-motion-draw: 1400ms;
+  --m-motion-draw-easing: cubic-bezier(0.65, 0, 0.35, 1);
+  --m-motion-node: 220ms;
+  --m-motion-node-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --m-motion-fade: 320ms;
+  --m-motion-fade-easing: ease-out;
+  --m-motion-reduced: 0ms;
+}
+
+/* Type styles: one class per role. */
+.m-display-xl {
+  font-family: var(--m-font-display);
+  font-size: var(--m-display-xl-size);
+  line-height: var(--m-display-xl-leading);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--m-mustard);
+}
+.m-display-l {
+  font-family: var(--m-font-display);
+  font-size: var(--m-display-l-size);
+  line-height: var(--m-display-l-leading);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--m-mustard);
+}
+.m-closing {
+  font-family: var(--m-font-display);
+  font-size: var(--m-closing-size);
+  line-height: var(--m-closing-leading);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--m-blue);
+}
+.m-station {
+  font-family: var(--m-font-display);
+  font-size: var(--m-station-size);
+  line-height: var(--m-station-leading);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--m-blue);
+}
+.m-stat {
+  font-family: var(--m-font-display);
+  font-size: var(--m-stat-size);
+  line-height: var(--m-stat-leading);
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--m-blue);
+}
+.m-heading {
+  font-family: var(--m-font-display);
+  font-size: var(--m-heading-size);
+  line-height: var(--m-heading-leading);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--m-blue);
+}
+.m-label {
+  font-family: var(--m-font-display);
+  font-size: var(--m-label-size);
+  line-height: var(--m-label-leading);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m-route);
+}
+.m-folio {
+  font-family: var(--m-font-display);
+  font-size: var(--m-folio-size);
+  line-height: var(--m-folio-leading);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--m-route);
+}
+.m-body {
+  font-family: var(--m-font-text);
+  font-size: var(--m-body-size);
+  line-height: var(--m-body-leading);
+  font-weight: 300;
+  letter-spacing: 0;
+  color: var(--m-blue);
+}
+.m-quote {
+  font-family: var(--m-font-text);
+  font-size: var(--m-quote-size);
+  line-height: var(--m-quote-leading);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0;
+  color: var(--m-blue);
+}
+.m-note {
+  font-family: var(--m-font-text);
+  font-size: var(--m-note-size);
+  line-height: var(--m-note-leading);
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--m-route);
+}
+.m-caption {
+  font-family: var(--m-font-text);
+  font-size: var(--m-caption-size);
+  line-height: var(--m-caption-leading);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  color: var(--m-blue);
+}

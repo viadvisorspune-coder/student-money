@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin — Layouts</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/margin.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/doc.css">
+<style>
+  .doc.wide { max-width: 440mm; zoom: 1; }
+  @media (min-width: 1100px) { .doc.wide { zoom: 1; } }
+  .doc.wide .f-lede, .doc.wide .lay-meta { font-size: 9.5pt; }
+  .lay-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(62mm, 1fr)); gap: 3mm 10mm; margin: 0 0 8mm; max-width: 300mm; }
+  .lay-meta p { margin: 0; }
+  .lay-meta .m-kicker { display: block; margin-bottom: 1mm; }
+
+  /* Spread preview: two A4 pages at true size, scaled to the column. */
+  .sp { position: relative; width: 420mm; height: 297mm; background: var(--m-paper); overflow: hidden; box-shadow: 0 0 0 0.3mm var(--m-paper-deep); }
+  .sp::after { content: ""; position: absolute; top: 0; bottom: 0; left: 204mm; width: 12mm; pointer-events: none;
+    background: linear-gradient(90deg, rgba(42,42,42,0) 0%, rgba(42,42,42,.07) 50%, rgba(42,42,42,0) 100%); }
+  .sp > svg.sp-svg { position: absolute; inset: 0; width: 420mm; height: 297mm; z-index: 0; overflow: visible; }
+  .sp .a { position: absolute; z-index: 1; margin: 0; }
+  .sp .m-body p { margin: 0 0 0.8em; }
+  .sp .fol-v { left: 14mm; top: 284mm; } .sp .fol-r { right: 14mm; top: 284mm; }
+  .sp .m-img { position: absolute; z-index: 1; }
+  .sp .m-print .m-img { position: relative; }
+  .sp .m-display-xl, .sp .m-display-l { margin: 0; }
+  .grid-toggle { margin: 0 0 8mm; }
+  .show-grid .sp::before { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: .5;
+    background:
+      linear-gradient(90deg, transparent 14mm, rgba(216,80,59,.12) 14mm 39.2mm, transparent 39.2mm 44.2mm, rgba(216,80,59,.12) 44.2mm 69.4mm, transparent 69.4mm 74.4mm, rgba(216,80,59,.12) 74.4mm 99.6mm, transparent 99.6mm 104.6mm, rgba(216,80,59,.12) 104.6mm 129.8mm, transparent 129.8mm 134.8mm, rgba(216,80,59,.12) 134.8mm 160mm, transparent 160mm 165mm, rgba(216,80,59,.12) 165mm 190.2mm, transparent 190.2mm),
+      linear-gradient(90deg, transparent 230mm, rgba(216,80,59,.12) 230mm 255.2mm, transparent 255.2mm 260.2mm, rgba(216,80,59,.12) 260.2mm 285.4mm, transparent 285.4mm 290.4mm, rgba(216,80,59,.12) 290.4mm 315.6mm, transparent 315.6mm 320.6mm, rgba(216,80,59,.12) 320.6mm 345.8mm, transparent 345.8mm 350.8mm, rgba(216,80,59,.12) 350.8mm 376mm, transparent 376mm 381mm, rgba(216,80,59,.12) 381mm 406mm, transparent 406mm);
+  }
+</style>
+</head>
+<body class="m-paper">
+<main class="doc wide">
+<nav class="doc-nav" aria-label="Margin chapters">
+  <a class="home" href="index.html">Margin</a>
+  <a href="foundations.html">01 Foundations</a><a href="grammar.html">02 Grammar</a><a href="dataviz.html">03 Data</a><a href="components.html">04 Components</a><a href="layouts.html" aria-current="page">05 Layouts</a><a href="rules.html">06 Rules</a>
+</nav>
+
+<header class="f-head" style="margin-bottom:6mm">
+  <div class="m-break"><span class="m-station">05</span></div>
+  <p class="m-label">Margin</p>
+  <h1 class="m-display-l" style="margin:0">Page patterns</h1>
+</header>
+<p class="m-body f-lede" style="max-width:160mm">Fourteen spreads, each a different way of combining images and text. They share the system and nothing else: <b>the system is consistent; the compositions are not.</b> Every spread is shown at true A4 size, scaled to fit. Grey blocks are image placeholders marked with their format. Content is sample.</p>
+<button class="replay grid-toggle" type="button" id="grid-toggle" aria-pressed="false">Show the grid</button>
+
+<!-- ======================= L01 CHAPTER OPENER ======================= -->
+<section class="f" id="l01">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.01</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Chapter opener</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>The first spread of each of the eight chapters.</p><p><span class="m-kicker">Images + text</span>Full-bleed duotone image on the left; the chapter question in display-xl on the right, reached by the route.</p><p><span class="m-kicker">Fixed</span>Vertical chapter number in a route break. Closing line points into the chapter.</p></div>
+  <div class="fit"><div class="sp" id="sp01">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <figure class="m-img m-img--ph m-img--duotone" style="left:0;top:0;width:210mm;height:297mm"><span class="m-img__tag" style="left:14mm;bottom:16mm">Photo · full bleed · duotone</span></figure>
+    <p class="a m-kicker" style="left:14mm;top:16mm;color:var(--m-paper)">Chapter 01</p>
+    <h2 class="a m-display-xl" style="left:252mm;top:34mm;width:150mm;font-size:46pt">Why do students spend what they didn't plan to?</h2>
+    <span class="a m-station m-vertical" style="left:231.6mm;top:131mm">01</span>
+    <p class="a m-kicker" style="left:252mm;top:126mm">01 / The question</p>
+    <div class="a m-body" style="left:252mm;top:136mm;width:86mm"><p>Most students in this study knew what the rest of their week held. They had plans, and could name them. Yet at the moment of spending, those plans rarely came up.</p><p>This report follows six students through six ordinary days to find out what happens between knowing and spending.</p></div>
+    <div class="a m-margin-note" style="left:352mm;top:196mm;width:46mm">Kharcha is Hindi for spending. The app of the same name was designed and tested across this study.</div>
+    <p class="a m-closing" style="left:308mm;top:243mm">Into the<br>everyday</p>
+    <span class="a m-folio fol-r">05</span>
+  </div></div>
+</section>
+
+<!-- ======================= L02 TIMELINE ======================= -->
+<section class="f" id="l02">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.02</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Timeline spread</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>The six-day study; any sequence of events where order matters.</p><p><span class="m-kicker">Images + text</span>The route weaves across both pages; each day is a station; short blocks of text hug the line; objects sit in the open spaces.</p><p><span class="m-kicker">Signature</span>The route encloses day 4, breaks for every day label, and turns dashed where the week was interrupted.</p></div>
+  <div class="fit"><div class="sp" id="sp02">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <h2 class="a m-display-l" style="left:14mm;top:16mm;width:80mm">Into the everyday</h2>
+    <p class="a m-kicker" style="left:14mm;top:48mm">Chapter 02 · <b>P02's week</b></p>
+    <span class="a m-station m-vertical" style="left:147.2mm;top:63mm">Day 01</span>
+    <div class="a m-body" style="left:158mm;top:62mm;width:40mm"><p>An ordinary start. Chai at the tapri, lunch at the canteen, an auto to the gate. ₹180 across three small spends.</p></div>
+    <img class="a" src="icons/chai.svg" alt="" style="left:66mm;top:62mm;width:34mm;transform:rotate(-10deg)">
+    <span class="a m-station m-vertical" style="left:37.2mm;top:154mm">Day 02</span>
+    <div class="a m-body" style="left:48mm;top:150mm;width:56mm"><p>Nothing unusual. ₹120, lunch. The birthday dinner on Friday is already in P02's plans.</p></div>
+    <span class="a m-station" style="left:126mm;top:236.4mm">Day 03</span>
+    <img class="a" src="icons/rickshaw.svg" alt="" style="left:58mm;top:196mm;width:36mm;transform:rotate(6deg)">
+    <div class="a m-body m-body--right" style="left:120mm;top:170mm;width:62mm"><p>Running late: an auto, ₹90. That night the mess was bad and friends suggested ordering. ₹280.</p></div>
+    <div class="a m-margin-note m-margin-note--right" style="left:150mm;top:252mm;width:32mm">Not in the plan. Did Friday come up? No.</div>
+    <span class="a m-folio fol-v">12</span>
+
+    <span class="a m-station" style="left:268mm;top:26.4mm">Day 04</span>
+    <div class="a m-body" style="left:246mm;top:44mm;width:74mm"><p>A quiet day. ₹60. Asked about the week ahead, P02 names the birthday dinner straight away, and the exact amount.</p><p class="m-quote" style="font-size:10pt">“I knew I had plans, but I didn't think about them.”</p></div>
+    <img class="a" src="icons/phone.svg" alt="" style="left:344mm;top:34mm;width:34mm;transform:rotate(16deg)">
+    <span class="a m-station m-vertical" style="left:347.2mm;top:126mm">Day 05</span>
+    <div class="a m-body" style="left:358mm;top:160mm;width:46mm"><p class="m-stat" style="margin-bottom:1.6mm">₹1,500</p><p>The birthday dinner. Planned since day one, and the largest spend of the week.</p></div>
+    <div class="a m-body m-body--right" style="left:226mm;top:206mm;width:38mm"><p>Groceries, an auto, nothing unusual. ₹210.</p></div>
+    <span class="a m-station" style="left:306mm;top:246.4mm">Day 06</span>
+    <p class="a m-closing" style="left:306mm;top:258mm">Into the<br>patterns</p>
+    <span class="a m-folio fol-r">13</span>
+  </div></div>
+</section>
+
+<!-- ======================= L03 QUOTE ======================= -->
+<section class="f" id="l03">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.03</span></div><p class="m-label">Layout</p><h2 class="m-display-l">One quote</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>A single sentence from a participant that carries a finding.</p><p><span class="m-kicker">Images + text</span>An enormous quote alone on the left page; a taped portrait artifact and a field note on the right.</p><p><span class="m-kicker">Rule</span>The route leads into the citation, never into the quote itself.</p></div>
+  <div class="fit"><div class="sp" id="sp03">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <span class="a" style="left:22mm;top:34mm;font:700 110pt/1 var(--m-font-display);color:var(--m-mustard)">“</span>
+    <p class="a m-quote" style="left:30mm;top:78mm;width:156mm;font-size:30pt;line-height:1.25">I knew I had plans, but I didn't think about them.</p>
+    <p class="a m-kicker" style="left:30mm;top:124.6mm">P03 · Day 4 · <b>Exit interview</b></p>
+    <span class="a m-folio fol-v">20</span>
+    <figure class="a m-print" style="left:246mm;top:26mm;width:128mm"><div class="m-img m-img--ph m-img--3x4" style="position:relative"><span class="m-img__tag">Photo · 3:4</span></div><figcaption>The plans page in P03's notebook, day 4</figcaption><span class="m-tape" style="top:-2.6mm;left:50mm;transform:rotate(-4deg)"></span></figure>
+    <p class="a m-field-note" style="left:250mm;top:222mm;width:110mm">Showed us a handwritten list of the week: the Friday dinner was on it, with an amount. The list lives in a notebook that stays in the hostel room.<cite>Field note · P03 · Day 4</cite></p>
+    <span class="a m-folio fol-r">21</span>
+  </div></div>
+</section>
+
+<!-- ======================= L04 BIG NUMBER ======================= -->
+<section class="f" id="l04">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.04</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Big number</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>When one count is the finding.</p><p><span class="m-kicker">Images + text</span>A huge figure and its units on the left, every unit drawn; two columns of text and a pull quote on the right.</p><p><span class="m-kicker">Rule</span>The figure is always shown with its base (“of 24”) and its units.</p></div>
+  <div class="fit"><div class="sp" id="sp04">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:18mm;top:22mm">04 / The patterns</p>
+    <p class="a" style="left:14mm;top:34mm;font:700 200pt/0.85 var(--m-font-display);color:var(--m-blue);letter-spacing:-0.02em">19</p>
+    <p class="a m-display-l" style="left:150mm;top:92mm;color:var(--m-blue);font-size:28pt">of 24</p>
+    <p class="a m-heading" style="left:18mm;top:128mm;width:150mm">spends were made in a week that held a plan, and the plan never came up.</p>
+    <div class="a" id="units04" style="left:18mm;top:152mm;width:170mm"></div>
+    <div class="a m-body" style="left:18mm;top:200mm;width:80mm"><p>Counted from the diary: every spend made in a week where the participant had already written down a plan.</p></div>
+    <span class="a m-folio fol-v">32</span>
+    <h2 class="a m-display-l" style="left:230mm;top:16mm;width:176mm;font-size:28pt">What happens between knowing and spending?</h2>
+    <div class="a m-body" style="left:230mm;top:64mm;width:83mm"><p>In every interview, participants could list what the rest of their week held. Five of six named an amount without looking it up.</p><p>But when we walked back through each spend, the plan was mentioned at the moment of spending only five times out of twenty-four.</p><p>This is not forgetting. The plan was known, and it was not in the room.</p></div>
+    <div class="a m-body" style="left:323mm;top:64mm;width:83mm"><p>What was in the room: who else was there, what the mess had served, whether it was late. Context decided; plans waited.</p><p>Eleven of the nineteen were followed by the same sentence, in different words: <span class="m-u-hand">I'll adjust later</span>.</p></div>
+    <blockquote class="a m-pullquote" style="left:230mm;top:132mm;width:150mm"><p class="m-quote" style="margin:0;font-size:15pt">“Friday was Friday's problem.”</p><cite>P01 · Day 3</cite></blockquote>
+    <span class="a m-folio fol-r">33</span>
+  </div></div>
+</section>
+
+<!-- ======================= L05 RESEARCH SPREAD ======================= -->
+<section class="f" id="l05">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.05</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Research spread</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>Longer reading: findings with their evidence.</p><p><span class="m-kicker">Images + text</span>Two text columns on the left under a route rule; two photographs of different formats on the right, a field note and a sticker.</p><p><span class="m-kicker">Rule</span>Footnotes at the foot of the text page, never on the image page.</p></div>
+  <div class="fit"><div class="sp" id="sp05">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <div class="a m-runhead" style="left:14mm;top:8mm;width:176mm"><span>03 · <b>What we saw</b></span><span>Research finding</span></div>
+    <h2 class="a m-display-l" style="left:14mm;top:18mm;width:176mm">The mess was bad</h2>
+    <div class="a m-body" style="left:14mm;top:62mm;width:84mm"><p>Four of six participants ordered food on a night the mess was poor.<span class="m-fnref">1</span> Each described it as unplanned. None of them described it as a choice between that order and something else in their week.</p><p>The order was social. In each case at least one friend proposed it, and in three cases the order was split, so the amount on the screen was not the amount paid.<span class="m-fnref">2</span></p><p>For P02, the order came on day 3, two days before a planned ₹1,500 birthday dinner. P02 could name the dinner and its cost when asked on day 4.</p></div>
+    <div class="a m-body" style="left:106mm;top:62mm;width:84mm"><p>What these nights share is not the amount, which ranged from ₹170 to ₹350, but the moment: late, hungry, with friends, and with the decision already half-made by the group.</p><p class="m-callout" style="margin-top:4mm"><span class="m-kicker">Pattern</span>The decision happens in a social moment, where plans are private and far away.</p><p>Kharcha's first versions tried to interrupt this moment with advice. Chapter 06 shows why that failed.</p></div>
+    <ol class="a m-footnotes" style="left:14mm;top:252mm;width:176mm"><li>Diary entries, days 1–6, n = 6. “Poor” as described by the participant.</li><li>Payment screenshots shared by P02, P04 and P06.</li></ol>
+    <span class="a m-folio fol-v">22</span>
+    <figure class="m-img m-img--ph m-img--4x3" style="left:230mm;top:16mm;width:176mm;height:132mm"><span class="m-img__tag">Photo · 4:3</span></figure>
+    <p class="a m-figcap" style="left:230mm;top:150mm;width:176mm"><b>Fig 3.2</b><span>The hostel mess at 20:10 on day 3, photographed by P02 for the diary.</span></p>
+    <figure class="m-img m-img--ph m-img--1x1" style="left:230mm;top:166mm;width:92mm;height:92mm"><span class="m-img__tag">Photo · 1:1</span></figure>
+    <div class="a m-sticker m-sticker--blue" style="left:306mm;top:156mm">Day<b>03</b></div>
+    <p class="a m-field-note" style="left:332mm;top:176mm;width:72mm">Three phones out at once. The order was placed from P04's phone and split four ways.<cite>Field note · Day 3 · 20:40</cite></p>
+    <span class="a m-folio fol-r">23</span>
+  </div></div>
+</section>
+
+<!-- ======================= L06 DATA SPREAD ======================= -->
+<section class="f" id="l06">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.06</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Data spread</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>One chart large enough to read every mark.</p><p><span class="m-kicker">Images + text</span>The chart crosses the fold; a short reading guide on the left, notes in the margin on the right. No photograph.</p><p><span class="m-kicker">Rule</span>The fold may cross a chart only between marks, never through a label.</p></div>
+  <div class="fit"><div class="sp" id="sp06">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:14mm;top:16mm">Fig 3.6 · <b>Every spend in the diary week</b></p>
+    <h2 class="a m-display-l" style="left:14mm;top:24mm;width:190mm">When spending happened</h2>
+    <div class="a m-body" style="left:14mm;top:52mm;width:100mm"><p>Each row is one participant; each mark is one spend, placed at the hour it happened. Area is the amount. A square was planned; a diamond was not expected.</p></div>
+    <div class="a m-margin-note" style="left:330mm;top:24mm;width:70mm"><p>Read across a row for one person's week. Read down a column for one day across everyone.</p><p>The red row is P02, whose week chapter 02 follows.</p></div>
+    <div class="a" id="chart06" style="left:14mm;top:84mm"></div>
+    <p class="a m-figcap" style="left:14mm;top:262mm;width:300mm"><b>Source</b><span>Kharcha diary study, 8–13 September 2026, n = 6 participants, 46 spends. Sample data.</span></p>
+    <span class="a m-folio fol-v">36</span><span class="a m-folio fol-r">37</span>
+  </div></div>
+</section>
+
+<!-- ======================= L07 CASE STUDY ======================= -->
+<section class="f" id="l07">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.07</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Case study</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>One participant's week told end to end.</p><p><span class="m-kicker">Images + text</span>Code, context and a vertical route of the week on the left, with quotes set against the line; the ledger, a photo strip and the insight on the right.</p><p><span class="m-kicker">Rule</span>A participant is never described by anything that could identify them.</p></div>
+  <div class="fit"><div class="sp" id="sp07">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:14mm;top:16mm">Case study 2 of 6</p>
+    <p class="a" style="left:14mm;top:22mm;font:700 64pt/1 var(--m-font-display);color:var(--m-blue)">P02</p>
+    <div class="a m-participant" style="left:14mm;top:50mm;width:80mm;display:block"><dl><dt>Year</dt><dd>Third year, B.Com</dd><dt>Lives</dt><dd>Hostel, mess plan</dd><dt>Money in</dt><dd>Monthly transfer from home</dd><dt>Days logged</dt><dd>6 of 6</dd></dl></div>
+    <svg class="a" viewBox="0 0 100 100" style="left:150mm;top:14mm;width:30mm;height:30mm;transform:rotate(-10deg)" aria-hidden="true"><path class="stamp-edge" fill="var(--m-ink)"/><circle cx="50" cy="50" r="38" fill="none" stroke="var(--m-paper)" stroke-width="1.2"/><text x="50" y="47" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="11" style="color:var(--m-paper)">6 DAYS</text><text x="50" y="62" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="11" style="color:var(--m-mustard)">₹2,580</text></svg>
+    <div id="week07"></div>
+    <blockquote class="a m-bigquote" style="left:14mm;top:118mm;width:70mm;margin:0"><p class="m-quote" style="margin:0">Friends suggested it, so it didn't feel like my decision.</p><p class="m-kicker" style="margin-top:2mm">P02 · Day 3</p></blockquote>
+    <p class="a m-quote m-body--right" style="left:14mm;top:206mm;width:70mm;font-size:11pt">“The dinner was always happening. It was never a question.”</p>
+    <p class="a m-kicker" style="left:14mm;top:228mm;width:70mm;text-align:right">P02 · Day 4</p>
+    <span class="a m-folio fol-v">26</span>
+    <table class="a m-table" style="left:230mm;top:16mm;width:176mm">
+      <thead><tr><th>Day</th><th>For</th><th>Kind</th><th class="num">Amount</th></tr></thead>
+      <tbody id="ledger07"></tbody>
+      <caption>P02's diary, days 1–6. Sample data.</caption>
+    </table>
+    <figure class="m-img m-img--ph m-img--strip" style="left:230mm;top:134mm;width:176mm;height:35.2mm"><span class="m-img__tag">Photo strip · 5:1</span></figure>
+    <div class="a m-loop m-loop--insight" style="left:230mm;top:190mm;width:176mm;box-sizing:border-box"><div class="m-loop__label"><span class="m-heading" style="color:var(--m-ink)">What P02's week shows</span></div>
+      <p class="m-closing" style="margin:0 0 2mm;color:var(--m-blue);font-size:16pt">The plan was known. It was not in the room.</p>
+      <p class="m-body" style="margin:0">P02 could name the ₹1,500 dinner and its day at any point in the week. It was never mentioned during the ₹280 order.</p></div>
+    <span class="a m-folio fol-r">27</span>
+  </div></div>
+</section>
+
+<!-- ======================= L08 PROCESS ======================= -->
+<section class="f" id="l08">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.08</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Process page</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>How the design changed across versions.</p><p><span class="m-kicker">Images + text</span>Four device frames in a row across the fold; the route beneath them changes from solid to dashed to dotted as the app hands over control.</p><p><span class="m-kicker">Rule</span>Every screen carries its version and the date it was tested.</p></div>
+  <div class="fit"><div class="sp" id="sp08">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:14mm;top:16mm">05 / Building Kharcha</p>
+    <h2 class="a m-display-l" style="left:14mm;top:24mm;width:300mm">From advice to context</h2>
+    <div class="a m-device" style="left:24mm;top:64mm;width:62mm"><div class="m-screen-ph"><i class="s"></i><i class="b hit"></i><i></i><i class="s"></i><i class="b"></i></div></div>
+    <div class="a m-device" style="left:118mm;top:64mm;width:62mm"><div class="m-screen-ph"><i class="s"></i><i class="b"></i><i class="b hit"></i><i></i><i class="s"></i></div></div>
+    <div class="a m-device" style="left:240mm;top:64mm;width:62mm"><div class="m-screen-ph"><i class="s"></i><i class="b"></i><i></i><i class="b hit"></i><i class="s"></i></div></div>
+    <div class="a m-device" style="left:334mm;top:64mm;width:62mm"><div class="m-screen-ph"><i class="s"></i><i class="b"></i><i class="b"></i><i class="s hit"></i><i></i></div></div>
+    <div class="a" style="left:24mm;top:208mm;width:62mm"><p class="m-station" style="margin:0">V0 <span class="m-heading">Advise</span></p><p class="m-quote" style="margin:1mm 0 0;font-size:10pt">“Spend less”</p><p class="m-caption" style="margin:1mm 0 0">Concept test, 5 Sep</p></div>
+    <div class="a" style="left:118mm;top:208mm;width:62mm"><p class="m-station" style="margin:0">V1 <span class="m-heading">Predict</span></p><p class="m-quote" style="margin:1mm 0 0;font-size:10pt">“You may run short”</p><p class="m-caption" style="margin:1mm 0 0">Tested 18 Sep, n = 6</p></div>
+    <div class="a" style="left:240mm;top:208mm;width:62mm"><p class="m-station" style="margin:0">V2 <span class="m-heading">Suggest</span></p><p class="m-quote" style="margin:1mm 0 0;font-size:10pt">“You might want to…”</p><p class="m-caption" style="margin:1mm 0 0">Tested 23 Sep, n = 6</p></div>
+    <div class="a" style="left:334mm;top:208mm;width:62mm"><p class="m-station" style="margin:0">V3 <span class="m-heading">Context</span></p><p class="m-quote" style="margin:1mm 0 0;font-size:10pt">“₹1,200 planned Friday”</p><p class="m-caption" style="margin:1mm 0 0">Tested 24 Sep, n = 6</p></div>
+    <p class="a m-label" style="left:24mm;top:268mm">Low</p><p class="a m-kicker" style="left:190mm;top:268mm">Student agency</p><p class="a m-label" style="left:386mm;top:268mm">High</p>
+    <span class="a m-folio fol-v">44</span><span class="a m-folio fol-r">45</span>
+  </div></div>
+</section>
+
+<!-- ======================= L09 TESTING ======================= -->
+<section class="f" id="l09">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.09</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Testing page</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>A test round: what participants did, said, and what changed.</p><p><span class="m-kicker">Images + text</span>An annotated screen on the left with quotes pointing at the exact element; findings, outcomes and design responses on the right.</p><p><span class="m-kicker">Signature</span>A turning point gets a burst sticker. Ordinary findings do not.</p></div>
+  <div class="fit"><div class="sp" id="sp09">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:14mm;top:16mm">06 / When the idea met reality · <b>Round 2 · 23 September</b></p>
+    <h2 class="a m-display-l" style="left:14mm;top:24mm;width:176mm">The app was too advisory</h2>
+    <div class="a m-sticker m-sticker--burst" style="left:160mm;top:12mm;transform:rotate(-8deg)">Turning<br>point 01</div>
+    <p class="a m-label" style="left:96mm;top:70mm"><span class="m-tag m-tag--version">V02</span> &nbsp;Result screen</p>
+    <div class="a m-device" style="left:96mm;top:78mm;width:74mm"><div class="m-screen-ph"><i class="s"></i><i class="b"></i><i class="b hit" id="hit09a"></i><i></i><i class="s"></i><i class="s hit" id="hit09b"></i><i></i></div></div>
+    <blockquote class="a" style="left:14mm;top:92mm;width:68mm"><p class="m-quote" style="margin:0;font-size:12pt">“This felt like the app was telling me what to do.”</p><p class="m-kicker" style="margin-top:1.6mm">P03 · task 1</p></blockquote>
+    <blockquote class="a" style="left:14mm;top:178mm;width:68mm"><p class="m-quote" style="margin:0;font-size:12pt">“I didn't see the Friday thing until you pointed at it.”</p><p class="m-kicker" style="margin-top:1.6mm">P05 · task 3</p></blockquote>
+    <p class="a m-caption" style="left:96mm;top:246mm;width:74mm">Screen placeholder. V02, tested with P01–P06, 23 September 2026.</p>
+    <span class="a m-folio fol-v">54</span>
+
+    <div class="a" style="left:230mm;top:20mm;width:176mm">
+      <div class="m-callout"><span class="m-kicker">Test finding 04</span><p class="m-heading" style="margin:0 0 1.4mm">The suggestion read as an instruction</p><p class="m-body" style="margin:0 0 2mm">Five of six read “You might want to…” as the app telling them what to do. Two dismissed the screen without reading the rest.</p><span class="m-freq"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><b>5 / 6</b></span></div>
+      <div class="m-callout m-callout--blue" style="margin-top:5mm"><span class="m-kicker">Design response</span><p class="m-body" style="margin:0">Remove the instruction. Keep the context: show what is coming up, not what to do about it.</p></div>
+      <div class="m-callout" style="margin-top:9mm"><span class="m-kicker">Test finding 05</span><p class="m-heading" style="margin:0 0 1.4mm">The plan cue sat below the fold</p><p class="m-body" style="margin:0 0 2mm">Four of six never scrolled to it. Those who did found it useful.</p><span class="m-freq"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><b>4 / 6</b></span></div>
+      <div class="m-callout m-callout--blue" style="margin-top:5mm"><span class="m-kicker">Design response</span><p class="m-body" style="margin:0">Move the cue inside the result, next to the figure it affects.</p></div>
+    </div>
+    <p class="a m-kicker" style="left:230mm;top:150mm">Task outcomes · round 2</p>
+    <table class="a m-table" style="left:230mm;top:158mm;width:176mm"><thead><tr><th>Task</th><th>Outcome, one mark per participant</th></tr></thead><tbody id="out09"></tbody></table>
+    <span class="a m-folio fol-r">55</span>
+  </div></div>
+</section>
+
+<!-- ======================= L10 INSIGHT ======================= -->
+<section class="f" id="l10">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.10</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Insight page</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>One insight and the evidence for it.</p><p><span class="m-kicker">Images + text</span>The route arrives and loops around the insight on the left; three pieces of evidence, each with its source and weight, on the right.</p><p><span class="m-kicker">Rule</span>An insight is never shown without its evidence on the same spread.</p></div>
+  <div class="fit"><div class="sp" id="sp10">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:40mm;top:62mm">Insight 02</p>
+    <p class="a" style="left:40mm;top:78mm;width:140mm;font:700 42pt/0.95 var(--m-font-display);text-transform:uppercase;color:var(--m-blue)">Knowing ≠<br>considering</p>
+    <div class="a m-body" style="left:40mm;top:130mm;width:120mm"><p>Participants knew their plans, and could name them with amounts. At the moment of spending, those plans were not part of the decision.</p></div>
+    <div class="a" style="left:40mm;top:160mm;display:flex;gap:8mm;align-items:center"><span class="m-freq"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><b>5 / 6</b></span><span class="m-confidence" data-level="3"><i></i><i></i><i></i><span>High</span></span></div>
+    <p class="a m-closing" style="left:112mm;top:236mm">→ Show plans<br>at the moment</p>
+    <span class="a m-folio fol-v">38</span>
+    <p class="a m-kicker" style="left:230mm;top:16mm">The evidence</p>
+    <div class="a" style="left:230mm;top:28mm;width:176mm;display:grid;gap:12mm">
+      <div class="m-callout m-callout--blue"><span class="m-kicker">Evidence 1 · Interview · <b>5 of 6</b></span><p class="m-body" style="margin:0">Named the week's plans and their amounts without checking any notes.</p></div>
+      <div class="m-callout m-callout--blue"><span class="m-kicker">Evidence 2 · Diary walk-back · <b>19 of 24</b></span><p class="m-body" style="margin:0">Spends made in a planned week where the plan was not mentioned at the moment.</p></div>
+      <div class="m-callout m-callout--blue"><span class="m-kicker">Evidence 3 · Quote · <b>P03</b></span><p class="m-quote" style="margin:0;font-size:11pt">“I knew I had plans, but I didn't think about them.”</p></div>
+    </div>
+    <figure class="m-img m-img--ph m-img--4x3" style="left:230mm;top:150mm;width:130mm;height:97.5mm"><span class="m-img__tag">Photo · 4:3</span></figure>
+    <p class="a m-figcap" style="left:230mm;top:249mm;width:130mm"><b>Fig 4.3</b><span>P03's plans list, kept in a notebook in the hostel room.</span></p>
+    <div class="a m-margin-note" style="left:368mm;top:150mm;width:38mm"><p>Counter-evidence: P05 mentioned an upcoming phone repair at 4 of 5 spends. P05 keeps a written list on the phone's lock screen.</p></div>
+    <span class="a m-folio fol-r">39</span>
+  </div></div>
+</section>
+
+<!-- ======================= L11 MOSAIC ======================= -->
+<section class="f" id="l11">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.11</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Artifact mosaic</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>What the diary collected: photos, receipts, screenshots.</p><p><span class="m-kicker">Images + text</span>Six taped prints, turned a few degrees, threaded by one route; captions only, no body text.</p><p><span class="m-kicker">Rule</span>Prints may overlap each other and the fold, never a caption.</p></div>
+  <div class="fit"><div class="sp" id="sp11">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:14mm;top:16mm">From the diaries</p>
+    <h2 class="a m-display-l" style="left:14mm;top:24mm;width:160mm">What the week held</h2>
+    <figure class="a m-print" style="left:22mm;top:70mm;width:74mm;transform:rotate(-4deg)"><div class="m-img m-img--ph m-img--1x1"></div><figcaption>P01 · Day 1 · Chai, ₹20</figcaption><span class="m-tape" style="top:-2.6mm;left:26mm;transform:rotate(3deg)"></span></figure>
+    <figure class="a m-print" style="left:112mm;top:106mm;width:80mm;transform:rotate(3deg)"><div class="m-img m-img--ph m-img--4x3"></div><figcaption>P04 · Day 3 · Groceries, ₹380</figcaption><span class="m-tape" style="top:-2.6mm;left:30mm;transform:rotate(-5deg)"></span></figure>
+    <figure class="a m-print" style="left:30mm;top:176mm;width:70mm;transform:rotate(2deg)"><div class="m-img m-img--ph m-img--3x4" style="aspect-ratio:4/3"></div><figcaption>P06 · Day 2 · Order, ₹350</figcaption><span class="m-tape" style="top:-2.6mm;left:24mm;transform:rotate(-2deg)"></span></figure>
+    <figure class="a m-print" style="left:236mm;top:24mm;width:62mm;transform:rotate(-3deg)"><div class="m-img m-img--ph m-img--3x4"></div><figcaption>P02 · Day 5 · Dinner, ₹1,500</figcaption><span class="m-tape" style="top:-2.6mm;left:20mm;transform:rotate(4deg)"></span></figure>
+    <figure class="a m-print" style="left:318mm;top:64mm;width:78mm;transform:rotate(4deg)"><div class="m-img m-img--ph m-img--1x1"></div><figcaption>P03 · Day 4 · The plans list</figcaption><span class="m-tape" style="top:-2.6mm;left:28mm;transform:rotate(-3deg)"></span></figure>
+    <figure class="a m-print" style="left:250mm;top:178mm;width:96mm;transform:rotate(-2deg)"><div class="m-img m-img--ph m-img--16x9"></div><figcaption>P05 · Day 6 · Auto meter, ₹65</figcaption><span class="m-tape" style="top:-2.6mm;left:36mm;transform:rotate(2deg)"></span></figure>
+    <div class="a m-sticker" style="left:350mm;top:176mm;transform:rotate(10deg)">46<b>spends</b></div>
+    <div class="a m-sticker m-sticker--slip m-sticker--ink" style="left:170mm;top:216mm;transform:rotate(-6deg)">6 diaries · 6 days</div>
+    <span class="a m-folio fol-v">24</span><span class="a m-folio fol-r">25</span>
+  </div></div>
+</section>
+
+<!-- ======================= L12 FULL BLEED + PANEL ======================= -->
+<section class="f" id="l12">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.12</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Full bleed with panel</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>A pause between chapters; a place that matters.</p><p><span class="m-kicker">Images + text</span>A near-empty left page whose route runs into a full-bleed photograph; a paper panel of text set into the image.</p><p><span class="m-kicker">Rule</span>No folio on a full-bleed page. The panel is flat paper, square, no shadow.</p></div>
+  <div class="fit"><div class="sp" id="sp12">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true" style="z-index:2"></svg>
+    <figure class="m-img m-img--ph" style="left:210mm;top:0;width:210mm;height:297mm"><span class="m-img__tag" style="left:14mm;top:16mm;bottom:auto">Photo · full bleed</span></figure>
+    <p class="a m-kicker" style="left:14mm;top:16mm">Interlude</p>
+    <div class="a m-body" style="left:14mm;top:196mm;width:78mm"><p>The gate at 13:40 on a Wednesday. Autos wait here for students running late; the fare is decided before the journey, and rarely argued.</p></div>
+    <span class="a m-folio fol-v">48</span>
+    <div class="a" style="left:292mm;top:170mm;width:100mm;background:var(--m-paper);padding:7mm;box-sizing:border-box;z-index:2">
+      <p class="m-kicker" style="margin:0 0 1.4mm">Place · the gate</p>
+      <h3 class="m-closing" style="margin:0 0 3mm">Running late costs ₹90</h3>
+      <p class="m-body" style="margin:0">Three participants took an auto from the gate when late. None counted it as spending on anything; it was “just getting there”.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- ======================= L13 CONTENTS + KEY ======================= -->
+<section class="f" id="l13">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.13</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Contents & reading key</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>The opening spread of the report.</p><p><span class="m-kicker">Images + text</span>The contents as a route on the left; a key to every symbol, colour and code on the right.</p><p><span class="m-kicker">Rule</span>Every symbol used anywhere in the report appears in this key.</p></div>
+  <div class="fit"><div class="sp" id="sp13">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <h2 class="a m-display-xl" style="left:14mm;top:16mm;width:176mm">Contents</h2>
+    <ol class="a m-contents" style="left:20mm;top:56mm;width:160mm">
+      <li><span><small>01</small><span class="t">The question</span></span><span class="pg">04</span></li>
+      <li><span><small>02</small><span class="t">Into the everyday</span></span><span class="pg">10</span></li>
+      <li><span><small>03</small><span class="t">What we saw</span></span><span class="pg">18</span></li>
+      <li><span><small>04</small><span class="t">The patterns</span></span><span class="pg">30</span></li>
+      <li><span><small>05</small><span class="t">Building Kharcha</span></span><span class="pg">40</span></li>
+      <li><span><small>06</small><span class="t">When the idea met reality</span></span><span class="pg">52</span></li>
+      <li><span><small>07</small><span class="t">What changed</span></span><span class="pg">64</span></li>
+      <li><span><small>08</small><span class="t">What we learned</span></span><span class="pg">76</span></li>
+    </ol>
+    <div class="a m-body" style="left:20mm;top:200mm;width:110mm"><p>A study of six students over six days, and of the app designed with them. September 2026.</p></div>
+    <span class="a m-folio fol-v">02</span>
+    <h3 class="a m-display-l" style="left:230mm;top:16mm;font-size:26pt">How to read this report</h3>
+    <div class="a" id="key13" style="left:230mm;top:44mm;width:176mm"></div>
+    <span class="a m-folio fol-r">03</span>
+  </div></div>
+</section>
+
+<!-- ======================= L14 CONCLUSION ======================= -->
+<section class="f" id="l14">
+  <header class="f-head"><div class="m-break"><span class="m-station">05.14</span></div><p class="m-label">Layout</p><h2 class="m-display-l">Conclusion</h2></header>
+  <div class="lay-meta m-body"><p><span class="m-kicker">Use</span>The last spread.</p><p><span class="m-kicker">Images + text</span>No images. Three numbered learnings on the left; on the right, the route relaxes into a dotted line and ends at a ghost node: what comes next.</p><p><span class="m-kicker">Rule</span>The cleanest spread in the report. No stickers, no notes.</p></div>
+  <div class="fit"><div class="sp" id="sp14">
+    <svg class="sp-svg" viewBox="0 0 420 297" aria-hidden="true"></svg>
+    <p class="a m-kicker" style="left:14mm;top:16mm">08 / Reflection</p>
+    <h2 class="a m-display-xl" style="left:14mm;top:24mm;width:180mm">What we learned</h2>
+    <div class="a" style="left:14mm;top:120mm;width:176mm;display:grid;gap:10mm">
+      <div style="display:grid;grid-template-columns:22mm 1fr;gap:4mm"><span class="m-station" style="font-size:28pt">01</span><div class="m-body"><p class="m-heading" style="margin:0 0 1.4mm">Knowing is not considering</p><p style="margin:0">Students know their plans. The work is to bring them into the moment, not to teach them.</p></div></div>
+      <div style="display:grid;grid-template-columns:22mm 1fr;gap:4mm"><span class="m-station" style="font-size:28pt">02</span><div class="m-body"><p class="m-heading" style="margin:0 0 1.4mm">Advice is heard as judgement</p><p style="margin:0">Every version that told students what to do was skipped. Context was read.</p></div></div>
+      <div style="display:grid;grid-template-columns:22mm 1fr;gap:4mm"><span class="m-station" style="font-size:28pt">03</span><div class="m-body"><p class="m-heading" style="margin:0 0 1.4mm">The decision is social</p><p style="margin:0">Spending happens with friends, late, and half-decided. A design has to work in that moment or not at all.</p></div></div>
+    </div>
+    <span class="a m-folio fol-v">80</span>
+    <p class="a m-closing" style="left:318mm;top:168mm">Into the<br>future</p>
+    <div class="a m-body" style="left:230mm;top:236mm;width:120mm;font-size:7pt"><p>With thanks to P01–P06 for six days of honesty about money.</p></div>
+    <span class="a m-folio fol-r">81</span>
+  </div></div>
+</section>
+
+</main>
+<script src="js/route.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/sample-data.js"></script>
+<script src="js/doc.js"></script>
+<script>
+(function () {
+  var M = Margin, MC = MarginCharts, C = MC.C, D = MarginSample, el = MC.el, T = MC.text;
+  function sv(id) { return document.querySelector('#' + id + ' .sp-svg'); }
+  function R(id, pts, o) { return M.route(sv(id), pts, o); }
+  function N(id, x, y, k, o) { return M.node(sv(id), x, y, k, o); }
+
+  /* Stamp edges */
+  document.querySelectorAll('.stamp-edge').forEach(function (p) {
+    var d = '', n = 36;
+    for (var i = 0; i <= n * 2; i++) { var a = Math.PI * i / n, r = i % 2 ? 44 : 46.5; d += (i ? 'L' : 'M') + (50 + Math.cos(a) * r).toFixed(2) + ' ' + (50 + Math.sin(a) * r).toFixed(2); }
+    p.setAttribute('d', d + 'Z');
+  });
+
+  /* L01 chapter opener */
+  R('sp01', [[250, 18], [236, 18], [236, 126]], { radius: 8 }); N('sp01', 236, 126);
+  N('sp01', 236, 150); R('sp01', [[236, 150], [236, 254], [300, 254]]); N('sp01', 300, 254);
+
+  /* L02 timeline spread */
+  R('sp02', [[100, 22], [150, 22], [150, 58]]); N('sp02', 100, 22); N('sp02', 150, 58);
+  N('sp02', 150, 94); R('sp02', [[150, 94], [150, 124], [40, 124], [40, 148]]); N('sp02', 40, 148);
+  N('sp02', 40, 186); R('sp02', [[40, 186], [40, 240], [120, 240]]); N('sp02', 120, 240);
+  N('sp02', 158, 240, 'unexpected'); R('sp02', [[158, 240], [190, 240], [190, 170], [236, 170]], { style: 'dashed' });
+  R('sp02', [[236, 170], [236, 28], [262, 28]]); N('sp02', 262, 28);
+  N('sp02', 302, 28); R('sp02', [[302, 28], [330, 28], [330, 104], [350, 104], [350, 120]]); N('sp02', 350, 120);
+  N('sp02', 350, 156, 'planned'); R('sp02', [[350, 156], [350, 196], [270, 196], [270, 248], [300, 248]]); N('sp02', 300, 248);
+  N('sp02', 340, 248); R('sp02', [[340, 248], [392, 248]], { style: 'dotted' }); N('sp02', 396, 248, 'future');
+
+  /* L03 quote */
+  R('sp03', [[0, 128], [24, 128]]); N('sp03', 24, 128);
+
+  /* L04 big number: 24 units, 19 red */
+  (function () {
+    var host = document.getElementById('units04'), s = MC.svg(host, 170, 40, '19 of 24 spends');
+    for (var i = 0; i < 24; i++) { var x = 4 + (i % 12) * 13.6, y = 6 + Math.floor(i / 12) * 14; MC.mark(s, i < 19 ? 'dot' : 'ring', x, y, 4.2, { fill: i < 19 ? C.red : C.blue }); }
+    T(s, 0, 36, '● plan not mentioned   ○ plan mentioned at the moment', 'm-label m-label--blue', { size: 2.4 });
+  })();
+
+  /* L05 route rule under the headline */
+  R('sp05', [[14, 54], [190, 54]]); N('sp05', 14, 54); N('sp05', 190, 54);
+
+  /* L06 data spread: swimlanes across the fold */
+  (function () {
+    var s = MC.svg(document.getElementById('chart06'), 392, 170, 'Every diary spend by participant, day and hour');
+    var x = function (day, hour) { return 30 + (day - 1) * 60 + (hour - 7) / 17 * 54; };
+    for (var d = 1; d <= 6; d++) {
+      T(s, x(d, 7), 6, 'DAY 0' + d, 'm-station', { size: 5.4 });
+      el('line', { x1: x(d, 7) - 2, x2: x(d, 7) - 2, y1: 11, y2: 162, stroke: C.deep, 'stroke-width': 0.4 }, s);
+    }
+    D.P.forEach(function (p, i) {
+      var y = 24 + i * 24;
+      T(s, 0, y, p, 'm-station', { baseline: 'central', size: 4.4 });
+      el('line', { x1: 24, x2: 390, y1: y, y2: y, stroke: p === 'P02' ? C.red : C.ink, 'stroke-width': p === 'P02' ? 1.8 : 0.25 }, s);
+      D.EV.filter(function (e) { return e[0] === p; }).forEach(function (e) {
+        MC.mark(s, D.SHAPE[e[4]], x(e[1], e[2]), y, Math.max(1.6, Math.sqrt(e[3]) / 4), { fill: p === 'P02' ? C.red : C.blue, title: p + ' · Day ' + e[1] + ' · ' + MC.inr(e[3]) + ' · ' + e[6] });
+      });
+    });
+  })();
+
+  /* L07 case study: P02's week as a vertical route, ledger */
+  (function () {
+    var s = sv('sp07'), days = [1, 2, 3, 4, 5, 6], ev = D.EV.filter(function (e) { return e[0] === 'P02'; });
+    R('sp07', [[110, 72], [110, 262]]);
+    days.forEach(function (d, i) {
+      var y = 72 + i * 32, list = ev.filter(function (e) { return e[1] === d; }), tot = list.reduce(function (a, e) { return a + e[3]; }, 0);
+      var big = list.slice().sort(function (a, b) { return b[3] - a[3]; })[0];
+      N('sp07', 110, y, big[4] === 'p' ? 'planned' : big[4] === 'u' ? 'unexpected' : 'event');
+      T(s, 118, y - 2, 'DAY 0' + d, 'm-station', { size: 5 });
+      T(s, 118, y + 4.4, MC.inr(tot) + ' · ' + big[6], 'm-label', { size: 2.4 });
+    });
+    N('sp07', 110, 262, 'future');
+    T(s, 118, 264, 'NEXT WEEK', 'm-label m-label--blue', { size: 2.4 });
+    document.getElementById('ledger07').innerHTML = ev.sort(function (a, b) { return a[1] - b[1] || a[2] - b[2]; }).map(function (e) {
+      return '<tr><td>Day ' + e[1] + '</td><td>' + e[6] + '</td><td>' + D.KIND[e[4]] + '</td><td class="num">' + MC.inr(e[3]) + '</td></tr>';
+    }).join('') + '<tr class="is-key"><td>Week</td><td></td><td></td><td class="num">' + MC.inr(ev.reduce(function (a, e) { return a + e[3]; }, 0)) + '</td></tr>';
+  })();
+
+  /* L08 process: route beneath the devices changes character */
+  R('sp08', [[55, 238], [149, 238]]); R('sp08', [[149, 238], [271, 238]], { style: 'dashed' }); R('sp08', [[271, 238], [365, 238]], { style: 'dotted' });
+  [55, 149, 271].forEach(function (x) { N('sp08', x, 238); }); N('sp08', 365, 238, 'turning', { size: 5.4 });
+  el('line', { x1: 24, x2: 396, y1: 262, y2: 262, stroke: C.ink, 'stroke-width': 0.3 }, sv('sp08'));
+  [55, 149, 271, 365].forEach(function (x, i) { MC.mark(sv('sp08'), i === 3 ? 'dot' : 'ring', x, 262, 1.8, { fill: C.blue }); });
+
+  /* L09 testing: hairlines from quotes to the element */
+  (function () {
+    var s = sv('sp09');
+    R('sp09', [[82, 98], [90, 98], [90, 124], [101, 124]], { hair: true, radius: 3 }); N('sp09', 101, 124, 'event', { size: 1.8 });
+    R('sp09', [[82, 184], [90, 184], [90, 164], [101, 164]], { hair: true, radius: 3 }); N('sp09', 101, 164, 'event', { size: 1.8 });
+    var r2 = D.TASKS.map(function (t) { var o = D.OUT[t].V02, marks = ''; for (var i = 0; i < o[0]; i++) marks += '●'; for (i = 0; i < o[1]; i++) marks += '◐'; for (i = 0; i < o[2]; i++) marks += '○'; return '<tr><td>' + t + '</td><td style="letter-spacing:1.2mm;font-size:11pt;line-height:1;color:var(--m-blue)">' + marks + '</td></tr>'; });
+    document.getElementById('out09').innerHTML = r2.join('');
+  })();
+
+  /* L10 insight: the route arrives and encloses the insight */
+  R('sp10', [[0, 40], [28, 40], [28, 180], [190, 180], [190, 50], [120, 50]]); N('sp10', 120, 50);
+  R('sp10', [[100, 180], [100, 244], [108, 244]], { radius: 6 }); N('sp10', 108, 244);
+
+  /* L11 mosaic: one route threads the prints */
+  R('sp11', [[60, 64], [60, 60], [150, 60], [150, 100]], { radius: 8 }); N('sp11', 60, 64);
+  R('sp11', [[150, 172], [150, 196], [64, 196]], { radius: 8 }); N('sp11', 150, 172);
+  R('sp11', [[190, 150], [226, 150], [226, 100], [260, 100]], { style: 'dashed', radius: 8 });
+  R('sp11', [[300, 172], [300, 150], [356, 150], [356, 170]], { radius: 8 }); N('sp11', 300, 172); N('sp11', 356, 170);
+
+  /* L12 route runs into the image */
+  R('sp12', [[40, 40], [40, 150], [226, 150]]); N('sp12', 40, 40); N('sp12', 226, 150);
+
+  /* L13 key */
+  (function () {
+    var host = document.getElementById('key13');
+    var rows = [['event', 'Spending event'], ['future', 'Plan, not yet happened'], ['planned', 'Planned spend'], ['unexpected', 'Unexpected spend'], ['turning', 'Turning point'], ['solid', 'Evidence, established path'], ['dashed', 'Hypothesis, or interruption'], ['dotted', 'Control handed over']];
+    var s = MC.svg(host, 176, 132, 'Reading key');
+    rows.forEach(function (r, i) {
+      var col = i < 4 ? 0 : 1, row = i % 4, x = col * 90, y = 8 + row * 14;
+      if (['solid', 'dashed', 'dotted'].indexOf(r[0]) > -1) M.route(s, [[x + 2, y], [x + 16, y]], { style: r[0] }); else M.node(s, x + 9, y, r[0], { size: 5 });
+      T(s, x + 22, y + 1.2, r[1], 'm-heading', { size: 3 });
+    });
+    [['var(--m-route)', 'Red', 'Something happening'], ['var(--m-blue)', 'Blue', 'Observed: people, time, data'], ['var(--m-mustard)', 'Mustard', 'What it meant']].forEach(function (c, i) {
+      var y = 72 + i * 11; el('rect', { x: 2, y: y - 3.6, width: 14, height: 6, fill: c[0] }, s);
+      T(s, 22, y + 1.2, c[1], 'm-heading', { size: 3 }); T(s, 52, y + 1.2, c[2], 'm-body', { size: 3 });
+    });
+    T(s, 2, 112, 'P01–P06', 'm-station', { size: 4.6 }); T(s, 40, 111.6, 'Participants are codes. No names, no faces, no colours of their own.', 'm-body', { size: 2.8 });
+    T(s, 2, 124, 'n = 6', 'm-station', { size: 4.6 }); T(s, 40, 123.6, 'Every count is out of six unless a base is given.', 'm-body', { size: 2.8 });
+  })();
+
+  /* L14 conclusion */
+  R('sp14', [[14, 108], [190, 108]]); N('sp14', 14, 108);
+  R('sp14', [[190, 108], [250, 108], [250, 160], [300, 160]], { style: 'dashed' });
+  R('sp14', [[300, 160], [306, 160]], { style: 'dotted' });
+  N('sp14', 312, 160, 'future', { size: 6 });
+
+  /* Grid toggle */
+  var btn = document.getElementById('grid-toggle');
+  btn.addEventListener('click', function () {
+    var on = document.body.classList.toggle('show-grid');
+    btn.setAttribute('aria-pressed', on); btn.textContent = on ? 'Hide the grid' : 'Show the grid';
+  });
+  MarginDoc.fit();
+})();
+</script>
+</body>
+</html>

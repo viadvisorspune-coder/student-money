@@ -1,0 +1,155 @@
+/* Margin — foundation styles. Requires tokens.css (generated).
+   Fonts: Montserrat 600/700 and Merriweather 300/400 (+ italic), loaded by the page. */
+
+/* ---------- Page ---------- */
+
+.m-paper {
+  background: var(--m-paper);
+  color: var(--m-blue);
+  font-family: var(--m-font-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: lining-nums;
+}
+
+.m-page {
+  position: relative;
+  width: var(--m-page-width);
+  height: var(--m-page-height);
+  background: var(--m-paper);
+  overflow: hidden;
+}
+
+.m-spread {
+  display: flex;
+  width: var(--m-page-spread-width);
+}
+
+/* Folio: outer bottom corner, set in route red. */
+.m-page > .m-folio {
+  position: absolute;
+  bottom: calc(var(--m-page-margin-bottom) / 2);
+}
+.m-page--verso > .m-folio { left: var(--m-page-margin-outer); }
+.m-page--recto > .m-folio { right: var(--m-page-margin-outer); }
+
+/* ---------- Text behaviour ---------- */
+
+.m-body p { margin: 0 0 0.9em; }
+.m-body p:last-child { margin-bottom: 0; }
+.m-body--right { text-align: right; }
+
+/* Station label read bottom-to-top, as in the reference (1988, 1982, 1997). */
+.m-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+/* Emphasis inside body copy: weight, never colour. */
+.m-body strong, .m-quote strong { font-weight: 400; }
+
+.m-figure-inr { font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+
+/* ---------- Route (SVG) ---------- */
+/* Route SVGs use a viewBox in millimetres, so token values apply 1:1 as user units. */
+
+.m-route {
+  fill: none;
+  stroke: var(--m-route);
+  stroke-width: 1.8;            /* --m-route-weight in mm */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.m-route--dashed { stroke-dasharray: 3.6 3.2; stroke-linecap: butt; }
+.m-route--dotted { stroke-dasharray: 0 3.6; }
+.m-route--hair   { stroke-width: 0.3; }
+
+/* Text inside SVG takes its colour from the type class, like HTML text. */
+svg text { fill: currentColor; }
+
+.m-node          { fill: var(--m-route); stroke: none; }
+.m-node--future  { fill: var(--m-paper); stroke: var(--m-route); stroke-width: 1.2; }
+
+/* ---------- Station break (HTML) ---------- */
+/* The route stops at a node, leaves a gap, carries a label, and resumes:
+   ──●  2004  ●──   Use where the route runs horizontally through HTML layout. */
+.m-break {
+  display: flex;
+  align-items: center;
+  gap: var(--m-route-break-gap);
+}
+.m-break::before, .m-break::after {
+  content: "";
+  flex: 0 0 var(--m-break-arm, 14mm);
+  height: var(--m-route-node);
+  background:
+    radial-gradient(circle at var(--dot) 50%, var(--m-route) calc(var(--m-route-node) / 2 - 0.05mm), transparent calc(var(--m-route-node) / 2)),
+    linear-gradient(var(--m-route), var(--m-route)) var(--bar) center / calc(100% - var(--m-route-node) / 2) var(--m-route-weight) no-repeat;
+}
+.m-break::before { --dot: calc(100% - var(--m-route-node) / 2); --bar: left; }
+.m-break::after  { --dot: calc(var(--m-route-node) / 2);        --bar: right; }
+.m-break--open-end::after { display: none; }
+.m-break--grow::after { flex: 1 1 auto; }
+
+/* ---------- Symbols inline in text ---------- */
+
+.m-sym {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: -0.05em;
+}
+
+/* ---------- Containment ---------- */
+/* Margin avoids cards. When content genuinely needs a container, it is square,
+   flat, paper-deep, with no border, radius or shadow. */
+.m-mount {
+  background: var(--m-paper-deep);
+  padding: var(--m-space-3);
+}
+
+/* ---------- Artifacts ---------- */
+
+.m-artifact { display: block; }
+.m-artifact--tilt-l { transform: rotate(-12deg); }
+.m-artifact--tilt-r { transform: rotate(18deg); }
+
+/* ---------- Motion (screen only) ---------- */
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .m-animate .m-route {
+    stroke-dasharray: var(--len) var(--len);
+    stroke-dashoffset: var(--len);
+    transition: stroke-dashoffset var(--m-motion-draw) var(--m-motion-draw-easing);
+  }
+  .m-animate .m-node, .m-animate .m-reveal {
+    opacity: 0;
+    transform: scale(0.2);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: opacity var(--m-motion-node) ease-out,
+                transform var(--m-motion-node) var(--m-motion-node-easing);
+    transition-delay: var(--at, 0ms);
+  }
+  .m-animate .m-reveal { transform: none; transition-duration: var(--m-motion-fade); }
+
+  .m-animate.is-drawn .m-route { stroke-dashoffset: 0; }
+  .m-animate.is-drawn .m-node,
+  .m-animate.is-drawn .m-reveal { opacity: 1; transform: none; }
+  /* Dashed and dotted routes keep their pattern; they fade instead of drawing. */
+  .m-animate .m-route--dashed, .m-animate .m-route--dotted {
+    stroke-dashoffset: 0;
+    opacity: 0;
+    transition: opacity var(--m-motion-fade) ease-out;
+    transition-delay: var(--at, 0ms);
+  }
+  .m-animate .m-route--dashed { stroke-dasharray: 3.6 3.2; }
+  .m-animate .m-route--dotted { stroke-dasharray: 0 3.6; }
+  .m-animate.is-drawn .m-route--dashed, .m-animate.is-drawn .m-route--dotted { opacity: 1; }
+}
+
+@media print {
+  .m-page { break-after: page; }
+  .m-screen-only { display: none !important; }
+}

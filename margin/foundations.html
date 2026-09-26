@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin — Foundations</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/margin.css">
+<link rel="stylesheet" href="css/doc.css">
+</head>
+<body class="m-paper">
+<main class="doc">
+<nav class="doc-nav" aria-label="Margin chapters">
+  <a class="home" href="index.html">Margin</a>
+  <a href="foundations.html" aria-current="page">01 Foundations</a><a href="grammar.html">02 Grammar</a><a href="dataviz.html">03 Data</a><a href="components.html">04 Components</a><a href="layouts.html">05 Layouts</a><a href="rules.html">06 Rules</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<div class="fit"><div id="hero" style="position:relative;width:200mm;height:132mm">
+  <svg id="hero-route" viewBox="0 0 200 132" style="position:absolute;inset:0;width:200mm;height:132mm" aria-hidden="true"></svg>
+  <h1 class="m-display-xl" style="position:absolute;left:62mm;top:6mm;margin:0;font-size:78pt">Margin</h1>
+  <p class="m-label" style="position:absolute;left:63mm;top:36mm;margin:0">Design system &nbsp;/&nbsp; Kharcha research report &nbsp;/&nbsp; v0.1</p>
+  <div class="m-station m-vertical" style="position:absolute;left:14.4mm;top:49mm">01</div>
+  <div class="m-body" style="position:absolute;left:63mm;top:46mm;width:74mm">
+    <p>A visual language for following money through everyday life. The research is not decorated: a spending day becomes a line, a spend becomes a node, a plan that has not happened yet becomes a ghost node, and a finding becomes a place the line arrives at.</p>
+    <p>This part sets the foundations: type, colour, grid, spacing, shape, icons, imagery and motion.</p>
+  </div>
+  <img class="m-artifact" src="icons/chai.svg" alt="" style="position:absolute;left:152mm;top:44mm;width:34mm;transform:rotate(14deg)">
+  <p class="m-closing" style="position:absolute;left:92mm;top:108mm;margin:0">Into the<br>foundations</p>
+  <div class="m-note" style="position:absolute;left:150mm;top:94mm;width:40mm">
+    The system is consistent; the compositions are not. Every page may move differently, but it moves with these parts.
+  </div>
+  <span class="m-folio" style="position:absolute;left:6mm;bottom:2mm">01</span>
+</div></div>
+
+<!-- ============ 01.1 TYPOGRAPHY ============ -->
+<section class="f" id="typography">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.1</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Typography</h2>
+  </header>
+  <p class="m-body f-lede">Two families, as in the reference. A geometric bold sans carries everything that is a signpost: headlines, days and times, figures, labels and folios. A light, low-contrast serif carries everything that is read. There is no third family and no monospace.</p>
+
+  <div class="families">
+    <div class="family d">
+      <span class="m-label">Display — Montserrat 600 / 700</span>
+      <div class="glyphs">AaBbRrSs<br>0123456789 ₹</div>
+      <p class="m-caption">Closest free match to the reference's geometric caps. SIL Open Font Licence.</p>
+    </div>
+    <div class="family t">
+      <span class="m-label">Text — Merriweather 300 / 400, italic</span>
+      <div class="glyphs">AaBbRrSs<br><i>0123456789 ₹</i></div>
+      <p class="m-caption">Closest free match to the reference's light body serif. SIL Open Font Licence.</p>
+    </div>
+  </div>
+
+  <div class="spec"><div class="meta"><span class="m-label">display-xl</span>Montserrat 700 · 54pt / 0.9 · caps · mustard. Chapter opener, one per chapter.</div>
+    <div><h2 class="m-display-xl">Why students<br>spend what<br>they didn't<br>plan to?</h2></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">display-l</span>Montserrat 700 · 34pt / 0.92 · caps · mustard. Spread headline.</div>
+    <div><h2 class="m-display-l">Knowing ≠<br>considering</h2></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">closing</span>Montserrat 700 · 20pt · caps · blue. Where a route ends.</div>
+    <div><p class="m-closing">Into the<br>everyday</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">station</span>Montserrat 700 · 20pt · blue. Sits in a break in the route; vertical reads bottom to top.</div>
+    <div style="display:flex;gap:10mm;align-items:center"><span class="m-station">Day 03</span><span class="m-station m-vertical">20:15</span></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">stat</span>Montserrat 700 · 24pt · sentence case · blue. One figure that anchors a paragraph.</div>
+    <div><p class="m-stat"><span class="m-figure-inr">₹1,500</span></p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">heading</span>Montserrat 700 · 11pt · caps · blue.</div>
+    <div><h3 class="m-heading">What we saw on day four</h3></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">label</span>Montserrat 700 · 6.5pt · caps · +0.1em · red.</div>
+    <div><p class="m-label">03 / Research finding · P02</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">body</span>Merriweather 300 · 8.5pt / 1.5 · blue. Blocks of three to seven lines that hug the route.</div>
+    <div class="m-body" style="max-width:80mm"><p>P02 ordered dinner at 20:15. The mess food was bad and friends suggested ordering. The ₹1,500 birthday dinner on Friday was already in their plans, and did not come up.</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">quote</span>Merriweather 300 italic · 13pt / 1.35 · blue. A quote is an object, not a card.</div>
+    <div><p class="m-quote">“I knew I had plans,<br>but I didn't think<br>about them.”</p><p class="m-label" style="margin-top:2mm">— P03</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">note</span>Merriweather 400 · 6.5pt / 1.45 · red. Researcher asides in the margin.</div>
+    <div><p class="m-note" style="max-width:40mm">Asked on day 4 whether P02 remembered Friday: yes, once prompted.</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">caption</span>Merriweather 400 italic · 6.5pt · blue.</div>
+    <div><p class="m-caption">V02 prototype, tested with P03, 23 September 2026.</p></div></div>
+  <div class="spec"><div class="meta"><span class="m-label">folio</span>Montserrat 600 · 7pt · red. Outer bottom corner.</div>
+    <div><span class="m-folio">12</span></div></div>
+
+  <ul class="rules m-body">
+    <li><b>Headlines</b>Caps, flush left, broken by meaning into two to four lines. A headline asks or states; it is never a section number.</li>
+    <li><b>Body</b>Short blocks. Set flush left, or flush right when the block sits to the left of a route, so the text hugs the line.</li>
+    <li><b>Numbers</b>Indian grouping and the rupee sign every time: ₹1,20,000, not 120000 or Rs.</li>
+    <li class="dont"><b>Never</b>Italic display, underlined headlines, a third family, colour used for emphasis inside a sentence.</li>
+  </ul>
+</section>
+
+<!-- ============ 01.2 COLOUR ============ -->
+<section class="f" id="colour">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.2</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Colour</h2>
+  </header>
+  <p class="m-body f-lede">The five colours of the reference, plus one step of paper for the rare container. Colour says what kind of information something is. It never says who it belongs to: participants have codes, not colours.</p>
+
+  <div class="swatches">
+    <div class="swatch"><svg viewBox="0 0 60 12" preserveAspectRatio="xMinYMid meet" aria-hidden="true"><path class="m-route" d="M2 6 H52"/><circle class="m-node" cx="54" cy="6" r="2.2"/></svg>
+      <h3 class="m-heading">Route red</h3><p class="hex">#D8503B</p><p class="m-body">The line, its nodes, margin notes, folios. Movement, events, intervention.</p></div>
+    <div class="swatch"><svg viewBox="0 0 60 12" aria-hidden="true"><rect width="60" height="12" fill="var(--m-blue)"/></svg>
+      <h3 class="m-heading">Blue</h3><p class="hex">#1F679B</p><p class="m-body">Days, times, figures and body copy. Time, evidence, participant voice.</p></div>
+    <div class="swatch"><svg viewBox="0 0 60 12" aria-hidden="true"><rect width="60" height="12" fill="var(--m-mustard)"/></svg>
+      <h3 class="m-heading">Mustard</h3><p class="hex">#CDAD3A</p><p class="m-body">Chapter and spread headlines, and one insight per spread. Nothing else.</p></div>
+    <div class="swatch"><svg viewBox="0 0 60 12" aria-hidden="true"><rect width="60" height="12" fill="var(--m-ink)"/></svg>
+      <h3 class="m-heading">Ink</h3><p class="hex">#2A2A2A</p><p class="m-body">Artifacts only: textured objects, stamps, screenshot frames.</p></div>
+    <div class="swatch"><svg viewBox="0 0 60 12" aria-hidden="true"><rect x=".2" y=".2" width="59.6" height="11.6" fill="var(--m-paper)" stroke="var(--m-paper-deep)" stroke-width=".4"/></svg>
+      <h3 class="m-heading">Paper</h3><p class="hex">#F0EFEB</p><p class="m-body">Every page. Never pure white.</p></div>
+    <div class="swatch"><svg viewBox="0 0 60 12" aria-hidden="true"><rect width="60" height="12" fill="var(--m-paper-deep)"/></svg>
+      <h3 class="m-heading">Paper deep</h3><p class="hex">#E4E2DC</p><p class="m-body">Flat, square mounts for content that genuinely needs containing.</p></div>
+  </div>
+
+  <table class="tokens">
+    <thead><tr><th>Text colour</th><th>On paper</th><th>Permitted as text</th></tr></thead>
+    <tbody>
+      <tr><td>Ink</td><td>12.47 : 1</td><td>Any size. Kept for artifacts by choice, not by contrast.</td></tr>
+      <tr><td>Blue</td><td>5.26 : 1</td><td>Any size, including 6.5pt captions.</td></tr>
+      <tr><td>Route red</td><td>3.56 : 1</td><td>Labels, notes and folios. Never the only place a fact appears.</td></tr>
+      <tr><td>Mustard</td><td>1.89 : 1</td><td>Display headlines only, 34pt and above, and always repeated in the running text or contents.</td></tr>
+    </tbody>
+  </table>
+
+  <ul class="rules m-body">
+    <li><b>Meaning</b>Red is something happening, blue is someone or something observed, mustard is what it meant.</li>
+    <li><b>Budget</b>A spread uses mustard once. If two things want it, only one of them is the insight.</li>
+    <li class="dont"><b>Never</b>A colour per participant, gradients, tints of the route red, green or red to judge a spend.</li>
+    <li class="dont"><b>Never</b>Pure white, dark navy grounds, neon accents or anything that reads as a fintech dashboard.</li>
+  </ul>
+</section>
+
+<!-- ============ 01.3 GRID ============ -->
+<section class="f" id="grid">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.3</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Grid</h2>
+  </header>
+  <p class="m-body f-lede">A4 portrait pages, read as spreads. Six columns per page with a 5mm gutter. The grid is there, but the page never announces it: text blocks start on columns, the route snaps to the 2mm unit, and the route is free to cross columns and the fold.</p>
+  <div class="fit"><div style="width:200mm">
+    <svg id="grid-svg" viewBox="0 0 420 297" style="width:200mm;height:141.4mm;display:block" role="img" aria-label="A4 spread with six-column grid on each page and a route crossing the fold"></svg>
+  </div></div>
+  <ul class="rules m-body">
+    <li><b>Margins</b>Top 16mm, bottom 18mm, inner 20mm, outer 14mm. Folios sit in the bottom margin, outer corner.</li>
+    <li><b>Snap</b>Text blocks start and end on column edges. Route turns land on multiples of 2mm.</li>
+    <li><b>Break it</b>The route, a headline or an artifact may cross the gutter or bleed. Body text never does.</li>
+  </ul>
+</section>
+
+<!-- ============ 01.4 SPACING ============ -->
+<section class="f" id="spacing">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.4</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Spacing</h2>
+  </header>
+  <p class="m-body f-lede">One unit of 2mm. Loose compositions still line up because every distance is a step on this scale.</p>
+  <div id="space-scale"></div>
+  <ul class="rules m-body">
+    <li><b>Route to text</b>At least 6mm (space-3) from the line's centre to any text it passes or encloses.</li>
+    <li><b>Node to label</b>3mm between a node and the station label in its break.</li>
+    <li><b>Between stops</b>At least 24mm (space-12) between two stops on the route, so each reads alone.</li>
+  </ul>
+</section>
+
+<!-- ============ 01.5 SHAPE ============ -->
+<section class="f" id="shape">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.5</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Shape</h2>
+  </header>
+  <p class="m-body f-lede">Margin has one shape: the route. It is a thick red line with round ends, every turn rounded, stopping at nodes. It breaks to let a label through, turns dashed when the story is interrupted, and loops around a block of text when it arrives somewhere. The route does the work that cards do elsewhere.</p>
+
+  <div class="fit"><div style="width:200mm">
+    <svg id="anatomy" viewBox="0 0 200 118" style="width:200mm;height:118mm;display:block" role="img" aria-label="Anatomy of the route"></svg>
+  </div></div>
+
+  <h3 class="m-heading" style="margin:14mm 0 6mm">Symbol grammar</h3>
+  <div class="grammar" id="grammar"></div>
+
+  <ul class="rules m-body">
+    <li><b>Containers</b>If something must be contained, use a flat, square paper-deep mount. No borders, radius or shadow.</li>
+    <li><b>Crossing</b>Routes may cross without a junction mark. A crossing is not a connection; a shared node is.</li>
+    <li class="dont"><b>Never</b>Rounded cards, drop shadows, glass effects, or a row of three equal boxes.</li>
+  </ul>
+</section>
+
+<!-- ============ 01.6 ICONOGRAPHY ============ -->
+<section class="f" id="iconography">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.6</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Iconography</h2>
+  </header>
+  <p class="m-body f-lede">Not interface icons, but objects: the things a spend was for. They are flat ink silhouettes with a worn print texture and at most one spot colour, placed beside a stop and turned slightly, like the reference's bottle, house and car.</p>
+  <div class="icons">
+    <figure><img src="icons/chai.svg" alt="Cutting chai glass" style="transform:rotate(-8deg)"><figcaption class="m-caption">Chai — food & drink</figcaption></figure>
+    <figure><img src="icons/rickshaw.svg" alt="Auto-rickshaw" style="transform:rotate(6deg)"><figcaption class="m-caption">Auto — travel</figcaption></figure>
+    <figure><img src="icons/thali.svg" alt="Thali" style="transform:rotate(-14deg)"><figcaption class="m-caption">Thali — meals</figcaption></figure>
+    <figure><img src="icons/phone.svg" alt="Phone with a route on screen" style="transform:rotate(12deg)"><figcaption class="m-caption">Phone — the prototype</figcaption></figure>
+    <figure>
+      <svg viewBox="0 0 100 100" style="width:30mm;height:30mm;transform:rotate(-10deg)" role="img" aria-label="Field study stamp">
+        <defs><path id="stamp-arc" d="M50 50 m-31 0 a31 31 0 1 1 62 0 a31 31 0 1 1 -62 0"/></defs>
+        <path id="stamp-edge" fill="var(--m-ink)"/>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="var(--m-paper)" stroke-width="1.2"/>
+        <text font-family="Montserrat" font-weight="700" font-size="7.4" letter-spacing="1.6" fill="var(--m-paper)"><textPath href="#stamp-arc">KHARCHA · FIELD STUDY · 2026 ·</textPath></text>
+        <text x="50" y="49" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="15" fill="var(--m-paper)">DAY</text>
+        <text x="50" y="64" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="15" fill="var(--m-mustard)">03</text>
+      </svg>
+      <figcaption class="m-caption">Stamp — study marker</figcaption>
+    </figure>
+  </div>
+  <ul class="rules m-body">
+    <li><b>Size</b>18mm to 40mm on the page. Turned between −15° and +20°. One object per stop, at most three per spread.</li>
+    <li><b>Colour</b>Ink plus one spot colour at most, used for the part that matters (the chai, the auto's stripe).</li>
+    <li class="dont"><b>Never</b>Outline UI icons, emoji, 3D renders, coins-and-piggy-bank finance clichés.</li>
+  </ul>
+</section>
+
+<!-- ============ 01.7 IMAGERY ============ -->
+<section class="f" id="imagery">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.7</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Imagery</h2>
+  </header>
+  <p class="m-body f-lede">Screens and photographs are evidence, so they are treated as artifacts collected during the study: labelled with the version, the participant and the date, and pointed at by a hairline when one detail matters.</p>
+  <div class="fit"><div id="imagery-demo" style="position:relative;width:200mm;height:120mm">
+    <svg id="imagery-svg" viewBox="0 0 200 120" style="position:absolute;inset:0;width:200mm;height:120mm" aria-hidden="true"></svg>
+    <p class="m-label" style="position:absolute;left:40mm;top:2mm;margin:0">V02 &nbsp;/&nbsp; Prototype</p>
+    <div style="position:absolute;left:40mm;top:8mm;width:50mm;height:100mm;background:var(--m-ink);border-radius:5mm;padding:3mm;box-sizing:border-box">
+      <div style="background:var(--m-paper);height:100%;border-radius:1.5mm;padding:5mm 4mm;box-sizing:border-box">
+        <div style="height:2.4mm;width:60%;background:var(--m-paper-deep)"></div>
+        <div style="height:12mm;margin-top:4mm;background:var(--m-paper-deep)"></div>
+        <div id="shot-target" style="height:14mm;margin-top:3mm;background:var(--m-paper-deep);outline:0.5mm solid var(--m-route);outline-offset:0.6mm"></div>
+        <div style="height:2mm;width:80%;margin-top:4mm;background:var(--m-paper-deep)"></div>
+        <div style="height:2mm;width:70%;margin-top:2mm;background:var(--m-paper-deep)"></div>
+        <div style="height:2mm;width:75%;margin-top:2mm;background:var(--m-paper-deep)"></div>
+      </div>
+    </div>
+    <p class="m-caption" style="position:absolute;left:40mm;top:110mm;margin:0">Screen placeholder. Tested with P03, 23 September 2026.</p>
+    <div style="position:absolute;left:112mm;top:10mm;width:70mm">
+      <p class="m-quote" style="margin:0">“This felt like the app was telling me what to do.”</p>
+      <p class="m-label" style="margin:2mm 0 0">— P03, day 2</p>
+    </div>
+    <div style="position:absolute;left:112mm;top:66mm;width:72mm">
+      <p class="m-label" style="margin:0 0 1.5mm">Test finding 04</p>
+      <p class="m-body" style="margin:0 0 4mm">The suggestion read as an instruction.</p>
+      <p class="m-label" style="margin:0 0 1.5mm">Design response</p>
+      <p class="m-body" style="margin:0">Remove the instruction. Keep the context.</p>
+    </div>
+  </div></div>
+  <ul class="rules m-body">
+    <li><b>Screens</b>Always in an ink device frame on paper, labelled with version, participant and date. Never cropped UI floating on its own.</li>
+    <li><b>Pointing</b>A 0.3mm red hairline runs from the observation to the exact element, which gets a 0.5mm red outline.</li>
+    <li><b>Photographs</b>Black and white, high contrast, with grain to match the objects. No faces of participants.</li>
+  </ul>
+</section>
+
+<!-- ============ 01.8 MOTION ============ -->
+<section class="f" id="motion">
+  <header class="f-head">
+    <div class="m-break"><span class="m-station">01.8</span></div>
+    <p class="m-label">Foundations</p>
+    <h2 class="m-display-l">Motion</h2>
+  </header>
+  <p class="m-body f-lede">Only on screen, and only one idea: the route draws itself the first time you see it, and each stop appears as the line reaches it. On paper, and for anyone who prefers reduced motion, everything is already drawn.</p>
+  <div class="motion-stage">
+    <div class="fit"><div id="motion-demo" style="position:relative;width:200mm;height:78mm">
+      <svg id="motion-svg" viewBox="0 0 200 78" style="position:absolute;inset:0;width:200mm;height:78mm" aria-hidden="true"></svg>
+    </div></div>
+    <button class="replay m-screen-only" id="replay" type="button">Replay</button>
+  </div>
+  <table class="tokens">
+    <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>motion-draw</td><td>1400ms, ease-in-out</td><td>The route draws on, once, when it scrolls into view.</td></tr>
+      <tr><td>motion-node</td><td>220ms, slight overshoot</td><td>A node appears as the line reaches it.</td></tr>
+      <tr><td>motion-fade</td><td>320ms, ease-out</td><td>Text beside a node, and dashed or dotted routes.</td></tr>
+      <tr><td>reduced</td><td>0ms</td><td>Everything static and fully drawn.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ CLOSE ============ -->
+<div class="fit" style="margin-top:24mm"><div style="position:relative;width:200mm;height:40mm">
+  <svg id="close-svg" viewBox="0 0 200 40" style="position:absolute;inset:0;width:200mm;height:40mm" aria-hidden="true"></svg>
+  <p class="m-closing" style="position:absolute;left:112mm;top:20mm;margin:0">Next: into<br>the grammar</p>
+  <p class="m-note" style="position:absolute;left:6mm;top:22mm;width:60mm;margin:0">02 — Information grammar: evidence, claims, participants, quotes, observations, insights, decisions, outcomes, uncertainty.</p>
+</div></div>
+
+</main>
+
+<script src="js/route.js"></script>
+<script>
+(function () {
+  var M = window.Margin;
+  function $(id) { return document.getElementById(id); }
+  function text(svg, x, y, str, cls, opts) {
+    var t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    for (var k in (opts || {})) {
+      if (k === 'font-size') t.style.fontSize = opts[k] + 'px';   /* user units; must beat the class's pt size */
+      else if (k === 'color') t.style.color = opts[k];
+      else t.setAttribute(k, opts[k]);
+    }
+    t.setAttribute('class', cls); t.textContent = str; svg.appendChild(t); return t;
+  }
+
+  /* Hero */
+  var h = $('hero-route');
+  M.route(h, [[54, 18], [18, 18], [18, 44]]);
+  M.node(h, 54, 18); M.node(h, 18, 44);
+  M.route(h, [[18, 72], [18, 100], [80, 100], [80, 122], [86, 122]]);
+  M.node(h, 18, 72); M.node(h, 86, 122);
+  M.route(h, [[80, 100], [144, 100]], { style: 'dashed' });
+  M.route(h, [[144, 90], [144, 128]], { hair: true });
+
+  /* Grid diagram */
+  var g = $('grid-svg'), NS = 'http://www.w3.org/2000/svg';
+  function rect(svg, x, y, w, hh, fill, extra) {
+    var r = document.createElementNS(NS, 'rect');
+    r.setAttribute('x', x); r.setAttribute('y', y); r.setAttribute('width', w); r.setAttribute('height', hh);
+    r.setAttribute('fill', fill); for (var k in (extra || {})) r.setAttribute(k, extra[k]); svg.appendChild(r); return r;
+  }
+  rect(g, 0, 0, 420, 297, 'var(--m-paper)', { stroke: 'var(--m-paper-deep)', 'stroke-width': 1 });
+  [[0, 14, 20], [210, 20, 14]].forEach(function (p) {
+    var x0 = p[0] + p[1], w = 210 - p[1] - p[2], col = (w - 5 * 5) / 6;
+    for (var i = 0; i < 6; i++) rect(g, x0 + i * (col + 5), 16, col, 297 - 16 - 18, 'var(--m-paper-deep)', { opacity: .75 });
+  });
+  var fold = document.createElementNS(NS, 'line');
+  fold.setAttribute('x1', 210); fold.setAttribute('x2', 210); fold.setAttribute('y1', 0); fold.setAttribute('y2', 297);
+  fold.setAttribute('stroke', 'var(--m-ink)'); fold.setAttribute('stroke-width', .4); fold.setAttribute('stroke-dasharray', '2 2');
+  g.appendChild(fold);
+  var gr = M.route(g, [[40, 60], [40, 150], [160, 150], [160, 110], [300, 110], [300, 220], [380, 220]], { radius: 14 });
+  gr.style.strokeWidth = 3.6;
+  [[40, 60], [380, 220]].forEach(function (p) { M.node(g, p[0], p[1], 'event', { size: 8.8 }); });
+  text(g, 14, 290, 'OUTER 14', 'm-label', { 'font-size': 7 });
+  text(g, 188, 290, 'INNER 20', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
+  text(g, 232, 290, 'INNER 20', 'm-label', { 'font-size': 7 });
+  text(g, 406, 290, '6 COLUMNS · 5MM GUTTER', 'm-label', { 'font-size': 7, 'text-anchor': 'end' });
+
+  /* Spacing scale */
+  var scale = [['space-1', 2], ['space-2', 4], ['space-3', 6], ['space-4', 8], ['space-6', 12], ['space-8', 16], ['space-12', 24], ['space-16', 32]];
+  $('space-scale').innerHTML = scale.map(function (s) {
+    return '<div class="space-row"><span class="m-label">' + s[0] + '</span><span class="hex">' + s[1] + 'mm</span><i style="width:' + s[1] + 'mm"></i></div>';
+  }).join('');
+
+  /* Route anatomy */
+  var a = $('anatomy');
+  function callout(x, y, tx, ty, str, end) {
+    M.route(a, [[x, y], [tx, ty]], { hair: true, radius: 0 });
+    str.split('|').forEach(function (line, i) {
+      text(a, tx + (end ? -1.5 : 1.5), ty + 1 + i * 3.6, line, 'm-note', { 'font-size': '2.6', 'text-anchor': end ? 'end' : 'start' });
+    });
+  }
+  M.route(a, [[8, 14], [60, 14], [60, 40]]); M.node(a, 8, 14); M.node(a, 60, 40);
+  text(a, 60, 60, '1997', 'm-station', { transform: 'rotate(-90 60 60)', 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-size': '5.6' });
+  M.node(a, 60, 80); M.route(a, [[60, 80], [60, 104], [120, 104]]);
+  M.route(a, [[120, 104], [150, 104]], { style: 'dashed' });
+  M.route(a, [[150, 104], [190, 104]], { style: 'dotted' });
+  M.route(a, [[80, 30], [80, 114]]);                                   // crossing
+  M.route(a, [[100, 14], [100, 70], [190, 70], [190, 14], [150, 14]]); // enclosure
+  M.node(a, 150, 14);
+  text(a, 108, 26, 'KNOWING \u2260', 'm-heading', { 'font-size': '4.8', color: 'var(--m-mustard)' });
+  text(a, 108, 32, 'CONSIDERING', 'm-heading', { 'font-size': '4.8', color: 'var(--m-mustard)' });
+  text(a, 108, 46, 'Enclosure: the route arrives and', 'm-note', { 'font-size': '2.6' });
+  text(a, 108, 50, 'holds a finding. Text sits at', 'm-note', { 'font-size': '2.6' });
+  text(a, 108, 54, 'least 6mm inside the line.', 'm-note', { 'font-size': '2.6' });
+  callout(30, 14, 30, 6, 'Weight 1.8mm, round caps');
+  callout(8, 14, 8, 40, 'Terminal node 4.4mm');
+  callout(58, 16, 44, 30, 'Every turn 8mm radius', true);
+  callout(56, 60, 46, 60, 'Break: node, 3mm,|label, 3mm, node', true);
+  callout(80, 108, 88, 114, 'Crossing: not a junction');
+  callout(135, 104, 135, 112, 'Dashed: interrupted, or a hypothesis');
+  callout(172, 104, 160, 94, 'Dotted: control handed over', true);
+
+  /* Symbol grammar */
+  var sym = [
+    ['event', 'Spending event', 'Something was spent. The ordinary stop.'],
+    ['future', 'Future event', 'A plan that has not happened yet. A ghost on the route.'],
+    ['planned', 'Planned', 'A spend the participant planned for.'],
+    ['unexpected', 'Unexpected', 'A spend nobody saw coming, including the participant.'],
+    ['turning', 'Turning point', 'A finding that changed the direction of the design.'],
+    ['solid', 'Solid line', 'Evidence: the established path.'],
+    ['dashed', 'Dashed line', 'Hypothesis, or a story interrupted.'],
+    ['dotted', 'Dotted line', 'The system relinquishing control.'],
+    ['arrow', 'Arrow →', 'A design consequence.'],
+    ['loop', 'Loop ↻', 'An iteration.']
+  ];
+  var grammar = $('grammar');
+  sym.forEach(function (s) {
+    var d = document.createElement('div');
+    d.innerHTML = '<svg viewBox="0 0 26 12" aria-hidden="true"></svg><h3 class="m-heading">' + s[1] + '</h3><p class="m-body">' + s[2] + '</p>';
+    grammar.appendChild(d);
+    var sv = d.querySelector('svg');
+    if (['event', 'future', 'planned', 'unexpected', 'turning'].indexOf(s[0]) > -1) {
+      M.route(sv, [[1, 6], [25, 6]]); M.node(sv, 13, 6, s[0], { size: 5.4 });
+    } else if (s[0] === 'arrow') {
+      M.route(sv, [[1, 6], [22, 6]]);
+      var p = document.createElementNS(NS, 'path'); p.setAttribute('d', 'M18 2.6 L23.5 6 L18 9.4'); p.setAttribute('class', 'm-route'); sv.appendChild(p);
+    } else if (s[0] === 'loop') {
+      var l = document.createElementNS(NS, 'path'); l.setAttribute('d', 'M16 6 A4.4 4.4 0 1 1 13.8 2.19'); l.setAttribute('class', 'm-route'); sv.appendChild(l);
+      var hd = document.createElementNS(NS, 'path'); hd.setAttribute('d', 'M11.2 2.36 L13.8 2.19 L12.7 -0.1'); hd.setAttribute('class', 'm-route'); hd.style.strokeWidth = 1.3; sv.appendChild(hd);
+    } else {
+      M.route(sv, [[1, 6], [25, 6]], { style: s[0] });
+    }
+  });
+
+  /* Stamp scalloped edge */
+  (function () {
+    var d = '', n = 36;
+    for (var i = 0; i <= n * 2; i++) {
+      var ang = Math.PI * i / n, r = i % 2 ? 44 : 46.5;
+      d += (i ? 'L' : 'M') + (50 + Math.cos(ang) * r).toFixed(2) + ' ' + (50 + Math.sin(ang) * r).toFixed(2);
+    }
+    $('stamp-edge').setAttribute('d', d + 'Z');
+  })();
+
+  /* Imagery pointer: from the quote to the outlined element */
+  var im = $('imagery-svg');
+  M.route(im, [[110, 18], [100, 18], [100, 36], [88, 36]], { hair: true, radius: 3 });
+  M.node(im, 88, 36, 'event', { size: 1.6 });
+
+  /* Motion demo: six days, one route */
+  var mv = $('motion-svg');
+  var pts = [[10, 14], [44, 14], [44, 52], [96, 52], [96, 22], [150, 22], [150, 60], [176, 60]];
+  M.route(mv, pts, { radius: 8 });
+  var stops = [
+    [10, 14, 'event', 'DAY 01', '₹120 · CHAI', 0],
+    [44, 34, 'planned', 'DAY 02', '₹280 · MESS PASS', 350],
+    [58, 52, 'unexpected', 'DAY 03', '₹90 · AUTO, LATE', 650],
+    [96, 36, 'event', 'DAY 04', '₹280 · DINNER', 900],
+    [150, 40, 'turning', 'DAY 05', 'KNOWING ≠ CONSIDERING', 1150]
+  ];
+  stops.forEach(function (s) {
+    M.node(mv, s[0], s[1], s[2], { at: s[5] });
+    var t1 = text(mv, s[0] + 4.5, s[1] - 7, s[3], 'm-station m-reveal', { 'font-size': '4.6' });
+    var t2 = text(mv, s[0] + 4.5, s[1] - 3.2, s[4], 'm-label m-reveal', { 'font-size': '2.3' });
+    [t1, t2].forEach(function (t) { t.style.setProperty('--at', (s[5] + 120) + 'ms'); });
+  });
+  M.route(mv, [[176, 60], [192, 60], [192, 72]], { style: 'dashed', at: 1400 });
+  M.node(mv, 192, 72, 'future', { at: 1500 });
+  var f1 = text(mv, 176, 76, 'FRI · ₹1,500', 'm-label m-reveal', { 'font-size': '2.3', 'text-anchor': 'end' });
+  var f2 = text(mv, 176, 71, 'DAY 06', 'm-station m-reveal', { 'font-size': '4.6', 'text-anchor': 'end' });
+  [f1, f2].forEach(function (t) { t.style.setProperty('--at', '1600ms'); });
+  M.animate($('motion-demo'));
+  $('replay').addEventListener('click', function () { M.replay($('motion-demo')); });
+
+  /* Close */
+  var c = $('close-svg');
+  M.route(c, [[6, 8], [96, 8], [96, 26], [106, 26]]); M.node(c, 6, 8); M.node(c, 106, 26);
+
+  /* Fit fixed-size figures to the column */
+  function fit() {
+    document.querySelectorAll('.fit').forEach(function (w) {
+      var inner = w.firstElementChild;
+      inner.style.transform = 'none';
+      var s = Math.min(1, w.offsetWidth / inner.offsetWidth);
+      inner.style.transform = 'scale(' + s + ')';
+      w.style.height = (inner.offsetHeight * s) + 'px';
+    });
+  }
+  fit(); window.addEventListener('resize', fit);
+  if (document.fonts) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>

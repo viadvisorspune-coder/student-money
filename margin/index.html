@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Margin</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/margin.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/doc.css">
+<style>
+  .chapters { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .chapters a { display: grid; grid-template-columns: 22mm 1fr; gap: 2mm 6mm; padding: 5mm 0; border-top: 0.3mm solid var(--m-paper-deep); text-decoration: none; }
+  .chapters li:last-child a { border-bottom: 0.3mm solid var(--m-paper-deep); }
+  .chapters a:hover .m-closing, .chapters a:focus-visible .m-closing { color: var(--m-route); }
+  .chapters a:focus-visible { outline: 0.6mm solid var(--m-blue); outline-offset: 1mm; }
+  .chapters .m-station { font-size: 24pt; }
+  .chapters p { margin: 0; }
+</style>
+</head>
+<body class="m-paper">
+<main class="doc">
+
+<div class="fit"><div id="cover" style="position:relative;width:200mm;height:120mm">
+  <svg id="cover-route" viewBox="0 0 200 120" style="position:absolute;inset:0;width:200mm;height:120mm" aria-hidden="true"></svg>
+  <h1 class="m-display-xl" style="position:absolute;left:62mm;top:4mm;margin:0;font-size:78pt">Margin</h1>
+  <p class="m-label" style="position:absolute;left:63mm;top:34mm;margin:0">Design system &nbsp;/&nbsp; Kharcha research report &nbsp;/&nbsp; v0.1</p>
+  <div class="m-body" style="position:absolute;left:63mm;top:44mm;width:84mm"><p style="margin:0">Editorial, archival and a little playful. A system for a user-research report about how students spend, built on one idea: the research itself becomes the graphic language. A day is a line, a spend is a node, a plan is a ghost, a finding is a place the line arrives at.</p></div>
+  <img src="icons/rickshaw.svg" alt="" style="position:absolute;left:158mm;top:40mm;width:34mm;transform:rotate(8deg)">
+  <span class="m-station m-vertical" style="position:absolute;left:14.4mm;top:47mm">2026</span>
+  <p class="m-closing" style="position:absolute;left:92mm;top:98mm;margin:0">Six chapters</p>
+</div></div>
+
+<ol class="chapters" style="margin-top:12mm">
+  <li><a href="foundations.html"><span class="m-station">01</span><span><span class="m-closing" style="display:block">Foundations</span><span class="m-body">Typography, colour, grid, spacing, shape and the route, iconography, imagery, motion.</span></span></a></li>
+  <li><a href="grammar.html"><span class="m-station">02</span><span><span class="m-closing" style="display:block">Information grammar</span><span class="m-body">Evidence, claims, participants, quotes, observations, insights, decisions, outcomes, uncertainty.</span></span></a></li>
+  <li><a href="dataviz.html"><span class="m-station">03</span><span><span class="m-closing" style="display:block">Data visualisation</span><span class="m-body">18 charts for user-testing data: quantitative, qualitative, timelines, matrices, maps, networks, flows, comparisons, distributions.</span></span></a></li>
+  <li><a href="components.html"><span class="m-station">04</span><span><span class="m-closing" style="display:block">Components</span><span class="m-body">Pills, tags, labels, notes, stickers, underlines, headers, footers, folios, callouts, captions, footnotes, legends, tables, navigation, image formats.</span></span></a></li>
+  <li><a href="layouts.html"><span class="m-station">05</span><span><span class="m-closing" style="display:block">Page patterns</span><span class="m-body">Fourteen spreads combining images and text, from chapter opener to conclusion.</span></span></a></li>
+  <li><a href="rules.html"><span class="m-station">06</span><span><span class="m-closing" style="display:block">Rules</span><span class="m-body">When to use what, what not to do, accessibility, data integrity, citation, composition.</span></span></a></li>
+</ol>
+
+<section class="f" id="files">
+  <header class="f-head"><div class="m-break"><span class="m-station">Files</span></div><p class="m-label">Margin</p><h2 class="m-display-l">Using the system</h2></header>
+  <table class="m-table">
+    <thead><tr><th>File</th><th>What it holds</th></tr></thead>
+    <tbody>
+      <tr><td>tokens/tokens.json</td><td>Source of truth: colour, type, page, spacing, route geometry, motion. Edit, then run <b>npm run margin:tokens</b>.</td></tr>
+      <tr><td>css/tokens.css</td><td>Generated from tokens.json. Never edit by hand.</td></tr>
+      <tr><td>css/fonts.css + fonts/</td><td>Montserrat and Merriweather, self-hosted, SIL Open Font Licence.</td></tr>
+      <tr><td>css/margin.css</td><td>Foundations: page, text behaviour, the route, station breaks, motion.</td></tr>
+      <tr><td>css/components.css</td><td>Every component on pages 02–04, and chart frames.</td></tr>
+      <tr><td>js/route.js</td><td>Draws the route with rounded turns and the node symbols. Margin.route, Margin.node.</td></tr>
+      <tr><td>js/charts.js</td><td>Chart primitives: axes, marks, annotations, data tables, Indian rupee format.</td></tr>
+      <tr><td>js/sample-data.js</td><td>The sample study data used by every chart and layout. Replace with the real data.</td></tr>
+      <tr><td>icons/*.svg</td><td>Textured objects: chai, auto, thali, phone.</td></tr>
+      <tr><td>dist/*.html</td><td>Self-contained copies of every page, built by <b>npm run margin:bundle</b>.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="f" id="open">
+  <header class="f-head"><div class="m-break"><span class="m-station">Open</span></div><p class="m-label">Margin</p><h2 class="m-display-l">To decide</h2></header>
+  <ul class="rules m-body">
+    <li><b>Typefaces</b>Montserrat and Merriweather are the closest free matches to the reference. If the reference's own faces are known and licensed, swap them in tokens.json.</li>
+    <li><b>Mustard contrast</b>The reference's mustard is 1.89 : 1 on paper. Kept exact and limited to large headlines; a darker text mustard is available if the report must meet WCAG for all text.</li>
+    <li><b>Page size</b>A4 portrait spreads assumed. The reference book is smaller; the grid scales from tokens.</li>
+    <li><b>Real data</b>Every figure here is sample data, and must be replaced from the study archive.</li>
+  </ul>
+</section>
+
+</main>
+<script src="js/route.js"></script>
+<script src="js/doc.js"></script>
+<script>
+(function () {
+  var M = Margin, h = document.getElementById('cover-route');
+  M.route(h, [[54, 16], [18, 16], [18, 42]]); M.node(h, 54, 16); M.node(h, 18, 42);
+  M.route(h, [[18, 78], [18, 104], [86, 104]]); M.node(h, 18, 78); M.node(h, 86, 104);
+  M.route(h, [[160, 104], [192, 104]], { style: 'dotted' }); M.node(h, 196, 104, 'future');
+  MarginDoc.fit();
+})();
+</script>
+</body>
+</html>
