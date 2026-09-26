@@ -165,3 +165,20 @@ svg.r { position: absolute; overflow: visible; pointer-events: none; }
 .qlist li { font: italic 400 10.5pt/1.35 var(--m-font-text); color: var(--m-blue); padding: 2.4mm 0 2.4mm 5mm; position: relative; border-bottom: 0.2mm solid var(--m-paper-deep); }
 .qlist li::before { content: ""; position: absolute; left: 0; top: 4.2mm; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--m-route); }
 .bubble { position: absolute; border-radius: 999px; padding: 4mm 6mm; background: var(--m-paper-deep); font: 400 13.5pt/1 var(--m-font-display); color: var(--m-blue); white-space: nowrap; }
+/* Text-led layout: reading column plus a side column for notes */
+.cols { display: grid; grid-template-columns: 1fr 50mm; gap: 0 10mm; align-items: start; }
+.cols .main { max-width: 108mm; }
+.aside { border-top: var(--m-stroke) solid var(--m-route); padding-top: 3mm; }
+.aside > * + * { margin-top: 5mm; }
+.aside .lab { display: block; margin-bottom: 1.2mm; }
+.body h3 { font: 400 13.5pt/1.25 var(--m-font-display); word-spacing: 0.08em; color: var(--m-blue); margin: 6mm 0 2mm; }
+.body h3:first-child { margin-top: 0; }
+.vchain { list-style: none; margin: 0; padding: 0 0 0 7mm; position: relative; }
+.vchain::before { content: ""; position: absolute; left: 1.1mm; top: 2mm; bottom: 2mm; width: var(--m-route-weight); background: var(--m-route); }
+.vchain li { position: relative; padding: 1.6mm 0; font: 400 10.5pt/1.3 var(--m-font-text); color: var(--m-blue); }
+.vchain li::before { content: ""; position: absolute; left: -7mm; top: 2.3mm; width: var(--m-route-node); height: var(--m-route-node); border-radius: 50%; background: var(--m-route); }
+.vchain li.key { font-weight: 600; }
+.vchain li.key span { background: var(--m-mustard); color: var(--m-ink); padding: 0.6mm 1.6mm; border-radius: var(--m-chip-radius); }
+.toc .d { grid-column: 2 / 3; font: 400 8.5pt/1.35 var(--m-font-text); color: var(--m-blue); opacity: 0.6; margin-top: 1mm; }
+.toc li { row-gap: 0; }
+.m-table.rows td:first-child { white-space: nowrap; }

@@ -19,7 +19,7 @@
   .cv--y { background: var(--m-mustard); box-shadow: none; color: var(--m-ink); mix-blend-mode: normal; }
   /* Contents */
   .toc { list-style: none; margin: 0; padding: 0; }
-  .toc li { display: grid; grid-template-columns: 12mm 1fr auto; align-items: baseline; gap: 4mm; padding: 3.1mm 0; border-top: 0.2mm solid var(--m-paper-deep); }
+  .toc li { display: grid; grid-template-columns: 12mm 1fr auto; align-items: baseline; gap: 4mm; padding: 2.4mm 0; border-top: 0.2mm solid var(--m-paper-deep); }
   .toc li:last-child { border-bottom: 0.2mm solid var(--m-paper-deep); }
   .toc .n { font: 400 13.5pt/1 var(--m-font-display); color: var(--m-route); }
   .toc .t { font: 400 13.5pt/1.1 var(--m-font-display); color: var(--m-blue); word-spacing: 0.08em; }
@@ -75,19 +75,19 @@
     <h1 class="h1 m-display-xl">Contents</h1>
     <div class="row mt-b" style="gap:12mm;flex:1">
       <ol class="toc grow">
-        <li><span class="n">01</span><span class="t">Research to testing</span><span class="p">03</span></li>
-        <li><span class="n">02</span><span class="t">Testing framework</span><span class="p">06</span></li>
-        <li><span class="n">03</span><span class="t">Method</span><span class="p">09</span></li>
-        <li><span class="n">04</span><span class="t">Baseline behaviour</span><span class="p">11</span></li>
-        <li><span class="n">05</span><span class="t">Prototype evidence</span><span class="p">14</span></li>
-        <li><span class="n">06</span><span class="t">Cross-participant analysis</span><span class="p">21</span></li>
-        <li><span class="n">07</span><span class="t">What broke</span><span class="p">30</span></li>
-        <li><span class="n">08</span><span class="t">Iteration</span><span class="p">32</span></li>
-        <li><span class="n">09</span><span class="t">V2 evidence</span><span class="p">35</span></li>
-        <li><span class="n">10</span><span class="t">What we can claim</span><span class="p">38, 40, 43</span></li>
-        <li><span class="n">11</span><span class="t">Behavioural model</span><span class="p">39, 44</span></li>
-        <li><span class="n">12</span><span class="t">Next test</span><span class="p">41</span></li>
-        <li><span class="n">13</span><span class="t">Evidence archive</span><span class="p">45</span></li>
+        <li><span class="n">01</span><span class="t">Research to testing<span class="d" style="display:block">Why the question moved from tracking to decisions</span></span><span class="p">03</span></li>
+        <li><span class="n">02</span><span class="t">Testing framework<span class="d" style="display:block">The question, the target behaviour and the evidence rules</span></span><span class="p">06</span></li>
+        <li><span class="n">03</span><span class="t">Method<span class="d" style="display:block">How sessions ran and which records exist</span></span><span class="p">09</span></li>
+        <li><span class="n">04</span><span class="t">Baseline behaviour<span class="d" style="display:block">What visibility alone did, before the prototype</span></span><span class="p">11</span></li>
+        <li><span class="n">05</span><span class="t">Prototype evidence<span class="d" style="display:block">The three direct sessions, D1 to D3</span></span><span class="p">14</span></li>
+        <li><span class="n">06</span><span class="t">Cross-participant analysis<span class="d" style="display:block">Seven findings and the feature signal map</span></span><span class="p">21</span></li>
+        <li><span class="n">07</span><span class="t">What broke<span class="d" style="display:block">Breaks in V1 and the progress bar problem</span></span><span class="p">30</span></li>
+        <li><span class="n">08</span><span class="t">Iteration<span class="d" style="display:block">From break to design decision, and the one change</span></span><span class="p">32</span></li>
+        <li><span class="n">09</span><span class="t">V2 evidence<span class="d" style="display:block">What V2 improved and what it does not prove</span></span><span class="p">35</span></li>
+        <li><span class="n">10</span><span class="t">What we can claim<span class="d" style="display:block">Synthesis, claims and limitations</span></span><span class="p">38, 40, 43</span></li>
+        <li><span class="n">11</span><span class="t">Behavioural model<span class="d" style="display:block">From visibility to consciousness</span></span><span class="p">39, 44</span></li>
+        <li><span class="n">12</span><span class="t">Next test<span class="d" style="display:block">Product implications and the next study</span></span><span class="p">41</span></li>
+        <li><span class="n">13</span><span class="t">Evidence archive<span class="d" style="display:block">Appendices A to F</span></span><span class="p">45</span></li>
       </ol>
       <div class="rel" style="width:52mm;flex:none">
         <svg class="r" id="toc-r" viewBox="0 0 52 200" style="left:0;top:0;width:52mm;height:200mm"></svg>
@@ -108,27 +108,28 @@
 <section class="pg" data-sec="01  Research to testing">
   <div class="ct">
     <span class="eyebrow m-kicker">01 / Research at a glance</span>
-    <h1 class="h1 m-display-xl" style="max-width:120mm">The question changed from tracking money to understanding decisions.</h1>
-    <div class="row mt-l" style="gap:14mm;flex:1">
-      <div class="w68">
-        <div class="body">
-          <p>The project did not begin by asking how to make students budget better.</p>
-          <p>Earlier research showed that student spending is shaped by social situations, future commitments, convenience, comfort, perceived value, mental allocation and the effort required to calculate financial consequences.</p>
-          <p>This shifted the testing question:</p>
-        </div>
-        <div class="m-pullquote mt-b"><p class="q">Can making financial consequences visible at the moment of spending make spending decisions more conscious?</p><cite>Testing question</cite></div>
-        <div class="body mt-b">
-          <p>The target outcome was not simply reduced spending.</p>
-          <p>A participant could still make the purchase and demonstrate conscious consideration.</p>
-        </div>
+    <h1 class="h1 m-display-xl" style="max-width:130mm">The question changed from tracking money to understanding decisions.</h1>
+    <div class="cols mt-l">
+      <div class="main body">
+        <p>The project did not begin by asking how to make students budget better.</p>
+        <p>Earlier research showed that student spending is shaped by social situations, future commitments, convenience, comfort, perceived value, mental allocation and the effort required to calculate financial consequences. No single one of these explained how students spent; each appeared in a different form for different people.</p>
+        <p>Those findings made tracking look like the wrong unit of design. A record of past spending describes what happened. It does not reach the moment when a student is deciding whether to spend. The research question therefore moved from how students record money to how, and when, financial information enters a decision.</p>
+        <div class="m-pullquote" style="margin:6mm 0"><p class="q">Can making financial consequences visible at the moment of spending make spending decisions more conscious?</p><cite>Testing question</cite></div>
+        <p>The target outcome was not simply reduced spending. A participant could still make the purchase and demonstrate conscious consideration.</p>
+        <p>For that reason this report treats consideration, not a lower total, as the outcome of interest. Each session is read for evidence that financial context was noticed, understood and weighed before a choice was made.</p>
       </div>
-      <div class="grow chain flow">
-        <div class="st">Tracking</div><i class="down"></i>
-        <div class="st">Visibility</div><i class="down"></i>
-        <div class="st">Awareness</div><i class="down"></i>
-        <div class="st st--key">Consideration<span class="lab lab--ink" style="display:block;margin-top:2.4mm;opacity:0.7">The stage this report is about</span></div><i class="down"></i>
-        <div class="st">Conscious decision</div><i class="down"></i>
-        <div class="st st--end">Reflection</div>
+      <div class="aside">
+        <div>
+          <span class="lab">How the question moved</span>
+          <ul class="vchain">
+            <li>Tracking</li><li>Visibility</li><li>Awareness</li><li class="key"><span>Consideration</span></li><li>Conscious decision</li><li>Reflection</li>
+          </ul>
+          <p class="small muted" style="margin:2mm 0 0">Consideration is the stage this report is about.</p>
+        </div>
+        <div>
+          <span class="lab">How to read this report</span>
+          <p class="small" style="margin:0">Every claim is labelled observed, stated, inferred or unknown (page 08). Participants are shown by code. Figures appear only where source records support them; illustrative figures are marked.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -140,26 +141,29 @@
     <span class="eyebrow m-kicker">01 / From process to testing</span>
     <h1 class="h1 m-display-xl">What earlier research told us</h1>
     <p class="sub m-heading">Students were not experiencing one single “spending problem.”</p>
-    <div class="body lede">The earlier behavioural work identified different mechanisms behind everyday spending. Each participant is shown by code; the mechanism is the larger element.</div>
-    <div class="mt-l"><span class="tagc tagc--line">Contextual research, carried forward into testing</span></div>
-    <div class="mmap mt-b">
-      <svg class="r" id="mmap-r" viewBox="0 0 174 112" style="left:0;top:0;width:174mm;height:112mm"></svg>
-      <div class="mr" style="top:0mm"><span class="code code--c">C1</span><span class="mech">Social and environmental cueing</span></div>
-      <div class="mr" style="top:14mm"><span class="code code--c">C2</span><span class="mech">Post-purchase value evaluation</span></div>
-      <div class="mr" style="top:28mm"><span class="code code--c">C3</span><span class="mech">Active allocation across time</span></div>
-      <div class="mr" style="top:42mm"><span class="code code--c">C4</span><span class="mech">Future expense not salient</span></div>
-      <div class="mr" style="top:56mm"><span class="code code--c">C5</span><span class="mech">Calculation effort</span></div>
-      <div class="mr" style="top:70mm"><span class="code code--c">C6</span><span class="mech">Low constraint and high perceived value</span></div>
-      <div class="mr" style="top:84mm"><span class="code code--c">D1</span><span class="mech">Comfort and social responsibility</span></div>
-      <div class="mr" style="top:98mm"><span class="code code--c">D2</span><span class="mech">Mental-account slack</span></div>
-      <div class="card card--yellow abs" style="left:128mm;top:34mm;width:46mm">
-        <span class="lab">Common opportunity</span>
-        <span class="mid">Financial context available while the decision is open</span>
-      </div>
+    <div class="body mt-b" style="max-width:150mm">
+      <p>The earlier behavioural work identified different mechanisms behind everyday spending. The eight records below come from that contextual stage. They are not eight equivalent prototype-testing participants, and they are not used as evidence that the prototype works. They are used to define what the prototype had to address.</p>
     </div>
-    <div class="row mt-auto" style="gap:8mm;align-items:flex-start">
-      <p class="small grow" style="margin:0"><b class="lab">Reading the map</b><br>Different behaviour, common opportunity. These eight records are contextual research, not eight equivalent prototype-testing participants.</p>
-      <p class="small grow" style="margin:0"><b class="lab">Codes</b><br>C codes are contextual records. D1 and D2 also took part in direct prototype sessions (page 10); here only their contextual records are used.</p>
+    <div class="mt-b"><span class="tagc tagc--line">Contextual research, carried forward into testing</span></div>
+    <table class="m-table rows mt-b">
+      <thead><tr><th>Code</th><th>Mechanism</th><th>What it describes</th><th>Discussed on</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code code--c">C1</span></td><td class="body">Social and environmental cueing</td><td>Spending prompted by company and setting rather than by planned need.</td><td>Page 25</td></tr>
+        <tr><td><span class="code code--c">C2</span></td><td class="body">Post-purchase value evaluation</td><td>Judging whether a purchase was worth it after it has been made.</td><td>Page 28</td></tr>
+        <tr><td><span class="code code--c">C3</span></td><td class="body">Active allocation across time</td><td>Deliberately distributing money over the days and weeks ahead.</td><td>Page 27</td></tr>
+        <tr><td><span class="code code--c">C4</span></td><td class="body">Future expense not salient</td><td>A known commitment that is absent from a present decision.</td><td>Pages 05, 22</td></tr>
+        <tr><td><span class="code code--c">C5</span></td><td class="body">Calculation effort</td><td>The work of assembling balance, history and commitments before deciding.</td><td>Page 23</td></tr>
+        <tr><td><span class="code code--c">C6</span></td><td class="body">Low constraint and high perceived value</td><td>Spending where little limits the purchase and its value feels high.</td><td>Page 28</td></tr>
+        <tr><td><span class="code code--c">D1</span></td><td class="body">Comfort and social responsibility</td><td>Choices made for comfort, or on behalf of another person.</td><td>Page 25</td></tr>
+        <tr><td><span class="code code--c">D2</span></td><td class="body">Mental-account slack</td><td>Money saved in one place treated as available somewhere else.</td><td>Page 27</td></tr>
+      </tbody>
+    </table>
+    <div class="cols mt-l">
+      <div class="main body">
+        <h3>What carried forward</h3>
+        <p>The mechanisms differ, but they share one feature: in each, the relevant financial information exists, and it is not active when the decision is made. That shared feature, rather than any single mechanism, became the testing question.</p>
+      </div>
+      <div class="aside"><div><span class="lab">Codes</span><p class="small" style="margin:0">C codes are contextual records. D1 and D2 also took part in direct prototype sessions (page 10). On this page only their contextual records are used.</p></div></div>
     </div>
   </div>
 </section>
@@ -169,33 +173,26 @@
   <div class="ct">
     <span class="eyebrow m-kicker">01 / The behavioural gap</span>
     <h1 class="h1 m-display-xl" style="max-width:135mm">The information already exists. The problem is when it becomes available.</h1>
-    <div class="row mt-l" style="gap:12mm">
-      <div class="w68 body">
+    <div class="cols mt-l">
+      <div class="main body">
         <p>A student may already know:</p>
         <ul><li>how much money they have;</li><li>how much they have spent;</li><li>that a future expense is coming;</li><li>roughly how much they can afford.</li></ul>
         <p>But that information does not automatically enter the active decision.</p>
+        <p>C4's earlier research record is particularly important here. C4 knew about a Friday dinner, but when the Wednesday food decision occurred, the immediate situation became more salient. Nothing was missing from what C4 knew. What was missing was the dinner's presence in the decision.</p>
+        <h3>Two kinds of availability</h3>
+        <p>Information is <span class="m-emph">technically available</span> when it is stored somewhere the student could look it up: a balance in a banking app, a list of transactions, a plan in a calendar or a budget in a note.</p>
+        <p>Information is <span class="m-emph">mentally available</span> when it is present in the student's thinking at the moment of choosing. In a live decision, that space is taken by immediate questions: what do I want, what are my friends doing, am I hungry, is this worth it.</p>
+        <p>Margin does not add new information. It tests whether moving existing information across this gap changes what a student considers.</p>
       </div>
-      <div class="grow">
-        <div class="card card--line">
-          <span class="lab">C4, contextual record <span class="ev ev--obs" style="margin-left:1.4mm">Observed</span></span>
-          <p class="body" style="margin:0">C4 knew about a Friday dinner, but when the Wednesday food decision occurred, the immediate situation became more salient.</p>
-        </div>
-        <div class="m-pullquote mt-b"><p class="q">Information exists, but is not mentally available when the decision is happening.</p><cite>The gap</cite></div>
+      <div class="aside">
+        <div><span class="lab">C4, contextual record</span><span class="ev ev--obs">Observed</span><p class="small" style="margin:2mm 0 0">A known Friday dinner did not enter a Wednesday food decision.</p></div>
+        <div><span class="lab">The gap</span><p class="qs">Information exists, but is not mentally available when the decision is happening.</p></div>
       </div>
     </div>
-    <div class="row mt-l" style="gap:0;align-items:stretch">
-      <div class="card grow" style="padding:6mm">
-        <span class="lab">Technically available</span>
-        <p class="mid" style="margin:0;line-height:1.6">Balance<br>Transactions<br>Future plans<br>Budget</p>
-      </div>
-      <div class="col" style="width:44mm;align-items:center;justify-content:center;position:relative">
-        <svg class="r" id="gap-r" viewBox="0 0 44 80" style="left:0;top:0;width:44mm;height:100%"></svg>
-        <span class="tagc tagc--red" style="position:relative;white-space:normal;text-align:center;line-height:1.3;width:34mm;justify-content:center;padding:2.4mm">The gap Margin is testing</span>
-      </div>
-      <div class="card card--blue grow" style="padding:6mm">
-        <span class="lab">Mentally available now</span>
-        <p class="mid" style="margin:0;line-height:1.6">What do I want?<br>What are my friends doing?<br>Am I hungry?<br>Is this worth it?</p>
-      </div>
+    <div class="row mt-auto" style="gap:0;align-items:stretch">
+      <div class="card grow"><span class="lab">Technically available</span><p class="body" style="margin:0">Balance, transactions, future plans, budget</p></div>
+      <div class="col" style="width:40mm;align-items:center;justify-content:center"><span class="lab center" style="line-height:1.4">The gap<br>Margin is testing</span><i class="ar" style="margin-top:2mm;width:9mm;height:4mm"></i></div>
+      <div class="card card--blue grow"><span class="lab">Mentally available now</span><p class="body" style="margin:0">What do I want? What are my friends doing? Am I hungry? Is this worth it?</p></div>
     </div>
   </div>
 </section>
@@ -206,20 +203,22 @@
     <span class="eyebrow m-kicker">02 / Research question</span>
     <h1 class="h1 m-display-xl">What exactly were we testing?</h1>
     <div class="m-pullquote mt-b" style="max-width:140mm"><p class="q">Can making financial consequences visible at the moment of spending make spending decisions more conscious?</p><cite>Primary question</cite></div>
-    <div class="row mt-b" style="gap:12mm;align-items:baseline">
-      <p class="m-heading" style="margin:0;width:68mm;flex:none"><span class="m-strike">Will students spend less?</span></p>
-      <p class="body grow" style="margin:0">Not the question. The test was concerned with whether financial information enters the reasoning process before a decision is completed.</p>
+    <div class="cols mt-l">
+      <div class="main body">
+        <h3>Not: “Will students spend less?”</h3>
+        <p>The test was concerned with whether financial information enters the reasoning process before a decision is completed.</p>
+        <p>A spend-less measure would have misread the question in both directions. It would count a participant who knowingly chose to buy as a failure, and a participant who skipped a purchase for unrelated reasons as a success. It would also push the product toward restriction, which D2 explicitly did not want (page 17).</p>
+        <h3>What counts as a conscious decision</h3>
+        <p>A conscious decision may result in any of these outcomes:</p>
+        <div class="row" style="gap:1.6mm;flex-wrap:wrap;margin:0 0 3mm"><span class="m-chip">Buy</span><span class="m-chip">Buy less</span><span class="m-chip">Delay</span><span class="m-chip">Choose something else</span><span class="m-chip">Do not buy</span><span class="m-chip m-chip--blue">Buy, knowing the consequence</span></div>
+        <p>What makes each one conscious is the same: before committing, the participant can say what the purchase does to their money. The outcome itself is left to them.</p>
+        <p>This distinction runs through the rest of the report. Where a finding says a decision “stayed the same,” that is not read as a failure of the intervention (page 26).</p>
+      </div>
+      <div class="aside">
+        <div><span class="lab">Outcome of interest</span><p class="mid" style="margin:0">Consideration before commitment</p></div>
+        <div><span class="lab">Not the outcome</span><p class="small" style="margin:0">Total spent, money saved, or number of purchases avoided.</p></div>
+      </div>
     </div>
-    <div class="ring mt-l">
-      <div class="core">Consideration</div>
-      <div class="oc" style="left:50%;top:6%"><span class="card card--tight" style="display:block"><span class="mid">Buy</span></span></div>
-      <div class="oc" style="left:15%;top:28%"><span class="card card--tight" style="display:block"><span class="mid">Buy less</span></span></div>
-      <div class="oc" style="left:85%;top:28%"><span class="card card--tight" style="display:block"><span class="mid">Delay</span></span></div>
-      <div class="oc" style="left:15%;top:74%"><span class="card card--tight" style="display:block"><span class="mid">Choose something else</span></span></div>
-      <div class="oc" style="left:85%;top:74%"><span class="card card--tight" style="display:block"><span class="mid">Do not buy</span></span></div>
-      <div class="oc" style="left:50%;top:95%;width:62mm"><span class="card card--blue card--tight" style="display:block"><span class="lab" style="margin-bottom:1mm">Or even</span><span class="mid">Buy, knowing the consequence</span></span></div>
-    </div>
-    <p class="small mt-auto muted" style="margin-bottom:0">Every outcome around the centre counts as a conscious decision. This distinction is used for the rest of the report.</p>
   </div>
 </section>
 
@@ -232,22 +231,24 @@
       <span class="lab">Target behaviour</span>
       <p class="q" style="color:var(--m-ink)">Before or during a discretionary spending decision, the participant notices relevant financial context, understands the likely consequence of the proposed expense, and uses that information as one input into the decision.</p>
     </div>
-    <p class="sub m-heading mt-l">What would this look like in behaviour?</p>
-    <div class="ladder mt-b">
-      <div class="rung" style="height:34mm"><span class="n">1</span><span class="w">Notice</span></div>
-      <div class="rung" style="height:48mm"><span class="n">2</span><span class="w">Understand</span></div>
-      <div class="rung" style="height:62mm"><span class="n">3</span><span class="w">Connect</span></div>
-      <div class="rung" style="height:76mm;background:var(--m-mustard);color:var(--m-ink)"><span class="n">4</span><span class="w">Consider</span></div>
-      <div class="rung" style="height:90mm;background:var(--m-route)"><span class="n">5</span><span class="w">Decide</span></div>
+    <div class="body mt-b" style="max-width:150mm">
+      <p>Testing an app as a whole invites questions about whether people like it. Testing a micro-behaviour asks something narrower and more useful: at a specific moment, did a specific thing happen? The target behaviour above breaks into five steps, each with a signal that can be seen or heard in a session.</p>
     </div>
-    <div class="ladder" style="align-items:start">
-      <div class="sig"><span class="lab">Test signal</span><p class="small" style="margin:1.4mm 0 0">Looks at financial information</p></div>
-      <div class="sig"><span class="lab">Test signal</span><p class="small" style="margin:1.4mm 0 0">Accurately explains it</p></div>
-      <div class="sig"><span class="lab">Test signal</span><p class="small" style="margin:1.4mm 0 0">Relates it to the purchase</p></div>
-      <div class="sig"><span class="lab">Test signal</span><p class="small" style="margin:1.4mm 0 0">Articulates the consequence or trade-off</p></div>
-      <div class="sig"><span class="lab">Test signal</span><p class="small" style="margin:1.4mm 0 0">Maintains, changes, delays or substitutes the purchase</p></div>
+    <p class="sub m-heading mt-b">What would this look like in behaviour?</p>
+    <table class="m-table tbl-lg mt-s">
+      <thead><tr><th style="width:8mm"></th><th style="width:34mm">Step</th><th>Observable test signal</th></tr></thead>
+      <tbody>
+        <tr><td class="lab">1</td><td class="mid">Notice</td><td>Looks at financial information</td></tr>
+        <tr><td class="lab">2</td><td class="mid">Understand</td><td>Accurately explains it</td></tr>
+        <tr><td class="lab">3</td><td class="mid">Connect</td><td>Relates it to the purchase</td></tr>
+        <tr class="is-key"><td class="lab">4</td><td class="mid">Consider</td><td>Articulates the consequence or trade-off</td></tr>
+        <tr><td class="lab">5</td><td class="mid">Decide</td><td>Maintains, changes, delays or substitutes the purchase</td></tr>
+      </tbody>
+    </table>
+    <div class="cols mt-l">
+      <div class="main body"><p>The ladder is the analytical framework for the participant pages that follow. Each session is read step by step. Where a participant's reasoning stops before the next step, that point is treated as the behavioural break, and the break, not the participant's overall opinion, is what the design responds to.</p></div>
+      <div class="aside"><div><span class="lab">Step 4 is the target</span><p class="small" style="margin:0">A decision at step 5 without step 4 is a choice, but not a conscious one in the sense used here.</p></div></div>
     </div>
-    <p class="small mt-auto muted" style="margin-bottom:0">This ladder is the analytical framework for the participant pages that follow.</p>
   </div>
 </section>
 
@@ -256,26 +257,32 @@
   <div class="ct">
     <span class="eyebrow m-kicker">02 / What counts as evidence</span>
     <h1 class="h1 m-display-xl">Three things had to stay separate.</h1>
-    <div class="body lede lede--wide">Every claim in this report carries one of these labels. Worked example: the D1 V1 prototype session.</div>
-    <div class="stack-b mt-l">
-      <div class="row" style="gap:8mm;align-items:stretch">
-        <div style="width:44mm;flex:none"><span class="ev ev--obs">Observed</span><p class="small" style="margin:2.4mm 0 0">What the participant actually did or said.</p></div>
-        <div class="card grow" style="padding:6mm"><span class="lab">D1, V1 session</span><p class="body" style="margin:0">D1 questioned the purpose of the feature and later identified “spending something” as the key interaction.</p></div>
+    <div class="cols mt-b">
+      <div class="main body">
+        <p>Most prototype evidence in this project comes from people reacting to hypothetical spending situations. That material mixes what people did, what they say they would do and what the research team reads into both. Kept together, a sentence such as “I might end up using it” can drift into a claim about adoption.</p>
+        <p>Every claim in this report therefore carries one of four labels. The worked example below is taken from the D1 V1 prototype session.</p>
       </div>
-      <div class="row" style="gap:8mm;align-items:stretch">
-        <div style="width:44mm;flex:none"><span class="ev ev--sta">Stated</span><p class="small" style="margin:2.4mm 0 0">What the participant said they would prefer or do.</p></div>
-        <div class="card card--sky grow" style="padding:6mm"><span class="lab">D1, V1 session</span><p class="body" style="margin:0">D1 said they would be more inclined to use the product if transactions were automatic.</p></div>
+      <div class="aside"><div><span class="lab">Rule</span><p class="small" style="margin:0">A stated preference is never reported as behaviour, and an inference is never reported as a finding without its label.</p></div></div>
+    </div>
+    <div class="stack-b mt-b">
+      <div class="row" style="gap:8mm;align-items:start">
+        <div style="width:44mm;flex:none"><span class="ev ev--obs">Observed</span><p class="small" style="margin:2mm 0 0">What the participant actually did or said.</p></div>
+        <p class="body grow" style="margin:0">D1 questioned the purpose of the feature and later identified “spending something” as the key interaction.</p>
       </div>
-      <div class="row" style="gap:8mm;align-items:stretch">
-        <div style="width:44mm;flex:none"><span class="ev ev--inf">Inferred</span><p class="small" style="margin:2.4mm 0 0">What the research team believes the behaviour may mean.</p></div>
-        <div class="card card--yellow grow" style="padding:6mm"><span class="lab">Research team</span><p class="body" style="margin:0">Reducing transaction-entry effort may be a condition for adoption, rather than the intervention itself.</p></div>
+      <div class="row" style="gap:8mm;align-items:start">
+        <div style="width:44mm;flex:none"><span class="ev ev--sta">Stated</span><p class="small" style="margin:2mm 0 0">What the participant said they would prefer or do.</p></div>
+        <p class="body grow" style="margin:0">D1 said they would be more inclined to use the product if transactions were automatic.</p>
       </div>
-      <div class="row" style="gap:8mm;align-items:stretch">
-        <div style="width:44mm;flex:none"><span class="ev ev--unk">Unknown</span><p class="small" style="margin:2.4mm 0 0">What the current evidence cannot answer.</p></div>
-        <div class="card card--dash grow" style="padding:6mm"><span class="lab">Still open</span><p class="body" style="margin:0">Whether automatic capture would lead D1 to use the product in a real spending moment.</p></div>
+      <div class="row" style="gap:8mm;align-items:start">
+        <div style="width:44mm;flex:none"><span class="ev ev--inf">Inferred</span><p class="small" style="margin:2mm 0 0">What the research team believes the behaviour may mean.</p></div>
+        <p class="body grow" style="margin:0">Reducing transaction-entry effort may be a condition for adoption, rather than the intervention itself.</p>
+      </div>
+      <div class="row" style="gap:8mm;align-items:start">
+        <div style="width:44mm;flex:none"><span class="ev ev--unk">Unknown</span><p class="small" style="margin:2mm 0 0">What the current evidence cannot answer.</p></div>
+        <p class="body grow" style="margin:0">Whether automatic capture would lead D1 to use the product in a real spending moment.</p>
       </div>
     </div>
-    <p class="small mt-auto muted" style="margin-bottom:0">The distinction recurs on every participant and finding page.</p>
+    <p class="body mt-l" style="max-width:150mm;margin-bottom:0">The same labels recur on every participant and finding page. Two further marks are used: <span class="ev ev--src">Source record needed</span> where a claim depends on material not yet in the archive, and <span class="ev ev--ill">Illustrative</span> where a figure is an example rather than data.</p>
   </div>
 </section>
 
@@ -284,21 +291,24 @@
   <div class="ct">
     <span class="eyebrow m-kicker">03 / Testing architecture</span>
     <h1 class="h1 m-display-xl" style="max-width:130mm">The test was structured around the decision, not the interface.</h1>
-    <div class="row mt-l" style="gap:12mm;flex:1">
-      <div class="grow rel">
-        <svg class="r" id="arch-r" viewBox="0 0 100 200" style="left:0;top:0;width:100mm;height:200mm"></svg>
-        <div class="abs step" style="left:0;top:0mm;width:100mm"><span class="n"></span><div><p class="lab" style="margin:0">01 Observe</p><p class="mid" style="margin:1mm 0 0">Six-day natural spending reflection</p></div></div>
-        <div class="abs step" style="left:0;top:33mm;width:100mm"><span class="n"></span><div><p class="lab" style="margin:0">02 Encounter</p><p class="mid" style="margin:1mm 0 0">Participant is placed in a hypothetical spending situation</p></div></div>
-        <div class="abs step" style="left:0;top:66mm;width:100mm"><span class="n"></span><div><p class="lab" style="margin:0">03 Reflect</p><p class="mid" style="margin:1mm 0 0">Prototype introduces financial context</p></div></div>
-        <div class="abs step" style="left:0;top:99mm;width:100mm"><span class="n"></span><div><p class="lab" style="margin:0">04 Decide</p><p class="mid" style="margin:1mm 0 0">Participant explains what they would do</p></div></div>
-        <div class="abs step" style="left:0;top:132mm;width:100mm"><span class="n"></span><div><p class="lab" style="margin:0">05 Analyse</p><p class="mid" style="margin:1mm 0 0">Identify the behavioural break</p></div></div>
-        <div class="abs step" style="left:0;top:165mm;width:100mm"><span class="n"></span><div><p class="lab" style="margin:0">06 Iterate</p><p class="mid" style="margin:1mm 0 0">Change one design variable</p></div></div>
+    <div class="body mt-b" style="max-width:150mm"><p>Each session followed the same sequence. The participant was not asked to explore the app and give feedback; they were placed in a spending situation, shown financial context, and asked what they would do. The interface was the means of showing context, not the object of the test.</p></div>
+    <table class="m-table tbl-lg mt-b">
+      <thead><tr><th style="width:30mm">Step</th><th>What happens</th><th style="width:52mm">What it produces</th></tr></thead>
+      <tbody>
+        <tr><td class="mid">01 Observe</td><td>Six-day natural spending reflection</td><td class="small">A baseline of what visibility alone does (B1)</td></tr>
+        <tr><td class="mid">02 Encounter</td><td>Participant is placed in a hypothetical spending situation</td><td class="small">A decision to reason about</td></tr>
+        <tr><td class="mid">03 Reflect</td><td>Prototype introduces financial context</td><td class="small">Reactions to the information</td></tr>
+        <tr><td class="mid">04 Decide</td><td>Participant explains what they would do</td><td class="small">A stated decision and its reasoning</td></tr>
+        <tr><td class="mid">05 Analyse</td><td>Identify the behavioural break</td><td class="small">The ladder step where reasoning stopped</td></tr>
+        <tr><td class="mid">06 Iterate</td><td>Change one design variable</td><td class="small">The next version</td></tr>
+      </tbody>
+    </table>
+    <div class="cols mt-l">
+      <div class="main body">
+        <p>The six-day phase is a behavioural probe, not proof that the prototype caused later behaviour change. It sits before the prototype so that the effect of simply paying attention to spending can be seen on its own.</p>
+        <p>Steps 02 to 05 are documented for the direct sessions. A clean second round with fresh participants is not yet documented; page 36 sets out what that means for the claims.</p>
       </div>
-      <div style="width:56mm;flex:none" class="stack-b">
-        <div class="card card--line"><span class="lab">Note</span><p class="small" style="margin:0">The six-day phase is a behavioural probe, not proof that the prototype caused later behaviour change.</p></div>
-        <div class="card"><span class="lab">Side note: faculty method</span><p class="small" style="margin:0">The method requires an observable micro-behaviour, a fixed success criterion, one change between comparable rounds and fresh participants for Round 2.</p></div>
-        <div class="card card--dash"><span class="lab">Status</span><p class="small" style="margin:0">Steps 02 to 05 are documented for the direct sessions. A clean Round 2 with fresh participants is not yet documented (page 36).</p></div>
-      </div>
+      <div class="aside"><div><span class="lab">Faculty method</span><p class="small" style="margin:0">The method requires an observable micro-behaviour, a fixed success criterion, one change between comparable rounds and fresh participants for Round 2.</p></div></div>
     </div>
   </div>
 </section>
@@ -308,31 +318,26 @@
   <div class="ct">
     <span class="eyebrow m-kicker">03 / Participant and evidence architecture</span>
     <h1 class="h1 m-display-xl" style="max-width:140mm">The research pool is mixed, so the evidence must be labelled by stage.</h1>
-    <div class="body lede lede--wide">The research archive contains earlier behavioural participants and later prototype sessions. These are not silently collapsed into one formal experimental sample.</div>
-    <div class="card mt-l" style="padding:6mm">
-      <div class="row" style="justify-content:space-between;align-items:center"><span class="mid" style="color:var(--m-blue)">Contextual behavioural research</span><span class="tagc tagc--line">Context</span></div>
-      <div class="g3 mt-b" style="gap:3mm">
-        <span class="row" style="gap:2mm;align-items:center"><span class="code code--c">C1</span><span class="small">Social cueing</span></span>
-        <span class="row" style="gap:2mm;align-items:center"><span class="code code--c">C2</span><span class="small">Post-purchase value</span></span>
-        <span class="row" style="gap:2mm;align-items:center"><span class="code code--c">C3</span><span class="small">Allocation across time</span></span>
-        <span class="row" style="gap:2mm;align-items:center"><span class="code code--c">C4</span><span class="small">Future expense not salient</span></span>
-        <span class="row" style="gap:2mm;align-items:center"><span class="code code--c">C5</span><span class="small">Calculation effort</span></span>
-        <span class="row" style="gap:2mm;align-items:center"><span class="code code--c">C6</span><span class="small">Low constraint, high value</span></span>
+    <div class="cols mt-b">
+      <div class="main body">
+        <p>The research archive contains earlier behavioural participants and later prototype sessions. These are not silently collapsed into one formal experimental sample.</p>
+        <p>Contextual records explain why students spend as they do. Direct records show how people responded to the prototype. Only direct records are used as evidence about the prototype, and even these are qualitative: three sessions, not a sample.</p>
       </div>
+      <div class="aside"><div><span class="lab">Why this matters</span><p class="small" style="margin:0">Presenting every record as one clean experimental round would overstate what was tested.</p></div></div>
     </div>
-    <i class="down"></i>
-    <div class="card card--blue" style="padding:6mm">
-      <div class="row" style="justify-content:space-between;align-items:center"><span class="mid">Direct prototype evidence</span><span class="tagc" style="background:var(--m-paper);color:var(--m-blue)">Direct</span></div>
-      <div class="stack mt-b">
-        <div class="row" style="gap:3mm;align-items:center"><span class="code" style="background:var(--m-paper);color:var(--m-blue)">D1</span><span class="body grow">V1 prototype session</span><span class="tagc tagc--sky">V1</span></div>
-        <div class="row" style="gap:3mm;align-items:center"><span class="code" style="background:var(--m-paper);color:var(--m-blue)">D2</span><span class="body grow">Prototype testing session</span><span class="tagc tagc--sky">V1</span></div>
-        <div class="row" style="gap:3mm;align-items:center"><span class="code" style="background:var(--m-paper);color:var(--m-blue)">D3</span><span class="body grow">Direct V2 session</span><span class="tagc tagc--yellow">V2</span></div>
-        <div class="row" style="gap:3mm;align-items:center"><span class="code code--b">B1</span><span class="body grow">Six-day self-observation record</span><span class="tagc" style="background:var(--m-paper);color:var(--m-blue)">Baseline</span></div>
-      </div>
-    </div>
-    <div class="row mt-auto" style="gap:8mm">
-      <p class="small grow" style="margin:0"><b class="lab">Why this matters</b><br>This is more credible than presenting every record as one clean experimental round.</p>
-      <p class="small grow" style="margin:0"><b class="lab">Version tag for D2</b><br>The prototype version used with D2 is not stated in the archive. Tagged V1 provisionally <span class="ev ev--src" style="margin-left:1mm">Source record needed</span></p>
+    <table class="m-table mt-b">
+      <thead><tr><th>Code</th><th>Stage</th><th>Record</th><th>Tags</th><th>Used on</th></tr></thead>
+      <tbody>
+        <tr><td><span class="code code--c">C1</span> to <span class="code code--c">C6</span></td><td>Contextual behavioural research</td><td>Earlier behavioural records</td><td><span class="tagc tagc--line">Context</span></td><td>Pages 04, 05, 22 to 28</td></tr>
+        <tr><td><span class="code">D1</span></td><td>Direct prototype evidence</td><td>V1 prototype session</td><td><span class="tagc tagc--blue">Direct</span> <span class="tagc tagc--sky">V1</span></td><td>Pages 08, 15, 16, 21</td></tr>
+        <tr><td><span class="code">D2</span></td><td>Direct prototype evidence</td><td>Prototype testing session</td><td><span class="tagc tagc--blue">Direct</span> <span class="tagc tagc--sky">V1</span></td><td>Pages 17, 18, 21</td></tr>
+        <tr><td><span class="code">D3</span></td><td>Direct prototype evidence</td><td>Direct V2 session</td><td><span class="tagc tagc--blue">Direct</span> <span class="tagc tagc--yellow">V2</span></td><td>Pages 19, 20, 21, 31</td></tr>
+        <tr><td><span class="code code--b">B1</span></td><td>Baseline</td><td>Six-day self-observation record</td><td><span class="tagc">Baseline</span></td><td>Pages 11, 12</td></tr>
+      </tbody>
+    </table>
+    <div class="body mt-l" style="max-width:150mm">
+      <p>D1 and D2 also appear in the contextual research. Where their earlier records are used (pages 04, 25 and 27), the page says so, and the evidence is treated as contextual rather than as a prototype result.</p>
+      <p class="small" style="margin-top:4mm">The prototype version used with D2 is not stated in the archive; it is tagged V1 provisionally. <span class="ev ev--src">Source record needed</span></p>
     </div>
   </div>
 </section>
@@ -343,31 +348,25 @@
     <span class="eyebrow m-kicker">04 / The six-day baseline</span>
     <h1 class="h1 m-display-xl" style="max-width:140mm">Before the prototype: what happened when spending simply became visible?</h1>
     <p class="sub m-heading">Six days of self-observation, record B1</p>
-    <div class="row mt-b" style="gap:12mm">
-      <div class="w68 body">
-        <p>The purpose of the six-day exercise was not to prove product impact.</p>
-        <p>It was to see what happened when spending became more salient through observation and reflection.</p>
+    <div class="cols mt-b">
+      <div class="main body">
+        <p>The purpose of the six-day exercise was not to prove product impact. It was to see what happened when spending became more salient through observation and reflection alone, with no prototype involved.</p>
+        <p>One source-backed self-observation record describes a change in attention toward small, frequent purchases. The participant became more aware of repeated snack purchases and avoided some snacks and autos after seeing the accumulation.</p>
+        <p>The sequence the record describes is simple: a small purchase repeats across days; the repetition becomes visible; awareness changes. No chart or tool was involved. The change came from attention.</p>
+        <p>This finding comes with a caution. Reflecting on spending for six days may itself increase financial salience, so the diary is part of the effect it records (page 43).</p>
       </div>
-      <div class="grow card card--line">
-        <span class="lab">B1 <span class="ev ev--obs" style="margin-left:1.4mm">Observed</span></span>
-        <p class="small" style="margin:0">The record describes a change in attention toward small, frequent purchases. The participant became more aware of repeated snack purchases and avoided some snacks and autos after seeing the accumulation.</p>
+      <div class="aside">
+        <div><span class="lab">B1</span><span class="ev ev--obs">Observed</span><p class="small" style="margin:2mm 0 0">More aware of repeated snack purchases; avoided some snacks and autos after seeing the accumulation.</p></div>
+        <div><span class="lab">Not shown</span><p class="small" style="margin:0">No totals or counts: the source record does not contain them.</p></div>
       </div>
     </div>
-    <div class="rel mt-l" style="height:78mm">
-      <svg class="r" id="six-r" viewBox="0 0 174 78" style="left:0;top:0;width:174mm;height:78mm"></svg>
+    <div class="rel mt-auto" style="height:44mm">
+      <svg class="r" id="six-r" viewBox="0 0 174 44" style="left:0;top:0;width:174mm;height:44mm"></svg>
       <div class="g4" style="grid-template-columns:repeat(6,1fr);gap:0;position:relative">
         <span class="lab lab--blue center">Day 1</span><span class="lab lab--blue center">Day 2</span><span class="lab lab--blue center">Day 3</span><span class="lab lab--blue center">Day 4</span><span class="lab lab--blue center">Day 5</span><span class="lab lab--blue center">Day 6</span>
       </div>
-      <div class="slot abs" style="left:28mm;right:28mm;bottom:0;text-align:center"><b>Source record needed</b>Plot each recorded spending event from the B1 diary as a node in its day column. No events are drawn here because the day-level entries are not in the archive used for this report.</div>
     </div>
-    <div class="row mt-auto" style="align-items:center;gap:3mm">
-      <div class="card grow card--tight"><span class="lab">Highlight</span><span class="mid" style="color:var(--m-blue)">Small purchase, repeated across days</span></div>
-      <i class="ar"></i>
-      <div class="card grow card--tight"><span class="lab">Then</span><span class="mid" style="color:var(--m-blue)">Accumulation becomes visible</span></div>
-      <i class="ar"></i>
-      <div class="card card--yellow grow card--tight"><span class="lab">Then</span><span class="mid">Awareness changes</span></div>
-    </div>
-    <p class="small muted" style="margin:3mm 0 0">No numerical totals are shown: the source record does not contain them.</p>
+    <div class="slot" style="text-align:center"><b>Source record needed</b>Plot each recorded spending event from the B1 diary in its day column. The day-level entries are not in the archive used for this report, so none are drawn.</div>
   </div>
 </section>
 
@@ -376,31 +375,27 @@
   <div class="ct">
     <span class="eyebrow m-kicker">04 / What the baseline changed</span>
     <h1 class="h1 m-display-xl" style="max-width:140mm">Awareness did not come from a better chart. It came from seeing accumulation.</h1>
-    <div class="row mt-l" style="gap:12mm">
-      <div class="w68 body">
+    <div class="cols mt-l">
+      <div class="main body">
         <p>The baseline suggested that a single small expense was not necessarily the meaningful unit.</p>
-        <p>The participant already knew they bought snacks. What changed was the visibility of <span class="m-emph">how often</span>.</p>
-        <p>This matters because the prototype originally contained considerable historical information. The baseline suggested that simply displaying more historical data was unlikely to be enough.</p>
-      </div>
-      <div class="grow">
-        <div class="card card--blue" style="padding:7mm 6mm">
+        <div class="card card--blue" style="padding:5mm 6mm;margin:5mm 0">
           <span class="lab">The meaningful unit could be</span>
-          <p class="big" style="margin:0">Frequency <span style="opacity:0.6">×</span> repetition <span style="opacity:0.6">×</span> accumulation</p>
+          <p class="mid" style="margin:0">Frequency × repetition × accumulation</p>
         </div>
-        <p class="small mt-s" style="margin-bottom:0"><span class="ev ev--inf">Inferred</span>&nbsp; from record B1.</p>
+        <p>The participant already knew they bought snacks. What changed was the visibility of <span class="m-emph">how often</span>. A single ₹60 purchase does not register as a decision worth weighing; the same purchase seen for the fourth time in a week reads differently.</p>
+        <p>This matters because the prototype originally contained considerable historical information: monthly totals, categories and patterns. The baseline suggested that simply displaying more historical data was unlikely to be enough. What made the difference in B1 was not the quantity of information but the moment it became noticeable, which points toward the timing question the rest of the testing takes up.</p>
+        <p class="small" style="margin-top:5mm"><span class="ev ev--ill">Illustrative</span>&nbsp; ₹60 is a conceptual example, not a recorded amount.</p>
       </div>
-    </div>
-    <div class="mt-auto">
-      <div class="row" style="align-items:center;gap:3mm;justify-content:center">
-        <span class="coin">₹60</span><span class="mid">+</span><span class="coin">₹60</span><span class="mid">+</span><span class="coin">₹60</span><span class="mid">+</span><span class="coin">₹60</span><span class="mid">+</span><span class="coin coin--ghost">…</span>
+      <div class="aside">
+        <div><span class="lab">Conceptually</span>
+          <p class="mid" style="margin:0;line-height:1.5">₹60 + ₹60 + ₹60 + ₹60 + …</p>
+          <i class="down down--l" style="margin:2mm 0 2mm 2mm"></i>
+          <p class="qs" style="margin:0">“This is happening often.”</p>
+          <i class="down down--l" style="margin:2mm 0 2mm 2mm"></i>
+          <span class="tagc tagc--yellow">Awareness</span>
+        </div>
+        <div><span class="lab">Label</span><span class="ev ev--inf">Inferred</span><p class="small" style="margin:2mm 0 0">From record B1.</p></div>
       </div>
-      <i class="down" style="margin:5mm auto"></i>
-      <div class="row" style="align-items:center;gap:6mm;justify-content:center">
-        <div class="card card--line" style="padding:5mm 7mm"><span class="big">“This is happening often.”</span></div>
-        <i class="ar" style="width:10mm;height:5mm"></i>
-        <div class="card card--yellow" style="padding:5mm 7mm"><span class="big">Awareness</span></div>
-      </div>
-      <p class="center mt-b" style="margin-bottom:0"><span class="ev ev--ill">Illustrative</span>&nbsp; <span class="small">Conceptual visual. ₹60 is not a recorded amount.</span></p>
     </div>
   </div>
 </section>
@@ -410,24 +405,24 @@
   <div class="ct">
     <span class="eyebrow m-kicker">04 / The unit of analysis</span>
     <h1 class="h1 m-display-xl" style="max-width:130mm">A purchase is not just a transaction. It is a decision episode.</h1>
-    <div class="row mt-l" style="gap:12mm;flex:1">
-      <div class="grow flow">
-        <div class="card"><span class="lab">Context</span><div class="row" style="gap:2mm;flex-wrap:wrap"><span class="m-chip">Friend invitation</span><span class="m-chip">Hunger</span><span class="m-chip">Bad mess food</span><span class="m-chip">Future plan</span><span class="m-chip">Time pressure</span></div></div>
-        <i class="down"></i>
-        <div class="card card--line card--tight"><span class="mid">Immediate desire or need</span></div>
-        <i class="down"></i>
-        <div class="card card--blue"><span class="lab">Financial reality</span><div class="row" style="gap:2mm;flex-wrap:wrap"><span class="m-chip m-chip--sky">Current money</span><span class="m-chip m-chip--sky">Past spending</span><span class="m-chip m-chip--sky">Future commitment</span></div></div>
-        <i class="down"></i>
-        <div class="card card--yellow card--tight"><span class="mid">Mental trade-off</span></div>
-        <i class="down"></i>
-        <div class="card card--red card--tight"><span class="mid">Decision</span></div>
-        <i class="down"></i>
-        <div class="card card--dash card--tight"><span class="mid">Post-purchase reflection</span></div>
-      </div>
-      <div class="w68" style="width:56mm">
-        <div class="body"><p>This model allows the research to analyse <span class="m-emph">why</span> a purchase happened rather than treating every transaction as equivalent.</p></div>
-        <div class="m-callout mt-b"><span class="m-kicker">Where Margin sits</span><p class="small" style="margin:0">Between financial reality and the mental trade-off: the moment where information can still change the decision.</p></div>
-      </div>
+    <div class="body mt-b" style="max-width:150mm">
+      <p>A transaction record shows an amount, a time and a merchant. It says nothing about the situation that produced it. Two identical ₹300 dinners can come from very different decisions: one planned for a week, the other made in thirty seconds because friends were already ordering. Treating them as equivalent hides exactly what this project needed to see.</p>
+      <p>The report therefore analyses each purchase as a decision episode with six parts.</p>
+    </div>
+    <table class="m-table tbl-lg mt-b">
+      <thead><tr><th style="width:44mm">Part</th><th>What it contains</th></tr></thead>
+      <tbody>
+        <tr><td class="mid">Context</td><td>Friend invitation, hunger, bad mess food, a future plan, time pressure</td></tr>
+        <tr><td class="mid">Immediate desire or need</td><td>What the person wants now</td></tr>
+        <tr><td class="mid">Financial reality</td><td>Current money, past spending, future commitment</td></tr>
+        <tr class="is-key"><td class="mid">Mental trade-off</td><td>Weighing the want against the financial reality</td></tr>
+        <tr><td class="mid">Decision</td><td>The choice made</td></tr>
+        <tr><td class="mid">Post-purchase reflection</td><td>How the choice is judged afterwards</td></tr>
+      </tbody>
+    </table>
+    <div class="cols mt-l">
+      <div class="main body"><p>This model allows the research to analyse <span class="m-emph">why</span> a purchase happened rather than treating every transaction as equivalent. It also locates the intervention. Margin is meant to act between financial reality and the mental trade-off: the last point at which information can still change the decision.</p></div>
+      <div class="aside"><div><span class="lab">Illustrative</span><p class="small" style="margin:0">The ₹300 dinners are an example of the idea, not data.</p></div></div>
     </div>
   </div>
 </section>

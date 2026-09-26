@@ -35,7 +35,7 @@
   // 09 architecture spine
   R('arch-r', [[3, 3], [3, 168]]); [0, 33, 66, 99, 132, 165].forEach(function (y, k) { N('arch-r', 3, y + 3, k === 5 ? 'future' : 'event'); });
   // 11 six days: dashed day rails with ghost slots
-  for (var d = 0; d < 6; d++) { var x = 14.5 + d * 29; R('six-r', [[x, 9], [x, 48]], { style: 'dotted' }); N('six-r', x, 20, 'future'); N('six-r', x, 34, 'future'); }
+  for (var d = 0; d < 6; d++) { var x = 14.5 + d * 29; R('six-r', [[x, 9], [x, 42]], { style: 'dotted' }); N('six-r', x, 20, 'future'); N('six-r', x, 32, 'future'); }
 
 
   // 20 friction timeline
