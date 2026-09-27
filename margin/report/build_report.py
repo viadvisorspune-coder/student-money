@@ -593,9 +593,6 @@ page(SX,
      pn(kk("Three-line note to attach", "kk--k") + '<div class="gr gr-3 gr-s" style="margin-top:2mm">' + "".join(f'<div><span class="num">{i + 1}</span><p class="hx hx--k">{t(x)}</p></div>' for i, x in enumerate(
          ["Where you used it", "Which prompts changed a decision", "One place you overruled it"])) + "</div>", "y", "", "padding:7mm 6mm"))
 
-PAGES.append('<section class="pg pg--field closing" data-bare><div class="closing-in"><p class="big">The goal is not less spending.</p><p class="big" style="color:var(--m-mustard)">The goal is more conscious spending.</p></div>'
-             '<div class="abs" style="left:18mm;bottom:16mm"><span class="fr">Margin  /  User testing kit</span></div></section>')
-
 # ================================================================== cover and contents
 SECS = [("Q", "The research question", SQ), ("A", "What we are testing", SA_), ("B", "The method", SB), ("C", "The participants", SC), ("D", "What we found", SD),
         ("E", "What broke", SE), ("F", "The change", SF), ("G", "Does the behaviour come back?", SG), ("H", "Synthesis", SH), ("I", "The next test", SI), ("", "When it goes wrong, the AI line", SX)]
