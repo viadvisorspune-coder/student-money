@@ -593,6 +593,18 @@ page(SX,
      pn(kk("Three-line note to attach", "kk--k") + '<div class="gr gr-3 gr-s" style="margin-top:2mm">' + "".join(f'<div><span class="num">{i + 1}</span><p class="hx hx--k">{t(x)}</p></div>' for i, x in enumerate(
          ["Where you used it", "Which prompts changed a decision", "One place you overruled it"])) + "</div>", "y", "", "padding:7mm 6mm"))
 
+page(SH,
+     head("AI use note", "Part H  /  Final results", "Attached as the testing kit requires: where AI was used, which prompts changed a decision, and one place it was overruled."),
+     '<div class="clog">'
+     + '<div><span class="aiuse">1  Where</span><div class="tx">' + "".join(f"<p><b>{t(a)}</b>  {t(b)}</p>" for a, b in [
+         ("B.5 and B.7", "Drafting probes and debrief questions, then piloting them on a real person."),
+         ("D.8", "A first-pass clustering of the notes collected, reworked by hand. Counts are the team's."),
+         ("G", "Scaffolding the analysis: secondary and guardrail measures. The pass criterion was set by the team.")]) + "</div></div>"
+     + '<div><span class="aiuse">2  Prompts</span><div class="tx"><p>Which prompts changed a decision:</p><div class="wline"></div><div class="wline"></div></div></div>'
+     + '<div><span class="aiuse">3  Overruled</span><div class="tx"><p>One place we overruled it:</p><div class="wline"></div><div class="wline"></div></div></div>'
+     + "</div>",
+     pn(kk("Not used for", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0">Participants, quotes, the CREATE diagnosis, the choice of change, or any result, count or citation.</p>', "b"))
+
 # ================================================================== order: drop G (repeat probe) and field guide; next test before final results
 _keep = [p for p in PAGES if f'data-sec="{SG}"' not in p and f'data-sec="{SX}"' not in p]
 _i = [p for p in _keep if f'data-sec="{SI}"' in p]
