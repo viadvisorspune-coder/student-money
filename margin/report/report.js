@@ -9,11 +9,11 @@
     var sec = pg.getAttribute('data-sec') || '';
     var rh = document.createElement('div');
     rh.className = 'rh m-runhead m-runhead--rule';
-    rh.innerHTML = '<span><b>Margin</b>&nbsp;&nbsp;Evidence and test plan</span><span>' + sec.replace(/  /, '&nbsp;&nbsp;') + '</span>';
+    rh.innerHTML = '<span><b>Margin</b>&nbsp;&nbsp;' + (document.body.dataset.title || 'Evidence and test plan') + '</span><span>' + sec.replace(/  /, '&nbsp;&nbsp;') + '</span>';
     pg.insertBefore(rh, pg.firstChild);
     var ft = document.createElement('div');
     ft.className = 'ft m-footer';
-    ft.innerHTML = '<span style="opacity:0.6">Participants are shown by code only.</span><span class="m-folio m-folio--node">' + n + '</span>';
+    ft.innerHTML = '<span style="opacity:0.6">' + (document.body.dataset.foot || 'Participants are shown by code only.') + '</span><span class="m-folio m-folio--node">' + n + '</span>';
     pg.appendChild(ft);
   });
 
