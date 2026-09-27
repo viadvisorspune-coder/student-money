@@ -6,6 +6,7 @@ Layout, colour and type come from the Margin design system; helpers are in rlib.
 Run:
     python3 margin/report/build_report.py
 """
+import re
 import sys
 from pathlib import Path
 
@@ -559,6 +560,16 @@ page(SI,
      gr(pn(kk("Set before you run", "kk--k") + '<p class="tx" style="margin:0 0 3mm">Write the criterion as a count and date it:</p><p class="hx">Four of five participants mention the projected remaining amount without being prompted within thirty seconds, and three of five state a decision without being asked.</p><p class="tx" style="margin:3mm 0 0"><b>Do not change it after the first session.</b></p>', "y"),
         pn(tx("Run three V2 sessions with new participants. Keep the task and session length the same. Score each session against the five components. Record counts, not percentages.")), cols="2"))
 
+page(SI,
+     head("Does the behaviour come back?", "Part G  /  The next test", "Everything in this document tests one occurrence. This round did not measure repeats, so we cannot yet say whether the behaviour comes back without prompting."),
+     gr(pn(kk("What we have") + '<p class="hx">The closest signal is P09\'s six days.</p>' + tx("Snack purchases reduced and some autos were avoided across the week. But the participant was recording their own spending, and asking someone to record a behaviour makes them more aware of it. This is observer bias, not a repeat probe.")),
+        pn(kk("What we do not have") + '<ul class="xlist">' + "".join(f"<li>{t(x)}</li>" for x in ["No event log in the prototype", "No artefact trace checked", "No day-6 return visit", "No loop log"]) + "</ul>", "l"), cols="2"),
+     pn(kk("Round 2 will use", "kk--w") + rh([("Artefact trace", "The payment app history. P08 and P10 already use it as their source of truth."),
+                                              ("Day-6 return visit", "Ten minutes. Watch first, ask last."),
+                                              ("Optional loop log", "Three letters, sent by the participant only: P / W / M, D / H / N, G / F / B.")], key="Artefact trace"), "b", "", "padding:6mm 3mm"),
+     gr(pn(kk("Ruled out") + tx("A daily check-in. This research is about prompts and timing, so a message from the researcher would measure the researcher, not the design.")),
+        pn(kk("Expected, written down before the week", "kk--k") + '<p class="hx hx--k">Over five days, a column of P and no M. An empty log is a result: report the zero.</p>', "y"), cols="2"))
+
 outc = [("Changed", "Decision moved from the original choice"), ("Modified", "Amount or alternative changed"), ("Delayed", "Decision postponed"),
         ("Declined", "Purchase abandoned"), ("Maintained", "Original decision retained"), ("Conscious maintain", "Original decision retained after explicit financial consideration")]
 page(SI,
@@ -612,6 +623,164 @@ _h = [p for p in _keep if f'data-sec="{SH}"' in p]
 _rest = [p for p in _keep if p not in _i and p not in _h]
 PAGES[:] = _rest + _i + _h
 
+SAPP = "Appendices"
+
+
+def ahd(n, title, note):
+    return (f'<div class="hd"><span class="tagc tagc--yellow" style="align-self:flex-start">Appendix {n}</span>'
+            f'<h1 class="h1 m-display-xl">{t(title)}</h1><p class="deck">{t(note)}</p></div>')
+
+
+NR = '<span class="nr">Not recorded</span>'
+
+
+def fv(v):
+    if v is None:
+        return NR
+    return v if v.startswith("<") else t(v)
+
+
+def form(rows):
+    return '<div class="form">' + "".join(f'<div><span class="fl">{t(a)}</span><div class="fv">{fv(b)}</div></div>' for a, b in rows) + "</div>"
+
+
+CSTAGES = ["Cue", "Reaction", "Evaluation", "Ability", "Timing", "Experience", "Did not stall"]
+
+
+def boxes(on):
+    return '<span class="boxes">' + "".join(f'<span class="{"on" if s in on else ""}"><i></i>{s}</span>' for s in CSTAGES) + "</span>"
+
+
+def recon(s):
+    return f'<span class="wtag">Reconstructed from notes</span> {t(s)}'
+
+
+def qline(items):
+    return "".join(f'<p class="q2">“{t(x)}”</p>' for x in items)
+
+
+def rows_tbl(rows):
+    return table(["Time", "What they did", "What they said", "Stage"], [[NR, t(a), f"<span class='q2'>“{t(b)}”</span>" if b else NR, t(c)] for a, b, c in rows], "dense", ["18mm", None, None, "28mm"], raw=True)
+
+
+SESS = [
+    ("P07", "V1 walkthrough, about 26 min", "V1 scenario (B.3)",
+     None,
+     [("Explored the financial overview", "How would this help me exactly? I don't get it.", "Experience"),
+      ("Reached the potential-spend view after explanation", "I think this is the highlight of the app.", "Evaluation"),
+      ("Tried to add a new plan; the interaction failed", None, "Ability"),
+      ("Discussed how far the app should go", "Obviously you wouldn't want an app to dictate your financial decisions.", "Evaluation")],
+     ["Experience", "Evaluation"], "Only with help", "No",
+     ("I think this is the highlight of the app.", "Needed explanation before reaching the potential-spend view"),
+     ["How would this help me exactly? I don't get it.", "It shows you what it will look like if you're going to spend this amount.", "A flag basically to tell you.", "Some kind of alert… it makes them conscious."],
+     "v1-home.jpg", "P07 explored the overview, then asked how it would help, suggesting the break is at Experience and Evaluation."),
+    ("P08", "Prototype session, against the payment app", "Evaluate the prototype against the payment app they already use",
+     "Uses the payment app as the source of truth; most transactions are UPI; sets their own limit when a big expense is coming (reported, not observed)",
+     [("Compared the transaction history with the payment app", "I use the payment app history as the source of truth.", "Experience"),
+      ("Considered manual entry", "I don't think I would manually enter everything.", "Ability"),
+      ("Described a self-set limit before a trip", "If I'm going on a trip and it costs ₹18,000 and I have ₹24,000, I can set a ₹6,000 limit.", "Evaluation"),
+      ("Looked at patterns", "Patterns are useful if they tell me what I should do.", "Evaluation")],
+     ["Experience", "Evaluation"], None, None,
+     ("I would set my own limit. I don't want the app to enforce it.", "Reports already setting limits before big expenses; not observed in the session"),
+     ["Most transactions are UPI.", "Two hundred rupees doesn't feel like much. Fourteen thousand at one place feels like a lot.", "If a big transaction is coming, maybe it should prompt me to spend less on food."],
+     "v1-plans.jpg", "P08 compared the prototype with the payment app, suggesting the break is at Experience: the history is duplicated."),
+    ("P10", "V2 walkthrough, about 10 min", "V2 scenario (B.3)",
+     "Checks their account balance in the payment app",
+     [("Read the progress bar", "Usually a progress bar means a goal. My goal will be to fill it.", "Experience"),
+      ("Asked when the app would be used", "When exactly am I using this app? What is the situation?", "Timing"),
+      ("Discussed logging", "You don't need to log every time. It should be automatic through SMS or bank.", "Ability"),
+      ("Compared actual and estimated spend", "Actual versus estimated spend should be clearer.", "Experience")],
+     ["Timing", "Experience"], None, None,
+     ("Friction at that time is better than friction later.", "Not observed at a live spending moment; the session was scenario-based"),
+     ["Don't tell me the features. In which situation am I using the app?", "It becomes difficult to do later because you don't remember.", "That's simpler than opening another app."],
+     "v2-result.jpg", "P10 read the progress bar as a goal and asked for the situation, suggesting the break is at Timing."),
+]
+for code, method, task, cur, rws, stall, happened, unaided, sd, quotes, shot, five in SESS:
+    page(SAPP,
+         ahd("A", f"Observation sheet: {code}", "One per participant. Filled from the session notes. Fields the notes did not capture are marked, not guessed."),
+         gr(form([("Participant", f'<span class="cd-s">{code[1:]}</span> {t(method)}'), ("Round", "1"), ("Date", "September 2026, day not recorded")]),
+            form([("Where", None), ("Facilitator", "Team role; name withheld"), ("Notetaker", "Team role; name withheld")]), cols="2"),
+         gr(col(kk("1  Current behaviour"), f'<p class="tx" style="margin:0">{t(cur)}</p>' if cur else NR,
+                kk("2  The task"), f'<p class="tx" style="margin:0">{t(task)}</p>'),
+            col(kk("3  Where did it stall?"), boxes(stall),
+                kk("4  Did the target action happen?"),
+                form([("Happened?", happened or "Not scored against the five components"), ("Unaided?", unaided), ("Time taken", None), ("Attempts", None), ("Guardrail seen?", None)])), cols="2"),
+         rows_tbl(rws))
+    page(SAPP,
+         ahd("A", f"Observation sheet: {code}, continued", "Sections 5 to 8."),
+         gr(col(kk("5  Said against did"), form([("They said", f"<span class='q2'>“{t(sd[0])}”</span>"), ("They did", sd[1])]),
+                kk("8  Within five minutes of leaving"), form([("Surprised me most", None), ("Observable break", recon(five)), ("Did wrong as facilitator", None)])),
+            col(kk("6  Quotes worth keeping"), qline(quotes)),
+            col(kk("7  Sketch: the screen"), phone(shot, "Repository capture, sample names replaced.", "46mm")), cols="3", style="grid-template-columns:1.2fr 1fr 50mm"))
+
+BASE = [("P01", "Social situation dominates", "Cue / Timing", "Prompt", ["though I didn't want", "I wasn't, like, thinking about getting it in the first place, but, like, I got."], ["Cue", "Timing"]),
+        ("P02", "Value evaluated after spending", "Evaluation", "Motivation", ["was it worth it?"], ["Evaluation"]),
+        ("P03", "Existing mental budgeting already strong", "Evaluation / Experience", "Ability", ["it's good to have, like, buffer money.", "I'm glad that I didn't spend some extra money in my day visitor on a really fancy lunch because then I could accommodate fees for this."], ["Evaluation", "Experience"]),
+        ("P04", "Future plan not active during current decision", "Timing", "Ability, Prompt", ["I knew I had the dinner on Friday.", "at that moment I was just thinking about what I wanted to eat tonight."], ["Timing"]),
+        ("P05", "Too many retrieval and calculation steps", "Ability / Timing", "Ability, Prompt", ["By the time I've checked everything, the decision is already happening."], ["Ability", "Timing"]),
+        ("P06", "Perceived value overrides financial concern", "Evaluation", "Motivation", ["mujhe kaafi fun product lag raha hai"], ["Evaluation"]),
+        ("P09", "Frequency becomes visible only through observation", "Awareness / Evaluation", "Ability, Prompt", ["I started noticing how often I was buying small things.", "Oh shit, I will be spending more money."], ["Evaluation"])]
+
+
+def bsheet(code, brk, stage, map_, qq, on):
+    method = "Six-day self-observation" if code == "P09" else "Baseline observation, six days"
+    return (f'<div class="bsheet"><div class="bh"><span class="cd-s">{code[1:]}</span><span class="hx">{t(method)}</span></div>'
+            + form([("Round, date", "1, September 2026"), ("Task", "Record and reflect on own spending for six days; no prototype"), ("Primary break", brk), ("CREATE", stage), ("M / A / P", map_)])
+            + f'<div style="margin:2mm 0">{boxes(on)}</div>' + form([("Target action", "Not applicable: no prototype in this round"), ("Time, attempts, guardrail", None)])
+            + '<span class="kk" style="margin-top:2mm">Quotes worth keeping</span>' + qline(qq) + "</div>")
+
+
+for i in range(0, len(BASE), 2):
+    page(SAPP,
+         ahd("A", "Observation sheets: baseline records", "The baseline had no prototype task, so the task fields record the six-day observation. Times were not recorded."),
+         gr(*[bsheet(*b) for b in BASE[i:i + 2]], cols="2"))
+
+RB = [("Decision moment or use situation unclear", "2", "Timing", "A", "Blocker"), ("Manual capture creates friction", "3", "Ability", "A", "Drag"),
+      ("Potential consequence not immediately legible", "3", "Evaluation", "P / A", "Drag"), ("Future plans separated from current decision", "4+", "Timing / Evaluation", "A, P", "Drag"),
+      ("Progress representation implied wrong objective", "1", "Experience", "A", "Blocker"), ("Actual vs estimated spending unclear", "1", "Experience", "A", "Drag"),
+      ("Interface architecture feels congested", "1", "Experience", "A", "Drag"), ("Existing transaction history duplicates current tools", "1 to 3", "Experience", "A", "Noise"),
+      ("Categorisation is ambiguous", "1", "Ability", "A", "Drag"), ("New Plan interaction failed", "1", "Ability", "A", "Blocker")]
+page(SAPP,
+     ahd("B", "Findings roll-up", "One per team. Every break across sessions, then ranked."),
+     table(["What broke", "Sessions", "CREATE stage", "M / A / P", "Severity"], [[f"<b style='color:var(--m-blue);font-weight:600'>{t(a)}</b>", f'<span class="hx">{t(b)}</span>', t(c), t(d), f'<span class="{SEVT[e]}">{e}</span>'] for a, b, c, d, e in RB],
+           "dense", [None, "18mm", "36mm", "20mm", "20mm"], raw=True),
+     pn(kk("The one change we are making, and why this row and not another", "kk--k") + tx("Row 1. It is the only Blocker that appears in more than one record, and Timing comes before the other stages in the CREATE funnel, so it can stop the later stages from happening."), "y"),
+     pn(kk("What we are deliberately not fixing this week") + tx("Interface congestion (Drag, one record). Categorisation ambiguity (Drag, one record). Actual vs estimated distinction (Drag, raised again in V2, still backlog). Historical transaction ledger (Noise, not a behavioural blocker)."), "l"))
+
+page(SAPP,
+     ahd("C", "Change log", "Top half before building. Bottom half after round 2. Round 2 has not been run, and this page says so."),
+     pn(kk("Before") + form([
+         ("Evidence", "P04, a known commitment was not part of the decision. P05, calculation took longer than the decision. P07, potential spending was the most useful interaction. P08, history already exists elsewhere. P10, asked for the situation of use."),
+         ("Diagnosis", "The break is at Timing, not Cue: the prompt arrives when ability is low."),
+         ("The change, so a stranger could spot it", "At the moment of spending, the screen shows current money, the upcoming commitment, the proposed expense and the projected remainder, then asks: would you still like to spend ₹700?"),
+         ("Prediction, as a behaviour with a count", "Four of five participants mention the projected remaining amount without being prompted within thirty seconds, and three of five state a decision without being asked."),
+         ("Falsifier", "The participant does not notice the consequence, cannot explain it, still has to find and calculate the same information, or sees it as irrelevant."),
+         ("Date and time written", None)])),
+     pn(kk("After round 2", "kk--w") + form([
+         ("What happened, with the count", "Round 2 not yet run. One V2 session exists (P10), which is not a controlled round 2, so the count criterion cannot be scored."),
+         ("What this shows", "In the one V2 session, the consequence was discussed more directly than in V1 (F.4)."),
+         ("What this does not show", "That V2 increases financial consideration, or that the behaviour repeats."),
+         ("The next test", "Three V2 sessions with new participants, same task and length, scored against the five components (Part G).")]), "b"))
+
+page(SAPP,
+     ahd("D", "Repeat-probe log", "One per round-1 participant. No repeat probe was run in this round; the log records that plainly."),
+     table(["Participant", "Session 1 date", "Return visit date", "Version they hold"], [
+         ['<span class="cd-s">07</span>', "September 2026", "Not held", "V1"], ['<span class="cd-s">08</span>', "September 2026", "Not held", "Prototype as tested"],
+         ['<span class="cd-s">10</span>', "September 2026", "Not held", "V2"]], "dense", raw=True),
+     gr(pn(kk("Baseline day 1") + form([("Time to complete", None), ("Attempts", None), ("Unaided?", None), ("What cued it", None)])),
+        pn(kk("Days 2 to 6") + form([("Did it happen?", "Not probed"), ("What brought them to it", "Not probed"), ("How you know", "No log, trace or recall collected")])),
+        pn(kk("Return visit, day 6") + form([("Arrived on its own?", "Not observed"), ("Time taken", None), ("Against day 1", "Not comparable"), ("What cued it today", None)])), cols="3", cls="gr-s"),
+     pn(kk("What you watched them do before asking anything", "kk--k") + tx("Nothing: no return visit was held. The closest evidence is P09's six-day recording, which is subject to observer bias and is reported in D.1, not here."), "y"))
+
+page(SAPP,
+     ahd("E", "Loop log kit", "One per participant who agreed to log. No setup message was sent this round, so no entries exist."),
+     table(["Participant", "Setup message sent", "Pinned?", "Day 6 visit", "Agreed to log?"], [
+         [f'<span class="cd-s">{c}</span>', "No", "No", "Not held", "Not asked"] for c in ["07", "08", "10"]], "dense", raw=True),
+     gr(pn(kk("Reference card") + '<p class="hx">P / W / M  ·  D / H / N  ·  G / F / B  ·  then one word</p>'.replace("  ·  ", ",  ")),
+        pn(kk("First-letter count") + '<p class="hx">P 0,  W 0,  M 0</p><p class="tx" style="margin:1mm 0 0">Zero because the log was not run, not because nothing happened.</p>'), cols="2"),
+     table(["Date and time", "Entry as sent", "Their word", "Trigger type", "Sent before the action?"], [["None received", "", "", "", ""]], "dense", raw=True),
+     form([("Reconciliation, day 6", "Not possible: no entries and no observed occurrences"), ("Did you send them anything during the week?", "No"), ("Times they did not log", "Not asked: no day-6 visit")]))
+
 # ================================================================== AI used labels, per the AI line
 AIUSE = {"B.5  What you must not say": "Drafting probes and debrief questions, piloted on a real person",
          "D.8  Pattern frequency": "First-pass clustering of collected notes, reworked by hand",
@@ -622,9 +791,30 @@ for _i, _p in enumerate(PAGES):
         if _m in _p:
             PAGES[_i] = _p.replace(_m, f'<div class="aihead">{_m}<span class="aiuse">AI used</span></div><p class="aiwhy">{t(_why)}</p>')
 
+# ================================================================== section dividers
+DIVS = [(SA_, "A", "What we are testing"), (SB, "B", "The method"), (SC, "C", "The participants"), (SD, "D", "What we found"), (SE, "E", "What broke"),
+        (SF, "F", "The change"), (SI, "G", "The next test"), (SH, "H", "Final results"), (SAPP, "", "Appendices")]
+_out = []
+_done = set()
+for _p in PAGES:
+    for _sec, _l, _n in DIVS:
+        if f'data-sec="{_sec}"' in _p and _sec not in _done:
+            _done.add(_sec)
+            _titles = []
+            for _q in PAGES:
+                if f'data-sec="{_sec}"' in _q:
+                    _m = re.search(r'<h1 class="h1 m-display-xl"[^>]*>(.*?)</h1>', _q)
+                    if _m and _m.group(1) not in _titles:
+                        _titles.append(_m.group(1))
+            _big = _l or "A to E"
+            _out.append(f'<section class="pg pg--field divider" data-bare data-sec="{_sec}"><div class="dv-in"><span class="dv-l">{_big}</span>'
+                        f'<p class="dv-t">{t(_n)}</p><ol class="dv-list">' + "".join(f"<li>{x}</li>" for x in _titles) + "</ol></div></section>")
+    _out.append(_p)
+PAGES[:] = _out
+
 # ================================================================== cover and contents
 SECS = [("Q", "The research question", SQ), ("A", "What we are testing", SA_), ("B", "The method", SB), ("C", "The participants", SC), ("D", "What we found", SD),
-        ("E", "What broke", SE), ("F", "The change", SF), ("G", "The next test", SI), ("H", "Final results", SH)]
+        ("E", "What broke", SE), ("F", "The change", SF), ("G", "The next test", SI), ("H", "Final results", SH), ("", "Appendices A to E", SAPP)]
 
 
 def pages_of(sec):
