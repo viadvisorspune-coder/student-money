@@ -1,4 +1,4 @@
-"""Builds report.html: the Margin user testing kit (client's final content, P01 to P11).
+"""Builds report.html: Margin evidence and test plan with test results (P01 to P10).
 
 Words are the client's, carried over as written, with em dashes and middle dots
 replaced by commas or colons (a Margin text rule). The appendices are not built.
@@ -17,7 +17,7 @@ OUT = Path(__file__).with_name("report.html")
 
 SQ, SA_, SB, SC, SD, SE, SF, SG, SH, SI, SX = (
     "The research question", "A  What we are testing", "B  The method", "C  The participants", "D  What we found",
-    "E  What broke", "F  The change", "G  Does the behaviour come back", "H  Synthesis", "I  The next test", "Field guide")
+    "E  What broke", "F  The change", "Does the behaviour come back", "H  Final results", "G  The next test", "Field guide")
 
 
 def strong(s, cls=""):
@@ -170,16 +170,16 @@ PART = [("P01", "Baseline observation", "Social context, spontaneous spending"),
         ("P03", "Baseline observation", "Future allocation, buffer"), ("P04", "Baseline observation", "Future commitment not salient at the decision"),
         ("P05", "Baseline observation", "Calculation effort, timing"), ("P06", "Baseline observation", "Utility, novelty, perceived value"),
         ("P07", "V1 walkthrough, about 26 min", "Consequence, potential spending, agency"), ("P08", "Prototype session", "Existing payment tracking, future planning"),
-        ("P09", "Six-day self-observation", "Repeated small-spend awareness"), ("P10", "V2 walkthrough, about 10 min", "Decision moment, friction, automation"),
-        ("P11", "Behavioural pattern", "Low spontaneous engagement")]
+        ("P09", "Six-day self-observation", "Repeated small-spend awareness"), ("P10", "V2 walkthrough, about 10 min", "Decision moment, friction, automation")]
 MTONE = {"Baseline observation": "tagc", "Six-day self-observation": "tagc tagc--yellow", "Behavioural pattern": "wtag"}
 page(SC,
-     band("Part C  /  The participants", "Eleven codes, ten records", "Participants are shown by code only."),
+     band("Part C  /  The participants", "Ten participants", "Participants are shown by code only."),
      table(["ID", "Method", "Main behavioural signal"], [[f'<span class="cd-s{" cd-o" if c == "P11" else ""}">{c[1:]}</span>', f'<span class="{MTONE.get(m, "tagc tagc--blue")}">{t(m)}</span>', f"<span class='tx'>{t(s)}</span>"] for c, m, s in PART],
            "dense", ["12mm", "60mm", None], raw=True),
-     gr(pn('<p class="nbig">10</p><p class="tx" style="margin:2mm 0 0">The counts in this document are based on ten records.</p>'),
-        pn('<p class="nbig" style="color:var(--m-stone)">P11</p><p class="tx" style="margin:2mm 0 0">A behavioural pattern based on repeated friction and adoption concerns in P07, P08 and P10. It is treated as a pattern, not as an extra record.</p>', "d"), cols="2"))
-
+     gr(pn('<p class="nbig">6</p><p class="tx" style="margin:1mm 0 0">baseline observation records, P01 to P06</p>'),
+        pn('<p class="nbig">1</p><p class="tx" style="margin:1mm 0 0">six-day self-observation record, P09</p>'),
+        pn('<p class="nbig">3</p><p class="tx" style="margin:1mm 0 0">prototype sessions: P07 on V1, P08 against their payment app, P10 on V2</p>'), cols="3"),
+     pn(kk("Why two kinds of record", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0">The six days showed what spending decisions look like without an interface. The walkthroughs then tested whether a product could create the same effect at the right moment. All counts in this document are out of these ten records.</p>', "b"))
 # ================================================================== part D
 DOT = '<span class="dot"></span>'
 page(SD,
@@ -500,7 +500,7 @@ props = [("Timely", "Financial information appears before the decision closes"),
          ("Low-effort", "The user does not reconstruct their financial position manually"), ("Consequence-oriented", "The system shows what changes if the expense happens"),
          ("Non-judgemental", "The product does not classify a decision as good or bad"), ("User-final", "The system surfaces information and questions; the user decides")]
 page(SH,
-     band("Part H  /  Synthesis", "H.1  The question is now sharper", None,
+     band("Part H  /  Final results", "H.1  The question is now sharper", None,
           '<div class="vs2" style="margin-top:2mm">' + pn(kk("The project began by asking", "kk--w") + '<p class="q" style="margin:0;color:var(--m-paper)">How do we help students track their money?</p>', "", "", "background:rgba(255,255,255,0.14)")
           + '<span class="v" style="background:var(--m-mustard);color:var(--m-ink)">to</span>' + pn(kk("The testing shifted the question to", "kk--k") + '<p class="q" style="margin:0;color:var(--m-ink)">How do we make financial consequences visible while the spending decision is still open?</p>', "y") + "</div>"),
      '<div class="shifts">' + "".join(f'<div><span class="a">{a}</span><i class="ar"></i><span class="b">{b}</span></div>' for a, b in [("Tracking", "Consideration"), ("Transaction", "Decision"), ("Information", "Consequence")]) + "</div>",
@@ -515,7 +515,7 @@ cpairs = [(("Future planning can be strong", "P03", "actively preserves money fo
           (("Limits can help", "P08", "uses self-defined limits"), ("Limits can become control", "P08", "rejects enforced limits")),
           (("Historical data helps explain", "P07", "understands monthly spending"), ("Consequence is more useful", "P07", "values the potential-spend view more"))]
 page(SH,
-     head("H.3  Validated  /  H.4  Challenged", "Part H  /  Synthesis"),
+     head("H.3  Validated  /  H.4  Challenged", "Part H  /  Final results"),
      gr(pn(kk("Validated", "kk--w") + chk(["Financial visibility can create reflection", "Future commitments matter to spending decisions", "Future commitments are not always active when spending happens",
                                           "Manual financial capture introduces friction", "Potential spending is a meaningful decision-support direction",
                                           "Financial information does not need to change the final purchase to enter the reasoning", "Users want to retain decision ownership"]), "b", "cfill", "padding:7mm 6mm"),
@@ -523,7 +523,7 @@ page(SH,
      "")
 
 page(SH,
-     head("H.5  Contradictions, kept rather than averaged away", "Part H  /  Synthesis"),
+     head("H.5  Contradictions, kept rather than averaged away", "Part H  /  Final results"),
      '<div>' + '<div class="cp2">' + "".join(
          f'<div class="cpair"><div class="cs"><p class="hx">{t(a[0])}</p><div>{codes(a[1])}<span class="small">{t(a[2])}</span></div></div><span class="v">vs</span>'
          f'<div class="cs"><p class="hx">{t(b[0])}</p><div>{codes(b[1])}<span class="small">{t(b[2])}</span></div></div></div>' for a, b in cpairs) + "</div></div>",
@@ -539,7 +539,7 @@ feat = [("Potential spending", "P07, P08, P10", "Strong decision-support directi
         ("Manual transaction entry", "P07, P08, P10", "Repeated friction", -1), ("Progress bar", "P10", "Problematic metaphor", -1), ("Historical transaction ledger", "P08", "Low differentiation", 0)]
 FT = {3: "tagc tagc--blue", 2: "tagc tagc--sky", 1: "tagc", 0: "tagc", -1: "tagc tagc--red"}
 page(SH,
-     head("H.6  Evidence strength  /  H.7  Feature evidence", "Part H  /  Synthesis"),
+     head("H.6  Evidence strength  /  H.7  Feature evidence", "Part H  /  Final results"),
      table(["Claim", "Records", "Strength"], [[f"<b style='color:var(--m-blue);font-weight:600'>{t(a)}</b>", codes(b), f'<span class="tagc{" tagc--blue" if s == "High" else " tagc--sky"}">{s}</span>'] for a, b, s in evs],
            "dense", [None, "44mm", "20mm"], raw=True),
      table(["Feature", "Evidence", "Conclusion"], [[f"<b style='color:var(--m-blue);font-weight:600'>{t(a)}</b>", codes(b), f'<span class="{FT[k]}">{t(c)}</span>'] for a, b, c, k in feat],
@@ -550,7 +550,7 @@ sec = [("Notice", "Did the participant look?"), ("Understanding", "Could they ex
        ("Consideration", "Did they mention a trade-off?"), ("Decision", "Changed / maintained / delayed"), ("Effort", "Steps required"), ("Time", "Time to understand"),
        ("Independence", "Needed help / unaided"), ("Repeat", "Happened again without prompting")]
 page(SI,
-     band("Part I  /  The next test", "The next test", None, '<div class="m-pullquote" style="margin-top:2mm"><p class="q">Does making the financial consequence of a proposed expense immediately visible increase financial consideration before commitment?</p><cite>Question</cite></div>'),
+     band("Part G  /  The next test", "The next test", None, '<div class="m-pullquote" style="margin-top:2mm"><p class="q">Does making the financial consequence of a proposed expense immediately visible increase financial consideration before commitment?</p><cite>Question</cite></div>'),
      pn(rh([("Baseline", "Observe relevant spending decisions"), ("Intervention", "Show current money, upcoming commitment, proposed expense and projected remaining money"),
             ("Observe", "Notice, understand, connect, consider, decide"), ("Return", "Observe whether the behaviour happens again without prompting")], key="Intervention"), "", "", "padding:6mm 3mm"),
      gr(pn(kk("Primary measure", "kk--w") + '<p class="hx hx--xl hx--w">Financial consideration</p>', "b", "", "display:flex;flex-direction:column;justify-content:center;padding:7mm 6mm"),
@@ -562,8 +562,8 @@ page(SI,
 outc = [("Changed", "Decision moved from the original choice"), ("Modified", "Amount or alternative changed"), ("Delayed", "Decision postponed"),
         ("Declined", "Purchase abandoned"), ("Maintained", "Original decision retained"), ("Conscious maintain", "Original decision retained after explicit financial consideration")]
 page(SI,
-     head("Measures, the working model, and decision outcomes", "Part I  /  The next test"),
-     head("Measures, the working model, and decision outcomes", "Part I  /  The next test") if False else "",
+     head("Measures, the working model, and decision outcomes", "Part G  /  The next test"),
+     head("Measures, the working model, and decision outcomes", "Part G  /  The next test") if False else "",
      gr(col(kk("Secondary measures"), table(["Measure", "What is recorded"], [[f"<b style='color:var(--m-blue);font-weight:600'>{t(a)}</b>", t(b)] for a, b in sec], "dense", ["32mm", None], raw=True)),
         col(kk("The working model"), loop(["See", "Understand", "Consider", "Decide", "Reflect", "Next\ndecision"], r=20, w=84, h=74, key="Consider")), cols="2"),
      '<div>' + kk("Decision outcome categories") + gr(*[pn(f'<p class="hx{" hx--w" if a == "Conscious maintain" else ""}">{t(a)}</p><p class="tx" style="margin:1.4mm 0 0">{t(b)}</p>', "b" if a == "Conscious maintain" else "", "pn--s") for a, b in outc], cols="3", cls="gr-s") + "</div>",
@@ -593,9 +593,26 @@ page(SX,
      pn(kk("Three-line note to attach", "kk--k") + '<div class="gr gr-3 gr-s" style="margin-top:2mm">' + "".join(f'<div><span class="num">{i + 1}</span><p class="hx hx--k">{t(x)}</p></div>' for i, x in enumerate(
          ["Where you used it", "Which prompts changed a decision", "One place you overruled it"])) + "</div>", "y", "", "padding:7mm 6mm"))
 
+# ================================================================== order: drop G (repeat probe) and field guide; next test before final results
+_keep = [p for p in PAGES if f'data-sec="{SG}"' not in p and f'data-sec="{SX}"' not in p]
+_i = [p for p in _keep if f'data-sec="{SI}"' in p]
+_h = [p for p in _keep if f'data-sec="{SH}"' in p]
+_rest = [p for p in _keep if p not in _i and p not in _h]
+PAGES[:] = _rest + _i + _h
+
+# ================================================================== AI used labels, per the AI line
+AIUSE = {"B.5  What you must not say": "Drafting probes and debrief questions, piloted on a real person",
+         "D.8  Pattern frequency": "First-pass clustering of collected notes, reworked by hand",
+         "Measures, the working model, and decision outcomes": "Scaffolding the analysis: guardrail and secondary measures"}
+for _i, _p in enumerate(PAGES):
+    for _h, _why in AIUSE.items():
+        _m = f'<h1 class="h1 m-display-xl">{_h}</h1>'
+        if _m in _p:
+            PAGES[_i] = _p.replace(_m, f'<div class="aihead">{_m}<span class="aiuse">AI used</span></div><p class="aiwhy">{t(_why)}</p>')
+
 # ================================================================== cover and contents
 SECS = [("Q", "The research question", SQ), ("A", "What we are testing", SA_), ("B", "The method", SB), ("C", "The participants", SC), ("D", "What we found", SD),
-        ("E", "What broke", SE), ("F", "The change", SF), ("G", "Does the behaviour come back?", SG), ("H", "Synthesis", SH), ("I", "The next test", SI), ("", "When it goes wrong, the AI line", SX)]
+        ("E", "What broke", SE), ("F", "The change", SF), ("G", "The next test", SI), ("H", "Final results", SH)]
 
 
 def pages_of(sec):
@@ -609,15 +626,15 @@ for n, name, sec in SECS:
     rows.append(f'<li><span class="n">{n}</span><span class="t">{t(name)}</span><span class="p">{rng}</span></li>')
 contents = ('<section class="pg" data-sec="Contents"><div class="ct v2">' + head("Contents") + '<div class="gr" style="grid-template-columns:1fr 62mm;gap:10mm">'
             '<ol class="toc">' + "".join(rows) + "</ol>"
-            + pn(kk("How to read this kit", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0 0 3mm">Parts A and B set up the test. C and D are the evidence. E and F turn a break into one change. G checks whether the behaviour returns. H and I say what we know and what to test next.</p>'
-                 + '<div class="stack">' + "".join(f'<div class="wk"><span class="lbl lbl--{k}" style="margin:0">{n}</span></div>' for k, n in [("ev", "Evidence"), ("fi", "Finding"), ("im", "Implication"), ("re", "Response")]) + "</div>", "b", "", "padding:6mm")
+            + pn(kk("How to read this document", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0 0 3mm">Parts A and B are the test plan. C and D are the evidence. E and F turn a break into one change. G sets up the next round. H is the final results.</p>'
+                 + '<div class="stack">' + "".join(f'<div class="wk"><span class="lbl lbl--{k}" style="margin:0">{n}</span></div>' for k, n in [("ev", "Evidence"), ("fi", "Finding"), ("im", "Implication"), ("re", "Response")]) + '<div class="wk"><span class="aiuse" style="margin:0">AI used</span><span style="font-size:8.5pt">AI assisted this section; the findings are the team\'s</span></div>' + "</div>", "b", "", "padding:6mm")
             + "</div></div></section>")
 
 cover = """<section class="pg pg--field cover" data-bare>
   <div class="abs" style="left:18mm;top:16mm;right:18mm;display:flex;justify-content:space-between"><span class="fr">Designing for Influence, Module 4</span><span class="fr">September 2026</span></div>
   <div class="abs" style="left:18mm;top:40mm;width:92mm">
     <p class="big" style="margin:0;color:var(--m-paper)">Margin</p>
-    <p class="mid" style="margin:3mm 0 0;color:var(--m-paper)">User testing kit</p>
+    <p class="mid" style="margin:3mm 0 0;color:var(--m-paper)">Evidence and test plan, with test results</p>
   </div>
   <div class="abs" style="left:112mm;top:34mm;width:52mm;transform:rotate(-5deg)"><div class="ph" style="box-shadow:0 0 0 1mm rgba(255,255,255,0.3)"><img src="shots/v2-home.jpg" alt=""></div></div>
   <div class="abs" style="left:146mm;top:64mm;width:48mm;transform:rotate(6deg)"><div class="ph" style="box-shadow:0 0 0 1mm rgba(255,255,255,0.3)"><img src="shots/v2-result.jpg" alt=""></div></div>
@@ -626,11 +643,11 @@ cover = """<section class="pg pg--field cover" data-bare>
     <p class="q" style="margin:4mm 0 0;color:var(--m-paper)">Can making financial consequences visible at the moment of spending make spending decisions more conscious?</p>
   </div>
   <div class="abs" style="left:0;right:0;bottom:0;height:74mm;background:var(--m-paper);border-radius:8mm 8mm 0 0;padding:9mm 18mm;box-sizing:border-box">
-    <span class="kk">The kit</span>
+    <span class="kk">This document</span>
     <div class="rh2" style="grid-template-columns:repeat(5,1fr);margin-top:4mm">
-      <div><b>What we test</b></div><div><b>The method</b></div><div><b>What we found</b></div><div class="key"><b>The change</b></div><div><b>The next test</b></div>
+      <div><b>Test plan</b></div><div><b>The method</b></div><div><b>Evidence</b></div><div><b>The change</b></div><div class="key"><b>Final results</b></div>
     </div>
-    <p class="small" style="position:absolute;left:18mm;right:18mm;bottom:10mm;margin:0;color:var(--m-blue);opacity:0.6;display:flex;justify-content:space-between"><span>Participants are shown by code only, P01 to P11.</span><span>Screens: Margin prototype V2, repository capture, sample names replaced.</span></p>
+    <p class="small" style="position:absolute;left:18mm;right:18mm;bottom:10mm;margin:0;color:var(--m-blue);opacity:0.6;display:flex;justify-content:space-between"><span>Participants are shown by code only, P01 to P10.</span><span>Screens: Margin prototype V2, repository capture, sample names replaced.</span></p>
   </div>
 </section>"""
 

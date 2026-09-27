@@ -9,7 +9,7 @@
     var sec = pg.getAttribute('data-sec') || '';
     var rh = document.createElement('div');
     rh.className = 'rh m-runhead m-runhead--rule';
-    rh.innerHTML = '<span><b>Margin</b>&nbsp;&nbsp;User testing kit</span><span>' + sec.replace(/  /, '&nbsp;&nbsp;') + '</span>';
+    rh.innerHTML = '<span><b>Margin</b>&nbsp;&nbsp;Evidence and test plan</span><span>' + sec.replace(/  /, '&nbsp;&nbsp;') + '</span>';
     pg.insertBefore(rh, pg.firstChild);
     var ft = document.createElement('div');
     ft.className = 'ft m-footer';
