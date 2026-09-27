@@ -828,8 +828,7 @@ for n, name, sec in SECS:
     rows.append(f'<li><span class="n">{n}</span><span class="t">{t(name)}</span><span class="p">{rng}</span></li>')
 contents = ('<section class="pg" data-sec="Contents"><div class="ct v2">' + head("Contents") + '<div class="gr" style="grid-template-columns:1fr 62mm;gap:10mm">'
             '<ol class="toc">' + "".join(rows) + "</ol>"
-            + pn(kk("How to read this document", "kk--w") + '<p class="tx" style="color:var(--m-paper);margin:0 0 3mm">Parts A and B are the test plan. C and D are the evidence. E and F turn a break into one change. G sets up the next round. H is the final results.</p>'
-                 + '<div class="stack">' + "".join(f'<div class="wk"><span class="lbl lbl--{k}" style="margin:0">{n}</span></div>' for k, n in [("ev", "Evidence"), ("fi", "Finding"), ("im", "Implication"), ("re", "Response")]) + '<div class="wk"><span class="aiuse" style="margin:0">AI used</span><span style="font-size:8.5pt">AI assisted this section; the findings are the team\'s</span></div>' + "</div>", "b", "", "padding:6mm")
+
             + "</div></div></section>")
 
 cover = """<section class="pg pg--field cover" data-bare>
@@ -838,17 +837,11 @@ cover = """<section class="pg pg--field cover" data-bare>
     <p class="big" style="margin:0;color:var(--m-paper)">Margin</p>
     <p class="mid" style="margin:3mm 0 0;color:var(--m-paper)">Evidence and test plan, with test results</p>
   </div>
-  <div class="abs" style="left:112mm;top:34mm;width:52mm;transform:rotate(-5deg)"><div class="ph" style="box-shadow:0 0 0 1mm rgba(255,255,255,0.3)"><img src="shots/v2-home.jpg" alt=""></div></div>
-  <div class="abs" style="left:146mm;top:64mm;width:48mm;transform:rotate(6deg)"><div class="ph" style="box-shadow:0 0 0 1mm rgba(255,255,255,0.3)"><img src="shots/v2-result.jpg" alt=""></div></div>
   <div class="abs" style="left:18mm;top:82mm;width:88mm">
     <span class="fr fr--y">The research question</span>
     <p class="q" style="margin:4mm 0 0;color:var(--m-paper)">Can making financial consequences visible at the moment of spending make spending decisions more conscious?</p>
   </div>
   <div class="abs" style="left:0;right:0;bottom:0;height:74mm;background:var(--m-paper);border-radius:8mm 8mm 0 0;padding:9mm 18mm;box-sizing:border-box">
-    <span class="kk">This document</span>
-    <div class="rh2" style="grid-template-columns:repeat(5,1fr);margin-top:4mm">
-      <div><b>Test plan</b></div><div><b>The method</b></div><div><b>Evidence</b></div><div><b>The change</b></div><div class="key"><b>Final results</b></div>
-    </div>
     <p class="small" style="position:absolute;left:18mm;right:18mm;bottom:10mm;margin:0;color:var(--m-blue);opacity:0.6;display:flex;justify-content:space-between"><span>Participants are shown by code only, P01 to P10.</span><span>Screens: Margin prototype V2, repository capture, sample names replaced.</span></p>
   </div>
 </section>"""
